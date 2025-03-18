@@ -2,11 +2,8 @@ import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import dotenv from "dotenv";
+dotenv.config();
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -49,7 +46,11 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/",
-          remarkPlugins: [require("remark-code-snippets")],
+          remarkPlugins: [
+            require("rehype-katex"),
+            require("remark-code-snippets"),
+            require("remark-math"),
+          ],
         },
         theme: {
           customCss: "./src/css/custom.css",
@@ -60,12 +61,12 @@ const config: Config = {
   themeConfig: {
     algolia: {
       // The application ID provided by Algolia
-      appId: "YOUR_APP_ID",
+      appId: process.env.ALGOLIA_APP_ID,
 
       // Public API key: it is safe to commit it
-      apiKey: "YOUR_SEARCH_API_KEY",
+      apiKey: process.env.ALGOLIA_API_KEY,
 
-      indexName: "YOUR_INDEX_NAME",
+      indexName: process.env.ALGOLIA_INDEX_NAME,
 
       // Optional: see doc section below
       contextualSearch: true,
