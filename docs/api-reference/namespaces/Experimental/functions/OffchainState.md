@@ -1,0 +1,85 @@
+```ts
+function OffchainState<Config>(config: Config, options?: {
+  logTotalCapacity: number;
+  maxActionsPerProof: number;
+  maxActionsPerUpdate: number;
+}): OffchainState<Config>
+```
+
+Defined in: [index.ts:143](https://github.com/o1-labs/o1js/blob/89b7d1522af805d6d4c45a96d7a9cbc29a457aec/src/index.ts#L143)
+
+Offchain state for a `SmartContract`.
+
+```ts
+// declare your offchain state
+
+const offchainState = OffchainState({
+  accounts: OffchainState.Map(PublicKey, UInt64),
+  totalSupply: OffchainState.Field(UInt64),
+});
+
+// use it in a contract, by adding an onchain state field of type `OffchainStateCommitments`
+
+class MyContract extends SmartContract {
+ \@state(OffchainStateCommitments) offchainState = State(
+   OffchainStateCommitments.empty()
+  );
+
+  // ...
+}
+
+// set the contract instance
+
+let contract = new MyContract(address);
+offchainState.setContractInstance(contract);
+```
+
+See the individual methods on `offchainState` for more information on usage.
+
+## Type Parameters
+
+• **Config** *extends* \{\}
+
+## Parameters
+
+### config
+
+`Config`
+
+### options?
+
+#### logTotalCapacity
+
+`number`
+
+The base-2 logarithm of the total capacity of the offchain state.
+
+Example: if you want to have 1 million individual state fields and map entries available,
+set this to 20, because 2^20 ~= 1M.
+
+The default is 30, which allows for ~1 billion entries.
+
+Passing in lower numbers will reduce the number of constraints required to prove offchain state updates,
+which we will make proof creation slightly faster.
+Instead, you could also use a smaller total capacity to increase the `maxActionsPerProof`, so that fewer proofs are required,
+which will reduce the proof time even more, but only in the case of many actions.
+
+#### maxActionsPerProof
+
+`number`
+
+#### maxActionsPerUpdate
+
+`number`
+
+The maximum number of offchain state actions that can be included in a single account update.
+
+In other words, you must not call `.update()` or `.overwrite()` more than this number of times in any of your smart contract methods.
+
+The default is 4.
+
+Note: When increasing this, consider decreasing `maxActionsPerProof` or `logTotalCapacity` in order to not exceed the circuit size limit.
+
+## Returns
+
+`OffchainState`\<`Config`\>
