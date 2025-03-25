@@ -6,7 +6,9 @@ import CodeBlock from '@theme/CodeBlock';
 import constants from '@site/snippets/field/constants.json';
 
 ## Field
-Field elements are the basic unit of data in zero knowledge proof programming. Each field element can store a number up to almost 256 bits in size. You can think of a field element as a `uint256` in Solidity.
+Field elements are the basic unit of data in zero knowledge proof programming.  An element of a Field is like an integer, except that all operations
+are perfomed modulo a prime.  Each field element can store a number up to almost 256 bits in size.  All other data types that can be used in 
+provable code can be represented as Fields.
 
 :::note
 
@@ -20,10 +22,23 @@ For example, in typical programming, you might use:
 
 In o1js, you write this as:
 
-```ts file=../../snippets/field/sum.ts start=start_sum_1 end=end_sum_1
+```ts file=../../snippets/field/field.ts start=start_sum_1 end=end_sum_1
 ```
 
 This can be simplified as:
 
-```ts file=../../snippets/field/sum.ts start=start_sum_2 end=end_sum_2
+```ts file=../../snippets/field/field.ts start=start_sum_2 end=end_sum_2
 ```
+
+### Overflow Behavior
+
+Field arithmetic supports overflow and underflow.  See [Integers](/docs/getting-started/built-in-types.mdx#integers) for an o1js type that behaves more like a traditional integer type.
+
+```ts file=../../snippets/field/field.ts start=start_overflow end=end_overflow
+```
+
+```ts file=../../snippets/field/field.ts start=start_underflow end=end_underflow
+```
+
+
+Read more at the [language reference](/docs/api-reference/classes/Field.md).

@@ -17,7 +17,11 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Getting Started",
-      items: ["getting-started/intro", "getting-started/field"],
+      items: [
+        "getting-started/intro",
+        "getting-started/field",
+        "getting-started/built-in-types",
+      ],
     },
     /* {
       type: 'category',
