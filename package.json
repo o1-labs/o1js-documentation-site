@@ -12,6 +12,7 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
+    "test": "npx vitest run",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -33,7 +34,8 @@
     "remark-code-snippets": "^1.1.0",
     "remark-math": "^6.0.0",
     "typescript": "~5.6.2",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5.0.0",
+    "vitest": "^3.0.9"
   },
   "browserslist": {
     "production": [
