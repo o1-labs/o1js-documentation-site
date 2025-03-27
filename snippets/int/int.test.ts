@@ -1,12 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import {
-  uint8,
-  uint32,
-  uint64,
-  int64,
-  alternative_int64,
-} from "./built-in-types";
+import { uint8, uint32, uint64, int64, alternative_int64 } from "./int";
 
 describe("instantiation", () => {
   it("all instances are generated successfully", () => {
