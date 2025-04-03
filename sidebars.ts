@@ -17,17 +17,27 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Getting Started",
+      collapsed: false,
       items: [
         "getting-started/intro",
-        "getting-started/field",
-        "getting-started/built-in-types",
+        "getting-started/what-is-a-zk-constraint-system",
       ],
     },
-    /* {
-      type: 'category',
-      label: 'Basic Types',
-      items: [],
+    {
+      type: "category",
+      label: "Basic Types and Functions",
+      collapsed: false,
+      items: [
+        "basic-types/field",
+        "basic-types/int",
+        "basic-types/keypairs-and-signatures",
+        "basic-types/merkle-trees",
+        "basic-types/arrays",
+        "basic-types/structs",
+        "basic-types/hashing",
+      ],
     },
+    /*
     {
       type: 'category',
       label: 'Making It Provable',
