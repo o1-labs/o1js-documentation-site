@@ -37,12 +37,15 @@ const sidebars: SidebarsConfig = {
         "basic-types/hashing",
       ],
     },
-    /*
     {
-      type: 'category',
-      label: 'Making It Provable',
-      items: [],
-    }, */
+      type: "category",
+      label: "Writing Constraint Systems",
+      items: [
+        "writing-constraint-systems/witnesses",
+        "writing-constraint-systems/conditional-logic",
+        "writing-constraint-systems/analyzing-constraint-systems",
+      ],
+    },
     {
       type: "category",
       label: "API Reference",
