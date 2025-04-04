@@ -1,0 +1,16 @@
+{
+  "replacementPatterns": [
+    {
+      "pattern": "^/api-reference/",
+      "replacement": "{{BASEURL}}/docs/api-reference/"
+    },
+    {
+      "pattern": "^/",
+      "replacement": "{{BASEURL}}/"
+    },
+    {
+      "pattern": "#.*$",
+      "replacement": ""
+    }
+  ]
+}

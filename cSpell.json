@@ -1,0 +1,10 @@
+{
+    "dictionaryDefinitions": [
+      {
+        "name": "o1js Words",
+        "path": ".o1jsDictionary.txt",
+        "addWords": true
+      }
+    ],
+    "dictionaries": ["o1js Words"]
+  }

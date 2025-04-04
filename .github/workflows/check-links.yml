@@ -1,0 +1,36 @@
+name: Check Markdown Links
+
+on:
+  pull_request:
+    paths:
+      - '**/*.md'
+      - '**/*.mdx'
+  push:
+    branches:
+      - main
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Find all markdown files other than the ones that come directly from o1js, and check that all links are valid
+      - name: Run markdown-link-check
+        run: |
+          find . \( -name '*.md' -o -name '*.mdx' \) \
+            -not -path './node_modules/*' \
+            -not -path './docs/api-reference/*' \
+            -not -path './docs/changelog.md' \
+            -print0 | \
+          xargs -0 -n1 npx markdown-link-check --quiet --config .mlc-config.json || exit 1

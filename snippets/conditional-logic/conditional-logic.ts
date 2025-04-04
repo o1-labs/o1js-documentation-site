@@ -28,7 +28,7 @@ import { Field, Provable } from "o1js";
 };
 
 () => {
-  // start_valid_execution_with_function
+  // start_2_valid_execution_with_function
   function oneMoreThan(x: Field) {
     return x.add(1);
   }
@@ -39,5 +39,5 @@ import { Field, Provable } from "o1js";
     const new_n_heads = Provable.if(x.isEven(), oneMoreThan(n_heads), n_heads);
     n_heads = new_n_heads;
   }
-  // end_valid_execution_with_function
+  // end_2_valid_execution_with_function
 };
