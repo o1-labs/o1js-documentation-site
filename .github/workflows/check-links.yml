@@ -28,8 +28,15 @@ jobs:
       # Find all markdown files other than the ones that come directly from o1js, and check that all links are valid
       - name: Run markdown-link-check
         run: |
-          find . \( -name '*.md' -o -name '*.mdx' \) \
+          output=$(find . \( -name '*.md' -o -name '*.mdx' \) \
             -not -path './node_modules/*' \
             -not -path './docs/api-reference/*' \
             -not -path './docs/changelog.md' | \
-            xargs npx markdown-link-check --quiet --config .mlc-config.json
+            xargs npx markdown-link-check --quiet --config .mlc-config.json)
+
+          echo "$output"
+
+          # Check for the dead link marker "[✖]" in the output
+          if echo "$output" | grep -q "\[✖\]"; then
+            exit 1
+          fi
