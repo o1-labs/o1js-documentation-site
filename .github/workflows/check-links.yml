@@ -31,6 +31,5 @@ jobs:
           find . \( -name '*.md' -o -name '*.mdx' \) \
             -not -path './node_modules/*' \
             -not -path './docs/api-reference/*' \
-            -not -path './docs/changelog.md' \
-            -print0 | \
-          xargs -0 -n1 npx markdown-link-check --quiet --config .mlc-config.json || exit 1
+            -not -path './docs/changelog.md' | \
+            xargs npx markdown-link-check --quiet --config .mlc-config.json
