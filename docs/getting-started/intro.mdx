@@ -32,7 +32,17 @@ TODO: Would be nice to have a graphic that visualizes the execution steps of pro
 
 ## Browser Compatibility
 
-o1js relies on `SharedArrayBuffer` for performance, and uses WASM to run functions that access
-the constraint systems.  Check the browser compatibility of those features here: 
-[SharedArrayBuffer](https://caniuse.com/sharedarraybuffer), [WASM](https://caniuse.com/wasm)
+o1js balances browser support and feature richness.  Most modern browsers, including many mobile browesers
+are supported.  We use `WebAssembly` and `SharedArrayBuffer` to improve prover performance on the browser,
+which does impact compatibility with older browers.  See below for a full list of supported browsers.
 
+Check supported browsers on [Browserlist](https://browsersl.ist/#q=fully+supports+sharedarraybuffer+and+fully+supports+wasm+and+not+dead)
+
+:::note
+`SharedArrayBuffer` requires `Cross-Origin-Opener-Policy` and `Cross-Origin-Embedder-Policy` headers to be set.
+
+```
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Embedder-Policy: require-corp
+```
+:::
