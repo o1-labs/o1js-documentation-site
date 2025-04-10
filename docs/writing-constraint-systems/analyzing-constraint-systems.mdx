@@ -2,6 +2,7 @@
 title: Analyzing Constraints
 ---
 
+import constants from '@site/snippets/constraint-system/constants.json';
 import CodeBlock from '@theme/CodeBlock';
 
 Optimizing o1js code is often not a matter of copying over optimized functions from VMs that operate over bytes, but instead 
@@ -25,6 +26,12 @@ code.  You can also use it to analyze specific pieces of a larger program, or sp
 ```ts file=../../snippets/constraint-system/constraint-system.ts start=start_constraint_system_example end=end_constraint_system_example
 ```
 
+The summary looks like this:
+
+<CodeBlock language="json">
+{JSON.stringify(constants.csSummary, null, 2)}
+</CodeBlock>
+
 Read more at the language reference: [Provable.constraintSystem](/api-reference/variables/Provable.md#constraintsystem).
 
 ## Using ZkProgram
@@ -38,13 +45,21 @@ to specific return types, inputs, and outputs, `ZkProgram` is the better choice.
 ```ts file=../../snippets/constraint-system/constraint-system.ts start=start_zk_program_example end=end_zk_program_example
 ```
 
+Note how the same function results in the same constraint system summary:
+
+<CodeBlock language="json">
+{JSON.stringify(constants.zkpSummary, null, 2)}
+</CodeBlock>
+
 Read more at the language reference: [ZkProgram](/api-reference/functions/ZkProgram.md).
 
 ## Using SmartContract
 
 `SmartContract` is a specialized class for writing proofs that interact with the Mina blockchain.  For the purposes of analyzing the
 constraint system, it works like `ZkProgram`.  Keep in mind, that not every method on the `SmartContract` actually has to be
-provable!  Non-provable methods will not be converted into constraint systems.
+provable!  Non-provable methods will not be converted into constraint systems.  As a `class`, `SmartContracts` are just a JavaScript
+object, so you can add any methods you want, just like any class.  Only methods decorated with `@method` will be marked as provable,
+and included in the resulting constraint system.
 
 ```ts file=../../snippets/constraint-system/constraint-system.ts start=start_smart_contract_example end=end_smart_contract_example
 ```
