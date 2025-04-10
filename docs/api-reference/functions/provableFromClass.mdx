@@ -1,0 +1,50 @@
+```ts
+function provableFromClass<A, T, V, J>(Class: Constructor<T> & {
+  check: (x: T) => void;
+  empty: () => T;
+}, typeObj: A): IsPure<A> extends true ? ProvablePureExtended<T, V, J> : ProvableExtended<T, V, J>
+```
+
+Defined in: [lib/provable/types/provable-derivers.ts:85](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/provable-derivers.ts#L85)
+
+## Type Parameters
+
+• **A** *extends* `NestedProvable`
+
+• **T** *extends* `any`
+
+• **V** *extends* `any`
+
+• **J** *extends* 
+  \| `null`
+  \| `string`
+  \| `number`
+  \| `boolean`
+  \| \{\}
+  \| \{\}
+  \| (
+  \| `null`
+  \| `string`
+  \| `number`
+  \| `boolean`
+  \| \{\}
+  \| (string \| number \| boolean \| \{ \[x: number\]: string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| ... 5 more ... \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null; \} \| (string \| ......
+  \| \{\})[]
+  \| \{\}
+
+## Parameters
+
+### Class
+
+`Constructor`\<`T`\> & \{
+  `check`: (`x`: `T`) => `void`;
+  `empty`: () => `T`;
+ \}
+
+### typeObj
+
+`A`
+
+## Returns
+
+`IsPure`\<`A`\> *extends* `true` ? `ProvablePureExtended`\<`T`, `V`, `J`\> : `ProvableExtended`\<`T`, `V`, `J`\>
