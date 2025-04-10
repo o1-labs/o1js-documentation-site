@@ -1,0 +1,34 @@
+---
+title: Conditional Logic in Constraint Systems
+---
+
+In provable code, we can't use the JavaScript `if` statement.  For a constraint system to be valid, it must follow the exact
+same path every time it's executed.  In traditional programming, what an `if` statement does is evaluate an expression, then
+jump to one of two different code paths.  This behavior can't be copied, but what _is_ possible within provable codes is
+setting a variable based on the outcome of an expression.  The trick is that both sides of the expression will always be 
+evaluated.
+
+## Invalid Example
+For a simple example of the kind of conditional logic that _won't work_, see:
+
+```ts file=../../snippets/conditional-logic/conditional-logic.ts start=start_invalid_execution end=end_invalid_execution
+```
+
+The reason this code is invalid is that every iteration, we evaluate the true side, then the false side.  So we always 
+add `1`, then `0` to the number of heads flipped.  The result will always evaluate to the number of flips.
+
+## Valid Example
+Instead, write conditional logic like this:
+
+```ts file=../../snippets/conditional-logic/conditional-logic.ts start=start_valid_execution end=end_valid_execution
+```
+
+This code will work correctly because we assign the result of the expression to a variable, and there are no other 
+side effects caused by evaluating both sides.
+
+### Valid Example Using a Function
+It is valid to execute code in both sides of the condition, as long as you understand the implications!  In general, a function
+that returns a value and has no side effects is good to use in this case.
+
+```ts file=../../snippets/conditional-logic/conditional-logic.ts start=start_2_valid_execution_with_function end=end_2_valid_execution_with_function
+```
