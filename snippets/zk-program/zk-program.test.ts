@@ -32,7 +32,6 @@ describe("Complex", () => {
   });
 
   it("Didn't modify the input", async () => {
-    console.log(election.toJSON());
     expect(election.candidates[4].votes.toBigint()).toBe(0n);
     expect(election.totalVotes.toBigint()).toBe(0n);
   });
