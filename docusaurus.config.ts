@@ -46,11 +46,19 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/",
+          lastVersion: "current",
           remarkPlugins: [
             require("rehype-katex"),
             require("remark-code-snippets"),
             require("remark-math"),
           ],
+          versions: {
+            current: {
+              label: "Current",
+              badge: false,
+              banner: "none",
+            },
+          },
         },
         theme: {
           customCss: "./src/css/custom.css",
@@ -99,6 +107,13 @@ const config: Config = {
         alt: "My Site Logo",
         src: "img/logo.svg",
       },
+      items: [
+        {
+          type: "docsVersionDropdown",
+          position: "left",
+          dropdownActiveClassDisabled: true,
+        },
+      ],
     },
     footer: {
       style: "dark",

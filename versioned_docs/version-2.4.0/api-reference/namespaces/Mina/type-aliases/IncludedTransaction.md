@@ -1,0 +1,30 @@
+```ts
+type IncludedTransaction = Pick<PendingTransaction, "transaction" | "toJSON" | "toPretty" | "hash" | "data"> & {
+  status: "included";
+};
+```
+
+Defined in: [lib/mina/v1/transaction.ts:276](https://github.com/o1-labs/o1js/blob/89b7d1522af805d6d4c45a96d7a9cbc29a457aec/src/lib/mina/v1/transaction.ts#L276)
+
+Represents a transaction that has been successfully included in a block.
+
+## Type declaration
+
+### status
+
+```ts
+status: "included";
+```
+
+#### Example
+
+```ts
+try {
+  const includedTx: IncludedTransaction = await pendingTransaction.wait();
+  // If wait() resolves, it means the transaction was successfully included.
+  console.log(`Transaction ${includedTx.hash} included in a block.`);
+} catch (error) {
+  // If wait() throws, the transaction was not included in a block.
+  console.error('Transaction failed to be included in a block:', error);
+}
+```
