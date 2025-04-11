@@ -32,7 +32,7 @@ jobs:
             -not -path './node_modules/*' \
             -not -path './docs/api-reference/*' \
             -not -path './docs/changelog.md'  \
-            -not -path './versioned-docs/*' | \
+            -not -path './versioned_docs/*' | \
             xargs npx markdown-link-check --quiet --config .mlc-config.json)
 
           echo "$output"
