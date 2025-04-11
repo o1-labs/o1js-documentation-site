@@ -1,0 +1,26 @@
+```ts
+function memoizeWitness<T>(type: FlexibleProvable<T>, compute: () => T): T
+```
+
+Defined in: [index.ts:161](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/index.ts#L161)
+
+Like Provable.witness, but memoizes the witness during transaction construction
+for reuse by the prover. This is needed to witness non-deterministic values.
+
+## Type Parameters
+
+• **T**
+
+## Parameters
+
+### type
+
+[`FlexibleProvable`](../../../type-aliases/FlexibleProvable.mdx)\<`T`\>
+
+### compute
+
+() => `T`
+
+## Returns
+
+`T`

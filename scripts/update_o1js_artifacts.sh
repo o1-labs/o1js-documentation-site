@@ -23,11 +23,11 @@ npm run build:docs
 cd $CURRENT_DIR
 
 ## Set ./docs/changelog.md to the changelog of o1js from node_modules
-# cp ../temp_o1js/o1js/CHANGELOG.md ./docs/changelog.md
+cp ../temp_o1js/o1js/CHANGELOG.md ./docs/changelog.md
 
 ## Copy the reference documentation to ./docs/api-reference
-# rm -rf ./docs/api-reference
-# cp -r ../temp_o1js/o1js/o1js-reference ./docs/api-reference
+rm -rf ./docs/api-reference
+cp -r ../temp_o1js/o1js/o1js-reference ./docs/api-reference
 
 ## Clean up
-# rm -rf ../temp_o1js/o1js
+rm -rf ../temp_o1js/o1js

@@ -1,0 +1,52 @@
+```ts
+function IndexedMerkleMap(height: number): typeof IndexedMerkleMapBase
+```
+
+Defined in: [index.ts:169](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/index.ts#L169)
+
+Class factory for an Indexed Merkle Map with a given height.
+
+```ts
+class MerkleMap extends IndexedMerkleMap(33) {}
+
+let map = new MerkleMap();
+
+map.insert(2n, 14n);
+map.insert(1n, 13n);
+
+let x = map.get(2n); // 14
+```
+
+Indexed Merkle maps can be used directly in provable code:
+
+```ts
+ZkProgram({
+  methods: {
+    test: {
+      privateInputs: [MerkleMap, Field],
+
+      method(map: MerkleMap, key: Field) {
+        // get the value associated with `key`
+        let value = map.getOption(key).orElse(0n);
+
+        // increment the value by 1
+        map.set(key, value.add(1));
+      }
+    }
+  }
+})
+```
+
+Initially, every `IndexedMerkleMap` is populated by a single key-value pair: `(0, 0)`. The value for key `0` can be updated like any other.
+When keys and values are hash outputs, `(0, 0)` can serve as a convenient way to represent a dummy update to the tree, since 0 is not
+effciently computable as a hash image, and this update doesn't affect the Merkle root.
+
+## Parameters
+
+### height
+
+`number`
+
+## Returns
+
+*typeof* `IndexedMerkleMapBase`

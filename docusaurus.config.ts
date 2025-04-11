@@ -48,10 +48,10 @@ const config: Config = {
           editUrl: "https://github.com/",
           lastVersion: "current",
           remarkPlugins: [
-            require("rehype-katex"),
             require("remark-code-snippets"),
             require("remark-math"),
           ],
+          rehypePlugins: [require("rehype-katex")],
           versions: {
             current: {
               label: "Current",
