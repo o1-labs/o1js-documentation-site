@@ -16,8 +16,9 @@ the system, so they can all generate the same kind of proof.
 
 Methods in the `ZkProgram` can have custom _private_ inputs and outputs.  Private inputs are where the magic happens.
 These allow you to pass in private data that you don't want to share with the verifier, and use it in the proof.
-Private output is more often used as a developer utility, for instance to return some non-provable data that's 
-relevant to the developer.
+Private output is  more often used as a developer utility.  It is not available to the verifier, but it does provide 
+a return value to the prover.  This can be used for debugging, or tracking some metadata that's not available in the
+public output.
 
 ```ts file=../../snippets/zk-program/zk-program.ts start=start_simple end=end_simple
 ```
