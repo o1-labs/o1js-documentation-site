@@ -45,6 +45,7 @@ const sidebars: SidebarsConfig = {
         "writing-constraint-systems/witnesses",
         "writing-constraint-systems/conditional-logic",
         "writing-constraint-systems/analyzing-constraint-systems",
+        "writing-constraint-systems/zk-program",
       ],
     },
     {
