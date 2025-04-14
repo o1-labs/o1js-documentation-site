@@ -1,0 +1,40 @@
+This module exposes APIs that are unstable, in the sense that the API surface is expected to change.
+(Not unstable in the sense that they are less functional or tested than other parts.)
+
+## Namespaces
+
+| Namespace | Description |
+| ------ | ------ |
+| [V2](namespaces/V2/README.mdx) | - |
+
+## Classes
+
+| Class | Description |
+| ------ | ------ |
+| [BatchReducer](classes/BatchReducer.mdx) | A reducer to process actions in fixed-size batches. |
+| [OffchainStateCommitments](classes/OffchainStateCommitments.mdx) | Commitments that keep track of the current state of an offchain Merkle tree constructed from actions. Intended to be stored on-chain. |
+
+## Type Aliases
+
+| Type alias | Description |
+| ------ | ------ |
+| [ActionBatch](type-aliases/ActionBatch.mdx) | - |
+| [IndexedMerkleMap](type-aliases/IndexedMerkleMap.mdx) | - |
+
+## Variables
+
+| Variable | Description |
+| ------ | ------ |
+| [ProvableBigInt](variables/ProvableBigInt.mdx) | - |
+| [V2](variables/V2.mdx) | - |
+
+## Functions
+
+| Function | Description |
+| ------ | ------ |
+| [ActionBatch](functions/ActionBatch.mdx) | Provable type that represents a batch of actions. |
+| [createProvableBigInt](functions/createProvableBigInt.mdx) | Creates a class representing a ProvableBigInt with modular arithmetic capabilities. This is particularly useful for implementing prime fields that don't fit into the native field. |
+| [IndexedMerkleMap](functions/IndexedMerkleMap.mdx) | Class factory for an Indexed Merkle Map with a given height. |
+| [memoizeWitness](functions/memoizeWitness.mdx) | Like Provable.witness, but memoizes the witness during transaction construction for reuse by the prover. This is needed to witness non-deterministic values. |
+| [OffchainState](functions/OffchainState.mdx) | Offchain state for a `SmartContract`. |
+| [Recursive](functions/Recursive.mdx) | - |

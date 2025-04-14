@@ -58,7 +58,7 @@ const sidebars: SidebarsConfig = {
       label: "API Reference",
       link: {
         type: "doc",
-        id: "api-reference/intro", // Set default page for this category
+        id: "api-reference/Introduction", // Set default page for this category
       },
       items: [
         {
