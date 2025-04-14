@@ -1,0 +1,54 @@
+```ts
+function method<K, T>(
+   target: T & { [k in string]: (args: any) => Promise<void> }, 
+   methodName: K & string & keyof T, 
+   descriptor: PropertyDescriptor, 
+   returnType?: Provable<any>): void
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:98](https://github.com/o1-labs/o1js/blob/89b7d1522af805d6d4c45a96d7a9cbc29a457aec/src/lib/mina/v1/zkapp.ts#L98)
+
+A decorator to use in a zkApp to mark a method as provable.
+You can use inside your zkApp class as:
+
+```
+\@method async myMethod(someArg: Field) {
+  // your code here
+}
+```
+
+To return a value from the method, you have to explicitly declare the return type using the [method.returns](method.md#returns) decorator:
+```
+\@method.returns(Field)
+async myMethod(someArg: Field): Promise<Field> {
+  // your code here
+}
+```
+
+## Type Parameters
+
+• **K** *extends* `string`
+
+• **T** *extends* [`SmartContract`](../classes/SmartContract.md)
+
+## Parameters
+
+### target
+
+`T` & `{ [k in string]: (args: any) => Promise<void> }`
+
+### methodName
+
+`K` & `string` & keyof `T`
+
+### descriptor
+
+`PropertyDescriptor`
+
+### returnType?
+
+[`Provable`](../type-aliases/Provable.md)\<`any`\>
+
+## Returns
+
+`void`
