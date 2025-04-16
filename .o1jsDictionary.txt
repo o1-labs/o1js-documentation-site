@@ -9,3 +9,7 @@ keypairs
 keccak
 Schnorr
 Browserlist
+zkProgram
+zkPrograms
+EDDSA
+eddsa

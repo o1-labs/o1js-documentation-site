@@ -4,7 +4,12 @@
         "name": "o1js Words",
         "path": ".o1jsDictionary.txt",
         "addWords": true
+      },
+      {
+        "name": "HMAC Words",
+        "path": ".hmacDictionary.txt",
+        "addWords": true
       }
     ],
-    "dictionaries": ["o1js Words"]
+    "dictionaries": ["o1js Words", "HMAC Words"]
   }
