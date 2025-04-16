@@ -13,3 +13,10 @@ zkProgram
 zkPrograms
 EDDSA
 eddsa
+metaprogramming
+opad
+ipad
+Mihir
+Bellare
+Canetti
+Krawczyk
