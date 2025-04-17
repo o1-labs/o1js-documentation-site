@@ -15,10 +15,13 @@ import { Bytes, Hash, UInt32, FlexibleBytes, Provable, UInt8 } from "o1js";
  * - ^ denotes XOR operation
  */
 export class HMAC_SHA256 {
+  // start_constants_and_types
   static readonly IPAD = UInt32.from(0x36363636); // Inner padding constant
   static readonly OPAD = UInt32.from(0x5c5c5c5c); // Outer padding constant
   static readonly BLOCK_SIZE = 64; // Block size for SHA256 (512 bits / 64 bytes)
+  // end_constants_and_types  
 
+  // start_keyprep
   /**
    * Prepares a key for HMAC-SHA256 computation according to the HMAC specification (RFC 2104).
    *
@@ -49,6 +52,7 @@ export class HMAC_SHA256 {
 
     return keyBuffer;
   }
+  // end_keyprep
 
   /**
    * Computes HMAC-SHA256 for given key and message

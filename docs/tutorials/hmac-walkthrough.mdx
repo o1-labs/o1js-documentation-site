@@ -4,6 +4,8 @@ sidebar_label: Provable HMAC
 description: A step-by-step guide to implementing HMAC-SHA256 in o1js, showcasing how o1js can be used to prove common cryptographic algorithms.
 ---
 
+import CodeBlock from '@theme/CodeBlock';
+
 ## Introduction
 
 Welcome to this walkthrough of implementing HMAC-SHA256 in o1js! This tutorial will guide you through creating a zero-knowledge circuit (ZkProgram) that implements the HMAC-SHA256 algorithm, a widely used cryptographic hash-based message authentication code.
@@ -217,7 +219,249 @@ You can verify this result using the [HMAC Calculator](https://cryptotools.net/h
 In the next section, we'll implement this exact computation in o1js, making it provable using o1js!
 
 ## Making HMAC-SHA256 Provable
-/* TODO */
+
+In this section, we'll implement HMAC-SHA256 as a zero-knowledge circuit using o1js. Understanding the fundamental constraints and behaviors of zero-knowledge circuits is crucial for this implementation.
+
+### 1. Circuit Design Fundamentals
+
+#### Circuit-Compatible Types
+
+Every value in a circuit must be provable in zero-knowledge. o1js provides specific types for this:
+
+```typescript
+// Fundamental circuit types
+const field = new Field(123);     // Finite field element (base type for all circuit values)
+const bool = new Bool(true);      // Boolean values in circuits
+const uint8 = new UInt8(255);     // 8-bit unsigned integer (0 to 255)
+const uint32 = new UInt32(1000);  // 32-bit unsigned integer
+const uint64 = new UInt64(1000n); // 64-bit unsigned integer (note: use 'n' suffix for BigInt)
+
+// CORRECT: Fixed size known at compile time
+const fixedArray = Provable.Array(Field, 16).empty();
+
+// WRONG: Dynamic size - will fail
+let dynamicArray = [];
+array.push(new Field(1)); // Error: Dynamic operations not allowed
+
+```
+
+:::note Circuit Values
+All circuit values must be:
+1. Known size (fixed number of bits)
+2. Bounded (within their type's range)
+3. Representable as field elements
+4. Constrained (have valid proof rules)
+:::
+
+:::note Circuit Structure
+Key points about circuit structure:
+1. All array sizes must be known when the circuit is compiled
+2. Loop bounds must be compile-time constants
+3. The entire circuit structure must be determined before proving
+:::
+
+### 2. Circuit Control Flow
+
+#### Compile-Time vs Prove-Time
+Understanding when code executes is crucial. Let's examine how JavaScript control flow shapes our circuit:
+
+:::note Understanding Metaprogramming
+What is metaprogramming in o1js?
+- JavaScript control flow (if/else, loops) runs at compile time
+- These statements shape how the circuit will be structured
+- Different branches generate different sets of constraints
+- The final circuit structure is fixed before proving begins
+:::
+
+**Example: HMAC Key Preparation**
+```ts file=../snippets/hmac-sha256/hmac-sha256.ts start=start_keyprep end=end_keyprep
+```
+**Impact on Circuit Constraints:**
+
+| Test Case | Key Length | Circuit Structure | Total Constraints |
+|-----------|------------|-------------------|------------------|
+| Case 2    | 4 bytes    | Padding only      | 21,214          |
+| Case 1    | 20 bytes   | Padding only      | 21,136          |
+| Case 6    | 131 bytes  | SHA-256 + padding | 37,228          |
+| Case 7    | 131 bytes  | SHA-256 + padding | 47,859          |
+
+
+1. **Compile-Time Decisions:**
+   - Key length check happens at compile time
+   - Circuit structure is determined based on these checks
+   - Different constraints are generated for each path
+
+2. **Constraint Generation:**
+   - Short keys (< 64 bytes): Only padding constraints (~21,000)
+   - Long keys (> 64 bytes): SHA-256 + padding constraints (~37,000-48,000)
+   - Each path generates a different number of constraints
+
+3. **Performance Implications:**
+   - More constraints = longer proving time
+   - Circuit structure is optimized for the specific input size
+   - No runtime overhead for unused paths
+
+In contrast, `Provable.if` runs during proving. Both paths are always included in the circuit
+```typescript
+const result = Provable.if(condition, value1, value2);
+```
+
+**Understanding `Provable.if`**
+
+`Provable.if` is fundamentally different from regular if statements:
+
+```typescript
+// 1. Basic value selection
+const x = Provable.if(
+  value.equals(0),    // Condition must be Bool
+  Field(1),          // Value if true
+  Field(2)           // Value if false
+);
+// - Both Field(1) and Field(2) are evaluated
+// - Constraints ensure x equals the correct value
+// - No actual branching occurs
+
+
+// 2. Computed values
+const a = Field(5);
+const b = Field(3);
+const max = Provable.if(
+  a.greaterThan(b),  // Condition: is a > b?
+  a,                 // If true: max = a
+  b                  // If false: max = b
+);
+// - Both paths compute their values
+// - Circuit includes constraints for both paths
+// - Result selection is also constrained
+
+
+// 3. Multiple conditions with switch
+const value = Provable.switch(
+  [
+    condition1,     // First condition
+    condition2,     // Second condition
+    Bool(true)      // Default case
+  ],
+  Field,           // Return type
+  [
+    Field(1),      // Value if condition1 is true
+    Field(2),      // Value if condition2 is true
+    Field(3)       // Default value
+  ]
+);
+// - All values are computed
+// - Exactly one condition must be true
+// - Result is constrained based on conditions
+```
+
+:::warning Important `Provable.if` Rules
+1. Conditions must be `Bool` type
+2. Both paths are always evaluated
+3. Return values must be the same type
+4. No side effects allowed (must return values)
+5. All values must be circuit-compatible
+:::
+
+### 3. HMAC Implementation Details
+
+#### Working with Provable Arrays
+
+```typescript
+// 1. Creating fixed-size arrays for key and message processing
+const k0Uint32 = Provable.Array(UInt32, 16).empty();    // For 32-bit words
+const k0Bytes = Provable.Array(UInt8, BLOCK_SIZE).empty(); // For bytes
+
+
+// 2. Copying bytes into a Provable array
+for (let i = 0; i < BLOCK_SIZE; i++) {
+  k0Bytes[i] = k0.bytes[i];  // Copy from regular Bytes to Provable array
+}
+
+
+// 3. Building the inner block (k0 ^ ipad || message)
+const innerBlock = Provable.Array(UInt8, BLOCK_SIZE + messageBytes.length).empty();
+
+// First part: k0 ^ ipad
+for (let i = 0; i < BLOCK_SIZE; i++) {
+  innerBlock[i] = k0IpadBytes[i];
+}
+// Second part: message
+for (let i = 0; i < messageBytes.length; i++) {
+  innerBlock[BLOCK_SIZE + i] = messageBytes[i];
+}
+```
+
+#### Bit Manipulation and Word Operations
+
+```typescript
+// 1. Converting bytes to words (little-endian)
+for (let i = 0; i < 16; i++) {
+  k0Uint32[i] = UInt32.fromBytes([
+    k0Bytes[i * 4 + 3],
+    k0Bytes[i * 4 + 2],
+    k0Bytes[i * 4 + 1],
+    k0Bytes[i * 4 + 0]
+  ]);
+}
+
+
+// 2. XOR operations with padding constants
+const k0IpadXor = Provable.Array(UInt32, 16).empty();
+for (let i = 0; i < 16; i++) {
+  k0IpadXor[i] = k0Uint32[i].xor(IPAD);  // IPAD = 0x36363636
+}
+
+
+// 3. Converting words back to bytes
+const k0IpadBytes = Provable.Array(UInt8, BLOCK_SIZE).empty();
+for (let i = 0; i < 16; i++) {
+  const ipadBytes = k0IpadXor[i].toBytes();
+  k0IpadBytes[i * 4 + 0] = ipadBytes[3];
+  k0IpadBytes[i * 4 + 1] = ipadBytes[2];
+  k0IpadBytes[i * 4 + 2] = ipadBytes[1];
+  k0IpadBytes[i * 4 + 3] = ipadBytes[0];
+}
+```
+
+:::warning Important Considerations
+1. **Type Safety**
+   - Always use circuit-compatible types (`UInt8`, `UInt32`, etc.)
+   - Check bounds when performing operations
+   - Handle overflows explicitly
+   - Be mindful of byte order in word operations
+
+2. **Memory Management**
+   - Arrays must have fixed sizes known at compile time
+   - Use appropriate array methods that work in circuits
+   - Consider constraint count when choosing operations
+
+3. **Performance**
+   - Bit operations generate constraints
+   - Complex operations can be expensive
+   - Reuse computed values when possible
+
+4. **Common Pitfalls**
+   - Avoid dynamic array operations
+   - Don't assume regular JavaScript array methods work
+   - Be careful with type conversions
+   - Watch out for byte order when converting between types
+:::
+
+### 4. Complete Implementation
+
+Here's our complete implementation:
+
+```ts file=../snippets/hmac-sha256/hmac-sha256.ts
+```
+
+### Using the Implementation
+
+To use this HMAC implementation in your ZkProgram:
+
+```ts file=../snippets/hmac-sha256/run.ts
+```
+
+In the next section, we'll explore how to test this implementation thoroughly.
 
 ## Writing Tests for Provable HMAC-SHA256
 /* TODO */
