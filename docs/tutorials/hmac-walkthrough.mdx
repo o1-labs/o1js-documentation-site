@@ -447,6 +447,45 @@ for (let i = 0; i < 16; i++) {
    - Watch out for byte order when converting between types
 :::
 
+#### Gadgets
+
+Gadgets in o1js are reusable building blocks that provide optimized implementations of common operations. In HMAC-SHA256, we primarily use the `SHA2_256` hash gadget:
+
+```typescript
+import { Hash } from 'o1js';
+
+// Using SHA2_256 for key hashing
+const hashedKey = Hash.SHA2_256.hash(key);
+
+// Using SHA2_256 for inner and outer hashes
+const innerHash = Hash.SHA2_256.hash(innerBlock);
+const finalHash = Hash.SHA2_256.hash(outerBlock);
+```
+
+While `SHA2_256` is the main gadget we use in HMAC, o1js provides other useful gadgets for circuit operations:
+
+```typescript
+// Bitwise operations
+const xorResult = Gadgets.xor(value1, value2, 64);  // XOR two 64-byte values
+const andResult = Gadgets.and(value1, value2);      // Bitwise AND
+
+// Range checks
+Gadgets.rangeCheck8(byteValue);     // Check if value is in [0, 255]
+Gadgets.rangeCheck32(wordValue);    // Check if value is in [0, 2^32-1]
+
+// Word operations (32-bit)
+const rotated = Gadgets.rotate32(word, 7, 'right');  // Rotate bits right
+const shifted = Gadgets.rightShift32(word, 3);       // Shift bits right
+```
+
+:::note
+Choose gadgets based on:
+- Efficiency (use specialized gadgets over manual implementations)
+- Constraint count (each gadget operation adds constraints)
+- Safety (use appropriate range checks and validation)
+:::
+
+
 ### 4. Complete Implementation
 
 Here's our complete implementation:
