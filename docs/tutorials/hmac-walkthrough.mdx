@@ -265,13 +265,49 @@ Key points about circuit structure:
 #### Compile-Time vs Prove-Time
 Understanding when code executes is crucial. Let's examine how JavaScript control flow shapes our circuit:
 
-:::note Understanding Metaprogramming
-What is metaprogramming in o1js?
-- JavaScript control flow (if/else, loops) runs at compile time
-- These statements shape how the circuit will be structured
-- Different branches generate different sets of constraints
-- The final circuit structure is fixed before proving begins
-:::
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'system-ui' }}}%%
+graph LR
+    %% Compile Time section
+    A["JavaScript<br/>Control Flow"] --> |"Shapes"| B["Circuit<br/>Structure"]
+    B --> |"Generates"| C["Constraint<br/>System"]
+    
+    %% Prove Time section
+    D["Input Values"] --> E["Execute<br/>Circuit"]
+    E --> F["Generate<br/>Proof"]
+    
+    %% Connect sections
+    C --> |"Fixed structure<br/>& constraints"| E
+    
+    %% Subgraph styling
+    subgraph ct[" Compile Time "]
+        A
+        B
+        C
+    end
+    
+    subgraph pt[" Prove Time "]
+        D
+        E
+        F
+    end
+    
+    %% Node styling
+    style A fill:#e6f7ff,stroke:#0099cc
+    style B fill:#e6f7ff,stroke:#0099cc
+    style C fill:#e6f7ff,stroke:#0099cc
+    style D fill:#fff8e6,stroke:#e6b800
+    style E fill:#fff8e6,stroke:#e6b800
+    style F fill:#fff8e6,stroke:#e6b800
+    
+    %% Add tooltips with detailed info
+    click A href "#" "if/else, loops run at this stage"
+    click B href "#" "Fixed before proving begins"
+    click C href "#" "Creates the circuit's logic"
+    click D href "#" "Private/public inputs"
+    click E href "#" "Follows predetermined structure"
+    click F href "#" "Zero-knowledge proof"
+```
 
 **Example: HMAC Key Preparation**
 ```ts file=../snippets/hmac-sha256/hmac-sha256.ts start=start_keyprep end=end_keyprep
