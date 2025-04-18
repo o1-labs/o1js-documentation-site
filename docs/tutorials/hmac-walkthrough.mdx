@@ -247,17 +247,18 @@ array.push(new Field(1)); // Error: Dynamic operations not allowed
 
 :::note Circuit Values
 All circuit values must be:
-1. Known size (fixed number of bits)
-2. Bounded (within their type's range)
-3. Representable as field elements
-4. Constrained (have valid proof rules)
-:::
+- Representable as field elements
+- Known size (number of field elements is fixed)
 
-:::note Circuit Structure
-Key points about circuit structure:
-1. All array sizes must be known when the circuit is compiled
-2. Loop bounds must be compile-time constants
-3. The entire circuit structure must be determined before proving
+These properties are implemented by:
+```typescript
+sizeInFields(): number {
+  return sizeInFields(typeData);
+},
+toFields(value: T): Field[] {
+  return toFields(typeData, value);
+},
+```
 :::
 
 ### 2. Circuit Control Flow
