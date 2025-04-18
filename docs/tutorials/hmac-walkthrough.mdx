@@ -278,12 +278,12 @@ What is metaprogramming in o1js?
 ```
 **Impact on Circuit Constraints:**
 
-| Test Case | Key Length | Circuit Structure | Total Constraints |
-|-----------|------------|-------------------|------------------|
-| Case 2    | 4 bytes    | Padding only      | 21,214          |
-| Case 1    | 20 bytes   | Padding only      | 21,136          |
-| Case 6    | 131 bytes  | SHA-256 + padding | 37,228          |
-| Case 7    | 131 bytes  | SHA-256 + padding | 47,859          |
+| Key Length | Message Length | Circuit Structure | Total Constraints |
+|------------|---------------|-------------------|------------------|
+| 4 bytes    | 28 bytes      | Padding only      | 21,214          |
+| 20 bytes   | 8 bytes       | Padding only      | 21,136          |
+| 131 bytes  | 54 bytes      | SHA-256 + padding | 37,228          |
+| 131 bytes  | 152 bytes     | SHA-256 + padding | 47,859          |
 
 
 1. **Compile-Time Decisions:**
