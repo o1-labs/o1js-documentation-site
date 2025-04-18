@@ -403,61 +403,12 @@ const value = Provable.switch(
 
 #### Working with Provable Arrays
 
-```typescript
-// 1. Creating fixed-size arrays for key and message processing
-const k0Uint32 = Provable.Array(UInt32, 16).empty();    // For 32-bit words
-const k0Bytes = Provable.Array(UInt8, BLOCK_SIZE).empty(); // For bytes
-
-
-// 2. Copying bytes into a Provable array
-for (let i = 0; i < BLOCK_SIZE; i++) {
-  k0Bytes[i] = k0.bytes[i];  // Copy from regular Bytes to Provable array
-}
-
-
-// 3. Building the inner block (k0 ^ ipad || message)
-const innerBlock = Provable.Array(UInt8, BLOCK_SIZE + messageBytes.length).empty();
-
-// First part: k0 ^ ipad
-for (let i = 0; i < BLOCK_SIZE; i++) {
-  innerBlock[i] = k0IpadBytes[i];
-}
-// Second part: message
-for (let i = 0; i < messageBytes.length; i++) {
-  innerBlock[BLOCK_SIZE + i] = messageBytes[i];
-}
+```ts file=../snippets/hmac-sha256/hmac-sha256.ts start=start_provable_arrays end=end_provable_arrays
 ```
 
 #### Bit Manipulation and Word Operations
 
-```typescript
-// 1. Converting bytes to words (little-endian)
-for (let i = 0; i < 16; i++) {
-  k0Uint32[i] = UInt32.fromBytes([
-    k0Bytes[i * 4 + 3],
-    k0Bytes[i * 4 + 2],
-    k0Bytes[i * 4 + 1],
-    k0Bytes[i * 4 + 0]
-  ]);
-}
-
-
-// 2. XOR operations with padding constants
-const k0IpadXor = Provable.Array(UInt32, 16).empty();
-for (let i = 0; i < 16; i++) {
-  k0IpadXor[i] = k0Uint32[i].xor(IPAD);  // IPAD = 0x36363636
-}
-
-
-// 3. Converting words back to bytes
-const k0IpadBytes = Provable.Array(UInt8, BLOCK_SIZE).empty();
-for (let i = 0; i < 16; i++) {
-  const ipadBytes = k0IpadXor[i].toBytes();
-  k0IpadBytes[i * 4 + 0] = ipadBytes[3];
-  k0IpadBytes[i * 4 + 1] = ipadBytes[2];
-  k0IpadBytes[i * 4 + 2] = ipadBytes[1];
-  k0IpadBytes[i * 4 + 3] = ipadBytes[0];
-}
+```ts file=../snippets/hmac-sha256/hmac-sha256.ts start=start_bit_ops end=end_bit_ops
 ```
 
 :::warning Important Considerations

@@ -61,6 +61,7 @@ export class HMAC_SHA256 {
    * @returns The HMAC hash as Bytes
    */
   static compute(key: FlexibleBytes, message: FlexibleBytes): Bytes {
+    // start_provable_arrays
     // Step 1: k_0
     const k0 = this.prepareKey(key);
 
@@ -72,7 +73,9 @@ export class HMAC_SHA256 {
     for (let i = 0; i < this.BLOCK_SIZE; i++) {
       k0Bytes[i] = k0.bytes[i];
     }
+    // end_provable_arrays
 
+    // start_bit_ops
     // Construct each UInt32 from 4 bytes with proper byte ordering
     for (let i = 0; i < 16; i++) {
       k0Uint32[i] = UInt32.fromBytes([
@@ -98,6 +101,7 @@ export class HMAC_SHA256 {
       k0IpadBytes[i * 4 + 2] = ipadBytes[1];
       k0IpadBytes[i * 4 + 3] = ipadBytes[0];
     }
+    // end_bit_ops
 
     const messageBytes = Bytes.from(message).bytes;
     const innerBlock = Provable.Array(
