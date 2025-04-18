@@ -4,33 +4,133 @@ title: Conditional Logic
 
 import CodeBlock from '@theme/CodeBlock';
 
-In provable code, we can't use the JavaScript `if` statement.  For a constraint system to be valid, it must follow the exact
-same path every time it's executed.  In traditional programming, what an `if` statement does is evaluate an expression, then
-jump to one of two different code paths.  This behavior can't be copied, but what _is_ possible within provable codes is
-setting a variable based on the outcome of an expression.  The trick is that both sides of the expression will always be 
-evaluated.
+## Overview
 
-## Invalid Example
-For a simple example of the kind of conditional logic that _won't work_, see:
+In traditional programming, we use `if` statements to control program flow by evaluating conditions and branching to different code paths. However, zero-knowledge circuits work differently - they must follow the exact same path every time they execute. This fundamental difference requires us to think about conditional logic in a different way.
 
-```ts file=../snippets/conditional-logic/conditional-logic.ts start=start_invalid_execution end=end_invalid_execution
+## How Circuits Handle Control Flow
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'system-ui' }}}%%
+graph LR
+    %% Compile Time section
+    A["JavaScript<br/>Control Flow"] --> |"Defines"| B["Circuit<br/>Layout"]
+    B --> |"Creates"| C["Constraint<br/>System"]
+    
+    %% Prove Time section
+    D["Private/Public<br/>Inputs"] --> E["Circuit<br/>Execution"]
+    E --> F["Zero-Knowledge<br/>Proof"]
+    
+    %% Connect sections
+    C --> E
+    
+    %% Subgraph styling
+    subgraph ct[" Compile Time "]
+        A
+        B
+        C
+    end
+    
+    subgraph pt[" Prove Time "]
+        D
+        E
+        F
+    end
+    
+    %% Node styling
+    style A fill:#e6f7ff,stroke:#0099cc
+    style B fill:#e6f7ff,stroke:#0099cc
+    style C fill:#e6f7ff,stroke:#0099cc
+    style D fill:#fff8e6,stroke:#e6b800
+    style E fill:#fff8e6,stroke:#e6b800
+    style F fill:#fff8e6,stroke:#e6b800
+    
+    %% Add tooltips with detailed info
+    click A href "#" "JavaScript code shapes the circuit structure"
+    click B href "#" "Circuit layout is finalized"
+    click C href "#" "Mathematical constraints are generated"
+    click D href "#" "Values to be proven"
+    click E href "#" "Circuit runs with actual values"
+    click F href "#" "Proof that computation is valid"
 ```
 
-The reason this code is invalid is that every iteration, we evaluate the true side, then the false side.  So we always 
-add `1`, then `0` to the number of heads flipped.  The result will always evaluate to the number of flips.
+## The Two Phases of Circuits
 
-## Valid Example
-Instead, write conditional logic like this:
+### 1. Compile Time (Circuit Generation)
+
+During compile time, regular JavaScript code runs to shape your circuit:
+- Regular JavaScript `if/else` statements and loops are allowed
+- The circuit structure is being determined
+- You can optimize based on known parameters
+- The final structure becomes fixed before proving begins
+
+#### Example: HMAC Key Preparation at Compile Time
+
+Here's a real-world example from the HMAC implementation that uses compile-time conditions to optimize the circuit:
+
+```ts file=../snippets/hmac-sha256/hmac-sha256.ts start=start_keyprep end=end_keyprep
+```
+
+This example demonstrates how compile-time conditions affect circuit structure:
+
+| Key Length | Message Length | Circuit Structure | Total Constraints |
+|------------|---------------|-------------------|------------------|
+| 4 bytes    | 28 bytes      | Padding only      | 21,214          |
+| 20 bytes   | 8 bytes       | Padding only      | 21,136          |
+| 131 bytes  | 54 bytes      | SHA-256 + padding | 37,228          |
+| 131 bytes  | 152 bytes     | SHA-256 + padding | 47,859          |
+
+The JavaScript `if` statements run at compile time to determine:
+1. Whether to include SHA-256 hashing constraints (for long keys)
+2. Whether to include padding constraints (for short keys)
+3. The final circuit structure and constraint count
+
+
+### 2. Prove Time (Circuit Execution)
+
+During prove time, the circuit executes with actual values:
+- Circuit structure is fixed
+- All paths must be evaluated
+- No dynamic branching is possible
+- Conditional logic must use special constructs
+
+
+#### Example: Value Selection Pattern
+
+Instead of using traditional if/else statements, we use value selection at prove time:
 
 ```ts file=../snippets/conditional-logic/conditional-logic.ts start=start_valid_execution end=end_valid_execution
 ```
 
-This code will work correctly because we assign the result of the expression to a variable, and there are no other 
-side effects caused by evaluating both sides.
+This works because we're selecting a value rather than trying to execute different code paths. The result is determined by the condition, but both paths are still evaluated.
 
-### Valid Example Using a Function
-It is valid to execute code in both sides of the condition, as long as you understand the implications!  In general, a function
-that returns a value and has no side effects is good to use in this case.
+#### Example: Using Functions
+
+You can use functions in conditional paths if they follow these rules:
+- Must return the same type for all paths
+- No side effects allowed
+- Must be deterministic
+
+Here's an example:
 
 ```ts file=../snippets/conditional-logic/conditional-logic.ts start=start_2_valid_execution_with_function end=end_2_valid_execution_with_function
 ```
+
+#### Common Pitfall: Side Effects
+
+Here's an example of conditional logic that won't work at prove time:
+
+```ts file=../snippets/conditional-logic/conditional-logic.ts start=start_invalid_execution end=end_invalid_execution
+```
+
+The problem: Both paths are always evaluated, so the counter would always increment by the same amount. Side effects in conditional paths will not work as expected because both paths are always executed.
+
+## Summary
+
+When writing conditional logic in o1js:
+- Use JavaScript if/else for compile-time circuit optimization
+- Use `Provable.if` for runtime value selection
+- Avoid side effects in conditional paths
+- Remember that both paths are always evaluated
+- Keep functions pure and deterministic
+- Consider the impact on circuit constraints when designing conditional logic
