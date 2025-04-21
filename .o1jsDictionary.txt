@@ -9,3 +9,15 @@ keypairs
 keccak
 Schnorr
 Browserlist
+zkProgram
+zkPrograms
+EDDSA
+eddsa
+metaprogramming
+opad
+ipad
+Mihir
+Bellare
+Canetti
+Krawczyk
+keyprep
