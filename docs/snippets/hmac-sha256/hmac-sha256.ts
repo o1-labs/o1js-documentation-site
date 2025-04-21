@@ -19,6 +19,7 @@ export class HMAC_SHA256 {
   static readonly OPAD = UInt32.from(0x5c5c5c5c); // Outer padding constant
   static readonly BLOCK_SIZE = 64; // Block size for SHA256 (512 bits / 64 bytes)
 
+  // start_keyprep
   /**
    * Prepares a key for HMAC-SHA256 computation according to the HMAC specification (RFC 2104).
    *
@@ -49,6 +50,7 @@ export class HMAC_SHA256 {
 
     return keyBuffer;
   }
+  // end_keyprep
 
   /**
    * Computes HMAC-SHA256 for given key and message

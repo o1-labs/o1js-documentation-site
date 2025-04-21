@@ -1,12 +1,15 @@
 ---
-title: HMAC-SHA256 ZkProgram Walkthrough
-sidebar_label: Provable HMAC
-description: A step-by-step guide to implementing HMAC-SHA256 in o1js, showcasing how o1js can be used to prove common cryptographic algorithms.
+title: Understanding HMAC-SHA256
+sidebar_label: Understanding the Algorithm
+description: Learn about HMAC-SHA256 and how it works with a practical example.
+pagination_next: tutorials/hmac/implementation
 ---
+
+import CodeBlock from '@theme/CodeBlock';
 
 ## Introduction
 
-Welcome to this walkthrough of implementing HMAC-SHA256 in o1js! This tutorial will guide you through creating a zero-knowledge circuit (ZkProgram) that implements the HMAC-SHA256 algorithm, a widely used cryptographic hash-based message authentication code.
+Welcome to this guide on HMAC-SHA256! Before diving into implementation, let's understand what HMAC is, why it's important, and how it works. This foundational knowledge will help you better understand the zero-knowledge implementation.
 
 ### What You'll Learn
 
@@ -16,20 +19,11 @@ Welcome to this walkthrough of implementing HMAC-SHA256 in o1js! This tutorial w
 - Applying metaprogramming patterns to shape circuit structure - using static control flow to shape circuit structure
 - Best practices for writing complex zero-knowledge circuits
 
-### Prerequisites
-
-Before starting this tutorial, make sure you:
-- Have basic knowledge of cryptography concepts
-- Are familiar with o1js basics and ZkPrograms
-- Understand how hash functions work
-
 :::tip New to o1js?
-If you're just getting started, check out the [o1js basics](../getting-started/intro.mdx) first.
+If you're just getting started, check out the [o1js basics](../../getting-started/intro.mdx) first.
 :::
 
-## Understanding HMAC
-
-### What is HMAC?
+## What is HMAC?
 
 HMAC (Hash-based Message Authentication Code) is a specific type of message authentication code that combines:
 - A cryptographic hash function
@@ -49,8 +43,6 @@ The HMAC construction was first published in 1996 by Mihir Bellare, Ran Canetti,
 2. **Authentication**: Verifies the sender's identity through the shared secret key
 3. **Non-repudiation**: The sender cannot deny sending the message (when combined with other cryptographic primitives)
 
-For learning more about HMAC, feel free to read the resources below:
-
 ### Why HMAC-SHA256 Specifically? 
 
 HMAC-SHA256 uses SHA-256 as its underlying hash function. It's widely used because:
@@ -58,7 +50,6 @@ HMAC-SHA256 uses SHA-256 as its underlying hash function. It's widely used becau
 - The 256-bit output size provides strong security against collision attacks
 - It's relatively fast to compute
 - It's widely supported across different platforms and languages
-
 
 ## HMAC-SHA256: Under the Hood
 
@@ -214,15 +205,6 @@ You can verify this result using the [HMAC Calculator](https://cryptotools.net/h
 - Message: Hello, World!
 :::
 
-In the next section, we'll implement this exact computation in o1js, making it provable using o1js!
+## Next Steps
 
-## Making HMAC-SHA256 Provable
-/* TODO */
-
-## Writing Tests for Provable HMAC-SHA256
-/* TODO */
-
-## Conclusion
-You can check more advanced examples like eddsa-o1js or feel free to find other examples from awesome-o1js
-
-/* ts file=../snippets/hmac-sha256/hmac-sha256.ts */
+Now that you understand how HMAC-SHA256 works, you're ready to learn how to implement it in o1js! In the next section, we'll cover how to handle write zk-circuits in o1js
