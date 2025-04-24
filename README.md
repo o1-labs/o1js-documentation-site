@@ -53,3 +53,7 @@ Review versioning docs on [Docusuaurus' site](https://docusaurus.io/docs/version
 ```sh
 npm run test
 ```
+
+## Contributing
+
+See: [CONTRIBUTING.md](CONTRIBUTING.md)
