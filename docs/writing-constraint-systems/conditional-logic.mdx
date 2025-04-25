@@ -16,27 +16,27 @@ graph LR
     %% Compile Time section
     A["JavaScript<br/>Control Flow"] --> |"Defines"| B["Circuit<br/>Layout"]
     B --> |"Creates"| C["Constraint<br/>System"]
-    
+
     %% Prove Time section
     D["Private/Public<br/>Inputs"] --> E["Circuit<br/>Execution"]
     E --> F["Zero-Knowledge<br/>Proof"]
-    
+
     %% Connect sections
     C --> E
-    
+
     %% Subgraph styling
     subgraph ct[" Compile Time "]
         A
         B
         C
     end
-    
+
     subgraph pt[" Prove Time "]
         D
         E
         F
     end
-    
+
     %% Node styling
     style A fill:#e6f7ff,stroke:#0099cc
     style B fill:#e6f7ff,stroke:#0099cc
@@ -44,7 +44,7 @@ graph LR
     style D fill:#fff8e6,stroke:#e6b800
     style E fill:#fff8e6,stroke:#e6b800
     style F fill:#fff8e6,stroke:#e6b800
-    
+
     %% Add tooltips with detailed info
     click A href "#" "JavaScript code shapes the circuit structure"
     click B href "#" "Circuit layout is finalized"
@@ -59,6 +59,7 @@ graph LR
 ### 1. Compile Time (Circuit Generation)
 
 During compile time, regular JavaScript code runs to shape your circuit:
+
 - Regular JavaScript `if/else` statements and loops are allowed
 - The circuit structure is being determined
 - You can optimize based on known parameters
@@ -69,37 +70,39 @@ During compile time, regular JavaScript code runs to shape your circuit:
 Here's a real-world example from the HMAC implementation that uses compile-time conditions to optimize the circuit:
 
 ```ts file=../snippets/hmac-sha256/hmac-sha256.ts start=start_keyprep end=end_keyprep
+
 ```
 
 This example demonstrates how compile-time conditions affect circuit structure:
 
 | Key Length | Message Length | Circuit Structure | Total Constraints |
-|------------|---------------|-------------------|------------------|
-| 4 bytes    | 28 bytes      | Padding only      | 21,214          |
-| 20 bytes   | 8 bytes       | Padding only      | 21,136          |
-| 131 bytes  | 54 bytes      | SHA-256 + padding | 37,228          |
-| 131 bytes  | 152 bytes     | SHA-256 + padding | 47,859          |
+| ---------- | -------------- | ----------------- | ----------------- |
+| 4 bytes    | 28 bytes       | Padding only      | 21,214            |
+| 20 bytes   | 8 bytes        | Padding only      | 21,136            |
+| 131 bytes  | 54 bytes       | SHA-256 + padding | 37,228            |
+| 131 bytes  | 152 bytes      | SHA-256 + padding | 47,859            |
 
 The JavaScript `if` statements run at compile time to determine:
+
 1. Whether to include SHA-256 hashing constraints (for long keys)
 2. Whether to include padding constraints (for short keys)
 3. The final circuit structure and constraint count
 
-
 ### 2. Prove Time (Circuit Execution)
 
 During prove time, the circuit executes with actual values:
+
 - Circuit structure is fixed
 - All paths must be evaluated
 - No dynamic branching is possible
 - Conditional logic must use special constructs
-
 
 #### Example: Value Selection Pattern
 
 Instead of using traditional if/else statements, we use value selection at prove time:
 
 ```ts file=../snippets/conditional-logic/conditional-logic.ts start=start_valid_execution end=end_valid_execution
+
 ```
 
 This works because we're selecting a value rather than trying to execute different code paths. The result is determined by the condition, but both paths are still evaluated.
@@ -107,6 +110,7 @@ This works because we're selecting a value rather than trying to execute differe
 #### Example: Using Functions
 
 You can use functions in conditional paths if they follow these rules:
+
 - Must return the same type for all paths
 - No side effects allowed
 - Must be deterministic
@@ -114,6 +118,7 @@ You can use functions in conditional paths if they follow these rules:
 Here's an example:
 
 ```ts file=../snippets/conditional-logic/conditional-logic.ts start=start_2_valid_execution_with_function end=end_2_valid_execution_with_function
+
 ```
 
 #### Common Pitfall: Side Effects
@@ -121,6 +126,7 @@ Here's an example:
 Here's an example of conditional logic that won't work at prove time:
 
 ```ts file=../snippets/conditional-logic/conditional-logic.ts start=start_invalid_execution end=end_invalid_execution
+
 ```
 
 The problem: Both paths are always evaluated, so the counter would always increment by the same amount. Side effects in conditional paths will not work as expected because both paths are always executed.
@@ -128,6 +134,7 @@ The problem: Both paths are always evaluated, so the counter would always increm
 ## Summary
 
 When writing conditional logic in o1js:
+
 - Use JavaScript if/else for compile-time circuit optimization
 - Use `Provable.if` for runtime value selection
 - Avoid side effects in conditional paths
