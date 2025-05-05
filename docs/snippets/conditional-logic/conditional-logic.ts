@@ -18,9 +18,18 @@ import { Field, Provable } from "o1js";
 
 () => {
   // start_valid_execution
+  // Out of the circuit (Field.random() cannot be used at prover time)
+  const arr = [
+    Field.random(),
+    Field.random(),
+    Field.random(),
+    Field.random(),
+    Field.random(),
+  ];
+  // In the circuit
   let n_heads = Field(0);
   for (let i = 0; i < 5; i++) {
-    const x = Field.random();
+    const x = arr[i];
     const flip = Provable.if(x.isEven(), Field(1), Field(0));
     n_heads = n_heads.add(flip);
   }

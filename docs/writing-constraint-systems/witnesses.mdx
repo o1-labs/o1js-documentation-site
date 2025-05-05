@@ -12,5 +12,13 @@ Witnesses are useful because they allow you to "witness in" arbitrary data into 
 root.  It is trivial to prove that `x * x = y`, and it is not trivial to prove that `x = sqrt(y)`.  Using a witness, we can use
 the triviality of multiplication to prove square root.
 
+:::info
+Another way to think about witnesses is to think of the math expression "there exists...such that ...".  For instance, "there 
+exists a number x such that x * x = y".  The witness is the value of x, the constraints added to the circuit are the "such that" 
+part.
+
+Fun fact: Witness is referred to as `exists` internally.
+:::
+
 ```ts file=../snippets/witnesses/witnesses.ts start=start_sqrt end=end_sqrt
 ```

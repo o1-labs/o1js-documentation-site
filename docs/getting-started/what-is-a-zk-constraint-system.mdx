@@ -23,8 +23,8 @@ conditional execution is not supported.
 
 TODO: We could use an illustration here too
 
-Currently, o1js is compatible with the Kimchi proof backend, which is specified in the 
-[Mina Book](https://o1-labs.github.io/proof-systems/specs/kimchi.html).
+Currently, o1js is compatible with the Kimchi proof backend (via a circuit-writing frontend 
+called snarky), which is specified in the [Mina Book](https://o1-labs.github.io/proof-systems/specs/kimchi.html).
 
 ## Implications for Developers
 
@@ -58,7 +58,7 @@ code:
 ```ts
 function multiplyAll(arr: number[]) {
     let result = 1;
-    // This loop can be unbounded - At compile time, it will iterate 0 times, assumiung we use a dummy value of [] for arr
+    // This loop can be unbounded - At compile time, it will iterate 0 times, assuming we use a dummy value of [] for arr
     // At prover time, it will iterate arr.length times, resulting in a different constraint system, so the proof will not be valid
     for (let i = 0; i < arr.length; i++) {
         result *= arr[i];
