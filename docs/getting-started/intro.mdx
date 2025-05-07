@@ -23,7 +23,7 @@ npm i o1js
 ## Is it Really "Just Javascript"?
 
 No!  The SDK itself is written in TypeScript, but the advanced cryptography being used by o1js
-is actually accessed via a bindings layer to rust and ocaml code.  o1js can produce constraint
+is actually accessed via a bindings layer to Rust and OCaml code.  o1js can produce constraint
 systems, often called "circuits", which are a system of gates and wires that represent a 
 mathematical function.  The execution strategy of o1js is to dry-run the execution in 
 JavaScript, and if there are no issues, call the constraint system for real.

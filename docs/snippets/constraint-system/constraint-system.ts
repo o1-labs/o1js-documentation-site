@@ -49,14 +49,14 @@ async function zkProgramExample() {
     },
   });
 
-  const zkp_analysis = await zkp.analyzeMethods();
+  const zkpAnalysis = await zkp.analyzeMethods();
 
-  zkp_analysis.example.summary();
-  zkp_analysis.example.rows;
-  zkp_analysis.example.gates;
+  zkpAnalysis.example.summary();
+  zkpAnalysis.example.rows;
+  zkpAnalysis.example.gates;
   // end_zk_program_example
 
-  return { zkp, zkp_analysis };
+  return { zkp, zkpAnalysis };
 }
 
 async function smartContractExample() {

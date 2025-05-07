@@ -5,9 +5,9 @@ title: Analyzing Constraints
 import constants from '@site/docs/snippets/constraint-system/constants.json';
 import CodeBlock from '@theme/CodeBlock';
 
-Optimizing o1js code is often not a matter of copying over optimized functions from VMs that operate over bytes, but instead 
+Optimizing o1js code is often not a matter of copying over optimized functions traditional programming languages, but instead 
 a matter of minimizing the number of constraints required to model the code.  It's important to analyze the functions you write
-to understand the constraint system that they generate.  o1js provides the tools toy need to understand how many, and what
+to understand the constraint system that they generate.  o1js provides the tools you need to understand how many, and what
 types of constraints your program generates.
 
 #### Example provable function
@@ -22,6 +22,11 @@ For the following examples, let's define a dummy function that we can reuse in d
 `Provable.constraintSystem` is a way to create something like a "snippet" of provable code.  o1js can convert the snippet into a
 constraint system, which can then be analyzed.  This simple wrapper is the lightest-weight way to quickly analyze some provable
 code.  You can also use it to analyze specific pieces of a larger program, or specific functions.
+
+:::note
+This will not check correctness of the code.  It will only convert the code into a constraint system, which is essentially a list of steps to execute.
+It will not execute the steps, or provide any guarantees that the constraint system generated is correct or secure.
+:::
 
 ```ts file=../snippets/constraint-system/constraint-system.ts start=start_constraint_system_example end=end_constraint_system_example
 ```
@@ -42,6 +47,12 @@ the program.  `ZkProgram` has type requirements and more configuration required 
 pieces of code, `Provable.constraintSystem` is the better choice, but to analyze your methods in the context of a full program that's subject
 to specific return types, inputs, and outputs, `ZkProgram` is the better choice.
 
+:::info
+`ZkProgram.analyzeMethods` uses `Provable.constraintSystem` under the hood, so ultimately, they expose the same functionality.
+The main difference is the ergonomics of the API.  `Provable.constraintSystem` is a pure constraint system generation tool, while
+`ZkProgram` is a more complete provable implementation, of which constraint system generation is one part.
+:::
+
 ```ts file=../snippets/constraint-system/constraint-system.ts start=start_zk_program_example end=end_zk_program_example
 ```
 
@@ -60,6 +71,17 @@ constraint system, it works like `ZkProgram`.  Keep in mind, that not every meth
 provable!  Non-provable methods will not be converted into constraint systems.  As a `class`, `SmartContracts` are just a JavaScript
 object, so you can add any methods you want, just like any class.  Only methods decorated with `@method` will be marked as provable,
 and included in the resulting constraint system.
+
+:::info
+`SmartContract.analyzeMethods` uses `Provable.constraintSystem` under the hood, so ultimately, they expose the same functionality.
+Just like `ZkProgram`, `SmartContract` is a complete provable implementation of a program, but it layers on even more extra 
+functionality in the form of compatibility with the Mina blockchain.
+
+So `Provable.constraintSystem` is strictly a constraint system generation tool.  It's extremely generic and can't be used to create
+a proof.  `ZkProgram` is a complete provable program, including constraint system generation, but also proof generation and
+verification.  `SmartContract` is a specialized wrapper around `ZkProgram` that is designed to work with the Mina blockchain.  All
+of these tools can expose generated constraint system analyses.
+:::
 
 ```ts file=../snippets/constraint-system/constraint-system.ts start=start_smart_contract_example end=end_smart_contract_example
 ```

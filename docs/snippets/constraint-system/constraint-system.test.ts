@@ -11,16 +11,16 @@ describe("Constraint System", () => {
 
 describe("ZkProgram", () => {
   it("generates a valid constraint system", async () => {
-    const { zkp_analysis } = await zkProgramExample();
-    expect(zkp_analysis.example.summary()).toEqual(constants.zkpSummary);
+    const { zkpAnalysis } = await zkProgramExample();
+    expect(zkpAnalysis.example.summary()).toEqual(constants.zkpSummary);
   });
 
   it("summary is equivalent to the CS summary", async () => {
     // Update the content of docs/writing-constraint-systems/analyzing-constraint-systems.mdx
     // If this is no longer true
     const { cs } = await constraintSystemExample();
-    const { zkp_analysis } = await zkProgramExample();
-    expect(zkp_analysis.example.summary()).toEqual(cs.summary());
+    const { zkpAnalysis } = await zkProgramExample();
+    expect(zkpAnalysis.example.summary()).toEqual(cs.summary());
   });
 });
 
