@@ -1,0 +1,36 @@
+---
+title: Recursive Zk Proofs
+sidebar_label: Recursion
+---
+
+Recursion is a powerful tool for solving complex problems with zk proofs.  Any particular constraint system will be limited by
+the lack of dynamic programming and conditional execution, but these shortcomings can be mitigated at the system architecture
+level with recursion.
+
+## Fibonacci Example
+
+The Fibonacci sequence is a classic example of recursion.  We can use recursive zk proofs to succinctly verify any element in
+the sequence.
+
+```ts file=../snippets/recursion/recursion.ts start=start_fibonacci end=end_fibonacci
+```
+
+## Compressing a Queue example
+
+A good use case for ZK, in general, is the ability to compress a computation of several steps into a single proof that all steps 
+were executed, with a specific outcome.  Since a single proof can't accept a dynamicly sized input, we can use recursion to 
+process fixed-size batches of inputs, and combine the results into one succinct proof.  In this example, we add over a queue
+of numbers to prove the sum.
+
+```ts file=../snippets/recursion/recursion.ts start=start_compress end=end_compress
+```
+
+## Verifying Zk Proofs of Different Shapes
+
+Recursive zk proofs can be used to verify _any_ other proof written in o1js.  It doesn't have to be limited to a program that
+does one reptetitive task several times.  Although a single constraint system can't have branching logic, you can branch
+at a system level by using proofs that verify other proofs. In this example we handle inputs differently based on the color
+property on the input.
+
+```ts file=../snippets/recursion/recursion.ts start=start_branch end=end_branch
+```
