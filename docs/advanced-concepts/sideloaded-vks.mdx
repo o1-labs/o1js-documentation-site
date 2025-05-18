@@ -16,5 +16,27 @@ Program to verify that a user knows the preimage of a hash, but we want to suppo
 algorithms.  Let's solve this by writing a specific program for each algorithm, and a wrapper program
 that verifies any of them.
 
-```ts file=../snippets/sideloaded-vks/sideloaded-vks.ts start=start_multi_hash end=end_multi_hash
+### Setup
+
+First, let's set up a bytes32 class and some different hash function proofs.  Note that all proofs must
+have the same shape.
+
+```ts file=../snippets/sideloaded-vks/sideloaded-vks.ts start=start_multi_hash_setup end=end_multi_hash_setup
 ```
+
+### Defining a Sideloaded Proof
+
+Usually, a `ZkProgram`'s proof type is inferrable, but since we want to sideload one of several proofs, we
+need to define the proof class explicitly.
+
+```ts file=../snippets/sideloaded-vks/sideloaded-vks.ts start=start_multi_hash_proof end=end_multi_hash_proof
+```
+
+### Using the Sideloaded Proof in a ZkProgram
+
+Now that we've defined the proof class, we can use it in a `ZkProgram`.
+
+```ts file=../snippets/sideloaded-vks/sideloaded-vks.ts start=start_multi_hash_program end=end_multi_hash_program
+```
+
+### Instantiation and Verifying the Wrap Proof

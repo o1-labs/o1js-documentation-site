@@ -51,7 +51,11 @@ const sidebars: SidebarsConfig = {
     {
       type: "category",
       label: "Advanced Concepts",
-      items: ["advanced-concepts/recursion"],
+      items: [
+        "advanced-concepts/serialization",
+        "advanced-concepts/recursion",
+        "advanced-concepts/sideloaded-vks",
+      ],
     },
     {
       type: "category",

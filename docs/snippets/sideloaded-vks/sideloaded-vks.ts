@@ -14,7 +14,7 @@ import {
 } from "o1js";
 
 const multiHash = async () => {
-  // start_multi_hash
+  // start_multi_hash_setup
   // Define our bytes input
   class Bytes32 extends Bytes(32) {
     static assertEquals(a: Bytes, b: Bytes) {
@@ -49,7 +49,9 @@ const multiHash = async () => {
       },
     },
   });
+  // end_multi_hash_setup
 
+  // start_multi_hash_proof
   // Define the proof shape that both hash implementations satisfy
   class HashProof extends DynamicProof<Bytes32, null> {
     /**
@@ -67,10 +69,11 @@ const multiHash = async () => {
     static maxProofsVerified = 0 as const;
     /**
      * Set all feature flags to maybe to indicate that the sideloaded proof may use any gate types
-     * // NOTE: Failing to do this will result in a nasty error
+     * NOTE: Failing to do this may result in a nasty error - unless you sepcifically want to exclude a feature, allMaybe is a safe default
      */
     static featureFlags = FeatureFlags.allMaybe;
   }
+  // end_multi_hash_proof
 
   // Calculate the verification keys for both hash implementations
   // Once the VKs are known, we don't need to compile them again in the future
@@ -80,6 +83,7 @@ const multiHash = async () => {
   console.log("SHA2_256 VK hash: ", Sha2VK.verificationKey.hash.toString());
   console.log("SHA3_256 VK hash: ", Sha3VK.verificationKey.hash.toString());
 
+  // start_multi_hash_program
   // Define our generic multi-hash program
   const MultiHash = ZkProgram({
     name: "MultiHash",
@@ -96,6 +100,8 @@ const multiHash = async () => {
           proof.verify(verificationKey);
 
           // Assert that the verification key matches one of our known programs
+          // NOTE: A merkle map could be a more efficient check for larger sets
+          // but this example uses a simpler check for clarity
           let match = Bool(false);
           match = match.or(
             // SHA2_256 VK
@@ -119,9 +125,11 @@ const multiHash = async () => {
       },
     },
   });
+  // end_multi_hash_program
 
   // Usage
 
+  // start_multi_hash_verify
   const preimage = Bytes32.random();
   const sha2Hash = Hash.SHA2_256.hash(preimage);
   const sha3Hash = Hash.SHA3_256.hash(preimage);
@@ -145,7 +153,7 @@ const multiHash = async () => {
     Sha3VK.verificationKey
   );
 
-  // end_multi_hash
+  // end_multi_hash_verify
   return {
     Sha2,
     Sha2VK,
