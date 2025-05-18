@@ -1,0 +1,20 @@
+---
+title: Sideloaded Verification Keys
+sidebar_label: Sideloading
+---
+
+In the article on [recursion](/docs/advanced-concepts/recursion.mdx), we showed how o1js can be used to
+write constraint systems that verify other constraint systems.  Those examples always assumed that the
+prover has compiled an instance of the other `ZkProgram`.  We can, in fact, go even more general than that.
+With sideloading, we can verify any proof, given that its shape (public inputs and outputs) are known at
+compile time, and the verification key is available at runtime.
+
+## Multiple Hash Example
+
+Let's say we have an application with multiple hashing algorithms in use.  We want to write a simple Zk
+Program to verify that a user knows the preimage of a hash, but we want to support any of our 
+algorithms.  Let's solve this by writing a specific program for each algorithm, and a wrapper program
+that verifies any of them.
+
+```ts file=../snippets/sideloaded-vks/sideloaded-vks.ts start=start_multi_hash end=end_multi_hash
+```
