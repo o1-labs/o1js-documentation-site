@@ -9,6 +9,14 @@ prover has compiled an instance of the other `ZkProgram`.  We can, in fact, go e
 With sideloading, we can verify any proof, given that its shape (public inputs and outputs) are known at
 compile time, and the verification key is available at runtime.
 
+The use cases for sideloading include:
+- Upgradability: Without needing to recomplile the entire program (breaking compatibility with existing 
+  proofs), you can write your program with sideloading from the start, to support future use cases.
+- Flexibility: You can write programs that are compatible with several proofs without enumerating them
+  individually.  (Remember that without conditional execution, it's not possible to write a big switch
+  statement to handle different proof types.  So sideloading can be an effective way to streamline an
+  app).
+
 ## Multiple Hash Example
 
 Let's say we have an application with multiple hashing algorithms in use.  We want to write a simple Zk
@@ -18,7 +26,7 @@ that verifies any of them.
 
 ### Setup
 
-First, let's set up a bytes32 class and some different hash function proofs.  Note that all proofs must
+First, let's set up a Bytes32 class and some different hash function proofs.  Note that all proofs must
 have the same shape.
 
 ```ts file=../snippets/sideloaded-vks/sideloaded-vks.ts start=start_multi_hash_setup end=end_multi_hash_setup
@@ -38,6 +46,11 @@ For more details on `DynamicProof` and `FeatureFlags`, check out the api referen
 ### Using the Sideloaded Proof in a ZkProgram
 
 Now that we've defined the proof class, we can use it in a `ZkProgram`.
+
+:::warning
+Pay attention to the constraints on the verification key.  Without these, _any_ valid proof can be sideloaded.
+We want the flexibility of sideloading, but we need to be mindlful of the security implications!
+:::
 
 ```ts file=../snippets/sideloaded-vks/sideloaded-vks.ts start=start_multi_hash_program end=end_multi_hash_program
 ```
