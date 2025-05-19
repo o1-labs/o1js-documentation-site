@@ -69,7 +69,7 @@ const multiHash = async () => {
     static maxProofsVerified = 0 as const;
     /**
      * Set all feature flags to maybe to indicate that the sideloaded proof may use any gate types
-     * NOTE: Failing to do this may result in a nasty error - unless you sepcifically want to exclude a feature, allMaybe is a safe default
+     * NOTE: Failing to do this may result in a nasty error - unless you specifically want to exclude a feature, allMaybe is a safe default
      */
     static featureFlags = FeatureFlags.allMaybe;
   }
