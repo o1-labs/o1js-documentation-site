@@ -10,7 +10,7 @@ With sideloading, we can verify any proof, given that its shape (public inputs a
 compile time, and the verification key is available at runtime.
 
 The use cases for sideloading include:
-- Upgradability: Without needing to recomplile the entire program (breaking compatibility with existing 
+- Upgradability: Without needing to recompile the entire program (breaking compatibility with existing 
   proofs), you can write your program with sideloading from the start, to support future use cases.
 - Flexibility: You can write programs that are compatible with several proofs without enumerating them
   individually.  (Remember that without conditional execution, it's not possible to write a big switch
@@ -49,7 +49,7 @@ Now that we've defined the proof class, we can use it in a `ZkProgram`.
 
 :::warning
 Pay attention to the constraints on the verification key.  Without these, _any_ valid proof can be sideloaded.
-We want the flexibility of sideloading, but we need to be mindlful of the security implications!
+We want the flexibility of sideloading, but we need to be mindful of the security implications!
 :::
 
 ```ts file=../snippets/sideloaded-vks/sideloaded-vks.ts start=start_multi_hash_program end=end_multi_hash_program
