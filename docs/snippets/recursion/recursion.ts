@@ -13,7 +13,7 @@ import {
 } from "o1js";
 
 const fibonacci = async () => {
-  // start_fibonacci
+  // start_fibonacci_state
   class FibonacciState extends Struct({
     index: UInt32,
     n_1: UInt32,
@@ -33,6 +33,9 @@ const fibonacci = async () => {
     }
   }
 
+  // end_fibonacci_state
+
+  // start_fibonacci_program
   const Fibonacci = ZkProgram({
     name: "Fibonacci",
     publicInput: FibonacciState,
@@ -75,8 +78,9 @@ const fibonacci = async () => {
       },
     },
   });
+  // end_fibonacci_program
 
-  // Usage
+  // start_fibonacci_usage
   await Fibonacci.compile();
   const proof1 = await Fibonacci.base(FibonacciState.empty());
   const proof2 = await Fibonacci.recursive(
@@ -95,7 +99,7 @@ const fibonacci = async () => {
     proof4.proof.publicOutput,
     proof4.proof
   );
-  // end_fibonacci
+  // end_fibonacci_usage
   return {
     Fibonacci,
     proof1,
@@ -107,8 +111,7 @@ const fibonacci = async () => {
 };
 
 const queue_compression = async () => {
-  // start_compress
-  // Example, generate list of blocks that should be compressed
+  // start_queue_data
   let lastHash = Poseidon.hash([UInt32.zero.value]);
   const blocks = [{ value: UInt32.zero, hash: lastHash }];
   for (let i = 0; i < 3; i++) {
@@ -117,7 +120,9 @@ const queue_compression = async () => {
     blocks.push(block);
     lastHash = block.hash;
   }
+  // end_queue_data
 
+  // start_queue_program
   class BlockProofOutputs extends Struct({
     currentSum: UInt32,
     startingHash: Field,
@@ -164,8 +169,9 @@ const queue_compression = async () => {
       },
     },
   });
+  // end_queue_program
 
-  // Usage
+  // start_queue_usage
   await SumBlocks.compile();
 
   const baseProof = await SumBlocks.base(UInt32.zero);
@@ -176,7 +182,7 @@ const queue_compression = async () => {
     proof = nextProof;
   }
 
-  // end_compress
+  // end_queue_usage
   return {
     SumBlocks,
     blocks,
