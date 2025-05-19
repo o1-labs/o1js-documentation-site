@@ -18,7 +18,7 @@ the sequence.
 ## Compressing a Queue example
 
 A good use case for ZK, in general, is the ability to compress a computation of several steps into a single proof that all steps 
-were executed, with a specific outcome.  Since a single proof can't accept a dynamicly sized input, we can use recursion to 
+were executed, with a specific outcome.  Since a single proof can't accept a dynamically sized input, we can use recursion to 
 process fixed-size batches of inputs, and combine the results into one succinct proof.  In this example, we add over a queue
 of numbers to prove the sum.
 
@@ -28,7 +28,7 @@ of numbers to prove the sum.
 ## Verifying Zk Proofs of Different Shapes
 
 Recursive zk proofs can be used to verify _any_ other proof written in o1js.  It doesn't have to be limited to a program that
-does one reptetitive task several times.  Although a single constraint system can't have branching logic, you can branch
+does one repetitive task several times.  Although a single constraint system can't have branching logic, you can branch
 at a system level by using proofs that verify other proofs. In this example we handle inputs differently based on the color
 property on the input.
 
