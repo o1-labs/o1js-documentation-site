@@ -29,8 +29,8 @@ of numbers to prove the sum.
 
 Recursive zk proofs can be used to verify _any_ other proof written in o1js.  It doesn't have to be limited to a program that
 does one repetitive task several times.  Although a single constraint system can't have branching logic, you can branch
-at a system level by using proofs that verify other proofs. In this example we handle inputs differently based on the color
-property on the input.
+at a system level by using proofs that verify other proofs. In this example, we handle inputs differently based on user
+eligibility determined via public keys.
 
 ```ts file=../snippets/recursion/recursion.ts start=start_branch end=end_branch
 ```
