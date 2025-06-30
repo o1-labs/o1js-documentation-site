@@ -59,6 +59,21 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Tutorials",
+      items: [
+        {
+          type: "category",
+          label: "HMAC",
+          items: [
+            "tutorials/hmac/hmac-basics",
+            "tutorials/hmac/implementation",
+            "tutorials/hmac/tests",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "API Reference",
       link: {
         type: "doc",
