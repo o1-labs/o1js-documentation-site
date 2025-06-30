@@ -11,18 +11,18 @@ const config: Config = {
   title: "o1Labs Documentation",
   tagline:
     "Enabling more powerful applications through programmable cryptography",
-  favicon: "img/favicon.ico",
+  favicon: "img/favicon.svg",
 
   // Set the production url of your site here
-  url: "https://github.com",
+  url: "https://documentation.o1labs.org",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/documentation-site",
+  baseUrl: "/o1js",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "o1-labs", // Usually your GitHub org/user name.
-  projectName: "documentation-site", // Usually your repo name.
+  projectName: "o1js", // Usually your repo name.
 
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
@@ -73,6 +73,24 @@ const config: Config = {
     ],
   ],
   themeConfig: {
+    mermaid: {
+      theme: {
+        light: "base",
+      },
+      options: {
+        themeVariables: {
+          primaryColor: "#ffffff",
+          primaryBorderColor: "#000000",
+          secondaryColor: "#CDD8D0",
+          secondaryTextColor: "#171717",
+          tertiaryColor: "#CDD8D0",
+          tertiaryTextColor: "#171717",
+          textColor: "#000000",
+          fontFamily: '"DM Mono", monospace',
+          fontSize: "14px",
+        },
+      },
+    },
     algolia: {
       // The application ID provided by Algolia
       appId: process.env.ALGOLIA_APP_ID,
@@ -109,7 +127,7 @@ const config: Config = {
     image: "img/docusaurus-social-card.jpg",
     navbar: {
       logo: {
-        alt: "My Site Logo",
+        alt: "o1js",
         src: "img/o1js.svg",
       },
       items: [
