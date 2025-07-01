@@ -19,11 +19,6 @@ const config: Config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/documentation-site",
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: "o1-labs", // Usually your GitHub org/user name.
-  projectName: "documentation-site", // Usually your repo name.
-
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
 
@@ -32,13 +27,13 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "en",
-    locales: ["en"],
+    locales: ["en"]
   },
 
   // Mermaid configuration
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: ["@docusaurus/theme-mermaid"],
   markdown: {
-    mermaid: true,
+    mermaid: true
   },
 
   presets: [
@@ -55,22 +50,22 @@ const config: Config = {
           lastVersion: "current",
           remarkPlugins: [
             require("remark-code-snippets"),
-            require("remark-math"),
+            require("remark-math")
           ],
           rehypePlugins: [require("rehype-katex")],
           versions: {
             current: {
               label: "Current",
               badge: false,
-              banner: "none",
-            },
-          },
+              banner: "none"
+            }
+          }
         },
         theme: {
-          customCss: "./src/css/custom.css",
-        },
-      } satisfies Preset.Options,
-    ],
+          customCss: "./src/css/custom.css"
+        }
+      } satisfies Preset.Options
+    ]
   ],
   themeConfig: {
     algolia: {
@@ -91,7 +86,7 @@ const config: Config = {
       // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
       replaceSearchResultPathname: {
         from: "/docs/", // or as RegExp: /\/docs\//
-        to: "/",
+        to: "/"
       },
 
       // Optional: Algolia search parameters
@@ -101,7 +96,7 @@ const config: Config = {
       searchPagePath: "search",
 
       // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
-      insights: false,
+      insights: false
 
       //... other Algolia params
     },
@@ -111,15 +106,15 @@ const config: Config = {
       title: "My Site",
       logo: {
         alt: "My Site Logo",
-        src: "img/logo.svg",
+        src: "img/logo.svg"
       },
       items: [
         {
           type: "docsVersionDropdown",
           position: "left",
-          dropdownActiveClassDisabled: true,
-        },
-      ],
+          dropdownActiveClassDisabled: true
+        }
+      ]
     },
     footer: {
       style: "dark",
@@ -129,27 +124,27 @@ const config: Config = {
           items: [
             {
               label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
-            },
-          ],
+              href: "https://discordapp.com/invite/docusaurus"
+            }
+          ]
         },
         {
           title: "More",
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
-            },
-          ],
-        },
+              href: "https://github.com/facebook/docusaurus"
+            }
+          ]
+        }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`
     },
     prism: {
       theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
-    },
-  } satisfies Preset.ThemeConfig,
+      darkTheme: prismThemes.dracula
+    }
+  } satisfies Preset.ThemeConfig
 };
 
 export default config;
