@@ -1,0 +1,14 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
+  "routes": [
+    {
+      "src": "/o1js/(.*)",
+      "dest": "/o1js/$1"
+    },
+    {
+      "src": "/o1js",
+      "dest": "/o1js/"
+    }
+  ]
+}
