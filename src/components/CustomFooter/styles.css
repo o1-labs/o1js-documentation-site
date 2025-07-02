@@ -1,5 +1,5 @@
 .custom-footer {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 42.04%, #000 96.79%), linear-gradient(105deg, #1D33FF 0%, rgba(17, 31, 0, 0.47) 93.5%), url('/static/img/gradient.png') lightgray 50% 50% / cover no-repeat;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 42.04%, #000 96.79%), linear-gradient(255deg, #1D33FF 0%, rgba(17, 31, 0, 0.47) 93.5%), url('/static/img/gradient.png') lightgray 50% 50% / cover no-repeat;
   background-blend-mode: normal, overlay, normal;
   mix-blend-mode: difference;
   padding: 40px 0;
