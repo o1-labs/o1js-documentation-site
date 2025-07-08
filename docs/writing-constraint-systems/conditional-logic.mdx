@@ -11,47 +11,30 @@ In traditional programming, we use `if` statements to control program flow by ev
 ## How Circuits Handle Control Flow
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '16px', 'fontFamily': 'system-ui' }}}%%
 graph LR
-    %% Compile Time section
-    A["JavaScript<br/>Control Flow"] --> |"Defines"| B["Circuit<br/>Layout"]
-    B --> |"Creates"| C["Constraint<br/>System"]
-    
-    %% Prove Time section
-    D["Private/Public<br/>Inputs"] --> E["Circuit<br/>Execution"]
-    E --> F["Zero-Knowledge<br/>Proof"]
-    
-    %% Connect sections
-    C --> E
-    
-    %% Subgraph styling
-    subgraph ct[" Compile Time "]
-        A
-        B
-        C
-    end
-    
-    subgraph pt[" Prove Time "]
-        D
-        E
-        F
-    end
-    
-    %% Node styling
-    style A fill:#e6f7ff,stroke:#0099cc
-    style B fill:#e6f7ff,stroke:#0099cc
-    style C fill:#e6f7ff,stroke:#0099cc
-    style D fill:#fff8e6,stroke:#e6b800
-    style E fill:#fff8e6,stroke:#e6b800
-    style F fill:#fff8e6,stroke:#e6b800
-    
-    %% Add tooltips with detailed info
-    click A href "#" "JavaScript code shapes the circuit structure"
-    click B href "#" "Circuit layout is finalized"
-    click C href "#" "Mathematical constraints are generated"
-    click D href "#" "Values to be proven"
-    click E href "#" "Circuit runs with actual values"
-    click F href "#" "Proof that computation is valid"
+%% Compile Time section
+A["JavaScript<br/>Control Flow"] --> |"Defines"| B["Circuit<br/>Layout"]
+B --> |"Creates"| C["Constraint<br/>System"]
+
+%% Prove Time section
+D["Private/Public<br/>Inputs"] --> E["Circuit<br/>Execution"]
+E --> F["Zero-Knowledge<br/>Proof"]
+
+%% Connect sections
+C --> E
+
+%% Subgraph styling
+subgraph ct[" Compile Time "]
+    A
+    B
+    C
+end
+
+subgraph pt[" Prove Time "]
+    D
+    E
+    F
+end
 ```
 
 ## The Two Phases of Circuits

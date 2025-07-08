@@ -85,10 +85,12 @@ Since we're using SHA-256 as our hash function, the block size is 64 bytes (512 
 1. **Key Preparation** 🔑
    ```mermaid
    graph LR
-   A[Input Key] --> B{Key Length?}
-   B -->|> 64 bytes| C[Hash Key] --> D[Pad with Zeros] --> E[k_0]
+   A[Input Key] --> B{Key Length?}:::secondary
+   B -->|\> 64 bytes| C[Hash Key] --> D[Pad with Zeros] --> E[k_0]
    B -->|= 64 bytes| E
    B -->|< 64 bytes| D
+
+   classDef secondary fill:#000000,color:#ffffff
    ```
 
 2. **Inner Hash** 🔄

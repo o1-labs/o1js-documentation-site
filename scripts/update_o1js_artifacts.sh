@@ -20,6 +20,7 @@ cd o1js
 GIT_LFS_SKIP_SMUDGE=1 git submodule update --init --recursive
 npm install
 npm run build:docs
+# TODO: If the above command fails, stop the process
 cd $CURRENT_DIR
 
 ## Set ./docs/changelog.md to the changelog of o1js from node_modules
