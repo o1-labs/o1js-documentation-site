@@ -20,7 +20,31 @@ Don't take the metaphor too far!  Proof systems don't operate over binary data l
 and they don't have an analogous gate to `JUMP` or `GOTO`, which means that conditional
 execution is not supported.
 
-TODO: We could use an illustration here too
+```mermaid
+    graph TD
+    %% Private inputs (diamond shape, blue)
+    A[/"Private Input (x)"/] 
+    
+    %% Public inputs (diamond shape, green)
+    E[/"Public Input (expectedHash)"/]
+    
+    %% Gates (rectangular, red background)
+    B["⛩️ Gate 1: Poseidon Hash"]
+    D["⛩️ Gate 2: Assert Equality"]
+    
+    %% Wires/intermediate values (oval, yellow)
+    C(("Wire: h = Poseidon(x)"))
+    
+    %% Output (hexagon, purple)
+    F{{"Circuit Output: Valid/Invalid"}}
+    
+    %% Flow connections
+    A --> B
+    B --> C
+    C --> D
+    E --> D
+    D --> F
+```
 
 Currently, o1js is compatible with the Kimchi proof backend, which is specified in the 
 [Mina Book](https://o1-labs.github.io/proof-systems/specs/kimchi.html).
