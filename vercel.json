@@ -1,12 +1,13 @@
 {
+  "rewrites": [
+    {
+      "source": "/o1js/:path*",
+      "destination": "/:path*"
+    }
+  ],
   "redirects": [
     {
       "source": "/",
-      "destination": "/o1js/",
-      "permanent": false
-    },
-    {
-      "source": "/o1js",
       "destination": "/o1js/",
       "permanent": false
     }
