@@ -28,7 +28,19 @@ systems, often called "circuits", which are a system of gates and wires that rep
 mathematical function.  The execution strategy of o1js is to dry-run the execution in 
 JavaScript, and if there are no issues, call the constraint system for real.
 
-TODO: Would be nice to have a graphic that visualizes the execution steps of provable code!
+```mermaid
+    graph TD
+    A["o1js SDK (TypeScript)"] -- "Compile Program" --> B["Bindings Layer"]
+    B --> C["Intermediate Representation of Constraints (OCaml)"]
+    C --> D1["Pickles: Wrap Proof System (OCaml)"]
+    C --> D2["Kimchi: Step Proof System (Rust)"]
+    A -- "Execute Program" --> E["Dry-run Execution (TypeScript)"]
+    E --> F{"Any Issues?"}:::secondary
+    F -- "No" --> G["Execute in Bindings Layer"]
+    F -- "Yes" --> H["Throw Error / Debug"]
+
+    classDef secondary fill:#000000,color:#ffffff
+```
 
 ## Browser Compatibility
 
