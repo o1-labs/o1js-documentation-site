@@ -1,0 +1,13 @@
+```ts
+type ZkProgram<Config> = ReturnType<typeof ZkProgram>;
+```
+
+Defined in: [lib/proof-system/zkprogram.ts:224](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/zkprogram.ts#L224)
+
+## Type Parameters
+
+• **Config** *extends* \{
+  `methods`: `{ [I in string]: { auxiliaryOutput?: ProvableType; privateInputs: Tuple<PrivateInput> } }`;
+  `publicInput`: [`ProvableType`](ProvableType.mdx);
+  `publicOutput`: [`ProvableType`](ProvableType.mdx);
+ \}

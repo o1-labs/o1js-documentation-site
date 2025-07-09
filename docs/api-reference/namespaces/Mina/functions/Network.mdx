@@ -1,10 +1,10 @@
 ## Call Signature
 
 ```ts
-function Network(graphqlEndpoint: string): Mina
+function Network(graphqlEndpoint: string): Mina;
 ```
 
-Defined in: [lib/mina/v1/mina.ts:101](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/mina.ts#L101)
+Defined in: [lib/mina/v1/mina.ts:101](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/mina.ts#L101)
 
 Represents the Mina blockchain running on a real network
 
@@ -22,17 +22,17 @@ Represents the Mina blockchain running on a real network
 
 ```ts
 function Network(options: {
-  archive: string | string[];
-  archiveDefaultHeaders: HeadersInit;
-  bypassTransactionLimits: boolean;
-  lightnetAccountManager: string;
+  archive?: string | string[];
+  archiveDefaultHeaders?: HeadersInit;
+  bypassTransactionLimits?: boolean;
+  lightnetAccountManager?: string;
   mina: string | string[];
-  minaDefaultHeaders: HeadersInit;
-  networkId: NetworkId;
- }): Mina
+  minaDefaultHeaders?: HeadersInit;
+  networkId?: NetworkId;
+}): Mina;
 ```
 
-Defined in: [lib/mina/v1/mina.ts:102](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/mina.ts#L102)
+Defined in: [lib/mina/v1/mina.ts:102](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/mina.ts#L102)
 
 Represents the Mina blockchain running on a real network
 
@@ -40,19 +40,19 @@ Represents the Mina blockchain running on a real network
 
 #### options
 
-##### archive
+##### archive?
 
 `string` \| `string`[]
 
-##### archiveDefaultHeaders
+##### archiveDefaultHeaders?
 
 `HeadersInit`
 
-##### bypassTransactionLimits
+##### bypassTransactionLimits?
 
 `boolean`
 
-##### lightnetAccountManager
+##### lightnetAccountManager?
 
 `string`
 
@@ -60,11 +60,11 @@ Represents the Mina blockchain running on a real network
 
 `string` \| `string`[]
 
-##### minaDefaultHeaders
+##### minaDefaultHeaders?
 
 `HeadersInit`
 
-##### networkId
+##### networkId?
 
 `NetworkId`
 

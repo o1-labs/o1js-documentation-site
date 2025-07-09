@@ -3,10 +3,10 @@ function state<A>(type:
   | ProvableTypePure<A>
   | FlexibleProvablePure<A>): (target: SmartContract & {
   constructor: any;
- }, key: string, _descriptor?: PropertyDescriptor) => void
+}, key: string, _descriptor?: PropertyDescriptor) => void;
 ```
 
-Defined in: [lib/mina/v1/state.ts:100](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/state.ts#L100)
+Defined in: [lib/mina/v1/state.ts:100](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/state.ts#L100)
 
 A decorator to use within a zkapp to indicate what will be stored on-chain.
 For example, if you want to store a field element `some_state` in a zkapp,
@@ -18,7 +18,9 @@ you can use the following in the declaration of your zkapp:
 
 ## Type Parameters
 
-• **A**
+### A
+
+`A`
 
 ## Parameters
 
@@ -28,7 +30,14 @@ you can use the following in the declaration of your zkapp:
 
 ## Returns
 
-`Function`
+```ts
+(
+   target: SmartContract & {
+  constructor: any;
+}, 
+   key: string, 
+   _descriptor?: PropertyDescriptor): void;
+```
 
 ### Parameters
 
@@ -36,7 +45,7 @@ you can use the following in the declaration of your zkapp:
 
 [`SmartContract`](../classes/SmartContract.mdx) & \{
   `constructor`: `any`;
- \}
+\}
 
 #### key
 

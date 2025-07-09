@@ -44,8 +44,21 @@ const config: Config = {
           routeBasePath: "/",
           sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/",
+          editUrl: ({ versionDocsDirPath, docPath }) => {
+            // Disable edit links for entire directories
+            const noEditDirs = ["api-reference"];
+
+            // Disable edit links on previous versions
+            if (versionDocsDirPath !== "docs") {
+              return undefined;
+            }
+
+            if (noEditDirs.some((dir) => docPath.startsWith(`${dir}/`))) {
+              return undefined;
+            }
+
+            return `https://github.com/o1-labs/o1js-documentation-site/edit/main/docs/${docPath}`;
+          },
           lastVersion: "current",
           remarkPlugins: [
             require("remark-code-snippets"),
@@ -116,6 +129,24 @@ const config: Config = {
       insights: false,
 
       //... other Algolia params
+    },
+    footer: {
+      style: "light",
+      links: [
+        {
+          label: "Twitter",
+          href: "https://x.com/o1_labs",
+        },
+        {
+          label: "Discord",
+          href: "https://discord.gg/minaprotocol",
+        },
+        {
+          label: "GitHub",
+          href: "https://github.com/o1-labs/o1js",
+        },
+      ],
+      copyright: `Copyright © ${new Date().getFullYear()} o1Labs`,
     },
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",

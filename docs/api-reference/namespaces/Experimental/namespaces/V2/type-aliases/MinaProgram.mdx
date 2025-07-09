@@ -2,14 +2,24 @@
 type MinaProgram<State, Event, Action, MethodPrivateInputs> = V2_.MinaProgram<State, Event, Action, MethodPrivateInputs>;
 ```
 
-Defined in: [index.ts:153](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/index.ts#L153)
+Defined in: [index.ts:154](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/index.ts#L154)
 
 ## Type Parameters
 
-• **State** *extends* [`StateLayout`](StateLayout.mdx)
+### State
 
-• **Event**
+`State` *extends* [`StateLayout`](StateLayout.mdx)
 
-• **Action**
+### Event
 
-• **MethodPrivateInputs** *extends* \{\}
+`Event`
+
+### Action
+
+`Action`
+
+### MethodPrivateInputs
+
+`MethodPrivateInputs` *extends* \{
+[`key`: `string`]: `ProvableTuple`;
+\}

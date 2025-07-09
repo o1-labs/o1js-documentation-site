@@ -2,48 +2,48 @@
 const Hash: {
   BLAKE2B: {
      hash: Bytes;
-    };
+  };
   hash: (input: Field[]) => Field;
   Keccak256: {
      hash: Bytes;
-    };
+  };
   Keccak384: {
      hash: Bytes;
-    };
+  };
   Keccak512: {
      hash: Bytes;
-    };
+  };
   Poseidon: {
      Sponge: typeof Sponge;
      Unsafe: {
         hashToGroup: Group;
-       };
+     };
      hash: Field;
      hashPacked: Field;
      hashToGroup: Group;
      hashWithPrefix: Field;
      initialState: [Field, Field, Field];
      update: [Field, Field, Field];
-    };
+  };
   SHA2: {
      hash: <T>(length: T, data: FlexibleBytes) => Bytes;
-    };
+  };
   SHA2_256: {
      hash: (data: FlexibleBytes) => Bytes;
-    };
+  };
   SHA3_256: {
      hash: Bytes;
-    };
+  };
   SHA3_384: {
      hash: Bytes;
-    };
+  };
   SHA3_512: {
      hash: Bytes;
-    };
+  };
 };
 ```
 
-Defined in: [lib/provable/crypto/hash.ts:11](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/hash.ts#L11)
+Defined in: [lib/provable/crypto/hash.ts:11](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/hash.ts#L11)
 
 A collection of hash functions which can be used in provable code.
 
@@ -58,6 +58,10 @@ BLAKE2B: {
 ```
 
 #### BLAKE2B.hash()
+
+```ts
+hash(bytes: Bytes): Bytes;
+```
 
 ##### Parameters
 
@@ -114,6 +118,10 @@ The pre-NIST Keccak hash function with an output length of 256 bits.
 
 #### Keccak256.hash()
 
+```ts
+hash(bytes: Bytes): Bytes;
+```
+
 Hashes the given bytes using Keccak-256.
 
 This is an alias for `Keccak.preNist(256, bytes)`.\
@@ -140,6 +148,10 @@ Keccak384: {
 The pre-NIST Keccak hash function with an output length of 384 bits.
 
 #### Keccak384.hash()
+
+```ts
+hash(bytes: Bytes): Bytes;
+```
 
 Hashes the given bytes using Keccak-384.
 
@@ -168,6 +180,10 @@ The pre-NIST Keccak hash function with an output length of 512 bits.
 
 #### Keccak512.hash()
 
+```ts
+hash(bytes: Bytes): Bytes;
+```
+
 Hashes the given bytes using Keccak-512.
 
 This is an alias for `Keccak.preNist(512, bytes)`.\
@@ -190,7 +206,7 @@ Poseidon: {
   Sponge: typeof Sponge;
   Unsafe: {
      hashToGroup: Group;
-    };
+  };
   hash: Field;
   hashPacked: Field;
   hashToGroup: Group;
@@ -202,7 +218,7 @@ Poseidon: {
 
 The [Poseidon](https://eprint.iacr.org/2019/458.pdf) hash function.
 
-See [Hash.hash](Hash.mdx#hash-2) for details and usage examples.
+See [Hash.hash](#hash) for details and usage examples.
 
 #### Poseidon.Sponge
 
@@ -219,6 +235,10 @@ Unsafe: {
 ```
 
 #### Poseidon.Unsafe.hashToGroup()
+
+```ts
+hashToGroup(input: Field[]): Group;
+```
 
 Low-level version of `Poseidon.hashToGroup()`.
 
@@ -239,6 +259,10 @@ which can be a vulnerability if consuming code treats the output as unique.
 
 #### Poseidon.hash()
 
+```ts
+hash(input: Field[]): Field;
+```
+
 ##### Parameters
 
 ###### input
@@ -250,6 +274,10 @@ which can be a vulnerability if consuming code treats the output as unique.
 [`Field`](../classes/Field.mdx)
 
 #### Poseidon.hashPacked()
+
+```ts
+hashPacked<T>(type: WithProvable<Hashable<T>>, value: T): Field;
+```
 
 Hashes a provable type efficiently.
 
@@ -264,7 +292,9 @@ lower per-field element cost than hashing.
 
 ##### Type Parameters
 
-• **T**
+###### T
+
+`T`
 
 ##### Parameters
 
@@ -282,6 +312,10 @@ lower per-field element cost than hashing.
 
 #### Poseidon.hashToGroup()
 
+```ts
+hashToGroup(input: Field[]): Group;
+```
+
 Hashes a list of field elements to a point on the Pallas curve.
 
 The output point is deterministic and its discrete log is not efficiently computable.
@@ -297,6 +331,10 @@ The output point is deterministic and its discrete log is not efficiently comput
 [`Group`](../classes/Group.mdx)
 
 #### Poseidon.hashWithPrefix()
+
+```ts
+hashWithPrefix(prefix: string, input: Field[]): Field;
+```
 
 ##### Parameters
 
@@ -314,11 +352,19 @@ The output point is deterministic and its discrete log is not efficiently comput
 
 #### Poseidon.initialState()
 
+```ts
+initialState(): [Field, Field, Field];
+```
+
 ##### Returns
 
 \[[`Field`](../classes/Field.mdx), [`Field`](../classes/Field.mdx), [`Field`](../classes/Field.mdx)\]
 
 #### Poseidon.update()
+
+```ts
+update(state: [Field, Field, Field], input: Field[]): [Field, Field, Field];
+```
 
 ##### Parameters
 
@@ -353,7 +399,7 @@ hash: <T>(length: T, data: FlexibleBytes) => Bytes = Gadgets.SHA2.hash;
 Hashes the given bytes using SHA2.
 
 This is an alias for `Gadgets.SHA2.hash(length,bytes)`.\
-See [Gadgets.SHA2.hash](Gadgets.mdx#hash-2) for details and usage examples.
+See [Gadgets.SHA2.hash](Gadgets.mdx#sha2) for details and usage examples.
 
 Implementation of [NIST SHA-2](https://csrc.nist.gov/pubs/fips/180-4/upd1/final)
 hash Function. Supports output lengths of 224, 256, 384, or 512 bits.
@@ -372,7 +418,9 @@ Both input and output bytes are big-endian.
 
 ##### Type Parameters
 
-• **T** *extends* `Length`
+###### T
+
+`T` *extends* `Length`
 
 ##### Parameters
 
@@ -407,7 +455,7 @@ hash: (data: FlexibleBytes) => Bytes = Gadgets.SHA256.hash;
 Hashes the given bytes using SHA2-256.
 
 This is an alias for `Gadgets.SHA256.hash(bytes)`.\
-See [Gadgets.SHA256.hash](Gadgets.mdx#hash-3) for details and usage examples.
+See [Gadgets.SHA256.hash](Gadgets.mdx#sha256) for details and usage examples.
 
 ##### Parameters
 
@@ -430,6 +478,10 @@ SHA3_256: {
 The SHA3 hash function with an output length of 256 bits.
 
 #### SHA3\_256.hash()
+
+```ts
+hash(bytes: Bytes): Bytes;
+```
 
 Hashes the given bytes using SHA3-256.
 
@@ -458,6 +510,10 @@ The SHA3 hash function with an output length of 384 bits.
 
 #### SHA3\_384.hash()
 
+```ts
+hash(bytes: Bytes): Bytes;
+```
+
 Hashes the given bytes using SHA3-384.
 
 This is an alias for `Keccak.nistSha3(384, bytes)`.\
@@ -484,6 +540,10 @@ SHA3_512: {
 The SHA3 hash function with an output length of 512 bits.
 
 #### SHA3\_512.hash()
+
+```ts
+hash(bytes: Bytes): Bytes;
+```
 
 Hashes the given bytes using SHA3-512.
 

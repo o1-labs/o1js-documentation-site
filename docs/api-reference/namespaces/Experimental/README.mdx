@@ -1,3 +1,11 @@
+---
+title: "Experimental"
+keywords:
+  - o1js
+  - API
+  - Reference
+---
+
 This module exposes APIs that are unstable, in the sense that the API surface is expected to change.
 (Not unstable in the sense that they are less functional or tested than other parts.)
 
@@ -16,7 +24,7 @@ This module exposes APIs that are unstable, in the sense that the API surface is
 
 ## Type Aliases
 
-| Type alias | Description |
+| Type Alias | Description |
 | ------ | ------ |
 | [ActionBatch](type-aliases/ActionBatch.mdx) | - |
 | [IndexedMerkleMap](type-aliases/IndexedMerkleMap.mdx) | - |
@@ -25,16 +33,11 @@ This module exposes APIs that are unstable, in the sense that the API surface is
 
 | Variable | Description |
 | ------ | ------ |
+| [ActionBatch](variables/ActionBatch.mdx) | Provable type that represents a batch of actions. |
+| [createProvableBigInt](variables/createProvableBigInt.mdx) | - |
+| [IndexedMerkleMap](variables/IndexedMerkleMap.mdx) | - |
+| [memoizeWitness](variables/memoizeWitness.mdx) | - |
+| [OffchainState](variables/OffchainState.mdx) | - |
 | [ProvableBigInt](variables/ProvableBigInt.mdx) | - |
+| [Recursive](variables/Recursive.mdx) | - |
 | [V2](variables/V2.mdx) | - |
-
-## Functions
-
-| Function | Description |
-| ------ | ------ |
-| [ActionBatch](functions/ActionBatch.mdx) | Provable type that represents a batch of actions. |
-| [createProvableBigInt](functions/createProvableBigInt.mdx) | Creates a class representing a ProvableBigInt with modular arithmetic capabilities. This is particularly useful for implementing prime fields that don't fit into the native field. |
-| [IndexedMerkleMap](functions/IndexedMerkleMap.mdx) | Class factory for an Indexed Merkle Map with a given height. |
-| [memoizeWitness](functions/memoizeWitness.mdx) | Like Provable.witness, but memoizes the witness during transaction construction for reuse by the prover. This is needed to witness non-deterministic values. |
-| [OffchainState](functions/OffchainState.mdx) | Offchain state for a `SmartContract`. |
-| [Recursive](functions/Recursive.mdx) | - |

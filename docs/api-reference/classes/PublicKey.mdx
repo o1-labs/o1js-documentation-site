@@ -1,7 +1,7 @@
-Defined in: [lib/provable/crypto/signature.ts:132](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/signature.ts#L132)
+Defined in: [lib/provable/crypto/signature.ts:132](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/signature.ts#L132)
 
 A public key, which is also an address on the Mina network.
-You can derive a [PublicKey](PublicKey.mdx) directly from a [PrivateKey](PrivateKey.mdx).
+You can derive a PublicKey directly from a [PrivateKey](PrivateKey.mdx).
 
 ## Extends
 
@@ -9,13 +9,13 @@ You can derive a [PublicKey](PublicKey.mdx) directly from a [PrivateKey](Private
 
 ## Constructors
 
-### new PublicKey()
+### Constructor
 
 ```ts
-new PublicKey(...props: any[]): PublicKey
+new PublicKey(...props: any[]): PublicKey;
 ```
 
-Defined in: [lib/provable/types/circuit-value.ts:13](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/circuit-value.ts#L13)
+Defined in: [lib/provable/types/circuit-value.ts:13](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/circuit-value.ts#L13)
 
 #### Parameters
 
@@ -25,7 +25,7 @@ Defined in: [lib/provable/types/circuit-value.ts:13](https://github.com/o1-labs/
 
 #### Returns
 
-[`PublicKey`](PublicKey.mdx)
+`PublicKey`
 
 #### Inherited from
 
@@ -41,7 +41,7 @@ CircuitValue.constructor
 isOdd: Bool;
 ```
 
-Defined in: [lib/provable/crypto/signature.ts:135](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/signature.ts#L135)
+Defined in: [lib/provable/crypto/signature.ts:135](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/signature.ts#L135)
 
 ***
 
@@ -51,17 +51,17 @@ Defined in: [lib/provable/crypto/signature.ts:135](https://github.com/o1-labs/o1
 x: Field;
 ```
 
-Defined in: [lib/provable/crypto/signature.ts:134](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/signature.ts#L134)
+Defined in: [lib/provable/crypto/signature.ts:134](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/signature.ts#L134)
 
 ## Methods
 
 ### assertEquals()
 
 ```ts
-assertEquals(x: this): void
+assertEquals(x: this): void;
 ```
 
-Defined in: [lib/provable/types/circuit-value.ts:121](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/circuit-value.ts#L121)
+Defined in: [lib/provable/types/circuit-value.ts:121](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/circuit-value.ts#L121)
 
 #### Parameters
 
@@ -84,10 +84,10 @@ CircuitValue.assertEquals
 ### equals()
 
 ```ts
-equals(x: this): Bool
+equals(x: this): Bool;
 ```
 
-Defined in: [lib/provable/types/circuit-value.ts:117](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/circuit-value.ts#L117)
+Defined in: [lib/provable/types/circuit-value.ts:117](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/circuit-value.ts#L117)
 
 #### Parameters
 
@@ -110,10 +110,10 @@ CircuitValue.equals
 ### isConstant()
 
 ```ts
-isConstant(): boolean
+isConstant(): boolean;
 ```
 
-Defined in: [lib/provable/types/circuit-value.ts:125](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/circuit-value.ts#L125)
+Defined in: [lib/provable/types/circuit-value.ts:125](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/circuit-value.ts#L125)
 
 #### Returns
 
@@ -130,12 +130,12 @@ CircuitValue.isConstant
 ### isEmpty()
 
 ```ts
-isEmpty(): Bool
+isEmpty(): Bool;
 ```
 
-Defined in: [lib/provable/crypto/signature.ts:190](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/signature.ts#L190)
+Defined in: [lib/provable/crypto/signature.ts:190](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/signature.ts#L190)
 
-Checks if a [PublicKey](PublicKey.mdx) is empty.
+Checks if a PublicKey is empty.
 
 #### Returns
 
@@ -148,28 +148,28 @@ a [Bool](../variables/Bool.mdx)
 ### toBase58()
 
 ```ts
-toBase58(): string
+toBase58(): string;
 ```
 
-Defined in: [lib/provable/crypto/signature.ts:208](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/signature.ts#L208)
+Defined in: [lib/provable/crypto/signature.ts:208](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/signature.ts#L208)
 
-Encodes a [PublicKey](PublicKey.mdx) in base58 format.
+Encodes a PublicKey in base58 format.
 
 #### Returns
 
 `string`
 
-a base58 encoded [PublicKey](PublicKey.mdx)
+a base58 encoded PublicKey
 
 ***
 
 ### toConstant()
 
 ```ts
-toConstant(): this
+toConstant(): this;
 ```
 
-Defined in: [lib/provable/types/circuit-value.ts:113](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/circuit-value.ts#L113)
+Defined in: [lib/provable/types/circuit-value.ts:113](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/circuit-value.ts#L113)
 
 #### Returns
 
@@ -186,10 +186,10 @@ CircuitValue.toConstant
 ### toFields()
 
 ```ts
-toFields(): Field[]
+toFields(): Field[];
 ```
 
-Defined in: [lib/provable/types/circuit-value.ts:79](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/circuit-value.ts#L79)
+Defined in: [lib/provable/types/circuit-value.ts:79](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/circuit-value.ts#L79)
 
 #### Returns
 
@@ -206,12 +206,12 @@ CircuitValue.toFields
 ### toGroup()
 
 ```ts
-toGroup(): Group
+toGroup(): Group;
 ```
 
-Defined in: [lib/provable/crypto/signature.ts:141](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/signature.ts#L141)
+Defined in: [lib/provable/crypto/signature.ts:141](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/signature.ts#L141)
 
-Returns the [Group](../variables/Group.mdx) representation of this [PublicKey](PublicKey.mdx).
+Returns the [Group](../variables/Group.mdx) representation of this PublicKey.
 
 #### Returns
 
@@ -224,10 +224,10 @@ A [Group](../variables/Group.mdx)
 ### toJSON()
 
 ```ts
-toJSON(): any
+toJSON(): any;
 ```
 
-Defined in: [lib/provable/types/circuit-value.ts:109](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/circuit-value.ts#L109)
+Defined in: [lib/provable/types/circuit-value.ts:109](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/circuit-value.ts#L109)
 
 #### Returns
 
@@ -244,14 +244,16 @@ CircuitValue.toJSON
 ### check()
 
 ```ts
-static check<T>(this: T, v: InstanceType<T>): void
+static check<T>(this: T, v: InstanceType<T>): void;
 ```
 
-Defined in: [lib/provable/types/circuit-value.ts:148](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/circuit-value.ts#L148)
+Defined in: [lib/provable/types/circuit-value.ts:148](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/circuit-value.ts#L148)
 
 #### Type Parameters
 
-• **T** *extends* `AnyConstructor`
+##### T
+
+`T` *extends* `AnyConstructor`
 
 #### Parameters
 
@@ -278,22 +280,24 @@ CircuitValue.check
 ### empty()
 
 ```ts
-static empty<T>(): InstanceType<T>
+static empty<T>(): InstanceType<T>;
 ```
 
-Defined in: [lib/provable/crypto/signature.ts:182](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/signature.ts#L182)
+Defined in: [lib/provable/crypto/signature.ts:182](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/signature.ts#L182)
 
-Creates an empty [PublicKey](PublicKey.mdx).
+Creates an empty PublicKey.
 
 #### Type Parameters
 
-• **T** *extends* `AnyConstructor`
+##### T
+
+`T` *extends* `AnyConstructor`
 
 #### Returns
 
 `InstanceType`\<`T`\>
 
-an empty [PublicKey](PublicKey.mdx)
+an empty PublicKey
 
 #### Overrides
 
@@ -309,12 +313,12 @@ CircuitValue.empty
 static from(g: {
   isOdd: boolean | Bool;
   x: bigint | Field;
- }): PublicKey
+}): PublicKey;
 ```
 
-Defined in: [lib/provable/crypto/signature.ts:174](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/signature.ts#L174)
+Defined in: [lib/provable/crypto/signature.ts:174](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/signature.ts#L174)
 
-Creates a [PublicKey](PublicKey.mdx) from a JSON structure element.
+Creates a PublicKey from a JSON structure element.
 
 #### Parameters
 
@@ -330,21 +334,21 @@ Creates a [PublicKey](PublicKey.mdx) from a JSON structure element.
 
 #### Returns
 
-[`PublicKey`](PublicKey.mdx)
+`PublicKey`
 
-a [PublicKey](PublicKey.mdx).
+a PublicKey.
 
 ***
 
 ### fromBase58()
 
 ```ts
-static fromBase58(publicKeyBase58: string): PublicKey
+static fromBase58(publicKeyBase58: string): PublicKey;
 ```
 
-Defined in: [lib/provable/crypto/signature.ts:199](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/signature.ts#L199)
+Defined in: [lib/provable/crypto/signature.ts:199](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/signature.ts#L199)
 
-Decodes a base58 encoded [PublicKey](PublicKey.mdx) into a [PublicKey](PublicKey.mdx).
+Decodes a base58 encoded PublicKey into a PublicKey.
 
 #### Parameters
 
@@ -354,23 +358,25 @@ Decodes a base58 encoded [PublicKey](PublicKey.mdx) into a [PublicKey](PublicKey
 
 #### Returns
 
-[`PublicKey`](PublicKey.mdx)
+`PublicKey`
 
-a [PublicKey](PublicKey.mdx)
+a PublicKey
 
 ***
 
 ### fromFields()
 
 ```ts
-static fromFields<T>(this: T, xs: Field[]): InstanceType<T>
+static fromFields<T>(this: T, xs: Field[]): InstanceType<T>;
 ```
 
-Defined in: [lib/provable/types/circuit-value.ts:129](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/circuit-value.ts#L129)
+Defined in: [lib/provable/types/circuit-value.ts:129](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/circuit-value.ts#L129)
 
 #### Type Parameters
 
-• **T** *extends* `AnyConstructor`
+##### T
+
+`T` *extends* `AnyConstructor`
 
 #### Parameters
 
@@ -397,12 +403,12 @@ CircuitValue.fromFields
 ### fromGroup()
 
 ```ts
-static fromGroup(__namedParameters: Group): PublicKey
+static fromGroup(__namedParameters: Group): PublicKey;
 ```
 
-Defined in: [lib/provable/crypto/signature.ts:158](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/signature.ts#L158)
+Defined in: [lib/provable/crypto/signature.ts:158](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/signature.ts#L158)
 
-Creates a [PublicKey](PublicKey.mdx) from a [Group](../variables/Group.mdx) element.
+Creates a PublicKey from a [Group](../variables/Group.mdx) element.
 
 #### Parameters
 
@@ -412,25 +418,27 @@ Creates a [PublicKey](PublicKey.mdx) from a [Group](../variables/Group.mdx) elem
 
 #### Returns
 
-[`PublicKey`](PublicKey.mdx)
+`PublicKey`
 
-a [PublicKey](PublicKey.mdx).
+a PublicKey.
 
 ***
 
 ### fromJSON()
 
 ```ts
-static fromJSON<T>(this: T, publicKey: string): InstanceType<T>
+static fromJSON<T>(this: T, publicKey: string): InstanceType<T>;
 ```
 
-Defined in: [lib/provable/crypto/signature.ts:236](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/signature.ts#L236)
+Defined in: [lib/provable/crypto/signature.ts:236](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/signature.ts#L236)
 
-Deserializes a JSON string into a [PublicKey](PublicKey.mdx).
+Deserializes a JSON string into a PublicKey.
 
 #### Type Parameters
 
-• **T** *extends* `AnyConstructor`
+##### T
+
+`T` *extends* `AnyConstructor`
 
 #### Parameters
 
@@ -459,14 +467,16 @@ CircuitValue.fromJSON
 ### fromObject()
 
 ```ts
-static fromObject<T>(this: T, value: NonMethods<InstanceType<T>>): InstanceType<T>
+static fromObject<T>(this: T, value: NonMethods<InstanceType<T>>): InstanceType<T>;
 ```
 
-Defined in: [lib/provable/types/circuit-value.ts:30](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/circuit-value.ts#L30)
+Defined in: [lib/provable/types/circuit-value.ts:30](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/circuit-value.ts#L30)
 
 #### Type Parameters
 
-• **T** *extends* `AnyConstructor`
+##### T
+
+`T` *extends* `AnyConstructor`
 
 #### Parameters
 
@@ -493,12 +503,12 @@ CircuitValue.fromObject
 ### fromPrivateKey()
 
 ```ts
-static fromPrivateKey(__namedParameters: PrivateKey): PublicKey
+static fromPrivateKey(__namedParameters: PrivateKey): PublicKey;
 ```
 
-Defined in: [lib/provable/crypto/signature.ts:166](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/signature.ts#L166)
+Defined in: [lib/provable/crypto/signature.ts:166](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/signature.ts#L166)
 
-Derives a [PublicKey](PublicKey.mdx) from a [PrivateKey](PrivateKey.mdx).
+Derives a PublicKey from a [PrivateKey](PrivateKey.mdx).
 
 #### Parameters
 
@@ -508,9 +518,9 @@ Derives a [PublicKey](PublicKey.mdx) from a [PrivateKey](PrivateKey.mdx).
 
 #### Returns
 
-[`PublicKey`](PublicKey.mdx)
+`PublicKey`
 
-a [PublicKey](PublicKey.mdx).
+a PublicKey.
 
 ***
 
@@ -520,14 +530,16 @@ a [PublicKey](PublicKey.mdx).
 static fromValue<T>(this: T, __namedParameters: {
   isOdd: boolean | Bool;
   x: bigint | Field;
-}): InstanceType<T>
+}): InstanceType<T>;
 ```
 
-Defined in: [lib/provable/crypto/signature.ts:243](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/signature.ts#L243)
+Defined in: [lib/provable/crypto/signature.ts:243](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/signature.ts#L243)
 
 #### Type Parameters
 
-• **T** *extends* `AnyConstructor`
+##### T
+
+`T` *extends* `AnyConstructor`
 
 #### Parameters
 
@@ -560,10 +572,10 @@ CircuitValue.fromValue
 ### sizeInFields()
 
 ```ts
-static sizeInFields(): number
+static sizeInFields(): number;
 ```
 
-Defined in: [lib/provable/types/circuit-value.ts:37](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/circuit-value.ts#L37)
+Defined in: [lib/provable/types/circuit-value.ts:37](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/circuit-value.ts#L37)
 
 #### Returns
 
@@ -580,10 +592,10 @@ CircuitValue.sizeInFields
 ### toAuxiliary()
 
 ```ts
-static toAuxiliary(): []
+static toAuxiliary(): [];
 ```
 
-Defined in: [lib/provable/types/circuit-value.ts:56](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/circuit-value.ts#L56)
+Defined in: [lib/provable/types/circuit-value.ts:56](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/circuit-value.ts#L56)
 
 #### Returns
 
@@ -600,38 +612,40 @@ CircuitValue.toAuxiliary
 ### toBase58()
 
 ```ts
-static toBase58(__namedParameters: PublicKey): string
+static toBase58(__namedParameters: PublicKey): string;
 ```
 
-Defined in: [lib/provable/crypto/signature.ts:216](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/signature.ts#L216)
+Defined in: [lib/provable/crypto/signature.ts:216](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/signature.ts#L216)
 
-Static method to encode a [PublicKey](PublicKey.mdx) into base58 format.
+Static method to encode a PublicKey into base58 format.
 
 #### Parameters
 
 ##### \_\_namedParameters
 
-[`PublicKey`](PublicKey.mdx)
+`PublicKey`
 
 #### Returns
 
 `string`
 
-a base58 encoded [PublicKey](PublicKey.mdx)
+a base58 encoded PublicKey
 
 ***
 
 ### toCanonical()
 
 ```ts
-static toCanonical<T>(this: T, value: InstanceType<T>): InstanceType<T>
+static toCanonical<T>(this: T, value: InstanceType<T>): InstanceType<T>;
 ```
 
-Defined in: [lib/provable/types/circuit-value.ts:161](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/circuit-value.ts#L161)
+Defined in: [lib/provable/types/circuit-value.ts:161](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/circuit-value.ts#L161)
 
 #### Type Parameters
 
-• **T** *extends* `AnyConstructor`
+##### T
+
+`T` *extends* `AnyConstructor`
 
 #### Parameters
 
@@ -658,14 +672,16 @@ CircuitValue.toCanonical
 ### toConstant()
 
 ```ts
-static toConstant<T>(this: T, t: InstanceType<T>): InstanceType<T>
+static toConstant<T>(this: T, t: InstanceType<T>): InstanceType<T>;
 ```
 
-Defined in: [lib/provable/types/circuit-value.ts:170](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/circuit-value.ts#L170)
+Defined in: [lib/provable/types/circuit-value.ts:170](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/circuit-value.ts#L170)
 
 #### Type Parameters
 
-• **T** *extends* `AnyConstructor`
+##### T
+
+`T` *extends* `AnyConstructor`
 
 #### Parameters
 
@@ -692,14 +708,16 @@ CircuitValue.toConstant
 ### toFields()
 
 ```ts
-static toFields<T>(this: T, v: InstanceType<T>): Field[]
+static toFields<T>(this: T, v: InstanceType<T>): Field[];
 ```
 
-Defined in: [lib/provable/types/circuit-value.ts:42](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/circuit-value.ts#L42)
+Defined in: [lib/provable/types/circuit-value.ts:42](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/circuit-value.ts#L42)
 
 #### Type Parameters
 
-• **T** *extends* `AnyConstructor`
+##### T
+
+`T` *extends* `AnyConstructor`
 
 #### Parameters
 
@@ -726,14 +744,16 @@ CircuitValue.toFields
 ### toInput()
 
 ```ts
-static toInput<T>(this: T, v: InstanceType<T>): HashInput
+static toInput<T>(this: T, v: InstanceType<T>): HashInput;
 ```
 
-Defined in: [lib/provable/types/circuit-value.ts:60](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/circuit-value.ts#L60)
+Defined in: [lib/provable/types/circuit-value.ts:60](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/circuit-value.ts#L60)
 
 #### Type Parameters
 
-• **T** *extends* `AnyConstructor`
+##### T
+
+`T` *extends* `AnyConstructor`
 
 #### Parameters
 
@@ -760,18 +780,18 @@ CircuitValue.toInput
 ### toJSON()
 
 ```ts
-static toJSON(publicKey: PublicKey): string
+static toJSON(publicKey: PublicKey): string;
 ```
 
-Defined in: [lib/provable/crypto/signature.ts:228](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/signature.ts#L228)
+Defined in: [lib/provable/crypto/signature.ts:228](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/signature.ts#L228)
 
-Serializes a [PublicKey](PublicKey.mdx) into its JSON representation.
+Serializes a PublicKey into its JSON representation.
 
 #### Parameters
 
 ##### publicKey
 
-[`PublicKey`](PublicKey.mdx)
+`PublicKey`
 
 #### Returns
 
@@ -793,16 +813,16 @@ CircuitValue.toJSON
 static toValue(__namedParameters: PublicKey): {
   isOdd: boolean;
   x: bigint;
-}
+};
 ```
 
-Defined in: [lib/provable/crypto/signature.ts:240](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/signature.ts#L240)
+Defined in: [lib/provable/crypto/signature.ts:240](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/signature.ts#L240)
 
 #### Parameters
 
 ##### \_\_namedParameters
 
-[`PublicKey`](PublicKey.mdx)
+`PublicKey`
 
 #### Returns
 

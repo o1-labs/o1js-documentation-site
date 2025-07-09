@@ -9,19 +9,19 @@ function fetchActions(
   | {
   actions: string[][];
   hash: string;
- }[]
+}[]
   | {
   error: FetchError;
-}>
+}>;
 ```
 
-Defined in: [lib/mina/v1/mina-instance.ts:193](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/mina-instance.ts#L193)
+Defined in: [lib/mina/v1/mina-instance.ts:193](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/mina-instance.ts#L193)
 
 ## Parameters
 
 ### publicKey
 
-[`PublicKey`](../../../classes/PublicKey.mdx)
+[`PublicKey`](../../../../classes/PublicKey.mdx)
 
 ### actionStates?
 
@@ -29,7 +29,7 @@ Defined in: [lib/mina/v1/mina-instance.ts:193](https://github.com/o1-labs/o1js/b
 
 ### tokenId?
 
-[`Field`](../../../classes/Field.mdx)
+[`Field`](../../../../classes/Field.mdx)
 
 ### from?
 
@@ -49,9 +49,9 @@ Defined in: [lib/mina/v1/mina-instance.ts:193](https://github.com/o1-labs/o1js/b
   \| \{
   `actions`: `string`[][];
   `hash`: `string`;
- \}[]
+\}[]
   \| \{
   `error`: `FetchError`;
- \}\>
+\}\>
 
 A list of emitted sequencing actions associated to the given public key.

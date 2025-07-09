@@ -13,24 +13,24 @@ function fetchEvents(
         hash: string;
         memo: string;
         status: string;
-       };
-    }[];
+     };
+  }[];
   globalSlot: UInt32;
   parentBlockHash: string;
-}[]>
+}[]>;
 ```
 
-Defined in: [lib/mina/v1/mina-instance.ts:181](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/mina-instance.ts#L181)
+Defined in: [lib/mina/v1/mina-instance.ts:181](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/mina-instance.ts#L181)
 
 ## Parameters
 
 ### publicKey
 
-[`PublicKey`](../../../classes/PublicKey.mdx)
+[`PublicKey`](../../../../classes/PublicKey.mdx)
 
 ### tokenId
 
-[`Field`](../../../classes/Field.mdx)
+[`Field`](../../../../classes/Field.mdx)
 
 ### filterOptions
 
@@ -44,7 +44,7 @@ Defined in: [lib/mina/v1/mina-instance.ts:181](https://github.com/o1-labs/o1js/b
 
 `Promise`\<\{
   `blockHash`: `string`;
-  `blockHeight`: [`UInt32`](../../../classes/UInt32.mdx);
+  `blockHeight`: [`UInt32`](../../../../classes/UInt32.mdx);
   `chainStatus`: `string`;
   `events`: \{
      `data`: `string`[];
@@ -52,10 +52,10 @@ Defined in: [lib/mina/v1/mina-instance.ts:181](https://github.com/o1-labs/o1js/b
         `hash`: `string`;
         `memo`: `string`;
         `status`: `string`;
-       \};
-    \}[];
-  `globalSlot`: [`UInt32`](../../../classes/UInt32.mdx);
+     \};
+  \}[];
+  `globalSlot`: [`UInt32`](../../../../classes/UInt32.mdx);
   `parentBlockHash`: `string`;
- \}[]\>
+\}[]\>
 
 A list of emitted events associated to the given public key.

@@ -1,10 +1,10 @@
 ## Call Signature
 
 ```ts
-function transaction(sender: FeePayerSpec, f: () => Promise<void>): TransactionPromise<false, false>
+function transaction(sender: FeePayerSpec, f: () => Promise<void>): TransactionPromise<false, false>;
 ```
 
-Defined in: [lib/mina/v1/transaction.ts:582](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/transaction.ts#L582)
+Defined in: [lib/mina/v1/transaction.ts:582](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/transaction.ts#L582)
 
 Construct a smart contract transaction. Within the callback passed to this function,
 you can call into the methods of smart contracts.
@@ -28,17 +28,17 @@ let tx = await Mina.transaction(sender, async () => {
 
 ### Returns
 
-[`TransactionPromise`](../../../type-aliases/TransactionPromise.mdx)\<`false`, `false`\>
+[`TransactionPromise`](../../../../type-aliases/TransactionPromise.mdx)\<`false`, `false`\>
 
 A transaction that can subsequently be submitted to the chain.
 
 ## Call Signature
 
 ```ts
-function transaction(f: () => Promise<void>): TransactionPromise<false, false>
+function transaction(f: () => Promise<void>): TransactionPromise<false, false>;
 ```
 
-Defined in: [lib/mina/v1/transaction.ts:586](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/transaction.ts#L586)
+Defined in: [lib/mina/v1/transaction.ts:586](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/transaction.ts#L586)
 
 Construct a smart contract transaction. Within the callback passed to this function,
 you can call into the methods of smart contracts.
@@ -58,6 +58,6 @@ let tx = await Mina.transaction(sender, async () => {
 
 ### Returns
 
-[`TransactionPromise`](../../../type-aliases/TransactionPromise.mdx)\<`false`, `false`\>
+[`TransactionPromise`](../../../../type-aliases/TransactionPromise.mdx)\<`false`, `false`\>
 
 A transaction that can subsequently be submitted to the chain.

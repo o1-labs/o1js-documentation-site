@@ -1,4 +1,4 @@
-Defined in: [lib/provable/int.ts:1511](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1511)
+Defined in: [lib/provable/int.ts:1511](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1511)
 
 A 8 bit unsigned integer with values ranging from 0 to 255.
 
@@ -6,20 +6,20 @@ A 8 bit unsigned integer with values ranging from 0 to 255.
 
 - \{
   `value`: [`Field`](Field.mdx);
- \}
+\}
 
 ## Constructors
 
-### new UInt8()
+### Constructor
 
 ```ts
-new UInt8(x: number | bigint | FieldVar | UInt8): UInt8
+new UInt8(x: number | bigint | FieldVar | UInt8): UInt8;
 ```
 
-Defined in: [lib/provable/int.ts:1522](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1522)
+Defined in: [lib/provable/int.ts:1522](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1522)
 
-Create a [UInt8](UInt8.mdx) from a bigint or number.
-The max value of a [UInt8](UInt8.mdx) is `2^8 - 1 = 255`.
+Create a UInt8 from a bigint or number.
+The max value of a UInt8 is `2^8 - 1 = 255`.
 
 **Warning**: Cannot overflow past 255, an error is thrown if the result is greater than 255.
 
@@ -27,11 +27,11 @@ The max value of a [UInt8](UInt8.mdx) is `2^8 - 1 = 255`.
 
 ##### x
 
-`number` | `bigint` | `FieldVar` | [`UInt8`](UInt8.mdx)
+`number` | `bigint` | `FieldVar` | `UInt8`
 
 #### Returns
 
-[`UInt8`](UInt8.mdx)
+`UInt8`
 
 #### Overrides
 
@@ -49,7 +49,7 @@ Struct({
 value: Field = Field;
 ```
 
-Defined in: [lib/provable/int.ts:1512](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1512)
+Defined in: [lib/provable/int.ts:1512](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1512)
 
 #### Inherited from
 
@@ -67,7 +67,7 @@ Struct({
 static _isStruct: true;
 ```
 
-Defined in: [lib/provable/types/struct.ts:133](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/struct.ts#L133)
+Defined in: [lib/provable/types/struct.ts:133](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/struct.ts#L133)
 
 #### Inherited from
 
@@ -87,7 +87,7 @@ static empty: () => {
 };
 ```
 
-Defined in: [lib/provable/types/struct.ts:143](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/struct.ts#L143)
+Defined in: [lib/provable/types/struct.ts:143](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/struct.ts#L143)
 
 #### Returns
 
@@ -121,7 +121,7 @@ static fromFields: (fields: Field[]) => {
 };
 ```
 
-Defined in: [lib/provable/types/provable-intf.ts:115](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/provable-intf.ts#L115)
+Defined in: [lib/provable/types/provable-intf.ts:115](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/provable-intf.ts#L115)
 
 #### Parameters
 
@@ -158,12 +158,12 @@ Struct({
 ```ts
 static fromJSON: (x: {
   value: string;
- }) => {
+}) => {
   value: Field;
 };
 ```
 
-Defined in: [lib/provable/types/struct.ts:142](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/struct.ts#L142)
+Defined in: [lib/provable/types/struct.ts:142](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/struct.ts#L142)
 
 #### Parameters
 
@@ -203,7 +203,7 @@ Struct({
 static NUM_BITS: number = 8;
 ```
 
-Defined in: [lib/provable/int.ts:1514](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1514)
+Defined in: [lib/provable/int.ts:1514](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1514)
 
 ***
 
@@ -212,10 +212,10 @@ Defined in: [lib/provable/int.ts:1514](https://github.com/o1-labs/o1js/blob/df1f
 ```ts
 static toAuxiliary: (value?: {
   value: Field;
- }) => any[];
+}) => any[];
 ```
 
-Defined in: [lib/provable/types/provable-intf.ts:47](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/provable-intf.ts#L47)
+Defined in: [lib/provable/types/provable-intf.ts:47](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/provable-intf.ts#L47)
 
 A function that takes `value` (optional), an element of type `T`, as argument and
 returns an array of any type that make up the "auxiliary" (non-provable) data of `value`.
@@ -252,12 +252,12 @@ Struct({
 ```ts
 static optional toCanonical: (x: {
   value: Field;
- }) => {
+}) => {
   value: Field;
 };
 ```
 
-Defined in: [lib/provable/types/provable-intf.ts:104](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/provable-intf.ts#L104)
+Defined in: [lib/provable/types/provable-intf.ts:104](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/provable-intf.ts#L104)
 
 Optional method which transforms a provable type into its canonical representation.
 
@@ -311,10 +311,10 @@ Struct({
 ```ts
 static toFields: (value: {
   value: Field;
- }) => Field[];
+}) => Field[];
 ```
 
-Defined in: [lib/provable/types/provable-intf.ts:36](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/provable-intf.ts#L36)
+Defined in: [lib/provable/types/provable-intf.ts:36](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/provable-intf.ts#L36)
 
 A function that takes `value`, an element of type `T`, as argument and returns
 an array of [Field](Field.mdx) elements that make up the provable data of `value`.
@@ -350,12 +350,12 @@ Struct({
 ```ts
 static toJSON: (x: {
   value: Field;
- }) => {
+}) => {
   value: string;
 };
 ```
 
-Defined in: [lib/provable/types/struct.ts:141](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/struct.ts#L141)
+Defined in: [lib/provable/types/struct.ts:141](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/struct.ts#L141)
 
 #### Parameters
 
@@ -394,12 +394,12 @@ Struct({
 ```ts
 static toValue: (x: {
   value: Field;
- }) => {
+}) => {
   value: bigint;
 };
 ```
 
-Defined in: [lib/provable/types/provable-intf.ts:81](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/provable-intf.ts#L81)
+Defined in: [lib/provable/types/provable-intf.ts:81](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/provable-intf.ts#L81)
 
 Convert provable type to a normal JS type.
 
@@ -443,14 +443,18 @@ static Unsafe: {
 };
 ```
 
-Defined in: [lib/provable/int.ts:1528](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1528)
+Defined in: [lib/provable/int.ts:1528](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1528)
 
 #### fromField()
 
-Create a [UInt8](UInt8.mdx) from a [Field](../variables/Field.mdx) without constraining its range.
+```ts
+fromField(x: Field): UInt8;
+```
+
+Create a UInt8 from a [Field](../variables/Field.mdx) without constraining its range.
 
 **Warning**: This is unsafe, because it does not prove that the input [Field](../variables/Field.mdx) actually fits in 8 bits.\
-Only use this if you know what you are doing, otherwise use the safe [UInt8.from](UInt8.mdx#from).
+Only use this if you know what you are doing, otherwise use the safe [UInt8.from](#from).
 
 ##### Parameters
 
@@ -460,7 +464,7 @@ Only use this if you know what you are doing, otherwise use the safe [UInt8.from
 
 ##### Returns
 
-[`UInt8`](UInt8.mdx)
+`UInt8`
 
 ## Accessors
 
@@ -469,16 +473,16 @@ Only use this if you know what you are doing, otherwise use the safe [UInt8.from
 #### Get Signature
 
 ```ts
-get static one(): UInt8
+get static one(): UInt8;
 ```
 
-Defined in: [lib/provable/int.ts:1549](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1549)
+Defined in: [lib/provable/int.ts:1549](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1549)
 
-Static method to create a [UInt8](UInt8.mdx) with value `1`.
+Static method to create a UInt8 with value `1`.
 
 ##### Returns
 
-[`UInt8`](UInt8.mdx)
+`UInt8`
 
 ***
 
@@ -487,38 +491,38 @@ Static method to create a [UInt8](UInt8.mdx) with value `1`.
 #### Get Signature
 
 ```ts
-get static zero(): UInt8
+get static zero(): UInt8;
 ```
 
-Defined in: [lib/provable/int.ts:1543](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1543)
+Defined in: [lib/provable/int.ts:1543](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1543)
 
-Static method to create a [UInt8](UInt8.mdx) with value `0`.
+Static method to create a UInt8 with value `0`.
 
 ##### Returns
 
-[`UInt8`](UInt8.mdx)
+`UInt8`
 
 ## Methods
 
 ### add()
 
 ```ts
-add(y: number | bigint | UInt8): UInt8
+add(y: number | bigint | UInt8): UInt8;
 ```
 
-Defined in: [lib/provable/int.ts:1565](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1565)
+Defined in: [lib/provable/int.ts:1565](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1565)
 
-Add a [UInt8](UInt8.mdx) to another [UInt8](UInt8.mdx) without allowing overflow.
+Add a UInt8 to another UInt8 without allowing overflow.
 
 #### Parameters
 
 ##### y
 
-`number` | `bigint` | [`UInt8`](UInt8.mdx)
+`number` | `bigint` | `UInt8`
 
 #### Returns
 
-[`UInt8`](UInt8.mdx)
+`UInt8`
 
 #### Example
 
@@ -534,15 +538,59 @@ if the result is greater than 255.
 
 ***
 
+### and()
+
+```ts
+and(x: UInt8): UInt8;
+```
+
+Defined in: [lib/provable/int.ts:1752](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1752)
+
+Bitwise AND gadget on UInt8 elements. Equivalent to the [bitwise AND `&` operator in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_AND).
+The AND gate works by comparing two bits and returning `1` if both bits are `1`, and `0` otherwise.
+
+It can be checked by a double generic gate that verifies the following relationship between the values below.
+
+The generic gate verifies:\
+`a + b = sum` and the conjunction equation `2 * and = sum - xor`\
+Where:\
+`a + b = sum`\
+`a ^ b = xor`\
+`a & b = and`
+
+You can find more details about the implementation in the [Mina book](https://o1-labs.github.io/proof-systems/specs/kimchi.html?highlight=gates#and)
+
+#### Parameters
+
+##### x
+
+`UInt8`
+
+#### Returns
+
+`UInt8`
+
+#### Example
+
+```typescript
+let a = UInt8.from(3);    // ... 000011
+let b = UInt8.from(5);    // ... 000101
+
+let c = a.and(b);    // ... 000001
+c.assertEquals(1);
+```
+
+***
+
 ### assertEquals()
 
 ```ts
-assertEquals(y: number | bigint | UInt8, message?: string): void
+assertEquals(y: number | bigint | UInt8, message?: string): void;
 ```
 
-Defined in: [lib/provable/int.ts:1811](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1811)
+Defined in: [lib/provable/int.ts:1911](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1911)
 
-Assert that this [UInt8](UInt8.mdx) is equal another [UInt8](UInt8.mdx) value.
+Assert that this UInt8 is equal another UInt8 value.
 
 **Important**: If an assertion fails, the code throws an error.
 
@@ -550,9 +598,9 @@ Assert that this [UInt8](UInt8.mdx) is equal another [UInt8](UInt8.mdx) value.
 
 ##### y
 
-the [UInt8](UInt8.mdx) value to compare & assert with this [UInt8](UInt8.mdx).
+the UInt8 value to compare & assert with this UInt8.
 
-`number` | `bigint` | [`UInt8`](UInt8.mdx)
+`number` | `bigint` | `UInt8`
 
 ##### message?
 
@@ -569,12 +617,12 @@ a string error message to print if the assertion fails, optional.
 ### assertGreaterThan()
 
 ```ts
-assertGreaterThan(y: number | bigint | UInt8, message?: string): void
+assertGreaterThan(y: number | bigint | UInt8, message?: string): void;
 ```
 
-Defined in: [lib/provable/int.ts:1787](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1787)
+Defined in: [lib/provable/int.ts:1887](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1887)
 
-Assert that this [UInt8](UInt8.mdx) is greater than another [UInt8](UInt8.mdx) value.
+Assert that this UInt8 is greater than another UInt8 value.
 
 **Important**: If an assertion fails, the code throws an error.
 
@@ -582,9 +630,9 @@ Assert that this [UInt8](UInt8.mdx) is greater than another [UInt8](UInt8.mdx) v
 
 ##### y
 
-the [UInt8](UInt8.mdx) value to compare & assert with this [UInt8](UInt8.mdx).
+the UInt8 value to compare & assert with this UInt8.
 
-`number` | `bigint` | [`UInt8`](UInt8.mdx)
+`number` | `bigint` | `UInt8`
 
 ##### message?
 
@@ -601,12 +649,12 @@ a string error message to print if the assertion fails, optional.
 ### assertGreaterThanOrEqual()
 
 ```ts
-assertGreaterThanOrEqual(y: UInt8, message?: string): void
+assertGreaterThanOrEqual(y: UInt8, message?: string): void;
 ```
 
-Defined in: [lib/provable/int.ts:1799](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1799)
+Defined in: [lib/provable/int.ts:1899](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1899)
 
-Assert that this [UInt8](UInt8.mdx) is greater than or equal to another [UInt8](UInt8.mdx) value.
+Assert that this UInt8 is greater than or equal to another UInt8 value.
 
 **Important**: If an assertion fails, the code throws an error.
 
@@ -614,9 +662,9 @@ Assert that this [UInt8](UInt8.mdx) is greater than or equal to another [UInt8](
 
 ##### y
 
-[`UInt8`](UInt8.mdx)
+`UInt8`
 
-the [UInt8](UInt8.mdx) value to compare & assert with this [UInt8](UInt8.mdx).
+the UInt8 value to compare & assert with this UInt8.
 
 ##### message?
 
@@ -633,12 +681,12 @@ a string error message to print if the assertion fails, optional.
 ### assertLessThan()
 
 ```ts
-assertLessThan(y: number | bigint | UInt8, message?: string): void
+assertLessThan(y: number | bigint | UInt8, message?: string): void;
 ```
 
-Defined in: [lib/provable/int.ts:1715](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1715)
+Defined in: [lib/provable/int.ts:1815](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1815)
 
-Assert that this [UInt8](UInt8.mdx) is less than another [UInt8](UInt8.mdx) value.
+Assert that this UInt8 is less than another UInt8 value.
 
 **Important**: If an assertion fails, the code throws an error.
 
@@ -646,9 +694,9 @@ Assert that this [UInt8](UInt8.mdx) is less than another [UInt8](UInt8.mdx) valu
 
 ##### y
 
-the [UInt8](UInt8.mdx) value to compare & assert with this [UInt8](UInt8.mdx).
+the UInt8 value to compare & assert with this UInt8.
 
-`number` | `bigint` | [`UInt8`](UInt8.mdx)
+`number` | `bigint` | `UInt8`
 
 ##### message?
 
@@ -665,12 +713,12 @@ a string error message to print if the assertion fails, optional.
 ### assertLessThanOrEqual()
 
 ```ts
-assertLessThanOrEqual(y: number | bigint | UInt8, message?: string): void
+assertLessThanOrEqual(y: number | bigint | UInt8, message?: string): void;
 ```
 
-Defined in: [lib/provable/int.ts:1737](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1737)
+Defined in: [lib/provable/int.ts:1837](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1837)
 
-Assert that this [UInt8](UInt8.mdx) is less than or equal to another [UInt8](UInt8.mdx) value.
+Assert that this UInt8 is less than or equal to another UInt8 value.
 
 **Important**: If an assertion fails, the code throws an error.
 
@@ -678,9 +726,9 @@ Assert that this [UInt8](UInt8.mdx) is less than or equal to another [UInt8](UIn
 
 ##### y
 
-the [UInt8](UInt8.mdx) value to compare & assert with this [UInt8](UInt8.mdx).
+the UInt8 value to compare & assert with this UInt8.
 
-`number` | `bigint` | [`UInt8`](UInt8.mdx)
+`number` | `bigint` | `UInt8`
 
 ##### message?
 
@@ -697,23 +745,23 @@ a string error message to print if the assertion fails, optional.
 ### div()
 
 ```ts
-div(y: number | bigint | UInt8): UInt8
+div(y: number | bigint | UInt8): UInt8;
 ```
 
-Defined in: [lib/provable/int.ts:1618](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1618)
+Defined in: [lib/provable/int.ts:1618](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1618)
 
-Divide a [UInt8](UInt8.mdx) by another [UInt8](UInt8.mdx).
+Divide a UInt8 by another UInt8.
 This is integer division that rounds down.
 
 #### Parameters
 
 ##### y
 
-`number` | `bigint` | [`UInt8`](UInt8.mdx)
+`number` | `bigint` | `UInt8`
 
 #### Returns
 
-[`UInt8`](UInt8.mdx)
+`UInt8`
 
 #### Example
 
@@ -731,12 +779,12 @@ quotient.assertEquals(3);
 divMod(y: number | bigint | UInt8): {
   quotient: UInt8;
   remainder: UInt8;
-}
+};
 ```
 
-Defined in: [lib/provable/int.ts:1645](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1645)
+Defined in: [lib/provable/int.ts:1645](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1645)
 
-Get the quotient and remainder of a [UInt8](UInt8.mdx) divided by another [UInt8](UInt8.mdx):
+Get the quotient and remainder of a UInt8 divided by another UInt8:
 
 `x == y * q + r`, where `0 <= r < y`.
 
@@ -744,9 +792,9 @@ Get the quotient and remainder of a [UInt8](UInt8.mdx) divided by another [UInt8
 
 ##### y
 
-a [UInt8](UInt8.mdx) to get the quotient and remainder of another [UInt8](UInt8.mdx).
+a UInt8 to get the quotient and remainder of another UInt8.
 
-`number` | `bigint` | [`UInt8`](UInt8.mdx)
+`number` | `bigint` | `UInt8`
 
 #### Returns
 
@@ -776,19 +824,19 @@ remainder: UInt8;
 ### greaterThan()
 
 ```ts
-greaterThan(y: number | bigint | UInt8): Bool
+greaterThan(y: number | bigint | UInt8): Bool;
 ```
 
-Defined in: [lib/provable/int.ts:1761](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1761)
+Defined in: [lib/provable/int.ts:1861](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1861)
 
-Check if this [UInt8](UInt8.mdx) is greater than another [UInt8](UInt8.mdx).
+Check if this UInt8 is greater than another UInt8.
 Returns a [Bool](../variables/Bool.mdx).
 
 #### Parameters
 
 ##### y
 
-`number` | `bigint` | [`UInt8`](UInt8.mdx)
+`number` | `bigint` | `UInt8`
 
 #### Returns
 
@@ -806,19 +854,19 @@ UInt8.from(5).greaterThan(3);
 ### greaterThanOrEqual()
 
 ```ts
-greaterThanOrEqual(y: number | bigint | UInt8): Bool
+greaterThanOrEqual(y: number | bigint | UInt8): Bool;
 ```
 
-Defined in: [lib/provable/int.ts:1775](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1775)
+Defined in: [lib/provable/int.ts:1875](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1875)
 
-Check if this [UInt8](UInt8.mdx) is greater than or equal another [UInt8](UInt8.mdx) value.
+Check if this UInt8 is greater than or equal another UInt8 value.
 Returns a [Bool](../variables/Bool.mdx).
 
 #### Parameters
 
 ##### y
 
-`number` | `bigint` | [`UInt8`](UInt8.mdx)
+`number` | `bigint` | `UInt8`
 
 #### Returns
 
@@ -836,10 +884,10 @@ UInt8.from(3).greaterThanOrEqual(3);
 ### isConstant()
 
 ```ts
-isConstant(): boolean
+isConstant(): boolean;
 ```
 
-Defined in: [lib/provable/int.ts:1905](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1905)
+Defined in: [lib/provable/int.ts:2005](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L2005)
 
 #### Returns
 
@@ -850,19 +898,19 @@ Defined in: [lib/provable/int.ts:1905](https://github.com/o1-labs/o1js/blob/df1f
 ### lessThan()
 
 ```ts
-lessThan(y: number | bigint | UInt8): Bool
+lessThan(y: number | bigint | UInt8): Bool;
 ```
 
-Defined in: [lib/provable/int.ts:1699](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1699)
+Defined in: [lib/provable/int.ts:1799](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1799)
 
-Check if this [UInt8](UInt8.mdx) is less than another [UInt8](UInt8.mdx) value.
+Check if this UInt8 is less than another UInt8 value.
 Returns a [Bool](../variables/Bool.mdx).
 
 #### Parameters
 
 ##### y
 
-`number` | `bigint` | [`UInt8`](UInt8.mdx)
+`number` | `bigint` | `UInt8`
 
 #### Returns
 
@@ -879,19 +927,19 @@ UInt8.from(2).lessThan(UInt8.from(3));
 ### lessThanOrEqual()
 
 ```ts
-lessThanOrEqual(y: number | bigint | UInt8): Bool
+lessThanOrEqual(y: number | bigint | UInt8): Bool;
 ```
 
-Defined in: [lib/provable/int.ts:1682](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1682)
+Defined in: [lib/provable/int.ts:1782](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1782)
 
-Check if this [UInt8](UInt8.mdx) is less than or equal to another [UInt8](UInt8.mdx) value.
+Check if this UInt8 is less than or equal to another UInt8 value.
 Returns a [Bool](../variables/Bool.mdx).
 
 #### Parameters
 
 ##### y
 
-`number` | `bigint` | [`UInt8`](UInt8.mdx)
+`number` | `bigint` | `UInt8`
 
 #### Returns
 
@@ -908,22 +956,22 @@ UInt8.from(3).lessThanOrEqual(UInt8.from(5));
 ### mod()
 
 ```ts
-mod(y: number | bigint | UInt8): UInt8
+mod(y: number | bigint | UInt8): UInt8;
 ```
 
-Defined in: [lib/provable/int.ts:1632](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1632)
+Defined in: [lib/provable/int.ts:1632](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1632)
 
-Get the remainder a [UInt8](UInt8.mdx) of division of another [UInt8](UInt8.mdx).
+Get the remainder a UInt8 of division of another UInt8.
 
 #### Parameters
 
 ##### y
 
-`number` | `bigint` | [`UInt8`](UInt8.mdx)
+`number` | `bigint` | `UInt8`
 
 #### Returns
 
-[`UInt8`](UInt8.mdx)
+`UInt8`
 
 #### Example
 
@@ -938,22 +986,22 @@ mod.assertEquals(20);
 ### mul()
 
 ```ts
-mul(y: number | bigint | UInt8): UInt8
+mul(y: number | bigint | UInt8): UInt8;
 ```
 
-Defined in: [lib/provable/int.ts:1601](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1601)
+Defined in: [lib/provable/int.ts:1601](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1601)
 
-Multiply a [UInt8](UInt8.mdx) by another [UInt8](UInt8.mdx) without allowing overflow.
+Multiply a UInt8 by another UInt8 without allowing overflow.
 
 #### Parameters
 
 ##### y
 
-`number` | `bigint` | [`UInt8`](UInt8.mdx)
+`number` | `bigint` | `UInt8`
 
 #### Returns
 
-[`UInt8`](UInt8.mdx)
+`UInt8`
 
 #### Example
 
@@ -969,25 +1017,98 @@ if the result is greater than 255.
 
 ***
 
+### not()
+
+```ts
+not(): UInt8;
+```
+
+Defined in: [lib/provable/int.ts:1723](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1723)
+
+Bitwise NOT gate on [Field](../variables/Field.mdx) elements. Similar to the [bitwise
+NOT `~` operator in JavaScript](https://developer.mozilla.org/en-US/docs/
+Web/JavaScript/Reference/Operators/Bitwise_NOT).
+
+**Note:** The NOT gate operates over 8 bit for UInt8 types.
+
+A NOT gate works by returning `1` in each bit position if the
+corresponding bit of the operand is `0`, and returning `0` if the
+corresponding bit of the operand is `1`.
+
+NOT is implemented as a subtraction of the input from the all one bitmask
+
+You can find more details about the implementation in the [Mina book](https://o1-labs.github.io/proof-systems/specs/kimchi.html?highlight=gates#not)
+
+#### Returns
+
+`UInt8`
+
+#### Example
+
+```ts
+// NOTing 4 bits with the unchecked version
+let a = UInt8.from(0b0101);
+let b = a.not();
+
+console.log(b.toBigInt().toString(2));
+// 11111010
+
+```
+
+***
+
+### or()
+
+```ts
+or(x: UInt8): UInt8;
+```
+
+Defined in: [lib/provable/int.ts:1769](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1769)
+
+Bitwise OR gadget on UInt8 elements. Equivalent to the [bitwise OR `|` operator in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_OR).
+The OR gate works by comparing two bits and returning `1` if at least one bit is `1`, and `0` otherwise.
+
+#### Parameters
+
+##### x
+
+`UInt8`
+
+#### Returns
+
+`UInt8`
+
+#### Example
+
+```typescript
+let a = UInt8.from(3);    // ... 000011
+let b = UInt8.from(5);    // ... 000101
+
+let c = a.or(b);    // ... 000111
+c.assertEquals(7);
+```
+
+***
+
 ### sub()
 
 ```ts
-sub(y: number | bigint | UInt8): UInt8
+sub(y: number | bigint | UInt8): UInt8;
 ```
 
-Defined in: [lib/provable/int.ts:1583](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1583)
+Defined in: [lib/provable/int.ts:1583](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1583)
 
-Subtract a [UInt8](UInt8.mdx) from another [UInt8](UInt8.mdx) without allowing underflow.
+Subtract a UInt8 from another UInt8 without allowing underflow.
 
 #### Parameters
 
 ##### y
 
-`number` | `bigint` | [`UInt8`](UInt8.mdx)
+`number` | `bigint` | `UInt8`
 
 #### Returns
 
-[`UInt8`](UInt8.mdx)
+`UInt8`
 
 #### Example
 
@@ -1006,12 +1127,12 @@ if the result is less than 0.
 ### toBigInt()
 
 ```ts
-toBigInt(): bigint
+toBigInt(): bigint;
 ```
 
-Defined in: [lib/provable/int.ts:1839](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1839)
+Defined in: [lib/provable/int.ts:1939](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1939)
 
-Serialize the [UInt8](UInt8.mdx) to a bigint.
+Serialize the UInt8 to a bigint.
 
 **Warning**: This operation is not provable.
 
@@ -1024,12 +1145,12 @@ Serialize the [UInt8](UInt8.mdx) to a bigint.
 ### toBits()
 
 ```ts
-toBits(length: number): Bool[]
+toBits(length: number): Bool[];
 ```
 
-Defined in: [lib/provable/int.ts:1922](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1922)
+Defined in: [lib/provable/int.ts:2022](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L2022)
 
-Returns an array of [Bool](../variables/Bool.mdx) elements representing [little endian binary representation](https://en.wikipedia.org/wiki/Endianness) of this [UInt8](UInt8.mdx) element.
+Returns an array of [Bool](../variables/Bool.mdx) elements representing [little endian binary representation](https://en.wikipedia.org/wiki/Endianness) of this UInt8 element.
 
 If you use the optional `length` argument, proves that the UInt8 element fits in `length` bits.
 The `length` has to be between 0 and 8 and the method throws if it isn't.
@@ -1049,19 +1170,19 @@ the number of bits to fit the element. If the element does not fit in `length` b
 
 [`Bool`](Bool.mdx)[]
 
-An array of [Bool](../variables/Bool.mdx) element representing little endian binary representation of this [UInt8](UInt8.mdx).
+An array of [Bool](../variables/Bool.mdx) element representing little endian binary representation of this UInt8.
 
 ***
 
 ### toNumber()
 
 ```ts
-toNumber(): number
+toNumber(): number;
 ```
 
-Defined in: [lib/provable/int.ts:1830](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1830)
+Defined in: [lib/provable/int.ts:1930](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1930)
 
-Serialize the [UInt8](UInt8.mdx) to a number.
+Serialize the UInt8 to a number.
 
 **Warning**: This operation is not provable.
 
@@ -1074,12 +1195,12 @@ Serialize the [UInt8](UInt8.mdx) to a number.
 ### toString()
 
 ```ts
-toString(): string
+toString(): string;
 ```
 
-Defined in: [lib/provable/int.ts:1821](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1821)
+Defined in: [lib/provable/int.ts:1921](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1921)
 
-Serialize the [UInt8](UInt8.mdx) to a string, e.g. for printing.
+Serialize the UInt8 to a string, e.g. for printing.
 
 **Warning**: This operation is not provable.
 
@@ -1092,12 +1213,12 @@ Serialize the [UInt8](UInt8.mdx) to a string, e.g. for printing.
 ### toUInt32()
 
 ```ts
-toUInt32(): UInt32
+toUInt32(): UInt32;
 ```
 
-Defined in: [lib/provable/int.ts:1859](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1859)
+Defined in: [lib/provable/int.ts:1959](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1959)
 
-Turns a [UInt8](UInt8.mdx) into a [UInt32](UInt32.mdx).
+Turns a UInt8 into a [UInt32](UInt32.mdx).
 
 #### Returns
 
@@ -1108,16 +1229,55 @@ Turns a [UInt8](UInt8.mdx) into a [UInt32](UInt32.mdx).
 ### toUInt64()
 
 ```ts
-toUInt64(): UInt64
+toUInt64(): UInt64;
 ```
 
-Defined in: [lib/provable/int.ts:1866](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1866)
+Defined in: [lib/provable/int.ts:1966](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1966)
 
-Turns a [UInt8](UInt8.mdx) into a [UInt64](UInt64.mdx).
+Turns a UInt8 into a [UInt64](UInt64.mdx).
 
 #### Returns
 
 [`UInt64`](UInt64.mdx)
+
+***
+
+### xor()
+
+```ts
+xor(x: UInt8): UInt8;
+```
+
+Defined in: [lib/provable/int.ts:1692](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1692)
+
+Bitwise XOR gadget on [Field](../variables/Field.mdx) elements. Equivalent to the [bitwise XOR `^` operator in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_XOR).
+A XOR gate works by comparing two bits and returning `1` if two bits differ, and `0` if two bits are equal.
+
+This gadget builds a chain of XOR gates recursively.
+
+You can find more details about the implementation in the [Mina book](https://o1-labs.github.io/proof-systems/specs/kimchi.html?highlight=gates#xor-1)
+
+#### Parameters
+
+##### x
+
+`UInt8`
+
+UInt8 element to XOR.
+
+#### Returns
+
+`UInt8`
+
+#### Example
+
+```ts
+let a = UInt8.from(0b0101);
+let b = UInt8.from(0b0011);
+
+let c = a.xor(b);
+c.assertEquals(0b0110);
+```
 
 ***
 
@@ -1128,12 +1288,12 @@ static check(x:
   | Field
   | {
   value: Field;
- }): void
+}): void;
 ```
 
-Defined in: [lib/provable/int.ts:1847](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1847)
+Defined in: [lib/provable/int.ts:1947](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1947)
 
-[Provable.check](../type-aliases/Provable.mdx#check) for [UInt8](UInt8.mdx).
+[Provable.check](../type-aliases/Provable-1.mdx#check) for UInt8.
 Proves that the input is in the [0, 255] range.
 
 #### Parameters
@@ -1167,40 +1327,40 @@ static from(x:
   | Field
   | UInt64
   | UInt32
-  | UInt8): UInt8
+  | UInt8): UInt8;
 ```
 
-Defined in: [lib/provable/int.ts:1880](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1880)
+Defined in: [lib/provable/int.ts:1980](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1980)
 
-Creates a new [UInt8](UInt8.mdx).
+Creates a new UInt8.
 
 #### Parameters
 
 ##### x
 
-`number` | `bigint` | [`Field`](Field.mdx) | [`UInt64`](UInt64.mdx) | [`UInt32`](UInt32.mdx) | [`UInt8`](UInt8.mdx)
+`number` | `bigint` | [`Field`](Field.mdx) | [`UInt64`](UInt64.mdx) | [`UInt32`](UInt32.mdx) | `UInt8`
 
 #### Returns
 
-[`UInt8`](UInt8.mdx)
+`UInt8`
 
 ***
 
 ### fromBits()
 
 ```ts
-static fromBits(bits: (boolean | Bool)[]): UInt8
+static fromBits(bits: (boolean | Bool)[]): UInt8;
 ```
 
-Defined in: [lib/provable/int.ts:1946](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1946)
+Defined in: [lib/provable/int.ts:2046](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L2046)
 
-Convert a bit array into a [UInt8](UInt8.mdx) element using [little endian binary representation](https://en.wikipedia.org/wiki/Endianness)
+Convert a bit array into a UInt8 element using [little endian binary representation](https://en.wikipedia.org/wiki/Endianness)
 
 The method throws if the given bits do not fit in a single UInt8 element. In this case, no more than 8 bits are allowed.
 
 **Important**: If the given `bits` array is an array of `booleans` or [Bool](../variables/Bool.mdx) elements that all are `constant`,
- the resulting [UInt8](UInt8.mdx) element will be a constant as well. Or else, if the given array is a mixture of constants and variables of [Bool](../variables/Bool.mdx) type,
- the resulting [UInt8](UInt8.mdx) will be a variable as well.
+ the resulting UInt8 element will be a constant as well. Or else, if the given array is a mixture of constants and variables of [Bool](../variables/Bool.mdx) type,
+ the resulting UInt8 will be a variable as well.
 
 #### Parameters
 
@@ -1212,9 +1372,9 @@ An array of [Bool](../variables/Bool.mdx) or `boolean` type.
 
 #### Returns
 
-[`UInt8`](UInt8.mdx)
+`UInt8`
 
-A [UInt8](UInt8.mdx) element matching the [little endian binary representation](https://en.wikipedia.org/wiki/Endianness) of the given `bits` array.
+A UInt8 element matching the [little endian binary representation](https://en.wikipedia.org/wiki/Endianness) of the given `bits` array.
 
 ***
 
@@ -1226,22 +1386,22 @@ static fromValue(x:
   | UInt8
   | {
   value: string | number | bigint | Field;
- }): UInt8
+}): UInt8;
 ```
 
-Defined in: [lib/provable/int.ts:1891](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1891)
+Defined in: [lib/provable/int.ts:1991](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1991)
 
 #### Parameters
 
 ##### x
 
-`number` | [`UInt8`](UInt8.mdx) | \{
+`number` | `UInt8` | \{
 `value`: `string` \| `number` \| `bigint` \| [`Field`](Field.mdx);
 \}
 
 #### Returns
 
-[`UInt8`](UInt8.mdx)
+`UInt8`
 
 #### Overrides
 
@@ -1256,26 +1416,26 @@ Struct({
 ### MAXINT()
 
 ```ts
-static MAXINT(): UInt8
+static MAXINT(): UInt8;
 ```
 
-Defined in: [lib/provable/int.ts:1873](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1873)
+Defined in: [lib/provable/int.ts:1973](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1973)
 
-Creates a [UInt8](UInt8.mdx) with a value of 255.
+Creates a UInt8 with a value of 255.
 
 #### Returns
 
-[`UInt8`](UInt8.mdx)
+`UInt8`
 
 ***
 
 ### sizeInFields()
 
 ```ts
-static sizeInFields(): number
+static sizeInFields(): number;
 ```
 
-Defined in: [lib/provable/types/provable-intf.ts:66](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/provable-intf.ts#L66)
+Defined in: [lib/provable/types/provable-intf.ts:66](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/provable-intf.ts#L66)
 
 Return the size of the `T` type in terms of [Field](Field.mdx) type, as [Field](Field.mdx) is the primitive type.
 
@@ -1300,10 +1460,10 @@ Struct({
 ```ts
 static toInput(x: {
   value: Field;
- }): HashInput
+}): HashInput;
 ```
 
-Defined in: [lib/provable/int.ts:1852](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/int.ts#L1852)
+Defined in: [lib/provable/int.ts:1952](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/int.ts#L1952)
 
 #### Parameters
 

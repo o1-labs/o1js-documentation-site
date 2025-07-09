@@ -1,19 +1,19 @@
 ```ts
 function Struct<A, T, V, J, Pure>(type: A): (value: T) => T & {
   _isStruct: true;
- } & Pure extends true ? ProvablePure<T, V> : Provable<T, V> & {
+} & Pure extends true ? ProvablePure<T, V> : Provable<T, V> & {
   empty: () => T;
   fromJSON: (x: J) => T;
   fromValue: (value: From<A>) => T;
   toInput: (x: T) => {
-     fields: Field[];
-     packed: [Field, number][];
-    };
+     fields?: Field[];
+     packed?: [Field, number][];
+  };
   toJSON: (x: T) => J;
-}
+};
 ```
 
-Defined in: [lib/provable/types/struct.ts:125](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/struct.ts#L125)
+Defined in: [lib/provable/types/struct.ts:125](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/struct.ts#L125)
 
 `Struct` lets you declare composite types for use in o1js circuits.
 
@@ -22,15 +22,25 @@ or as event / action types.
 
 ## Type Parameters
 
-• **A**
+### A
 
-• **T** *extends* `unknown` = [`InferProvable`](../type-aliases/InferProvable.mdx)\<`A`\>
+`A`
 
-• **V** *extends* `unknown` = `InferValue`\<`A`\>
+### T
 
-• **J** *extends* `unknown` = `InferJson`\<`A`\>
+`T` *extends* `unknown` = [`InferProvable`](../type-aliases/InferProvable.mdx)\<`A`\>
 
-• **Pure** *extends* `boolean` = `IsPure`\<`A`\>
+### V
+
+`V` *extends* `unknown` = `InferValue`\<`A`\>
+
+### J
+
+`J` *extends* `unknown` = `InferJson`\<`A`\>
+
+### Pure
+
+`Pure` *extends* `boolean` = `IsPure`\<`A`\>
 
 ## Parameters
 
@@ -44,16 +54,16 @@ Object specifying the layout of the `Struct`
 
 (`value`: `T`) => `T` & \{
   `_isStruct`: `true`;
- \} & `Pure` *extends* `true` ? [`ProvablePure`](../type-aliases/ProvablePure.mdx)\<`T`, `V`\> : [`Provable`](../type-aliases/Provable.mdx)\<`T`, `V`\> & \{
+\} & `Pure` *extends* `true` ? [`ProvablePure`](../type-aliases/ProvablePure.mdx)\<`T`, `V`\> : [`Provable`](../type-aliases/Provable.mdx)\<`T`, `V`\> & \{
   `empty`: () => `T`;
   `fromJSON`: (`x`: `J`) => `T`;
   `fromValue`: (`value`: `From`\<`A`\>) => `T`;
   `toInput`: (`x`: `T`) => \{
-     `fields`: [`Field`](../type-aliases/Field.mdx)[];
-     `packed`: \[[`Field`](../type-aliases/Field.mdx), `number`\][];
-    \};
+     `fields?`: [`Field`](../classes/Field.mdx)[];
+     `packed?`: \[[`Field`](../classes/Field.mdx), `number`\][];
+  \};
   `toJSON`: (`x`: `T`) => `J`;
- \}
+\}
 
 Class which you can extend
 
@@ -104,7 +114,7 @@ voter.vote(1, Bool(true));
 ```
 
 In addition to creating types composed of Field elements, you can also include auxiliary data which does not become part of the proof.
-This, for example, allows you to re-use the same type outside o1js methods, where you might want to store additional metadata.
+This, for example, allows you to reuse the same type outside o1js methods, where you might want to store additional metadata.
 
 To declare non-proof values of type `string`, `number`, etc, you can use the built-in objects `String`, `Number`, etc.
 Here's how we could add the voter's name (a string) as auxiliary data:

@@ -5,40 +5,40 @@ const Gadgets: {
   arrayGet: (array: Field[], index: Field) => Field;
   arrayGetGeneric: <T>(type: ProvableType<T>, array: T[], index: Field) => T;
   BLAKE2B: {
-     get IV: UInt64[];
+     get IV(): UInt64[];
      hash: Bytes;
-    };
+  };
   Constants: {
      l: bigint;
      l2: bigint;
      l2Mask: bigint;
      l3: bigint;
      lMask: bigint;
-    };
+  };
   divMod32: (n: Field, nBits: number) => {
      quotient: Field;
      remainder: Field;
-    };
+  };
   divMod64: (n: Field, nBits: number) => {
      quotient: Field;
      remainder: Field;
-    };
+  };
   Field3: {
      provable: {
         fromValue: Field3;
         toValue: bigint;
-       };
+     };
      split: (x: bigint) => bigint3;
      from: Field3;
      isConstant: boolean;
      toBigint: bigint;
      toBigints: [...{ [i in string | number | symbol]: bigint }[]];
-    };
+  };
   ForeignField: {
      sliceField3: (__namedParameters: Field3, __namedParameters: {
         chunkSize: number;
         maxBits: number;
-       }) => Field[];
+     }) => Field[];
      add: Field3;
      assertEquals: void;
      assertLessThan: void;
@@ -48,21 +48,21 @@ const Gadgets: {
      sub: Field3;
      sum: Field3;
      toCanonical: Field3;
-    };
+  };
   SHA2: {
      compression: <T>(length: Length, H: T[], W: T[]) => T[];
      messageSchedule: <T>(length: Length, M: T[]) => T[];
      padding: <T>(length: Length, data: FlexibleBytes) => T[][];
      hash: Bytes;
      initialState: T[];
-    };
+  };
   SHA256: {
      compression: (H: UInt32[], W: UInt32[]) => UInt32[];
      createMessageSchedule: (M: UInt32[]) => UInt32[];
      padding: (data: FlexibleBytes) => UInt32[][];
-     get initialState: UInt32[];
+     get initialState(): UInt32[];
      hash: Bytes;
-    };
+  };
   and: Field;
   compactMultiRangeCheck: [Field, Field, Field];
   inTable: void;
@@ -85,7 +85,7 @@ const Gadgets: {
 };
 ```
 
-Defined in: [lib/provable/gadgets/gadgets.ts:42](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/gadgets/gadgets.ts#L42)
+Defined in: [lib/provable/gadgets/gadgets.ts:42](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/gadgets/gadgets.ts#L42)
 
 ## Type declaration
 
@@ -97,9 +97,9 @@ addMod32: (x: Field, y: Field) => Field;
 
 Addition modulo 2^32. The operation adds two [Field](Field.mdx) elements in the range [0, 2^32) and returns the result modulo 2^32.
 
-Asserts that the result is in the range [0, 2^32) using [Gadgets.rangeCheck32](Gadgets.mdx#rangecheck32).
+Asserts that the result is in the range [0, 2^32) using [Gadgets.rangeCheck32](#rangecheck32).
 
-It uses [Gadgets.divMod32](Gadgets.mdx#divmod32) internally by adding the two [Field](Field.mdx) elements and then decomposing the result into `remainder` and `quotient` and returning the `remainder`.
+It uses [Gadgets.divMod32](#divmod32) internally by adding the two [Field](Field.mdx) elements and then decomposing the result into `remainder` and `quotient` and returning the `remainder`.
 
 **Note:** The gadget assumes both inputs to be in the range [0, 2^64). When called with non-range-checked inputs, be aware that the sum `a + b` can overflow the native field and the gadget can succeed but return an invalid result.
 
@@ -134,9 +134,9 @@ addMod64: (x: Field, y: Field) => Field;
 
 Addition modulo 2^64. The operation adds two [Field](Field.mdx) elements in the range [0, 2^64) and returns the result modulo 2^64.
 
-Asserts that the result is in the range [0, 2^64) using [Gadgets.rangeCheck64](Gadgets.mdx#rangecheck64).
+Asserts that the result is in the range [0, 2^64) using [Gadgets.rangeCheck64](#rangecheck64).
 
-It uses [Gadgets.divMod64](Gadgets.mdx#divmod64) internally by adding the two [Field](Field.mdx) elements and then decomposing the result into `remainder` and `quotient` and returning the `remainder`.
+It uses [Gadgets.divMod64](#divmod64) internally by adding the two [Field](Field.mdx) elements and then decomposing the result into `remainder` and `quotient` and returning the `remainder`.
 
 **Note:** The gadget assumes both inputs to be in the range [0, 2^64). When called with non-range-checked inputs, be aware that the sum `a + b` can overflow the native field and the gadget can succeed but return an invalid result.
 
@@ -220,7 +220,9 @@ Assumes that index is in [0, n), returns an unconstrained result otherwise.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -244,7 +246,7 @@ Assumes that index is in [0, n), returns an unconstrained result otherwise.
 
 ```ts
 BLAKE2B: {
-  get IV: UInt64[];
+  get IV(): UInt64[];
   hash: Bytes;
 };
 ```
@@ -253,7 +255,7 @@ Implementation of the [BLAKE2b hash function.](https://en.wikipedia.org/wiki/BLA
 
 Applies the BLAKE2b hash function to a list of byte-sized elements.
 
-The function accepts [Bytes](../type-aliases/Bytes.mdx) as the input message, which is a type that represents a static-length list of byte-sized field elements (range-checked using [Gadgets.rangeCheck8](Gadgets.mdx#rangecheck8)).
+The function accepts [Bytes](../type-aliases/Bytes.mdx) as the input message, which is a type that represents a static-length list of byte-sized field elements (range-checked using [Gadgets.rangeCheck8](#rangecheck8)).
 Alternatively, you can pass plain `number[]`, `bigint[]` or `Uint8Array` to perform a hash outside provable code.
 
 Produces an output of [Bytes](../type-aliases/Bytes.mdx) that conforms to the chosen digest length.
@@ -272,16 +274,20 @@ let digest = Gadgets.BLAKE2b.hash(preimage);
 ##### Get Signature
 
 ```ts
-get IV(): UInt64[]
+get IV(): UInt64[];
 ```
 
-Defined in: [lib/provable/gadgets/blake2b.ts:77](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/gadgets/blake2b.ts#L77)
+Defined in: [lib/provable/gadgets/blake2b.ts:77](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/gadgets/blake2b.ts#L77)
 
 ###### Returns
 
 [`UInt64`](../classes/UInt64.mdx)[]
 
 #### BLAKE2B.hash()
+
+```ts
+hash(data: FlexibleBytes, digestLength: number): Bytes;
+```
 
 ##### Parameters
 
@@ -354,7 +360,7 @@ Division modulo 2^32. The operation decomposes a [Field](Field.mdx) element in t
 
 **Note:** The gadget acts as a proof that the input is in the range [0, 2^64). If the input exceeds 64 bits, the gadget fails.
 
-Asserts that both `remainder` and `quotient` are in the range [0, 2^32) using [Gadgets.rangeCheck32](Gadgets.mdx#rangecheck32).
+Asserts that both `remainder` and `quotient` are in the range [0, 2^32) using [Gadgets.rangeCheck32](#rangecheck32).
 
 #### Parameters
 
@@ -410,7 +416,7 @@ Division modulo 2^64. The operation decomposes a [Field](Field.mdx) element in t
 
 **Note:** The gadget acts as a proof that the input is in the range [0, 2^128). If the input exceeds 128 bits, the gadget fails.
 
-Asserts that both `remainder` and `quotient` are in the range [0, 2^64) using [Gadgets.rangeCheck64](Gadgets.mdx#rangecheck64).
+Asserts that both `remainder` and `quotient` are in the range [0, 2^64) using [Gadgets.rangeCheck64](#rangecheck64).
 
 #### Parameters
 
@@ -460,7 +466,7 @@ Field3: {
   provable: {
      fromValue: Field3;
      toValue: bigint;
-    };
+  };
   split: (x: bigint) => bigint3;
   from: Field3;
   isConstant: boolean;
@@ -489,6 +495,10 @@ range checks.
 
 #### Field3.provable.fromValue()
 
+```ts
+fromValue(x: bigint | Field3): Field3;
+```
+
 ##### Parameters
 
 ###### x
@@ -500,6 +510,10 @@ range checks.
 `Field3`
 
 #### Field3.provable.toValue()
+
+```ts
+toValue(x: Field3): bigint;
+```
 
 ##### Parameters
 
@@ -531,6 +545,10 @@ Splits a bigint into three limbs using bitwise operations.
 
 #### Field3.from()
 
+```ts
+from(x: bigint | Field3): Field3;
+```
+
 Turn a bigint into a 3-tuple of Fields
 
 ##### Parameters
@@ -544,6 +562,10 @@ Turn a bigint into a 3-tuple of Fields
 `Field3`
 
 #### Field3.isConstant()
+
+```ts
+isConstant(x: Field3): boolean;
+```
 
 Check whether a 3-tuple of Fields is constant
 
@@ -559,6 +581,10 @@ Check whether a 3-tuple of Fields is constant
 
 #### Field3.toBigint()
 
+```ts
+toBigint(x: Field3): bigint;
+```
+
 Turn a 3-tuple of Fields into a bigint
 
 ##### Parameters
@@ -573,11 +599,17 @@ Turn a 3-tuple of Fields into a bigint
 
 #### Field3.toBigints()
 
+```ts
+toBigints<T>(...xs: T): [...{ [i in string | number | symbol]: bigint }[]];
+```
+
 Turn several 3-tuples of Fields into bigints
 
 ##### Type Parameters
 
-• **T** *extends* `Tuple`\<`Field3`\>
+###### T
+
+`T` *extends* `Tuple`\<`Field3`\>
 
 ##### Parameters
 
@@ -596,7 +628,7 @@ ForeignField: {
   sliceField3: (__namedParameters: Field3, __namedParameters: {
      chunkSize: number;
      maxBits: number;
-    }) => Field[];
+  }) => Field[];
   add: Field3;
   assertEquals: void;
   assertLessThan: void;
@@ -628,7 +660,7 @@ Range checks on outputs are added by the gadget itself.
 sliceField3: (__namedParameters: Field3, __namedParameters: {
   chunkSize: number;
   maxBits: number;
- }) => Field[];
+}) => Field[];
 ```
 
 Provable method for slicing a 3x88-bit bigint into smaller bit chunks of length `chunkSize`
@@ -660,6 +692,13 @@ This serves as a range check that the input is in [0, 2^maxBits)
 [`Field`](../classes/Field.mdx)[]
 
 #### ForeignField.add()
+
+```ts
+add(
+   x: Field3, 
+   y: Field3, 
+   f: bigint): Field3;
+```
 
 Foreign field addition: `x + y mod f`
 
@@ -717,6 +756,10 @@ It only guarantees that the result is in the correct residue class.
 
 #### ForeignField.assertEquals()
 
+```ts
+assertEquals(x: Field3, y: Field3): void;
+```
+
 Proves that x is equal to y.
 
 ##### Parameters
@@ -734,6 +777,10 @@ Proves that x is equal to y.
 `void`
 
 #### ForeignField.assertLessThan()
+
+```ts
+assertLessThan(x: Field3, f: bigint | Field3): void;
+```
 
 Prove that x < f for any constant f < 2^264, or for another `Field3` f.
 
@@ -776,6 +823,10 @@ Gadgets.ForeignField.assertLessThan(x, f);
 
 #### ForeignField.assertLessThanOrEqual()
 
+```ts
+assertLessThanOrEqual(x: Field3, f: bigint | Field3): void;
+```
+
 Prove that x `<=` f for any constant f < 2^264, or for another `Field3` f.
 
 See [ForeignField.assertLessThan](../classes/ForeignField.mdx#assertlessthan) for details and usage examples.
@@ -795,6 +846,13 @@ See [ForeignField.assertLessThan](../classes/ForeignField.mdx#assertlessthan) fo
 `void`
 
 #### ForeignField.equals()
+
+```ts
+equals(
+   x: Field3, 
+   c: bigint, 
+   f: bigint): Bool;
+```
 
 Check whether `x = c mod f`
 
@@ -822,6 +880,10 @@ Assumes that `x` is almost reduced modulo `f`, so we know that `x` might be `c` 
 
 #### ForeignField.neg()
 
+```ts
+neg(x: Field3, f: bigint): Field3;
+```
+
 Foreign field negation: `-x mod f = f - x`
 
 See [ForeignField.add](../classes/ForeignField.mdx#add) for assumptions and usage examples.
@@ -846,9 +908,16 @@ fails if `x > f`, where `f - x < 0`.
 
 #### ForeignField.sub()
 
+```ts
+sub(
+   x: Field3, 
+   y: Field3, 
+   f: bigint): Field3;
+```
+
 Foreign field subtraction: `x - y mod f`
 
-See [Gadgets.ForeignField.add](Gadgets.mdx#add) for assumptions and usage examples.
+See [Gadgets.ForeignField.add](#foreignfield) for assumptions and usage examples.
 
 ##### Parameters
 
@@ -874,6 +943,13 @@ fails if `x - y < -f`, where the result cannot be brought back to a positive num
 
 #### ForeignField.sum()
 
+```ts
+sum(
+   xs: Field3[], 
+   signs: (1n | -1n)[], 
+   f: bigint): Field3;
+```
+
 Foreign field sum: `xs[0] + signs[0] * xs[1] + ... + signs[n-1] * xs[n] mod f`
 
 This gadget takes a list of inputs and a list of signs (of size one less than the inputs),
@@ -883,7 +959,7 @@ A sign is of type `1n | -1n`, where `1n` represents addition and `-1n` represent
 **Note**: For 3 or more inputs, `sum()` uses fewer constraints than a sequence of `add()` and `sub()` calls,
 because we can avoid range checks on intermediate results.
 
-See [Gadgets.ForeignField.add](Gadgets.mdx#add) for assumptions on inputs.
+See [Gadgets.ForeignField.add](#foreignfield) for assumptions on inputs.
 
 ##### Parameters
 
@@ -923,6 +999,10 @@ Provable.log(sum); // ['16', '0', '0'] = limb representation of 16 = 4 + 5 - 10 
 
 #### ForeignField.toCanonical()
 
+```ts
+toCanonical(x: Field3, f: bigint): Field3;
+```
+
 Convert x, which may be unreduced, to a canonical representative xR < f
 such that x = xR mod f
 
@@ -960,7 +1040,7 @@ with 224 | 256 | 384 | 512 bit output.
 
 Applies the SHA2 hash function to a list of byte-sized elements.
 
-The function accepts [Bytes](../type-aliases/Bytes.mdx) as the input message, which is a type that represents a static-length list of byte-sized field elements (range-checked using [Gadgets.rangeCheck8](Gadgets.mdx#rangecheck8)).
+The function accepts [Bytes](../type-aliases/Bytes.mdx) as the input message, which is a type that represents a static-length list of byte-sized field elements (range-checked using [Gadgets.rangeCheck8](#rangecheck8)).
 Alternatively, you can pass plain `number[]`, `bigint[]` or `Uint8Array` to perform a hash outside provable code.
 
 Produces an output of [Bytes](../type-aliases/Bytes.mdx) that conforms to the chosen bit length.
@@ -988,7 +1068,9 @@ Performs the SHA-2 compression function on the given hash values and message sch
 
 ##### Type Parameters
 
-• **T** *extends* [`UInt64`](../classes/UInt64.mdx) \| [`UInt32`](../classes/UInt32.mdx)
+###### T
+
+`T` *extends* [`UInt64`](../classes/UInt64.mdx) \| [`UInt32`](../classes/UInt32.mdx)
 
 ##### Parameters
 
@@ -1026,7 +1108,9 @@ Prepares the message schedule for the SHA2 compression function from the given m
 
 ##### Type Parameters
 
-• **T** *extends* [`UInt64`](../classes/UInt64.mdx) \| [`UInt32`](../classes/UInt32.mdx)
+###### T
+
+`T` *extends* [`UInt64`](../classes/UInt64.mdx) \| [`UInt32`](../classes/UInt32.mdx)
 
 ##### Parameters
 
@@ -1059,7 +1143,9 @@ Padding function for SHA2, as specified in §5.1.1, §5.1.2,
 
 ##### Type Parameters
 
-• **T** *extends* [`UInt64`](../classes/UInt64.mdx) \| [`UInt32`](../classes/UInt32.mdx)
+###### T
+
+`T` *extends* [`UInt64`](../classes/UInt64.mdx) \| [`UInt32`](../classes/UInt32.mdx)
 
 ##### Parameters
 
@@ -1081,6 +1167,10 @@ The message to hash
 
 #### SHA2.hash()
 
+```ts
+hash<T>(length: T, data: FlexibleBytes): Bytes;
+```
+
 Implementation of [NIST SHA-2](https://csrc.nist.gov/pubs/fips/180-4/upd1/final)
 hash Function. Supports output lengths of 224, 256, 384, or 512 bits.
 
@@ -1089,7 +1179,7 @@ elements, flexible to handle varying output lengths (224, 256, 384, 512 bits) as
 
 The function accepts [Bytes](../functions/Bytes.mdx) as the input message, which is a type that
 represents a static-length list of byte-sized field elements (range-checked
-using [Gadgets.rangeCheck8](Gadgets.mdx#rangecheck8)).
+using [Gadgets.rangeCheck8](#rangecheck8)).
 Alternatively, you can pass plain `number[]` of `Uint8Array` to perform a hash
 outside provable code.
 
@@ -1098,7 +1188,9 @@ Both input and output bytes are big-endian.
 
 ##### Type Parameters
 
-• **T** *extends* `Length`
+###### T
+
+`T` *extends* `Length`
 
 ##### Parameters
 
@@ -1116,9 +1208,15 @@ Both input and output bytes are big-endian.
 
 #### SHA2.initialState()
 
+```ts
+initialState<T>(length: Length): T[];
+```
+
 ##### Type Parameters
 
-• **T** *extends* [`UInt64`](../classes/UInt64.mdx) \| [`UInt32`](../classes/UInt32.mdx)
+###### T
+
+`T` *extends* [`UInt64`](../classes/UInt64.mdx) \| [`UInt32`](../classes/UInt32.mdx)
 
 ##### Parameters
 
@@ -1137,7 +1235,7 @@ SHA256: {
   compression: (H: UInt32[], W: UInt32[]) => UInt32[];
   createMessageSchedule: (M: UInt32[]) => UInt32[];
   padding: (data: FlexibleBytes) => UInt32[][];
-  get initialState: UInt32[];
+  get initialState(): UInt32[];
   hash: Bytes;
 };
 ```
@@ -1146,7 +1244,7 @@ Implementation of the [SHA256 hash function.](https://en.wikipedia.org/wiki/SHA-
 
 Applies the SHA2-256 hash function to a list of byte-sized elements.
 
-The function accepts [Bytes](../type-aliases/Bytes.mdx) as the input message, which is a type that represents a static-length list of byte-sized field elements (range-checked using [Gadgets.rangeCheck8](Gadgets.mdx#rangecheck8)).
+The function accepts [Bytes](../type-aliases/Bytes.mdx) as the input message, which is a type that represents a static-length list of byte-sized field elements (range-checked using [Gadgets.rangeCheck8](#rangecheck8)).
 Alternatively, you can pass plain `number[]`, `bigint[]` or `Uint8Array` to perform a hash outside provable code.
 
 Produces an output of [Bytes](../type-aliases/Bytes.mdx) that conforms to the chosen bit length.
@@ -1162,7 +1260,7 @@ let digest = Gadgets.SHA256.hash(preimage);
 
 #### Deprecated
 
-[SHA256](Gadgets.mdx#sha256) is deprecated in favor of [SHA2](Gadgets.mdx#sha2), which supports more variants of the hash function.
+[SHA256](#sha256) is deprecated in favor of [SHA2](#sha2), which supports more variants of the hash function.
 
 #### SHA256.compression()
 
@@ -1235,16 +1333,20 @@ padding: (data: FlexibleBytes) => UInt32[][];
 ##### Get Signature
 
 ```ts
-get initialState(): UInt32[]
+get initialState(): UInt32[];
 ```
 
-Defined in: [lib/provable/gadgets/sha256.ts:103](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/gadgets/sha256.ts#L103)
+Defined in: [lib/provable/gadgets/sha256.ts:103](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/gadgets/sha256.ts#L103)
 
 ###### Returns
 
 [`UInt32`](../classes/UInt32.mdx)[]
 
 #### SHA256.hash()
+
+```ts
+hash(data: FlexibleBytes): Bytes;
+```
 
 ##### Parameters
 
@@ -1258,11 +1360,18 @@ Defined in: [lib/provable/gadgets/sha256.ts:103](https://github.com/o1-labs/o1js
 
 ### and()
 
+```ts
+and(
+   a: Field, 
+   b: Field, 
+   length: number): Field;
+```
+
 Bitwise AND gadget on [Field](Field.mdx) elements. Equivalent to the [bitwise AND `&` operator in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_AND).
 The AND gate works by comparing two bits and returning `1` if both bits are `1`, and `0` otherwise.
 
 It can be checked by a double generic gate that verifies the following relationship between the values
-below (in the process it also invokes the [Gadgets.xor](Gadgets.mdx#xor) gadget which will create additional constraints depending on `length`).
+below (in the process it also invokes the [Gadgets.xor](#xor) gadget which will create additional constraints depending on `length`).
 
 The generic gate verifies:\
 `a + b = sum` and the conjunction equation `2 * and = sum - xor`\
@@ -1312,9 +1421,13 @@ c.assertEquals(1);
 
 ### compactMultiRangeCheck()
 
+```ts
+compactMultiRangeCheck(xy: Field, z: Field): [Field, Field, Field];
+```
+
 Compact multi-range check
 
-This is a variant of [multiRangeCheck](Gadgets.mdx#multirangecheck) where the first two variables are passed in
+This is a variant of [multiRangeCheck](#multirangecheck) where the first two variables are passed in
 combined form xy = x + 2^88*y.
 
 The gadget
@@ -1350,6 +1463,14 @@ Throws an error if `xy` exceeds 2*88 = 176 bits, or if z exceeds 88 bits.
 
 ### inTable()
 
+```ts
+inTable(
+   id: number, 
+   pair0: [bigint, Field], 
+   pair1?: [bigint, Field], 
+   pair2?: [bigint, Field]): void;
+```
+
 In-circuit check that up to 3 pairs of index and value are in the runtime
 table given by the identifier. Each given pair is a tuple composed of a
 bigint and a Field.
@@ -1380,6 +1501,10 @@ given, the remaining pairs are duplicates of the first one.
 `void`
 
 ### isDefinitelyInRangeN()
+
+```ts
+isDefinitelyInRangeN(n: number, x: Field): Bool;
+```
 
 Returns a boolean which being true proves that x is in the range [0, 2^n).
 
@@ -1416,6 +1541,10 @@ let definitelyInRange = Gadgets.isDefinitelyInRangeN(32, x); // could be true or
 ```
 
 ### leftShift32()
+
+```ts
+leftShift32(field: Field, bits: number): Field;
+```
 
 Performs a left shift operation on the provided [Field](Field.mdx) element.
 This operation is similar to the `<<` shift operation in JavaScript,
@@ -1456,6 +1585,10 @@ y.assertEquals(0b110000); // 48 in binary
 
 ### leftShift64()
 
+```ts
+leftShift64(field: Field, bits: number): Field;
+```
+
 Performs a left shift operation on the provided [Field](Field.mdx) element.
 This operation is similar to the `<<` shift operation in JavaScript,
 where bits are shifted to the left, and the overflowing bits are discarded.
@@ -1467,7 +1600,7 @@ where the most significant (64th) bit is on the left end and the least significa
 
 If the input exceeds 64 bits, the gadget is invalid and fails to prove correct execution of the shift.
 Therefore, to safely use `leftShift()`, you need to make sure that the values passed in are range checked to 64 bits.
-For example, this can be done with [Gadgets.rangeCheck64](Gadgets.mdx#rangecheck64).
+For example, this can be done with [Gadgets.rangeCheck64](#rangecheck64).
 
 #### Parameters
 
@@ -1504,6 +1637,10 @@ leftShift64(xLarge, 32); // throws an error since input exceeds 64 bits
 
 ### multiRangeCheck()
 
+```ts
+multiRangeCheck(limbs: Field3): void;
+```
+
 Multi-range check.
 
 Proves that x, y, z are all in the range [0, 2^88).
@@ -1536,6 +1673,13 @@ Throws an error if one of the input values exceeds 88 bits.
 
 ### not()
 
+```ts
+not(
+   a: Field, 
+   length: number, 
+   checked: boolean): Field;
+```
+
 Bitwise NOT gate on [Field](Field.mdx) elements. Similar to the [bitwise
 NOT `~` operator in JavaScript](https://developer.mozilla.org/en-US/docs/
 Web/JavaScript/Reference/Operators/Bitwise_NOT).
@@ -1552,7 +1696,7 @@ The `length` parameter lets you define how many bits to NOT.
 **Note:** Specifying a larger `length` parameter adds additional constraints. The operation will fail if the length or the input value is larger than 254.
 
 NOT is implemented in two different ways. If the `checked` parameter is set to `true`
-the [Gadgets.xor](Gadgets.mdx#xor) gadget is reused with a second argument to be an
+the [Gadgets.xor](#xor) gadget is reused with a second argument to be an
 all one bitmask the same length. This approach needs as many rows as an XOR would need
 for a single negation. If the `checked` parameter is set to `false`, NOT is
 implemented as a subtraction of the input from the all one bitmask. This
@@ -1579,7 +1723,7 @@ The number of bits to be considered for the NOT operation.
 `boolean` = `false`
 
 Optional boolean to determine if the checked or unchecked not implementation is used. If it
-is set to `true` the [Gadgets.xor](Gadgets.mdx#xor) gadget is reused. If it is set to `false`, NOT is implemented
+is set to `true` the [Gadgets.xor](#xor) gadget is reused. If it is set to `false`, NOT is implemented
  as a subtraction of the input from the all one bitmask. It is set to `false` by default if no parameter is provided.
 
 #### Returns
@@ -1607,6 +1751,13 @@ b.assertEquals(0b1010);
 Throws an error if the input value exceeds 254 bits.
 
 ### or()
+
+```ts
+or(
+   a: Field, 
+   b: Field, 
+   length: number): Field;
+```
 
 Bitwise OR gadget on [Field](Field.mdx) elements. Equivalent to the [bitwise OR `|` operator in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_OR).
 The OR gate works by comparing two bits and returning `1` if at least one bit is `1`, and `0` otherwise.
@@ -1650,6 +1801,10 @@ c.assertEquals(7);
 
 ### rangeCheck16()
 
+```ts
+rangeCheck16(x: Field): void;
+```
+
 #### Parameters
 
 ##### x
@@ -1661,6 +1816,10 @@ c.assertEquals(7);
 `void`
 
 ### rangeCheck32()
+
+```ts
+rangeCheck32(x: Field): void;
+```
 
 Asserts that the input value is in the range [0, 2^32).
 
@@ -1698,6 +1857,13 @@ and don't pass the 32-bit check. If you want to prove that a value lies in the i
 you could use `rangeCheck32(x.add(1n << 31n))`.
 
 ### rangeCheck3x12()
+
+```ts
+rangeCheck3x12(
+   v0: Field, 
+   v1: Field, 
+   v2: Field): void;
+```
 
 Checks that three [Field](Field.mdx) elements are in the range [0, 2^12) (using only one row).
 
@@ -1752,6 +1918,10 @@ rangeCheck3x12(a, aScaled, Field(0)); // throws an error, since  `a` is greater 
 
 ### rangeCheck64()
 
+```ts
+rangeCheck64(x: Field): [Field, Field, Field, Field];
+```
+
 Asserts that the input value is in the range [0, 2^64).
 
 This function proves that the provided field element can be represented with 64 bits.
@@ -1793,9 +1963,13 @@ by constraining some of the returned limbs to be 0.
 
 ### rangeCheck8()
 
+```ts
+rangeCheck8(x: Field): void;
+```
+
 Asserts that the input value is in the range [0, 2^8).
 
-See [Gadgets.rangeCheck64](Gadgets.mdx#rangecheck64) for analogous details and usage examples.
+See [Gadgets.rangeCheck64](#rangecheck64) for analogous details and usage examples.
 
 #### Parameters
 
@@ -1808,6 +1982,13 @@ See [Gadgets.rangeCheck64](Gadgets.mdx#rangecheck64) for analogous details and u
 `void`
 
 ### rangeCheckN()
+
+```ts
+rangeCheckN(
+   n: number, 
+   x: Field, 
+   message?: string): void;
+```
 
 Asserts that the input value is in the range [0, 2^n). `n` must be a multiple of 16.
 
@@ -1854,6 +2035,10 @@ Gadgets.rangeCheckN(32, xLarge); // throws an error since input exceeds 32 bits
 
 ### rightShift64()
 
+```ts
+rightShift64(field: Field, bits: number): Field;
+```
+
 Performs a right shift operation on the provided [Field](Field.mdx) element.
 This is similar to the `>>` shift operation in JavaScript, where bits are moved to the right.
 The `rightShift64` function utilizes the rotation method internally to implement this operation.
@@ -1865,7 +2050,7 @@ where the most significant (64th) bit is on the left end and the least significa
 
 If the input exceeds 64 bits, the gadget is invalid and fails to prove correct execution of the shift.
 To safely use `rightShift64()`, you need to make sure that the value passed in is range-checked to 64 bits;
-for example, using [Gadgets.rangeCheck64](Gadgets.mdx#rangecheck64).
+for example, using [Gadgets.rangeCheck64](#rangecheck64).
 
 #### Parameters
 
@@ -1902,6 +2087,13 @@ rightShift64(xLarge, 32); // throws an error since input exceeds 64 bits
 
 ### rotate32()
 
+```ts
+rotate32(
+   field: Field, 
+   bits: number, 
+   direction: "left" | "right"): Field;
+```
+
 A (left and right) rotation operates similarly to the shift operation (`<<` for left and `>>` for right) in JavaScript,
 with the distinction that the bits are circulated to the opposite end of a 32-bit representation rather than being discarded.
 For a left rotation, this means that bits shifted off the left end reappear at the right end.
@@ -1915,7 +2107,7 @@ The `direction` parameter is a string that accepts either `'left'` or `'right'`,
 
 If the input exceeds 32 bits, the gadget is invalid and fails to prove correct execution of the rotation.
 To safely use `rotate32()`, you need to make sure that the value passed in is range-checked to 32 bits;
-for example, using [Gadgets.rangeCheck32](Gadgets.mdx#rangecheck32).
+for example, using [Gadgets.rangeCheck32](#rangecheck32).
 
 #### Parameters
 
@@ -1960,6 +2152,13 @@ Gadgets.rotate32(xLarge, 32, "left"); // throws an error since input exceeds 32 
 
 ### rotate64()
 
+```ts
+rotate64(
+   field: Field, 
+   bits: number, 
+   direction: "left" | "right"): Field;
+```
+
 A (left and right) rotation operates similarly to the shift operation (`<<` for left and `>>` for right) in JavaScript,
 with the distinction that the bits are circulated to the opposite end of a 64-bit representation rather than being discarded.
 For a left rotation, this means that bits shifted off the left end reappear at the right end.
@@ -1973,7 +2172,7 @@ The `direction` parameter is a string that accepts either `'left'` or `'right'`,
 
 If the input exceeds 64 bits, the gadget is invalid and fails to prove correct execution of the rotation.
 To safely use `rotate64()`, you need to make sure that the value passed in is range-checked to 64 bits;
-for example, using [Gadgets.rangeCheck64](Gadgets.mdx#rangecheck64).
+for example, using [Gadgets.rangeCheck64](#rangecheck64).
 
 You can find more details about the implementation in the [Mina book](https://o1-labs.github.io/proof-systems/specs/kimchi.html?highlight=gates#rotation)
 
@@ -2019,6 +2218,13 @@ Gadgets.rotate64(xLarge, 32, "left"); // throws an error since input exceeds 64 
 ```
 
 ### xor()
+
+```ts
+xor(
+   a: Field, 
+   b: Field, 
+   length: number): Field;
+```
 
 Bitwise XOR gadget on [Field](Field.mdx) elements. Equivalent to the [bitwise XOR `^` operator in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_XOR).
 A XOR gate works by comparing two bits and returning `1` if two bits differ, and `0` if two bits are equal.

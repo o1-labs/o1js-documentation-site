@@ -1,0 +1,20 @@
+```ts
+type PendingTransactionPromise = Promise<PendingTransaction> & {
+  wait: PendingTransaction["wait"];
+};
+```
+
+Defined in: [lib/mina/v1/transaction.ts:391](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/transaction.ts#L391)
+
+A `Promise<PendingTransaction>` with an additional `wait` method, which calls
+into the inner `TransactionStatus`'s `wait` method upon its resolution.
+
+## Type declaration
+
+### wait
+
+```ts
+wait: PendingTransaction["wait"];
+```
+
+Equivalent to calling the resolved `PendingTransaction`'s `wait` method.

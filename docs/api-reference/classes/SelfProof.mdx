@@ -1,4 +1,4 @@
-Defined in: [lib/proof-system/zkprogram.ts:612](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/zkprogram.ts#L612)
+Defined in: [lib/proof-system/zkprogram.ts:636](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/zkprogram.ts#L636)
 
 A class representing the type of Proof produced by the [ZkProgram](../functions/ZkProgram.mdx) in which it is used.
 
@@ -33,13 +33,17 @@ const ExampleProgram = ZkProgram({
 
 ## Type Parameters
 
-• **PublicInput**
+### PublicInput
 
-• **PublicOutput**
+`PublicInput`
+
+### PublicOutput
+
+`PublicOutput`
 
 ## Constructors
 
-### new SelfProof()
+### Constructor
 
 ```ts
 new SelfProof<PublicInput, PublicOutput>(__namedParameters: {
@@ -47,10 +51,10 @@ new SelfProof<PublicInput, PublicOutput>(__namedParameters: {
   proof: unknown;
   publicInput: PublicInput;
   publicOutput: PublicOutput;
-}): SelfProof<PublicInput, PublicOutput>
+}): SelfProof<PublicInput, PublicOutput>;
 ```
 
-Defined in: [lib/proof-system/proof.ts:71](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L71)
+Defined in: [lib/proof-system/proof.ts:71](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L71)
 
 #### Parameters
 
@@ -74,11 +78,11 @@ Defined in: [lib/proof-system/proof.ts:71](https://github.com/o1-labs/o1js/blob/
 
 #### Returns
 
-[`SelfProof`](SelfProof.mdx)\<`PublicInput`, `PublicOutput`\>
+`SelfProof`\<`PublicInput`, `PublicOutput`\>
 
 #### Inherited from
 
-[`Proof`](Proof.mdx).[`constructor`](Proof.mdx#constructors)
+[`Proof`](Proof.mdx).[`constructor`](Proof.mdx#constructor)
 
 ## Properties
 
@@ -88,11 +92,11 @@ Defined in: [lib/proof-system/proof.ts:71](https://github.com/o1-labs/o1js/blob/
 maxProofsVerified: 0 | 1 | 2;
 ```
 
-Defined in: [lib/proof-system/proof.ts:37](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L37)
+Defined in: [lib/proof-system/proof.ts:37](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L37)
 
 #### Inherited from
 
-[`Proof`](Proof.mdx).[`maxProofsVerified`](Proof.mdx#maxproofsverified-1)
+[`Proof`](Proof.mdx).[`maxProofsVerified`](Proof.mdx#maxproofsverified)
 
 ***
 
@@ -102,11 +106,11 @@ Defined in: [lib/proof-system/proof.ts:37](https://github.com/o1-labs/o1js/blob/
 proof: unknown;
 ```
 
-Defined in: [lib/proof-system/proof.ts:36](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L36)
+Defined in: [lib/proof-system/proof.ts:36](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L36)
 
 #### Inherited from
 
-[`Proof`](Proof.mdx).[`proof`](Proof.mdx#proof-1)
+[`Proof`](Proof.mdx).[`proof`](Proof.mdx#proof)
 
 ***
 
@@ -116,11 +120,11 @@ Defined in: [lib/proof-system/proof.ts:36](https://github.com/o1-labs/o1js/blob/
 publicInput: PublicInput;
 ```
 
-Defined in: [lib/proof-system/proof.ts:34](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L34)
+Defined in: [lib/proof-system/proof.ts:34](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L34)
 
 #### Inherited from
 
-[`Proof`](Proof.mdx).[`publicInput`](Proof.mdx#publicinput-1)
+[`Proof`](Proof.mdx).[`publicInput`](Proof.mdx#publicinput)
 
 ***
 
@@ -130,11 +134,11 @@ Defined in: [lib/proof-system/proof.ts:34](https://github.com/o1-labs/o1js/blob/
 publicOutput: PublicOutput;
 ```
 
-Defined in: [lib/proof-system/proof.ts:35](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L35)
+Defined in: [lib/proof-system/proof.ts:35](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L35)
 
 #### Inherited from
 
-[`Proof`](Proof.mdx).[`publicOutput`](Proof.mdx#publicoutput-1)
+[`Proof`](Proof.mdx).[`publicOutput`](Proof.mdx#publicoutput)
 
 ***
 
@@ -144,7 +148,7 @@ Defined in: [lib/proof-system/proof.ts:35](https://github.com/o1-labs/o1js/blob/
 shouldVerify: Bool;
 ```
 
-Defined in: [lib/proof-system/proof.ts:38](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L38)
+Defined in: [lib/proof-system/proof.ts:38](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L38)
 
 #### Inherited from
 
@@ -158,7 +162,7 @@ Defined in: [lib/proof-system/proof.ts:38](https://github.com/o1-labs/o1js/blob/
 static publicInputType: FlexibleProvable<any>;
 ```
 
-Defined in: [lib/proof-system/proof.ts:26](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L26)
+Defined in: [lib/proof-system/proof.ts:26](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L26)
 
 #### Inherited from
 
@@ -172,7 +176,7 @@ Defined in: [lib/proof-system/proof.ts:26](https://github.com/o1-labs/o1js/blob/
 static publicOutputType: FlexibleProvable<any>;
 ```
 
-Defined in: [lib/proof-system/proof.ts:27](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L27)
+Defined in: [lib/proof-system/proof.ts:27](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L27)
 
 #### Inherited from
 
@@ -188,7 +192,7 @@ static tag: () => {
 };
 ```
 
-Defined in: [lib/proof-system/proof.ts:28](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L28)
+Defined in: [lib/proof-system/proof.ts:28](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L28)
 
 #### Returns
 
@@ -215,14 +219,14 @@ name: string;
 #### Get Signature
 
 ```ts
-get static provable(): ProvableProof<Proof<any, any>, any, any>
+get static provable(): ProvableProof<Proof<any, any>>;
 ```
 
-Defined in: [lib/proof-system/proof.ts:184](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L184)
+Defined in: [lib/proof-system/proof.ts:197](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L197)
 
 ##### Returns
 
-`ProvableProof`\<[`Proof`](Proof.mdx)\<`any`, `any`\>, `any`, `any`\>
+`ProvableProof`\<[`Proof`](Proof.mdx)\<`any`, `any`\>\>
 
 #### Inherited from
 
@@ -233,10 +237,10 @@ Defined in: [lib/proof-system/proof.ts:184](https://github.com/o1-labs/o1js/blob
 ### declare()
 
 ```ts
-declare(): boolean
+declare(): boolean;
 ```
 
-Defined in: [lib/proof-system/proof.ts:54](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L54)
+Defined in: [lib/proof-system/proof.ts:54](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L54)
 
 To verify a recursive proof inside a ZkProgram method, it has to be "declared" as part of
 the method. This is done by calling `declare()` on the proof.
@@ -267,10 +271,10 @@ It returns `false` in that case, and `true` if the proof was actually declared.
 publicFields(): {
   input: Field[];
   output: Field[];
-}
+};
 ```
 
-Defined in: [lib/proof-system/proof.ts:111](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L111)
+Defined in: [lib/proof-system/proof.ts:111](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L111)
 
 #### Returns
 
@@ -302,10 +306,10 @@ output: Field[];
 ### toJSON()
 
 ```ts
-toJSON(): JsonProof
+toJSON(): JsonProof;
 ```
 
-Defined in: [lib/proof-system/proof.ts:61](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L61)
+Defined in: [lib/proof-system/proof.ts:61](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L61)
 
 #### Returns
 
@@ -320,14 +324,21 @@ Defined in: [lib/proof-system/proof.ts:61](https://github.com/o1-labs/o1js/blob/
 ### verify()
 
 ```ts
-verify(): void
+verify(): void;
 ```
 
-Defined in: [lib/proof-system/proof.ts:126](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L126)
+Defined in: [lib/proof-system/proof.ts:132](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L132)
+
+Sets the `shouldVerify` flag to `true`
+The downstream effect of this is that the proof will be verified when the circuit is run
 
 #### Returns
 
 `void`
+
+#### Note
+
+This method is meant to be called in a circuit.  Executing it outside of a circuit will have no effect.
 
 #### Inherited from
 
@@ -338,10 +349,14 @@ Defined in: [lib/proof-system/proof.ts:126](https://github.com/o1-labs/o1js/blob
 ### verifyIf()
 
 ```ts
-verifyIf(condition: Bool): void
+verifyIf(condition: Bool): void;
 ```
 
-Defined in: [lib/proof-system/proof.ts:129](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L129)
+Defined in: [lib/proof-system/proof.ts:142](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L142)
+
+Sets the `shouldVerify` flag to the given condition param
+If set to `Bool(true)`, the proof will be verified when the circuit is run
+If set to `Bool(false)`, the proof will not be verified when the circuit is run
 
 #### Parameters
 
@@ -353,6 +368,10 @@ Defined in: [lib/proof-system/proof.ts:129](https://github.com/o1-labs/o1js/blob
 
 `void`
 
+#### Note
+
+This method is meant to be called in a circuit.  Executing it outside of a circuit will have no effect.
+
 #### Inherited from
 
 [`Proof`](Proof.mdx).[`verifyIf`](Proof.mdx#verifyif)
@@ -362,10 +381,10 @@ Defined in: [lib/proof-system/proof.ts:129](https://github.com/o1-labs/o1js/blob
 ### \_proofFromBase64()
 
 ```ts
-static _proofFromBase64(proofString: string, maxProofsVerified: 0 | 1 | 2): unknown
+static _proofFromBase64(proofString: string, maxProofsVerified: 0 | 1 | 2): unknown;
 ```
 
-Defined in: [lib/proof-system/proof.ts:115](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L115)
+Defined in: [lib/proof-system/proof.ts:115](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L115)
 
 #### Parameters
 
@@ -390,10 +409,10 @@ Defined in: [lib/proof-system/proof.ts:115](https://github.com/o1-labs/o1js/blob
 ### \_proofToBase64()
 
 ```ts
-static _proofToBase64(proof: unknown, maxProofsVerified: 0 | 1 | 2): string
+static _proofToBase64(proof: unknown, maxProofsVerified: 0 | 1 | 2): string;
 ```
 
-Defined in: [lib/proof-system/proof.ts:119](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L119)
+Defined in: [lib/proof-system/proof.ts:119](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L119)
 
 #### Parameters
 
@@ -422,10 +441,10 @@ static dummy<Input, OutPut>(
    publicInput: Input, 
    publicOutput: OutPut, 
    maxProofsVerified: 0 | 1 | 2, 
-domainLog2: number): Promise<Proof<Input, OutPut>>
+domainLog2: number): Promise<Proof<Input, OutPut>>;
 ```
 
-Defined in: [lib/proof-system/proof.ts:169](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L169)
+Defined in: [lib/proof-system/proof.ts:182](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L182)
 
 Dummy proof. This can be useful for ZkPrograms that handle the base case in the same
 method as the inductive case, using a pattern like this:
@@ -449,9 +468,13 @@ must match your ZkProgram. `maxProofsVerified` is the maximum number of proofs t
 
 #### Type Parameters
 
-• **Input**
+##### Input
 
-• **OutPut**
+`Input`
+
+##### OutPut
+
+`OutPut`
 
 #### Parameters
 
@@ -484,14 +507,16 @@ must match your ZkProgram. `maxProofsVerified` is the maximum number of proofs t
 ### fromJSON()
 
 ```ts
-static fromJSON<S>(this: S, __namedParameters: JsonProof): Promise<Proof<InferProvable<S["publicInputType"]>, InferProvable<S["publicOutputType"]>>>
+static fromJSON<S>(this: S, __namedParameters: JsonProof): Promise<Proof<InferProvable<S["publicInputType"]>, InferProvable<S["publicOutputType"]>>>;
 ```
 
-Defined in: [lib/proof-system/proof.ts:133](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L133)
+Defined in: [lib/proof-system/proof.ts:146](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L146)
 
 #### Type Parameters
 
-• **S** *extends* `Subclass`\<*typeof* [`Proof`](Proof.mdx)\>
+##### S
+
+`S` *extends* `Subclass`\<*typeof* [`Proof`](Proof.mdx)\>
 
 #### Parameters
 
@@ -519,10 +544,10 @@ Defined in: [lib/proof-system/proof.ts:133](https://github.com/o1-labs/o1js/blob
 static publicFields(value: ProofBase): {
   input: Field[];
   output: Field[];
-}
+};
 ```
 
-Defined in: [lib/proof-system/proof.ts:103](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/proof.ts#L103)
+Defined in: [lib/proof-system/proof.ts:103](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/proof.ts#L103)
 
 #### Parameters
 

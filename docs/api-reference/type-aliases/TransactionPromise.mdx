@@ -1,16 +1,17 @@
 ```ts
 type TransactionPromise<Proven, Signed> = Promise<Transaction<Proven, Signed>> & {
   send: PendingTransactionPromise;
- } & Proven extends false ? {
+} & Proven extends false ? {
   prove: TransactionPromise<true, Signed>;
- } : {
+} : {
   proofs: Promise<Transaction<true, Signed>["proofs"]>;
- } & Signed extends false ? {
+} & Signed extends false ? {
   sign: TransactionPromise<Proven, true>;
-} : {};
+} : {
+};
 ```
 
-Defined in: [lib/mina/v1/transaction.ts:332](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/transaction.ts#L332)
+Defined in: [lib/mina/v1/transaction.ts:332](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/transaction.ts#L332)
 
 A `Promise<Transaction>` with some additional methods for making chained method calls
 into the pending value upon its resolution.
@@ -19,14 +20,22 @@ into the pending value upon its resolution.
 
 ### send()
 
+```ts
+send(): PendingTransactionPromise;
+```
+
 Equivalent to calling the resolved `Transaction`'s `send` method.
 
 #### Returns
 
-[`PendingTransactionPromise`](../namespaces/Mina/type-aliases/PendingTransactionPromise.mdx)
+[`PendingTransactionPromise`](PendingTransactionPromise.mdx)
 
 ## Type Parameters
 
-• **Proven** *extends* `boolean`
+### Proven
 
-• **Signed** *extends* `boolean`
+`Proven` *extends* `boolean`
+
+### Signed
+
+`Signed` *extends* `boolean`

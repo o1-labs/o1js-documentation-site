@@ -2,21 +2,21 @@
 function fetchAccount(
    accountInfo: {
   publicKey: string | PublicKey;
-  tokenId: string | Field;
- }, 
+  tokenId?: string | Field;
+}, 
    graphqlEndpoint: string, 
    config: FetchConfig): Promise<
   | {
-  account: Types.Account;
+  account: Account;
   error: undefined;
- }
+}
   | {
   account: undefined;
   error: FetchError;
-}>
+}>;
 ```
 
-Defined in: [lib/mina/v1/fetch.ts:197](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/fetch.ts#L197)
+Defined in: [lib/mina/v1/fetch.ts:197](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/fetch.ts#L197)
 
 Gets account information on the specified publicKey by performing a GraphQL query
 to the specified endpoint. This will call the 'GetAccountInfo' query which fetches
@@ -37,7 +37,7 @@ The public key and token id of the account to fetch
 
 The specified publicKey to get account information on
 
-#### tokenId
+#### tokenId?
 
 `string` \| [`Field`](../classes/Field.mdx)
 
@@ -59,12 +59,12 @@ An object that exposes an additional timeout and header options
 
 `Promise`\<
   \| \{
-  `account`: `Types.Account`;
+  `account`: `Account`;
   `error`: `undefined`;
- \}
+\}
   \| \{
   `account`: `undefined`;
   `error`: `FetchError`;
- \}\>
+\}\>
 
 zkapp information on the specified account or an error is thrown

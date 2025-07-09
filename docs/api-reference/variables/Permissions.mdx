@@ -3,7 +3,8 @@ Permissions: {
   allImpossible: () => Permissions;
   default: () => Permissions;
   dummy: () => Permissions;
-  fromJSON: (permissions: {}) => Permissions;
+  fromJSON: (permissions: {
+  }) => Permissions;
   fromString: (permission: AuthRequired) => AuthRequired;
   impossible: () => AuthRequired;
   initial: () => Permissions;
@@ -17,11 +18,11 @@ Permissions: {
      proofDuringCurrentVersion: () => VerificationKeyPermission;
      proofOrSignature: () => VerificationKeyPermission;
      signature: () => VerificationKeyPermission;
-    };
+  };
 };
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:291](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/account-update.ts#L291)
+Defined in: [lib/mina/v1/account-update.ts:294](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/account-update.ts#L294)
 
 ## Type declaration
 
@@ -43,23 +44,23 @@ default: () => Permissions;
 
 Default permissions are:
 
-  [Permissions.editState](../interfaces/Permissions.mdx#editstate) = [Permission.proof](Permissions.mdx#proof)
+  [Permissions.editState](../interfaces/Permissions.mdx#editstate) = [Permission.proof](#proof)
 
-  [Permissions.send](../interfaces/Permissions.mdx#send) = [Permission.signature](Permissions.mdx#signature)
+  [Permissions.send](../interfaces/Permissions.mdx#send) = [Permission.signature](#signature)
 
-  [Permissions.receive](../interfaces/Permissions.mdx#receive) = [Permission.none](Permissions.mdx#none)
+  [Permissions.receive](../interfaces/Permissions.mdx#receive) = [Permission.none](#none)
 
-  [Permissions.setDelegate](../interfaces/Permissions.mdx#setdelegate) = [Permission.signature](Permissions.mdx#signature)
+  [Permissions.setDelegate](../interfaces/Permissions.mdx#setdelegate) = [Permission.signature](#signature)
 
-  [Permissions.setPermissions](../interfaces/Permissions.mdx#setpermissions) = [Permission.signature](Permissions.mdx#signature)
+  [Permissions.setPermissions](../interfaces/Permissions.mdx#setpermissions) = [Permission.signature](#signature)
 
-  [Permissions.setVerificationKey](../interfaces/Permissions.mdx#setverificationkey) = [Permission.signature](Permissions.mdx#signature)
+  [Permissions.setVerificationKey](../interfaces/Permissions.mdx#setverificationkey) = [Permission.signature](#signature)
 
-  [Permissions.setZkappUri](../interfaces/Permissions.mdx#setzkappuri) = [Permission.signature](Permissions.mdx#signature)
+  [Permissions.setZkappUri](../interfaces/Permissions.mdx#setzkappuri) = [Permission.signature](#signature)
 
-  [Permissions.editActionState](../interfaces/Permissions.mdx#editactionstate) = [Permission.proof](Permissions.mdx#proof)
+  [Permissions.editActionState](../interfaces/Permissions.mdx#editactionstate) = [Permission.proof](#proof)
 
-  [Permissions.setTokenSymbol](../interfaces/Permissions.mdx#settokensymbol) = [Permission.signature](Permissions.mdx#signature)
+  [Permissions.setTokenSymbol](../interfaces/Permissions.mdx#settokensymbol) = [Permission.signature](#signature)
 
 #### Returns
 
@@ -78,7 +79,8 @@ dummy: () => Permissions;
 ### fromJSON()
 
 ```ts
-fromJSON: (permissions: {}) => Permissions;
+fromJSON: (permissions: {
+}) => Permissions;
 ```
 
 #### Parameters

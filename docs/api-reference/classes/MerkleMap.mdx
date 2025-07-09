@@ -1,20 +1,25 @@
-Defined in: [lib/provable/merkle-map.ts:10](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/merkle-map.ts#L10)
+Defined in: [lib/provable/merkle-map.ts:10](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/merkle-map.ts#L10)
 
 ## Constructors
 
-### new MerkleMap()
+### Constructor
 
 ```ts
-new MerkleMap(): MerkleMap
+new MerkleMap(): MerkleMap;
 ```
 
-Defined in: [lib/provable/merkle-map.ts:21](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/merkle-map.ts#L21)
+Defined in: [lib/provable/merkle-map.ts:27](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/merkle-map.ts#L27)
 
 Creates a new, empty Merkle Map.
 
+A Merkle Map is a data structure that allows for efficient storage and
+retrieval of key-value pairs. The values are stored in a Merkle tree,
+and the keys are formed by using the first 254 bits of the key as an index.
+The inner Merkle tree has a height of 256.
+
 #### Returns
 
-[`MerkleMap`](MerkleMap.mdx)
+`MerkleMap`
 
 A new MerkleMap
 
@@ -32,17 +37,17 @@ const merkleMap = new MerkleMap();
 tree: MerkleTree;
 ```
 
-Defined in: [lib/provable/merkle-map.ts:11](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/merkle-map.ts#L11)
+Defined in: [lib/provable/merkle-map.ts:11](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/merkle-map.ts#L11)
 
 ## Methods
 
 ### \_keyToIndex()
 
 ```ts
-_keyToIndex(key: Field): bigint
+_keyToIndex(key: Field): bigint;
 ```
 
-Defined in: [lib/provable/merkle-map.ts:25](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/merkle-map.ts#L25)
+Defined in: [lib/provable/merkle-map.ts:31](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/merkle-map.ts#L31)
 
 #### Parameters
 
@@ -59,10 +64,10 @@ Defined in: [lib/provable/merkle-map.ts:25](https://github.com/o1-labs/o1js/blob
 ### get()
 
 ```ts
-get(key: Field): Field
+get(key: Field): Field;
 ```
 
-Defined in: [lib/provable/merkle-map.ts:71](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/merkle-map.ts#L71)
+Defined in: [lib/provable/merkle-map.ts:77](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/merkle-map.ts#L77)
 
 Returns a value given a key. Values are by default Field(0).
 
@@ -93,10 +98,10 @@ console.log(value); // Output: the value at key 5 or Field(0) if key does not ex
 ### getRoot()
 
 ```ts
-getRoot(): Field
+getRoot(): Field;
 ```
 
-Defined in: [lib/provable/merkle-map.ts:84](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/merkle-map.ts#L84)
+Defined in: [lib/provable/merkle-map.ts:90](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/merkle-map.ts#L90)
 
 Returns the root of the Merkle Map.
 
@@ -117,10 +122,10 @@ const root = merkleMap.getRoot();
 ### getWitness()
 
 ```ts
-getWitness(key: Field): MerkleMapWitness
+getWitness(key: Field): MerkleMapWitness;
 ```
 
-Defined in: [lib/provable/merkle-map.ts:98](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/merkle-map.ts#L98)
+Defined in: [lib/provable/merkle-map.ts:104](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/merkle-map.ts#L104)
 
 Returns a circuit-compatible witness (also known as [Merkle Proof or Merkle Witness](https://computersciencewiki.org/index.php/Merkle_proof)) for the given key.
 
@@ -150,10 +155,10 @@ const witness = merkleMap.getWitness(key);
 ### set()
 
 ```ts
-set(key: Field, value: Field): void
+set(key: Field, value: Field): void;
 ```
 
-Defined in: [lib/provable/merkle-map.ts:55](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/merkle-map.ts#L55)
+Defined in: [lib/provable/merkle-map.ts:61](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/merkle-map.ts#L61)
 
 Sets a key of the merkle map to a given value.
 

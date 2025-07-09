@@ -1,12 +1,14 @@
 ```ts
-function random<N>(count: N): N extends 1 ? TestPublicKey : TupleN<TestPublicKey, N>
+function random<N>(count: N): N extends 1 ? TestPublicKey : TupleN<TestPublicKey, N>;
 ```
 
-Defined in: [lib/mina/v1/local-blockchain.ts:50](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/local-blockchain.ts#L50)
+Defined in: [lib/mina/v1/local-blockchain.ts:50](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/local-blockchain.ts#L50)
 
 ## Type Parameters
 
-• **N** *extends* `number` = `1`
+### N
+
+`N` *extends* `number` = `1`
 
 ## Parameters
 
@@ -16,4 +18,4 @@ Defined in: [lib/mina/v1/local-blockchain.ts:50](https://github.com/o1-labs/o1js
 
 ## Returns
 
-`N` *extends* `1` ? [`TestPublicKey`](../../../type-aliases/TestPublicKey.mdx) : [`TupleN`](../../../../../type-aliases/TupleN.mdx)\<[`TestPublicKey`](../../../type-aliases/TestPublicKey.mdx), `N`\>
+`N` *extends* `1` ? [`TestPublicKey`](../../../type-aliases/TestPublicKey.mdx) : [`TupleN`](../../../../../../type-aliases/TupleN.mdx)\<[`TestPublicKey`](../../../type-aliases/TestPublicKey.mdx), `N`\>

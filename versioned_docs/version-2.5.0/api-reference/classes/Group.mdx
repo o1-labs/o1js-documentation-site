@@ -1,0 +1,682 @@
+Defined in: [lib/provable/group.ts:16](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L16)
+
+An element of a Group.
+
+## Constructors
+
+### new Group()
+
+```ts
+new Group(__namedParameters: {
+  x: string | number | bigint | FieldVar | Field;
+  y: string | number | bigint | FieldVar | Field;
+ }): Group
+```
+
+Defined in: [lib/provable/group.ts:46](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L46)
+
+Coerces anything group-like to a [Group](Group.mdx).
+
+#### Parameters
+
+##### \_\_namedParameters
+
+###### x
+
+`string` \| `number` \| `bigint` \| `FieldVar` \| [`Field`](Field.mdx)
+
+###### y
+
+`string` \| `number` \| `bigint` \| `FieldVar` \| [`Field`](Field.mdx)
+
+#### Returns
+
+[`Group`](Group.mdx)
+
+## Properties
+
+### x
+
+```ts
+x: Field;
+```
+
+Defined in: [lib/provable/group.ts:17](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L17)
+
+***
+
+### y
+
+```ts
+y: Field;
+```
+
+Defined in: [lib/provable/group.ts:18](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L18)
+
+## Accessors
+
+### generator
+
+#### Get Signature
+
+```ts
+get static generator(): Group
+```
+
+Defined in: [lib/provable/group.ts:23](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L23)
+
+The generator `g` of the Group.
+
+##### Returns
+
+[`Group`](Group.mdx)
+
+***
+
+### zero
+
+#### Get Signature
+
+```ts
+get static zero(): Group
+```
+
+Defined in: [lib/provable/group.ts:39](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L39)
+
+Unique representation of the `zero` element of the Group (the identity element of addition in this Group).
+
+**Note**: The `zero` element is represented as `(0, 0)`.
+
+```typescript
+// g + -g = 0
+g.add(g.neg()).assertEquals(zero);
+// g + 0 = g
+g.add(zero).assertEquals(g);
+```
+
+##### Returns
+
+[`Group`](Group.mdx)
+
+## Methods
+
+### add()
+
+```ts
+add(g: Group): Group
+```
+
+Defined in: [lib/provable/group.ts:89](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L89)
+
+Adds this [Group](Group.mdx) element to another [Group](Group.mdx) element.
+
+```ts
+let g1 = Group({ x: -1, y: 2})
+let g2 = g1.add(g1)
+```
+
+#### Parameters
+
+##### g
+
+[`Group`](Group.mdx)
+
+#### Returns
+
+[`Group`](Group.mdx)
+
+***
+
+### addNonZero()
+
+```ts
+addNonZero(g2: Group, allowZeroOutput: boolean): Group
+```
+
+Defined in: [lib/provable/group.ts:128](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L128)
+
+Lower-level variant of [add](Group.mdx#add) which doesn't handle the case where one of the operands is zero, and
+asserts that the output is non-zero.
+
+Optionally, zero outputs can be allowed by setting `allowZeroOutput` to `true`.
+
+**Warning**: If one of the inputs is zero, the result will be garbage and the proof useless.
+This case has to be prevented or handled separately by the caller of this method.
+
+#### Parameters
+
+##### g2
+
+[`Group`](Group.mdx)
+
+##### allowZeroOutput
+
+`boolean` = `false`
+
+#### Returns
+
+[`Group`](Group.mdx)
+
+***
+
+### assertEquals()
+
+```ts
+assertEquals(g: Group, message?: string): void
+```
+
+Defined in: [lib/provable/group.ts:189](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L189)
+
+Assert that this [Group](Group.mdx) element equals another [Group](Group.mdx) element.
+Throws an error if the assertion fails.
+
+```ts
+g1.assertEquals(g2);
+```
+
+#### Parameters
+
+##### g
+
+[`Group`](Group.mdx)
+
+##### message?
+
+`string`
+
+#### Returns
+
+`void`
+
+***
+
+### equals()
+
+```ts
+equals(g: Group): Bool
+```
+
+Defined in: [lib/provable/group.ts:205](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L205)
+
+Check if this [Group](Group.mdx) element equals another [Group](Group.mdx) element.
+Returns a [Bool](Bool.mdx).
+
+```ts
+g1.equals(g1); // Bool(true)
+```
+
+#### Parameters
+
+##### g
+
+[`Group`](Group.mdx)
+
+#### Returns
+
+[`Bool`](Bool.mdx)
+
+***
+
+### isZero()
+
+```ts
+isZero(): Bool
+```
+
+Defined in: [lib/provable/group.ts:76](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L76)
+
+Checks if this element is the `zero` element `{x: 0, y: 0}`.
+
+#### Returns
+
+[`Bool`](Bool.mdx)
+
+***
+
+### neg()
+
+```ts
+neg(): Group
+```
+
+Defined in: [lib/provable/group.ts:154](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L154)
+
+Negates this [Group](Group.mdx). Under the hood, it simply negates the `y` coordinate and leaves the `x` coordinate as is.
+
+#### Returns
+
+[`Group`](Group.mdx)
+
+***
+
+### scale()
+
+```ts
+scale(s: number | bigint | Field | Scalar): Group
+```
+
+Defined in: [lib/provable/group.ts:168](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L168)
+
+Elliptic curve scalar multiplication. Scales the [Group](Group.mdx) element `n`-times by itself, where `n` is the [Scalar](Scalar.mdx).
+
+```typescript
+let s = Scalar(5);
+let 5g = g.scale(s);
+```
+
+#### Parameters
+
+##### s
+
+`number` | `bigint` | [`Field`](Field.mdx) | [`Scalar`](Scalar.mdx)
+
+#### Returns
+
+[`Group`](Group.mdx)
+
+***
+
+### sub()
+
+```ts
+sub(g: Group): Group
+```
+
+Defined in: [lib/provable/group.ts:147](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L147)
+
+Subtracts another [Group](Group.mdx) element from this one.
+
+#### Parameters
+
+##### g
+
+[`Group`](Group.mdx)
+
+#### Returns
+
+[`Group`](Group.mdx)
+
+***
+
+### toFields()
+
+```ts
+toFields(): Field[]
+```
+
+Defined in: [lib/provable/group.ts:240](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L240)
+
+Part of the [Provable](../variables/Provable.mdx) interface.
+
+Returns an array containing this [Group](Group.mdx) element as an array of [Field](Field.mdx) elements.
+
+#### Returns
+
+[`Field`](Field.mdx)[]
+
+***
+
+### toJSON()
+
+```ts
+toJSON(): {
+  x: string;
+  y: string;
+}
+```
+
+Defined in: [lib/provable/group.ts:225](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L225)
+
+Serializes this [Group](Group.mdx) element to a JSON object.
+
+This operation does NOT affect the circuit and can't be used to prove anything about the representation of the element.
+
+#### Returns
+
+```ts
+{
+  x: string;
+  y: string;
+}
+```
+
+##### x
+
+```ts
+x: string;
+```
+
+##### y
+
+```ts
+y: string;
+```
+
+***
+
+### check()
+
+```ts
+static check(g: Group): unknown
+```
+
+Defined in: [lib/provable/group.ts:317](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L317)
+
+Checks that a [Group](Group.mdx) element is constraint properly by checking that the element is on the curve.
+
+#### Parameters
+
+##### g
+
+[`Group`](Group.mdx)
+
+#### Returns
+
+`unknown`
+
+***
+
+### empty()
+
+```ts
+static empty(): Group
+```
+
+Defined in: [lib/provable/group.ts:341](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L341)
+
+#### Returns
+
+[`Group`](Group.mdx)
+
+***
+
+### from()
+
+```ts
+static from(x: string | number | bigint | FieldVar | Field, y: string | number | bigint | FieldVar | Field): Group
+```
+
+Defined in: [lib/provable/group.ts:247](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L247)
+
+Coerces two x and y coordinates into a [Group](Group.mdx) element.
+
+#### Parameters
+
+##### x
+
+`string` | `number` | `bigint` | `FieldVar` | [`Field`](Field.mdx)
+
+##### y
+
+`string` | `number` | `bigint` | `FieldVar` | [`Field`](Field.mdx)
+
+#### Returns
+
+[`Group`](Group.mdx)
+
+***
+
+### fromFields()
+
+```ts
+static fromFields(__namedParameters: Field[]): Group
+```
+
+Defined in: [lib/provable/group.ts:277](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L277)
+
+Part of the [Provable](../variables/Provable.mdx) interface.
+
+Deserializes a [Group](Group.mdx) element from a list of field elements.
+
+#### Parameters
+
+##### \_\_namedParameters
+
+[`Field`](Field.mdx)[]
+
+#### Returns
+
+[`Group`](Group.mdx)
+
+***
+
+### fromJSON()
+
+```ts
+static fromJSON(__namedParameters: {
+  x: string | number | bigint | FieldVar | Field;
+  y: string | number | bigint | FieldVar | Field;
+ }): Group
+```
+
+Defined in: [lib/provable/group.ts:304](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L304)
+
+Deserializes a JSON-like structure to a [Group](Group.mdx) element.
+
+This operation does NOT affect the circuit and can't be used to prove anything about the representation of the element.
+
+#### Parameters
+
+##### \_\_namedParameters
+
+###### x
+
+`string` \| `number` \| `bigint` \| `FieldVar` \| [`Field`](Field.mdx)
+
+###### y
+
+`string` \| `number` \| `bigint` \| `FieldVar` \| [`Field`](Field.mdx)
+
+#### Returns
+
+[`Group`](Group.mdx)
+
+***
+
+### fromValue()
+
+```ts
+static fromValue(g: 
+  | Group
+  | {
+  x: number | bigint | Field;
+  y: number | bigint | Field;
+ }): Group
+```
+
+Defined in: [lib/provable/group.ts:216](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L216)
+
+#### Parameters
+
+##### g
+
+[`Group`](Group.mdx) | \{
+`x`: `number` \| `bigint` \| [`Field`](Field.mdx);
+`y`: `number` \| `bigint` \| [`Field`](Field.mdx);
+\}
+
+#### Returns
+
+[`Group`](Group.mdx)
+
+***
+
+### sizeInFields()
+
+```ts
+static sizeInFields(): number
+```
+
+Defined in: [lib/provable/group.ts:286](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L286)
+
+Part of the [Provable](../variables/Provable.mdx) interface.
+
+Returns 2.
+
+#### Returns
+
+`number`
+
+***
+
+### toAuxiliary()
+
+```ts
+static toAuxiliary(g?: Group): never[]
+```
+
+Defined in: [lib/provable/group.ts:268](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L268)
+
+Part of the [Provable](../variables/Provable.mdx) interface.
+
+Returns an empty array.
+
+#### Parameters
+
+##### g?
+
+[`Group`](Group.mdx)
+
+#### Returns
+
+`never`[]
+
+***
+
+### toFields()
+
+```ts
+static toFields(g: Group): Field[]
+```
+
+Defined in: [lib/provable/group.ts:259](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L259)
+
+Part of the [Provable](../variables/Provable.mdx) interface.
+
+Returns an array containing a [Group](Group.mdx) element as an array of [Field](Field.mdx) elements.
+
+#### Parameters
+
+##### g
+
+[`Group`](Group.mdx)
+
+#### Returns
+
+[`Field`](Field.mdx)[]
+
+***
+
+### toInput()
+
+```ts
+static toInput(x: Group): {
+  fields: Field[];
+}
+```
+
+Defined in: [lib/provable/group.ts:335](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L335)
+
+#### Parameters
+
+##### x
+
+[`Group`](Group.mdx)
+
+#### Returns
+
+```ts
+{
+  fields: Field[];
+}
+```
+
+##### fields
+
+```ts
+fields: Field[];
+```
+
+***
+
+### toJSON()
+
+```ts
+static toJSON(g: Group): {
+  x: string;
+  y: string;
+}
+```
+
+Defined in: [lib/provable/group.ts:295](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L295)
+
+Serializes a [Group](Group.mdx) element to a JSON object.
+
+This operation does NOT affect the circuit and can't be used to prove anything about the representation of the element.
+
+#### Parameters
+
+##### g
+
+[`Group`](Group.mdx)
+
+#### Returns
+
+```ts
+{
+  x: string;
+  y: string;
+}
+```
+
+##### x
+
+```ts
+x: string;
+```
+
+##### y
+
+```ts
+y: string;
+```
+
+***
+
+### toValue()
+
+```ts
+static toValue(__namedParameters: Group): {
+  x: bigint;
+  y: bigint;
+}
+```
+
+Defined in: [lib/provable/group.ts:212](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/group.ts#L212)
+
+#### Parameters
+
+##### \_\_namedParameters
+
+[`Group`](Group.mdx)
+
+#### Returns
+
+```ts
+{
+  x: bigint;
+  y: bigint;
+}
+```
+
+##### x
+
+```ts
+x: bigint;
+```
+
+##### y
+
+```ts
+y: bigint;
+```

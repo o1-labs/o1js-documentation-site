@@ -1,4 +1,4 @@
-Defined in: [lib/provable/foreign-field.ts:510](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L510)
+Defined in: [lib/provable/foreign-field.ts:510](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L510)
 
 ## Extends
 
@@ -6,28 +6,23 @@ Defined in: [lib/provable/foreign-field.ts:510](https://github.com/o1-labs/o1js/
 
 ## Constructors
 
-### new CanonicalForeignField()
+### Constructor
 
 ```ts
-new CanonicalForeignField(x: 
-  | string
-  | number
-  | bigint
-  | Field3
-  | CanonicalForeignField): CanonicalForeignField
+new CanonicalForeignField(x: string | number | bigint | Field3 | CanonicalForeignField): CanonicalForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:513](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L513)
+Defined in: [lib/provable/foreign-field.ts:513](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L513)
 
 #### Parameters
 
 ##### x
 
-`string` | `number` | `bigint` | `Field3` | [`CanonicalForeignField`](CanonicalForeignField.mdx)
+`string` | `number` | `bigint` | `Field3` | `CanonicalForeignField`
 
 #### Returns
 
-[`CanonicalForeignField`](CanonicalForeignField.mdx)
+`CanonicalForeignField`
 
 #### Overrides
 
@@ -43,7 +38,7 @@ ForeignFieldWithMul.constructor
 type: "FullyReduced";
 ```
 
-Defined in: [lib/provable/foreign-field.ts:511](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L511)
+Defined in: [lib/provable/foreign-field.ts:511](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L511)
 
 ***
 
@@ -53,7 +48,7 @@ Defined in: [lib/provable/foreign-field.ts:511](https://github.com/o1-labs/o1js/
 value: Field3;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:39](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L39)
+Defined in: [lib/provable/foreign-field.ts:39](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L39)
 
 The internal representation of a foreign field element, as a tuple of 3 limbs.
 
@@ -68,10 +63,13 @@ ForeignFieldWithMul.value
 ### \_Bigint
 
 ```ts
-static _Bigint: undefined | {} = undefined;
+static _Bigint: 
+  | undefined
+  | {
+} = undefined;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:17](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L17)
+Defined in: [lib/provable/foreign-field.ts:17](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L17)
 
 #### Inherited from
 
@@ -87,7 +85,7 @@ ForeignFieldWithMul._Bigint
 static _modulus: undefined | bigint = undefined;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:18](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L18)
+Defined in: [lib/provable/foreign-field.ts:18](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L18)
 
 #### Inherited from
 
@@ -105,7 +103,7 @@ static _provable:
   | ProvablePureExtended<CanonicalForeignField, bigint, string> = undefined;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:517](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L517)
+Defined in: [lib/provable/foreign-field.ts:517](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L517)
 
 #### Overrides
 
@@ -124,10 +122,10 @@ static _variants:
   almostReduced: typeof AlmostForeignField;
   canonical: typeof CanonicalForeignField;
   unreduced: typeof UnreducedForeignField;
- } = undefined;
+} = undefined;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:48](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L48)
+Defined in: [lib/provable/foreign-field.ts:48](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L48)
 
 Sibling classes that represent different ranges of field elements.
 
@@ -144,10 +142,10 @@ ForeignFieldWithMul._variants
 #### Get Signature
 
 ```ts
-get Constructor(): typeof ForeignField
+get Constructor(): typeof ForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:41](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L41)
+Defined in: [lib/provable/foreign-field.ts:41](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L41)
 
 ##### Returns
 
@@ -166,10 +164,10 @@ ForeignFieldWithMul.Constructor
 #### Get Signature
 
 ```ts
-get modulus(): bigint
+get modulus(): bigint;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:29](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L29)
+Defined in: [lib/provable/foreign-field.ts:29](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L29)
 
 ##### Returns
 
@@ -188,10 +186,10 @@ ForeignFieldWithMul.modulus
 #### Get Signature
 
 ```ts
-get static AlmostReduced(): typeof AlmostForeignField
+get static AlmostReduced(): typeof AlmostForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:66](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L66)
+Defined in: [lib/provable/foreign-field.ts:66](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L66)
 
 Constructor for field elements that are "almost reduced", i.e. lie in the range [0, 2^ceil(log2(p))).
 
@@ -212,15 +210,17 @@ ForeignFieldWithMul.AlmostReduced
 #### Get Signature
 
 ```ts
-get static Bigint(): {}
+get static Bigint(): {
+};
 ```
 
-Defined in: [lib/provable/foreign-field.ts:21](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L21)
+Defined in: [lib/provable/foreign-field.ts:21](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L21)
 
 ##### Returns
 
 ```ts
-{}
+{
+}
 ```
 
 #### Inherited from
@@ -236,16 +236,16 @@ ForeignFieldWithMul.Bigint
 #### Get Signature
 
 ```ts
-get static Canonical(): typeof CanonicalForeignField
+get static Canonical(): typeof CanonicalForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:73](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L73)
+Defined in: [lib/provable/foreign-field.ts:73](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L73)
 
 Constructor for field elements that are fully reduced, i.e. lie in the range [0, p).
 
 ##### Returns
 
-*typeof* [`CanonicalForeignField`](CanonicalForeignField.mdx)
+*typeof* `CanonicalForeignField`
 
 #### Inherited from
 
@@ -260,10 +260,10 @@ ForeignFieldWithMul.Canonical
 #### Get Signature
 
 ```ts
-get static modulus(): bigint
+get static modulus(): bigint;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:25](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L25)
+Defined in: [lib/provable/foreign-field.ts:25](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L25)
 
 ##### Returns
 
@@ -282,16 +282,16 @@ ForeignFieldWithMul.modulus
 #### Get Signature
 
 ```ts
-get static provable(): ProvablePureExtended<CanonicalForeignField, bigint, string>
+get static provable(): ProvablePureExtended<CanonicalForeignField, bigint, string>;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:519](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L519)
+Defined in: [lib/provable/foreign-field.ts:519](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L519)
 
-`Provable<ForeignField>`, see [Provable](../variables/Provable.mdx)
+`Provable<ForeignField>`, see [Provable](../variables/Provable-1.mdx)
 
 ##### Returns
 
-[`ProvablePureExtended`](../type-aliases/ProvablePureExtended.mdx)\<[`CanonicalForeignField`](CanonicalForeignField.mdx), `bigint`, `string`\>
+[`ProvablePureExtended`](../type-aliases/ProvablePureExtended.mdx)\<`CanonicalForeignField`, `bigint`, `string`\>
 
 #### Overrides
 
@@ -306,10 +306,10 @@ ForeignFieldWithMul.provable
 #### Get Signature
 
 ```ts
-get static sizeInBits(): number
+get static sizeInBits(): number;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:32](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L32)
+Defined in: [lib/provable/foreign-field.ts:32](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L32)
 
 ##### Returns
 
@@ -328,10 +328,10 @@ ForeignFieldWithMul.sizeInBits
 #### Get Signature
 
 ```ts
-get static Unreduced(): typeof UnreducedForeignField
+get static Unreduced(): typeof UnreducedForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:59](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L59)
+Defined in: [lib/provable/foreign-field.ts:59](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L59)
 
 Constructor for unreduced field elements.
 
@@ -350,10 +350,10 @@ ForeignFieldWithMul.Unreduced
 ### add()
 
 ```ts
-add(y: number | bigint | ForeignField): UnreducedForeignField
+add(y: number | bigint | ForeignField): UnreducedForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:210](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L210)
+Defined in: [lib/provable/foreign-field.ts:210](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L210)
 
 Finite field addition
 
@@ -384,10 +384,10 @@ ForeignFieldWithMul.add
 ### assertAlmostReduced()
 
 ```ts
-assertAlmostReduced(): AlmostForeignField
+assertAlmostReduced(): AlmostForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:165](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L165)
+Defined in: [lib/provable/foreign-field.ts:165](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L165)
 
 Assert that this field element lies in the range [0, 2^k),
 where k = ceil(log2(p)) and p is the foreign field modulus.
@@ -416,19 +416,19 @@ ForeignFieldWithMul.assertAlmostReduced
 ### assertCanonical()
 
 ```ts
-assertCanonical(): CanonicalForeignField
+assertCanonical(): CanonicalForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:196](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L196)
+Defined in: [lib/provable/foreign-field.ts:196](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L196)
 
 Assert that this field element is fully reduced,
 i.e. lies in the range [0, p), where p is the foreign field modulus.
 
-Returns the field element as a [CanonicalForeignField](CanonicalForeignField.mdx).
+Returns the field element as a CanonicalForeignField.
 
 #### Returns
 
-[`CanonicalForeignField`](CanonicalForeignField.mdx)
+`CanonicalForeignField`
 
 #### Inherited from
 
@@ -443,10 +443,10 @@ ForeignFieldWithMul.assertCanonical
 #### Call Signature
 
 ```ts
-assertEquals(y: number | bigint | CanonicalForeignField, message?: string): CanonicalForeignField
+assertEquals(y: number | bigint | CanonicalForeignField, message?: string): CanonicalForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:288](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L288)
+Defined in: [lib/provable/foreign-field.ts:288](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L288)
 
 Assert equality with a ForeignField-like value
 
@@ -454,7 +454,7 @@ Assert equality with a ForeignField-like value
 
 ###### y
 
-`number` | `bigint` | [`CanonicalForeignField`](CanonicalForeignField.mdx)
+`number` | `bigint` | `CanonicalForeignField`
 
 ###### message?
 
@@ -462,7 +462,7 @@ Assert equality with a ForeignField-like value
 
 ##### Returns
 
-[`CanonicalForeignField`](CanonicalForeignField.mdx)
+`CanonicalForeignField`
 
 ##### Examples
 
@@ -487,10 +487,10 @@ ForeignFieldWithMul.assertEquals
 #### Call Signature
 
 ```ts
-assertEquals(y: AlmostForeignField, message?: string): AlmostForeignField
+assertEquals(y: AlmostForeignField, message?: string): AlmostForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:289](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L289)
+Defined in: [lib/provable/foreign-field.ts:289](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L289)
 
 Assert equality with a ForeignField-like value
 
@@ -531,10 +531,10 @@ ForeignFieldWithMul.assertEquals
 #### Call Signature
 
 ```ts
-assertEquals(y: ForeignField, message?: string): ForeignField
+assertEquals(y: ForeignField, message?: string): ForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:290](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L290)
+Defined in: [lib/provable/foreign-field.ts:290](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L290)
 
 Assert equality with a ForeignField-like value
 
@@ -577,10 +577,10 @@ ForeignFieldWithMul.assertEquals
 ### assertLessThan()
 
 ```ts
-assertLessThan(c: number | bigint, message?: string): void
+assertLessThan(c: number | bigint, message?: string): void;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:325](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L325)
+Defined in: [lib/provable/foreign-field.ts:325](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L325)
 
 Assert that this field element is less than a constant c: `x < c`.
 
@@ -617,10 +617,10 @@ ForeignFieldWithMul.assertLessThan
 ### div()
 
 ```ts
-div(y: number | bigint | AlmostForeignField): AlmostForeignField
+div(y: number | bigint | AlmostForeignField): AlmostForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:447](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L447)
+Defined in: [lib/provable/foreign-field.ts:447](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L447)
 
 Division in the finite field, i.e. `x*y^(-1) mod p` where `y^(-1)` is the finite field inverse.
 
@@ -652,10 +652,10 @@ ForeignFieldWithMul.div
 ### equals()
 
 ```ts
-equals(y: number | bigint | CanonicalForeignField): Bool
+equals(y: number | bigint | CanonicalForeignField): Bool;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:549](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L549)
+Defined in: [lib/provable/foreign-field.ts:549](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L549)
 
 Check equality with a ForeignField-like value.
 
@@ -663,7 +663,7 @@ Check equality with a ForeignField-like value.
 
 ##### y
 
-`number` | `bigint` | [`CanonicalForeignField`](CanonicalForeignField.mdx)
+`number` | `bigint` | `CanonicalForeignField`
 
 #### Returns
 
@@ -683,10 +683,10 @@ misuse, because not being exactly equal does not imply being unequal modulo p.
 ### inv()
 
 ```ts
-inv(): AlmostForeignField
+inv(): AlmostForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:433](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L433)
+Defined in: [lib/provable/foreign-field.ts:433](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L433)
 
 Multiplicative inverse in the finite field
 
@@ -712,10 +712,10 @@ ForeignFieldWithMul.inv
 ### mul()
 
 ```ts
-mul(y: number | bigint | AlmostForeignField): UnreducedForeignField
+mul(y: number | bigint | AlmostForeignField): UnreducedForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:419](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L419)
+Defined in: [lib/provable/foreign-field.ts:419](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L419)
 
 Finite field multiplication
 
@@ -746,10 +746,10 @@ ForeignFieldWithMul.mul
 ### neg()
 
 ```ts
-neg(): AlmostForeignField
+neg(): AlmostForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:221](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L221)
+Defined in: [lib/provable/foreign-field.ts:221](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L221)
 
 Finite field negation
 
@@ -774,10 +774,10 @@ ForeignFieldWithMul.neg
 ### sub()
 
 ```ts
-sub(y: number | bigint | ForeignField): UnreducedForeignField
+sub(y: number | bigint | ForeignField): UnreducedForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:236](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L236)
+Defined in: [lib/provable/foreign-field.ts:236](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L236)
 
 Finite field subtraction
 
@@ -808,10 +808,10 @@ ForeignFieldWithMul.sub
 ### toBigInt()
 
 ```ts
-toBigInt(): bigint
+toBigInt(): bigint;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:148](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L148)
+Defined in: [lib/provable/foreign-field.ts:148](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L148)
 
 Convert this field element to a bigint.
 
@@ -830,10 +830,10 @@ ForeignFieldWithMul.toBigInt
 ### toBits()
 
 ```ts
-toBits(length?: number): Bool[]
+toBits(length?: number): Bool[];
 ```
 
-Defined in: [lib/provable/foreign-field.ts:344](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L344)
+Defined in: [lib/provable/foreign-field.ts:344](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L344)
 
 Unpack a field element to its bits, as a [Bool](Bool.mdx)[] array.
 
@@ -860,12 +860,12 @@ ForeignFieldWithMul.toBits
 ### toFields()
 
 ```ts
-toFields(): Field[]
+toFields(): Field[];
 ```
 
-Defined in: [lib/provable/foreign-field.ts:392](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L392)
+Defined in: [lib/provable/foreign-field.ts:392](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L392)
 
-Instance version of `Provable<ForeignField>.toFields`, see [Provable.toFields](../type-aliases/Provable.mdx#tofields)
+Instance version of `Provable<ForeignField>.toFields`, see [Provable.toFields](../type-aliases/Provable-1.mdx#tofields)
 
 #### Returns
 
@@ -882,10 +882,10 @@ ForeignFieldWithMul.toFields
 ### assertAlmostReduced()
 
 ```ts
-static assertAlmostReduced<T>(...xs: T): [...{ [i in string | number | symbol]: AlmostForeignField }[]]
+static assertAlmostReduced<T>(...xs: T): [...{ [i in string | number | symbol]: AlmostForeignField }[]];
 ```
 
-Defined in: [lib/provable/foreign-field.ts:179](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L179)
+Defined in: [lib/provable/foreign-field.ts:179](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L179)
 
 Assert that one or more field elements lie in the range [0, 2^k),
 where k = ceil(log2(p)) and p is the foreign field modulus.
@@ -894,7 +894,9 @@ This is most efficient than when checking a multiple of 3 field elements at once
 
 #### Type Parameters
 
-• **T** *extends* `Tuple`\<[`ForeignField`](ForeignField.mdx)\>
+##### T
+
+`T` *extends* `Tuple`\<[`ForeignField`](ForeignField.mdx)\>
 
 #### Parameters
 
@@ -917,10 +919,10 @@ ForeignFieldWithMul.assertAlmostReduced
 ### check()
 
 ```ts
-static check(x: ForeignField): void
+static check(x: ForeignField): void;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:524](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L524)
+Defined in: [lib/provable/foreign-field.ts:524](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L524)
 
 #### Parameters
 
@@ -945,10 +947,10 @@ ForeignFieldWithMul.check
 #### Call Signature
 
 ```ts
-static from(x: string | number | bigint): CanonicalForeignField
+static from(x: string | number | bigint): CanonicalForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:114](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L114)
+Defined in: [lib/provable/foreign-field.ts:114](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L114)
 
 Coerce the input to a [ForeignField](ForeignField.mdx).
 
@@ -960,7 +962,7 @@ Coerce the input to a [ForeignField](ForeignField.mdx).
 
 ##### Returns
 
-[`CanonicalForeignField`](CanonicalForeignField.mdx)
+`CanonicalForeignField`
 
 ##### Inherited from
 
@@ -971,10 +973,10 @@ ForeignFieldWithMul.from
 #### Call Signature
 
 ```ts
-static from(x: string | number | bigint | ForeignField): ForeignField
+static from(x: string | number | bigint | ForeignField): ForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:115](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L115)
+Defined in: [lib/provable/foreign-field.ts:115](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L115)
 
 Coerce the input to a [ForeignField](ForeignField.mdx).
 
@@ -999,10 +1001,10 @@ ForeignFieldWithMul.from
 ### fromBits()
 
 ```ts
-static fromBits(bits: Bool[]): AlmostForeignField
+static fromBits(bits: Bool[]): AlmostForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:374](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L374)
+Defined in: [lib/provable/foreign-field.ts:374](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L374)
 
 Create a field element from its bits, as a `Bool[]` array.
 
@@ -1029,14 +1031,14 @@ ForeignFieldWithMul.fromBits
 ### random()
 
 ```ts
-static random(): CanonicalForeignField
+static random(): CanonicalForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:385](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L385)
+Defined in: [lib/provable/foreign-field.ts:385](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L385)
 
 #### Returns
 
-[`CanonicalForeignField`](CanonicalForeignField.mdx)
+`CanonicalForeignField`
 
 #### Inherited from
 
@@ -1049,10 +1051,10 @@ ForeignFieldWithMul.random
 ### sum()
 
 ```ts
-static sum(xs: (number | bigint | ForeignField)[], operations: (-1 | 1)[]): UnreducedForeignField
+static sum(xs: (number | bigint | ForeignField)[], operations: (-1 | 1)[]): UnreducedForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:261](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L261)
+Defined in: [lib/provable/foreign-field.ts:261](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L261)
 
 Sum (or difference) of multiple finite field elements.
 
@@ -1099,12 +1101,12 @@ ForeignFieldWithMul.sum
 ### unsafeFrom()
 
 ```ts
-static unsafeFrom(x: ForeignField): CanonicalForeignField
+static unsafeFrom(x: ForeignField): CanonicalForeignField;
 ```
 
-Defined in: [lib/provable/foreign-field.ts:534](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/foreign-field.ts#L534)
+Defined in: [lib/provable/foreign-field.ts:534](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/foreign-field.ts#L534)
 
-Coerce the input to a [CanonicalForeignField](CanonicalForeignField.mdx) without additional assertions.
+Coerce the input to a CanonicalForeignField without additional assertions.
 
 **Warning:** Only use if you know what you're doing.
 
@@ -1116,4 +1118,4 @@ Coerce the input to a [CanonicalForeignField](CanonicalForeignField.mdx) without
 
 #### Returns
 
-[`CanonicalForeignField`](CanonicalForeignField.mdx)
+`CanonicalForeignField`

@@ -1,12 +1,14 @@
 ```ts
-function provablePure<A>(typeObj: A): ProvablePureExtended<InferProvable<A>, InferValue<A>, InferJson<A>>
+function provablePure<A>(typeObj: A): ProvablePureExtended<InferProvable<A, Field>, InferValue<A>, InferJson<A>>;
 ```
 
-Defined in: [lib/provable/types/provable-derivers.ts:75](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/provable-derivers.ts#L75)
+Defined in: [lib/provable/types/provable-derivers.ts:75](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/provable-derivers.ts#L75)
 
 ## Type Parameters
 
-• **A**
+### A
+
+`A`
 
 ## Parameters
 
@@ -16,4 +18,4 @@ Defined in: [lib/provable/types/provable-derivers.ts:75](https://github.com/o1-l
 
 ## Returns
 
-`ProvablePureExtended`\<[`InferProvable`](../type-aliases/InferProvable.mdx)\<`A`\>, `InferValue`\<`A`\>, `InferJson`\<`A`\>\>
+`ProvablePureExtended`\<`InferProvable`\<`A`, [`Field`](../classes/Field.mdx)\>, `InferValue`\<`A`\>, `InferJson`\<`A`\>\>

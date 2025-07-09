@@ -1,14 +1,14 @@
 ```ts
 function acquireKeyPair(options: {
-  isRegularAccount: boolean;
-  lightnetAccountManagerEndpoint: string;
- }): Promise<{
+  isRegularAccount?: boolean;
+  lightnetAccountManagerEndpoint?: string;
+}): Promise<{
   privateKey: PrivateKey;
   publicKey: PublicKey;
-}>
+}>;
 ```
 
-Defined in: [lib/mina/v1/fetch.ts:891](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/fetch.ts#L891)
+Defined in: [lib/mina/v1/fetch.ts:898](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/fetch.ts#L898)
 
 Gets random key pair (public and private keys) from account manager
 that operates with accounts configured in target network Genesis Ledger.
@@ -20,13 +20,13 @@ the data is returned.
 
 ### options
 
-#### isRegularAccount
+#### isRegularAccount?
 
 `boolean`
 
 Whether to acquire key pair of regular or zkApp account (one with already configured verification key)
 
-#### lightnetAccountManagerEndpoint
+#### lightnetAccountManagerEndpoint?
 
 `string`
 
@@ -35,8 +35,8 @@ Account manager endpoint to fetch from
 ## Returns
 
 `Promise`\<\{
-  `privateKey`: [`PrivateKey`](../../../classes/PrivateKey.mdx);
-  `publicKey`: [`PublicKey`](../../../classes/PublicKey.mdx);
- \}\>
+  `privateKey`: [`PrivateKey`](../../../../classes/PrivateKey.mdx);
+  `publicKey`: [`PublicKey`](../../../../classes/PublicKey.mdx);
+\}\>
 
 Key pair

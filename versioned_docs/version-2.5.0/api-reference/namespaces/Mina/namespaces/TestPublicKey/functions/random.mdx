@@ -1,0 +1,19 @@
+```ts
+function random<N>(count: N): N extends 1 ? TestPublicKey : TupleN<TestPublicKey, N>
+```
+
+Defined in: [lib/mina/v1/local-blockchain.ts:50](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/local-blockchain.ts#L50)
+
+## Type Parameters
+
+• **N** *extends* `number` = `1`
+
+## Parameters
+
+### count
+
+`N` = `...`
+
+## Returns
+
+`N` *extends* `1` ? [`TestPublicKey`](../../../type-aliases/TestPublicKey.mdx) : [`TupleN`](../../../../../type-aliases/TupleN.mdx)\<[`TestPublicKey`](../../../type-aliases/TestPublicKey.mdx), `N`\>

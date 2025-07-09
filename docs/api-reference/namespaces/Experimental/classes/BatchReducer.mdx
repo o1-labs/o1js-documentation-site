@@ -1,4 +1,4 @@
-Defined in: [index.ts:207](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/index.ts#L207)
+Defined in: [index.ts:209](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/index.ts#L209)
 
 A reducer to process actions in fixed-size batches.
 
@@ -25,27 +25,33 @@ batchReducer.processBatch({ batch, proof }, (action, isDummy) => {
 
 ## Type Parameters
 
-• **ActionType** *extends* `Actionable`\<`any`\>
+### ActionType
 
-• **BatchSize** *extends* `number` = `number`
+`ActionType` *extends* `Actionable`\<`any`\>
 
-• **Action** = [`InferProvable`](../../../type-aliases/InferProvable.mdx)\<`ActionType`\>
+### BatchSize
+
+`BatchSize` *extends* `number` = `number`
+
+### Action
+
+`Action` = [`InferProvable`](../../../../type-aliases/InferProvable.mdx)\<`ActionType`\>
 
 ## Constructors
 
-### new BatchReducer()
+### Constructor
 
 ```ts
 new BatchReducer<ActionType, BatchSize, Action>(__namedParameters: {
   actionType: ActionType;
   batchSize: BatchSize;
-  maxActionsPerUpdate: number;
-  maxUpdatesFinalProof: number;
-  maxUpdatesPerProof: number;
-}): BatchReducer<ActionType, BatchSize, Action>
+  maxActionsPerUpdate?: number;
+  maxUpdatesFinalProof?: number;
+  maxUpdatesPerProof?: number;
+}): BatchReducer<ActionType, BatchSize, Action>;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:75](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L75)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:75](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L75)
 
 #### Parameters
 
@@ -69,7 +75,7 @@ If every action should result in an account update, then you have to set the bat
 If transaction limits are no concern, the `batchSize` could be set based on amount of logic you do per action.
 A smaller batch size will make proofs faster, but you might need more individual transactions as more batches are needed to process all pending actions.
 
-###### maxActionsPerUpdate
+###### maxActionsPerUpdate?
 
 `number` = `...`
 
@@ -83,7 +89,7 @@ The reason is that actions in one account update are always processed together, 
 
 By default, this is set to `Math.min(batchSize, 5)` which should be sensible for most applications.
 
-###### maxUpdatesFinalProof
+###### maxUpdatesFinalProof?
 
 `number` = `100`
 
@@ -99,7 +105,7 @@ The current default should be sensible for most applications, but here are some 
 
 So, go lower if you expect very few actions, and higher if you expect a lot of actions.
 
-###### maxUpdatesPerProof
+###### maxUpdatesPerProof?
 
 `number` = `300`
 
@@ -117,7 +123,7 @@ So, go lower if you expect very few actions, and higher if you expect a lot of a
 
 #### Returns
 
-[`BatchReducer`](BatchReducer.mdx)\<`ActionType`, `BatchSize`, `Action`\>
+`BatchReducer`\<`ActionType`, `BatchSize`, `Action`\>
 
 #### Inherited from
 
@@ -133,7 +139,7 @@ BatchReducer_.BatchReducer<ActionType, BatchSize, Action>.constructor
 optional _contract: BatchReducerContract;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:164](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L164)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:164](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L164)
 
 #### Inherited from
 
@@ -149,7 +155,7 @@ BatchReducer_.BatchReducer._contract
 optional _contractClass: BatchReducerContractClass;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:165](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L165)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:165](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L165)
 
 #### Inherited from
 
@@ -164,14 +170,14 @@ BatchReducer_.BatchReducer._contractClass
 ```ts
 actionType: Provable<Action, any> & {
   empty: () => Action;
- } & {
+} & {
   toInput: (x: Action) => HashInput;
- } & Omit<Provable<Action, any>, "fromFields"> & {
+} & Omit<Provable<Action, any>, "fromFields"> & {
   fromFields: (fields: Field[]) => Action;
 };
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:66](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L66)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:66](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L66)
 
 #### Type declaration
 
@@ -215,7 +221,7 @@ fromFields: (fields: Field[]) => Action;
 
 ###### fields
 
-[`Field`](../../../classes/Field.mdx)[]
+[`Field`](../../../../classes/Field.mdx)[]
 
 ###### Returns
 
@@ -240,7 +246,7 @@ Batch: (value: {
   stack: MerkleList<MerkleList<Hashed<any>>>;
   useOnchainStack: Bool;
   witnesses: Unconstrained<ActionWitnesses>;
- }) => {
+}) => {
   isRecursive: Bool;
   onchainActionState: Field;
   onchainStack: Field;
@@ -248,9 +254,9 @@ Batch: (value: {
   stack: MerkleList<MerkleList<Hashed<any>>>;
   useOnchainStack: Bool;
   witnesses: Unconstrained<ActionWitnesses>;
- } & {
+} & {
   _isStruct: true;
- } & Provable<{
+} & Provable<{
   isRecursive: Bool;
   onchainActionState: Field;
   onchainStack: Field;
@@ -258,7 +264,7 @@ Batch: (value: {
   stack: MerkleList<MerkleList<Hashed<any>>>;
   useOnchainStack: Bool;
   witnesses: Unconstrained<ActionWitnesses>;
- }, {
+}, {
   isRecursive: boolean;
   onchainActionState: bigint;
   onchainStack: bigint;
@@ -266,7 +272,7 @@ Batch: (value: {
   stack: any;
   useOnchainStack: boolean;
   witnesses: ActionWitnesses;
- }> & {
+}> & {
   empty: () => {
      isRecursive: Bool;
      onchainActionState: Field;
@@ -275,7 +281,7 @@ Batch: (value: {
      stack: MerkleList<MerkleList<Hashed<any>>>;
      useOnchainStack: Bool;
      witnesses: Unconstrained<ActionWitnesses>;
-    };
+  };
   fromJSON: (x: {
      isRecursive: boolean;
      onchainActionState: string;
@@ -285,132 +291,237 @@ Batch: (value: {
         _emptyHash: null | string;
         _innerProvable:   | null
            | {
-           check: {};
-           empty: {};
-           fromFields: {};
-           fromValue: {};
-           toAuxiliary: {};
-           toCanonical: null | {};
-           toFields: {};
-           toInput: {};
-           toValue: {};
-           sizeInFields: ;
-          };
-        _nextHash: null | {};
+           check: {
+           };
+           empty: {
+           };
+           fromFields: {
+           };
+           fromValue: {
+           };
+           sizeInFields: {
+           };
+           toAuxiliary: {
+           };
+           toCanonical?:   | null
+              | {
+            };
+           toFields: {
+           };
+           toInput: {
+           };
+           toValue: {
+           };
+         };
+        _nextHash:   | null
+           | {
+         };
         _provable:   | null
            | {
-           check: {};
-           empty: {};
-           fromFields: {};
-           fromValue: {};
-           toAuxiliary: {};
-           toCanonical: null | {};
-           toFields: {};
-           toInput: {};
-           toValue: {};
-           sizeInFields: ;
-          };
-        empty: {};
+           check: {
+           };
+           empty: {
+           };
+           fromFields: {
+           };
+           fromValue: {
+           };
+           sizeInFields: {
+           };
+           toAuxiliary: {
+           };
+           toCanonical?:   | null
+              | {
+            };
+           toFields: {
+           };
+           toInput: {
+           };
+           toValue: {
+           };
+         };
+        create: {
+        };
+        empty: {
+        };
         emptyHash: string;
-        from: {};
-        fromReverse: {};
+        from: {
+        };
+        fromReverse: {
+        };
         prototype: {
+           clone: {
+           };
            Constructor: {
               _emptyHash: null | string;
               _innerProvable:   | null
                  | {
-                 check: {};
-                 empty: {};
-                 fromFields: {};
-                 fromValue: {};
-                 toAuxiliary: {};
-                 toCanonical: null | {};
-                 toFields: {};
-                 toInput: {};
-                 toValue: {};
-                 sizeInFields: ;
-                };
-              _nextHash: null | {};
+                 check: {
+                 };
+                 empty: {
+                 };
+                 fromFields: {
+                 };
+                 fromValue: {
+                 };
+                 sizeInFields: {
+                 };
+                 toAuxiliary: {
+                 };
+                 toCanonical?:   | null
+                    | {
+                  };
+                 toFields: {
+                 };
+                 toInput: {
+                 };
+                 toValue: {
+                 };
+               };
+              _nextHash:   | null
+                 | {
+               };
               _provable:   | null
                  | {
-                 check: {};
-                 empty: {};
-                 fromFields: {};
-                 fromValue: {};
-                 toAuxiliary: {};
-                 toCanonical: null | {};
-                 toFields: {};
-                 toInput: {};
-                 toValue: {};
-                 sizeInFields: ;
-                };
+                 check: {
+                 };
+                 empty: {
+                 };
+                 fromFields: {
+                 };
+                 fromValue: {
+                 };
+                 sizeInFields: {
+                 };
+                 toAuxiliary: {
+                 };
+                 toCanonical?:   | null
+                    | {
+                  };
+                 toFields: {
+                 };
+                 toInput: {
+                 };
+                 toValue: {
+                 };
+               };
+              create: {
+              };
               emptyHash: string;
               prototype: { hash: string; data: { get: {}; set: {}; setTo: {}; updateAsProver: {}; }; isEmpty: {}; push: {}; pushIf: {}; popExn: {}; pop: {}; popOption: {}; popIf: {}; popIfUnsafe: {}; clone: {}; forEach: {}; startIterating: {}; ... 5 more ...; readonly innerProvable: { ...; }; };
-              create: ;
-             };
+           };
            data: {
-              get: ;
-              set: ;
-              setTo: ;
-              updateAsProver: ;
-             };
+              get: {
+              };
+              set: {
+              };
+              setTo: {
+              };
+              updateAsProver: {
+              };
+           };
+           forEach: {
+           };
            hash: string;
            innerProvable: {
-              check: {};
-              empty: {};
-              fromFields: {};
-              fromValue: {};
-              toAuxiliary: {};
-              toCanonical: null | {};
-              toFields: {};
-              toInput: {};
-              toValue: {};
-              sizeInFields: ;
-             };
-           clone: ;
-           forEach: ;
-           isEmpty: ;
-           lengthUnconstrained: ;
-           nextHash: ;
-           pop: ;
-           popExn: ;
-           popIf: ;
-           popIfUnsafe: ;
-           popOption: ;
-           push: ;
-           pushIf: ;
-           startIterating: ;
-           startIteratingFromLast: ;
-           toArrayUnconstrained: ;
-          };
+              check: {
+              };
+              empty: {
+              };
+              fromFields: {
+              };
+              fromValue: {
+              };
+              sizeInFields: {
+              };
+              toAuxiliary: {
+              };
+              toCanonical?:   | null
+                 | {
+               };
+              toFields: {
+              };
+              toInput: {
+              };
+              toValue: {
+              };
+           };
+           isEmpty: {
+           };
+           lengthUnconstrained: {
+           };
+           nextHash: {
+           };
+           pop: {
+           };
+           popExn: {
+           };
+           popIf: {
+           };
+           popIfUnsafe: {
+           };
+           popOption: {
+           };
+           push: {
+           };
+           pushIf: {
+           };
+           startIterating: {
+           };
+           startIteratingFromLast: {
+           };
+           toArrayUnconstrained: {
+           };
+        };
         provable: {
-           check: {};
-           empty: {};
-           fromFields: {};
-           fromValue: {};
-           toAuxiliary: {};
-           toCanonical: null | {};
-           toFields: {};
-           toInput: {};
-           toValue: {};
-           sizeInFields: ;
-          };
-        create: ;
-       };
+           check: {
+           };
+           empty: {
+           };
+           fromFields: {
+           };
+           fromValue: {
+           };
+           sizeInFields: {
+           };
+           toAuxiliary: {
+           };
+           toCanonical?:   | null
+              | {
+            };
+           toFields: {
+           };
+           toInput: {
+           };
+           toValue: {
+           };
+        };
+     };
      useOnchainStack: boolean;
      witnesses: {
-        check: {};
-        empty: {};
-        fromFields: {};
-        fromValue: {};
-        toAuxiliary: {};
-        toCanonical: null | {};
-        toFields: {};
-        toInput: {};
-        toValue: {};
-        sizeInFields: ;
-       };
-    }) => {
+        check: {
+        };
+        empty: {
+        };
+        fromFields: {
+        };
+        fromValue: {
+        };
+        sizeInFields: {
+        };
+        toAuxiliary: {
+        };
+        toCanonical?:   | null
+           | {
+         };
+        toFields: {
+        };
+        toInput: {
+        };
+        toValue: {
+        };
+     };
+   }) => {
      isRecursive: Bool;
      onchainActionState: Field;
      onchainStack: Field;
@@ -418,7 +529,7 @@ Batch: (value: {
      stack: MerkleList<MerkleList<Hashed<any>>>;
      useOnchainStack: Bool;
      witnesses: Unconstrained<ActionWitnesses>;
-    };
+  };
   fromValue: (value: {
      isRecursive: boolean | Bool;
      onchainActionState: string | number | bigint | Field;
@@ -428,7 +539,7 @@ Batch: (value: {
      useOnchainStack: boolean | Bool;
      witnesses:   | ActionWitnesses
         | Unconstrained<ActionWitnesses>;
-    }) => {
+   }) => {
      isRecursive: Bool;
      onchainActionState: Field;
      onchainStack: Field;
@@ -436,7 +547,7 @@ Batch: (value: {
      stack: MerkleList<MerkleList<Hashed<any>>>;
      useOnchainStack: Bool;
      witnesses: Unconstrained<ActionWitnesses>;
-    };
+  };
   toInput: (x: {
      isRecursive: Bool;
      onchainActionState: Field;
@@ -445,10 +556,10 @@ Batch: (value: {
      stack: MerkleList<MerkleList<Hashed<any>>>;
      useOnchainStack: Bool;
      witnesses: Unconstrained<ActionWitnesses>;
-    }) => {
-     fields: Field[];
-     packed: [Field, number][];
-    };
+   }) => {
+     fields?: Field[];
+     packed?: [Field, number][];
+  };
   toJSON: (x: {
      isRecursive: Bool;
      onchainActionState: Field;
@@ -457,7 +568,7 @@ Batch: (value: {
      stack: MerkleList<MerkleList<Hashed<any>>>;
      useOnchainStack: Bool;
      witnesses: Unconstrained<ActionWitnesses>;
-    }) => {
+   }) => {
      isRecursive: boolean;
      onchainActionState: string;
      onchainStack: string;
@@ -466,136 +577,241 @@ Batch: (value: {
         _emptyHash: null | string;
         _innerProvable:   | null
            | {
-           check: {};
-           empty: {};
-           fromFields: {};
-           fromValue: {};
-           toAuxiliary: {};
-           toCanonical: null | {};
-           toFields: {};
-           toInput: {};
-           toValue: {};
-           sizeInFields: ;
-          };
-        _nextHash: null | {};
+           check: {
+           };
+           empty: {
+           };
+           fromFields: {
+           };
+           fromValue: {
+           };
+           sizeInFields: {
+           };
+           toAuxiliary: {
+           };
+           toCanonical?:   | null
+              | {
+            };
+           toFields: {
+           };
+           toInput: {
+           };
+           toValue: {
+           };
+         };
+        _nextHash:   | null
+           | {
+         };
         _provable:   | null
            | {
-           check: {};
-           empty: {};
-           fromFields: {};
-           fromValue: {};
-           toAuxiliary: {};
-           toCanonical: null | {};
-           toFields: {};
-           toInput: {};
-           toValue: {};
-           sizeInFields: ;
-          };
-        empty: {};
+           check: {
+           };
+           empty: {
+           };
+           fromFields: {
+           };
+           fromValue: {
+           };
+           sizeInFields: {
+           };
+           toAuxiliary: {
+           };
+           toCanonical?:   | null
+              | {
+            };
+           toFields: {
+           };
+           toInput: {
+           };
+           toValue: {
+           };
+         };
+        create: {
+        };
+        empty: {
+        };
         emptyHash: string;
-        from: {};
-        fromReverse: {};
+        from: {
+        };
+        fromReverse: {
+        };
         prototype: {
+           clone: {
+           };
            Constructor: {
               _emptyHash: null | string;
               _innerProvable:   | null
                  | {
-                 check: {};
-                 empty: {};
-                 fromFields: {};
-                 fromValue: {};
-                 toAuxiliary: {};
-                 toCanonical: null | {};
-                 toFields: {};
-                 toInput: {};
-                 toValue: {};
-                 sizeInFields: ;
-                };
-              _nextHash: null | {};
+                 check: {
+                 };
+                 empty: {
+                 };
+                 fromFields: {
+                 };
+                 fromValue: {
+                 };
+                 sizeInFields: {
+                 };
+                 toAuxiliary: {
+                 };
+                 toCanonical?:   | null
+                    | {
+                  };
+                 toFields: {
+                 };
+                 toInput: {
+                 };
+                 toValue: {
+                 };
+               };
+              _nextHash:   | null
+                 | {
+               };
               _provable:   | null
                  | {
-                 check: {};
-                 empty: {};
-                 fromFields: {};
-                 fromValue: {};
-                 toAuxiliary: {};
-                 toCanonical: null | {};
-                 toFields: {};
-                 toInput: {};
-                 toValue: {};
-                 sizeInFields: ;
-                };
+                 check: {
+                 };
+                 empty: {
+                 };
+                 fromFields: {
+                 };
+                 fromValue: {
+                 };
+                 sizeInFields: {
+                 };
+                 toAuxiliary: {
+                 };
+                 toCanonical?:   | null
+                    | {
+                  };
+                 toFields: {
+                 };
+                 toInput: {
+                 };
+                 toValue: {
+                 };
+               };
+              create: {
+              };
               emptyHash: string;
               prototype: { hash: string; data: { get: {}; set: {}; setTo: {}; updateAsProver: {}; }; isEmpty: {}; push: {}; pushIf: {}; popExn: {}; pop: {}; popOption: {}; popIf: {}; popIfUnsafe: {}; clone: {}; forEach: {}; startIterating: {}; ... 5 more ...; readonly innerProvable: { ...; }; };
-              create: ;
-             };
+           };
            data: {
-              get: ;
-              set: ;
-              setTo: ;
-              updateAsProver: ;
-             };
+              get: {
+              };
+              set: {
+              };
+              setTo: {
+              };
+              updateAsProver: {
+              };
+           };
+           forEach: {
+           };
            hash: string;
            innerProvable: {
-              check: {};
-              empty: {};
-              fromFields: {};
-              fromValue: {};
-              toAuxiliary: {};
-              toCanonical: null | {};
-              toFields: {};
-              toInput: {};
-              toValue: {};
-              sizeInFields: ;
-             };
-           clone: ;
-           forEach: ;
-           isEmpty: ;
-           lengthUnconstrained: ;
-           nextHash: ;
-           pop: ;
-           popExn: ;
-           popIf: ;
-           popIfUnsafe: ;
-           popOption: ;
-           push: ;
-           pushIf: ;
-           startIterating: ;
-           startIteratingFromLast: ;
-           toArrayUnconstrained: ;
-          };
+              check: {
+              };
+              empty: {
+              };
+              fromFields: {
+              };
+              fromValue: {
+              };
+              sizeInFields: {
+              };
+              toAuxiliary: {
+              };
+              toCanonical?:   | null
+                 | {
+               };
+              toFields: {
+              };
+              toInput: {
+              };
+              toValue: {
+              };
+           };
+           isEmpty: {
+           };
+           lengthUnconstrained: {
+           };
+           nextHash: {
+           };
+           pop: {
+           };
+           popExn: {
+           };
+           popIf: {
+           };
+           popIfUnsafe: {
+           };
+           popOption: {
+           };
+           push: {
+           };
+           pushIf: {
+           };
+           startIterating: {
+           };
+           startIteratingFromLast: {
+           };
+           toArrayUnconstrained: {
+           };
+        };
         provable: {
-           check: {};
-           empty: {};
-           fromFields: {};
-           fromValue: {};
-           toAuxiliary: {};
-           toCanonical: null | {};
-           toFields: {};
-           toInput: {};
-           toValue: {};
-           sizeInFields: ;
-          };
-        create: ;
-       };
+           check: {
+           };
+           empty: {
+           };
+           fromFields: {
+           };
+           fromValue: {
+           };
+           sizeInFields: {
+           };
+           toAuxiliary: {
+           };
+           toCanonical?:   | null
+              | {
+            };
+           toFields: {
+           };
+           toInput: {
+           };
+           toValue: {
+           };
+        };
+     };
      useOnchainStack: boolean;
      witnesses: {
-        check: {};
-        empty: {};
-        fromFields: {};
-        fromValue: {};
-        toAuxiliary: {};
-        toCanonical: null | {};
-        toFields: {};
-        toInput: {};
-        toValue: {};
-        sizeInFields: ;
-       };
-    };
+        check: {
+        };
+        empty: {
+        };
+        fromFields: {
+        };
+        fromValue: {
+        };
+        sizeInFields: {
+        };
+        toAuxiliary: {
+        };
+        toCanonical?:   | null
+           | {
+         };
+        toFields: {
+        };
+        toInput: {
+        };
+        toValue: {
+        };
+     };
+  };
 };
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:67](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L67)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:67](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L67)
 
 #### Type declaration
 
@@ -689,132 +905,237 @@ fromJSON: (x: {
      _emptyHash: null | string;
      _innerProvable:   | null
         | {
-        check: {};
-        empty: {};
-        fromFields: {};
-        fromValue: {};
-        toAuxiliary: {};
-        toCanonical: null | {};
-        toFields: {};
-        toInput: {};
-        toValue: {};
-        sizeInFields: ;
-       };
-     _nextHash: null | {};
+        check: {
+        };
+        empty: {
+        };
+        fromFields: {
+        };
+        fromValue: {
+        };
+        sizeInFields: {
+        };
+        toAuxiliary: {
+        };
+        toCanonical?:   | null
+           | {
+         };
+        toFields: {
+        };
+        toInput: {
+        };
+        toValue: {
+        };
+      };
+     _nextHash:   | null
+        | {
+      };
      _provable:   | null
         | {
-        check: {};
-        empty: {};
-        fromFields: {};
-        fromValue: {};
-        toAuxiliary: {};
-        toCanonical: null | {};
-        toFields: {};
-        toInput: {};
-        toValue: {};
-        sizeInFields: ;
-       };
-     empty: {};
+        check: {
+        };
+        empty: {
+        };
+        fromFields: {
+        };
+        fromValue: {
+        };
+        sizeInFields: {
+        };
+        toAuxiliary: {
+        };
+        toCanonical?:   | null
+           | {
+         };
+        toFields: {
+        };
+        toInput: {
+        };
+        toValue: {
+        };
+      };
+     create: {
+     };
+     empty: {
+     };
      emptyHash: string;
-     from: {};
-     fromReverse: {};
+     from: {
+     };
+     fromReverse: {
+     };
      prototype: {
+        clone: {
+        };
         Constructor: {
            _emptyHash: null | string;
            _innerProvable:   | null
               | {
-              check: {};
-              empty: {};
-              fromFields: {};
-              fromValue: {};
-              toAuxiliary: {};
-              toCanonical: null | {};
-              toFields: {};
-              toInput: {};
-              toValue: {};
-              sizeInFields: ;
-             };
-           _nextHash: null | {};
+              check: {
+              };
+              empty: {
+              };
+              fromFields: {
+              };
+              fromValue: {
+              };
+              sizeInFields: {
+              };
+              toAuxiliary: {
+              };
+              toCanonical?:   | null
+                 | {
+               };
+              toFields: {
+              };
+              toInput: {
+              };
+              toValue: {
+              };
+            };
+           _nextHash:   | null
+              | {
+            };
            _provable:   | null
               | {
-              check: {};
-              empty: {};
-              fromFields: {};
-              fromValue: {};
-              toAuxiliary: {};
-              toCanonical: null | {};
-              toFields: {};
-              toInput: {};
-              toValue: {};
-              sizeInFields: ;
-             };
+              check: {
+              };
+              empty: {
+              };
+              fromFields: {
+              };
+              fromValue: {
+              };
+              sizeInFields: {
+              };
+              toAuxiliary: {
+              };
+              toCanonical?:   | null
+                 | {
+               };
+              toFields: {
+              };
+              toInput: {
+              };
+              toValue: {
+              };
+            };
+           create: {
+           };
            emptyHash: string;
            prototype: { hash: string; data: { get: {}; set: {}; setTo: {}; updateAsProver: {}; }; isEmpty: {}; push: {}; pushIf: {}; popExn: {}; pop: {}; popOption: {}; popIf: {}; popIfUnsafe: {}; clone: {}; forEach: {}; startIterating: {}; ... 5 more ...; readonly innerProvable: { ...; }; };
-           create: ;
-          };
+        };
         data: {
-           get: ;
-           set: ;
-           setTo: ;
-           updateAsProver: ;
-          };
+           get: {
+           };
+           set: {
+           };
+           setTo: {
+           };
+           updateAsProver: {
+           };
+        };
+        forEach: {
+        };
         hash: string;
         innerProvable: {
-           check: {};
-           empty: {};
-           fromFields: {};
-           fromValue: {};
-           toAuxiliary: {};
-           toCanonical: null | {};
-           toFields: {};
-           toInput: {};
-           toValue: {};
-           sizeInFields: ;
-          };
-        clone: ;
-        forEach: ;
-        isEmpty: ;
-        lengthUnconstrained: ;
-        nextHash: ;
-        pop: ;
-        popExn: ;
-        popIf: ;
-        popIfUnsafe: ;
-        popOption: ;
-        push: ;
-        pushIf: ;
-        startIterating: ;
-        startIteratingFromLast: ;
-        toArrayUnconstrained: ;
-       };
+           check: {
+           };
+           empty: {
+           };
+           fromFields: {
+           };
+           fromValue: {
+           };
+           sizeInFields: {
+           };
+           toAuxiliary: {
+           };
+           toCanonical?:   | null
+              | {
+            };
+           toFields: {
+           };
+           toInput: {
+           };
+           toValue: {
+           };
+        };
+        isEmpty: {
+        };
+        lengthUnconstrained: {
+        };
+        nextHash: {
+        };
+        pop: {
+        };
+        popExn: {
+        };
+        popIf: {
+        };
+        popIfUnsafe: {
+        };
+        popOption: {
+        };
+        push: {
+        };
+        pushIf: {
+        };
+        startIterating: {
+        };
+        startIteratingFromLast: {
+        };
+        toArrayUnconstrained: {
+        };
+     };
      provable: {
-        check: {};
-        empty: {};
-        fromFields: {};
-        fromValue: {};
-        toAuxiliary: {};
-        toCanonical: null | {};
-        toFields: {};
-        toInput: {};
-        toValue: {};
-        sizeInFields: ;
-       };
-     create: ;
-    };
+        check: {
+        };
+        empty: {
+        };
+        fromFields: {
+        };
+        fromValue: {
+        };
+        sizeInFields: {
+        };
+        toAuxiliary: {
+        };
+        toCanonical?:   | null
+           | {
+         };
+        toFields: {
+        };
+        toInput: {
+        };
+        toValue: {
+        };
+     };
+  };
   useOnchainStack: boolean;
   witnesses: {
-     check: {};
-     empty: {};
-     fromFields: {};
-     fromValue: {};
-     toAuxiliary: {};
-     toCanonical: null | {};
-     toFields: {};
-     toInput: {};
-     toValue: {};
-     sizeInFields: ;
-    };
- }) => {
+     check: {
+     };
+     empty: {
+     };
+     fromFields: {
+     };
+     fromValue: {
+     };
+     sizeInFields: {
+     };
+     toAuxiliary: {
+     };
+     toCanonical?:   | null
+        | {
+      };
+     toFields: {
+     };
+     toInput: {
+     };
+     toValue: {
+     };
+  };
+}) => {
   isRecursive: Bool;
   onchainActionState: Field;
   onchainStack: Field;
@@ -851,118 +1172,212 @@ fromJSON: (x: {
   `_emptyHash`: `null` \| `string`;
   `_innerProvable`:   \| `null`
      \| \{
-     `check`: \{\};
-     `empty`: \{\};
-     `fromFields`: \{\};
-     `fromValue`: \{\};
-     `toAuxiliary`: \{\};
-     `toCanonical`: `null` \| \{\};
-     `toFields`: \{\};
-     `toInput`: \{\};
-     `toValue`: \{\};
-     `sizeInFields`: ;
-    \};
-  `_nextHash`: `null` \| \{\};
+     `check`: \{
+     \};
+     `empty`: \{
+     \};
+     `fromFields`: \{
+     \};
+     `fromValue`: \{
+     \};
+     `sizeInFields`: \{
+     \};
+     `toAuxiliary`: \{
+     \};
+     `toCanonical?`:   \| `null`
+        \| \{
+      \};
+     `toFields`: \{
+     \};
+     `toInput`: \{
+     \};
+     `toValue`: \{
+     \};
+   \};
+  `_nextHash`:   \| `null`
+     \| \{
+   \};
   `_provable`:   \| `null`
      \| \{
-     `check`: \{\};
-     `empty`: \{\};
-     `fromFields`: \{\};
-     `fromValue`: \{\};
-     `toAuxiliary`: \{\};
-     `toCanonical`: `null` \| \{\};
-     `toFields`: \{\};
-     `toInput`: \{\};
-     `toValue`: \{\};
-     `sizeInFields`: ;
-    \};
-  `empty`: \{\};
+     `check`: \{
+     \};
+     `empty`: \{
+     \};
+     `fromFields`: \{
+     \};
+     `fromValue`: \{
+     \};
+     `sizeInFields`: \{
+     \};
+     `toAuxiliary`: \{
+     \};
+     `toCanonical?`:   \| `null`
+        \| \{
+      \};
+     `toFields`: \{
+     \};
+     `toInput`: \{
+     \};
+     `toValue`: \{
+     \};
+   \};
+  `create`: \{
+  \};
+  `empty`: \{
+  \};
   `emptyHash`: `string`;
-  `from`: \{\};
-  `fromReverse`: \{\};
+  `from`: \{
+  \};
+  `fromReverse`: \{
+  \};
   `prototype`: \{
+     `clone`: \{
+     \};
      `Constructor`: \{
         `_emptyHash`: `null` \| `string`;
         `_innerProvable`:   \| `null`
            \| \{
-           `check`: \{\};
-           `empty`: \{\};
-           `fromFields`: \{\};
-           `fromValue`: \{\};
-           `toAuxiliary`: \{\};
-           `toCanonical`: `null` \| \{\};
-           `toFields`: \{\};
-           `toInput`: \{\};
-           `toValue`: \{\};
-           `sizeInFields`: ;
-          \};
-        `_nextHash`: `null` \| \{\};
+           `check`: \{
+           \};
+           `empty`: \{
+           \};
+           `fromFields`: \{
+           \};
+           `fromValue`: \{
+           \};
+           `sizeInFields`: \{
+           \};
+           `toAuxiliary`: \{
+           \};
+           `toCanonical?`:   \| `null`
+              \| \{
+            \};
+           `toFields`: \{
+           \};
+           `toInput`: \{
+           \};
+           `toValue`: \{
+           \};
+         \};
+        `_nextHash`:   \| `null`
+           \| \{
+         \};
         `_provable`:   \| `null`
            \| \{
-           `check`: \{\};
-           `empty`: \{\};
-           `fromFields`: \{\};
-           `fromValue`: \{\};
-           `toAuxiliary`: \{\};
-           `toCanonical`: `null` \| \{\};
-           `toFields`: \{\};
-           `toInput`: \{\};
-           `toValue`: \{\};
-           `sizeInFields`: ;
-          \};
+           `check`: \{
+           \};
+           `empty`: \{
+           \};
+           `fromFields`: \{
+           \};
+           `fromValue`: \{
+           \};
+           `sizeInFields`: \{
+           \};
+           `toAuxiliary`: \{
+           \};
+           `toCanonical?`:   \| `null`
+              \| \{
+            \};
+           `toFields`: \{
+           \};
+           `toInput`: \{
+           \};
+           `toValue`: \{
+           \};
+         \};
+        `create`: \{
+        \};
         `emptyHash`: `string`;
         `prototype`: \{ hash: string; data: \{ get: \{\}; set: \{\}; setTo: \{\}; updateAsProver: \{\}; \}; isEmpty: \{\}; push: \{\}; pushIf: \{\}; popExn: \{\}; pop: \{\}; popOption: \{\}; popIf: \{\}; popIfUnsafe: \{\}; clone: \{\}; forEach: \{\}; startIterating: \{\}; ... 5 more ...; readonly innerProvable: \{ ...; \}; \};
-        `create`: ;
-       \};
+     \};
      `data`: \{
-        `get`: ;
-        `set`: ;
-        `setTo`: ;
-        `updateAsProver`: ;
-       \};
+        `get`: \{
+        \};
+        `set`: \{
+        \};
+        `setTo`: \{
+        \};
+        `updateAsProver`: \{
+        \};
+     \};
+     `forEach`: \{
+     \};
      `hash`: `string`;
      `innerProvable`: \{
-        `check`: \{\};
-        `empty`: \{\};
-        `fromFields`: \{\};
-        `fromValue`: \{\};
-        `toAuxiliary`: \{\};
-        `toCanonical`: `null` \| \{\};
-        `toFields`: \{\};
-        `toInput`: \{\};
-        `toValue`: \{\};
-        `sizeInFields`: ;
-       \};
-     `clone`: ;
-     `forEach`: ;
-     `isEmpty`: ;
-     `lengthUnconstrained`: ;
-     `nextHash`: ;
-     `pop`: ;
-     `popExn`: ;
-     `popIf`: ;
-     `popIfUnsafe`: ;
-     `popOption`: ;
-     `push`: ;
-     `pushIf`: ;
-     `startIterating`: ;
-     `startIteratingFromLast`: ;
-     `toArrayUnconstrained`: ;
-    \};
+        `check`: \{
+        \};
+        `empty`: \{
+        \};
+        `fromFields`: \{
+        \};
+        `fromValue`: \{
+        \};
+        `sizeInFields`: \{
+        \};
+        `toAuxiliary`: \{
+        \};
+        `toCanonical?`:   \| `null`
+           \| \{
+         \};
+        `toFields`: \{
+        \};
+        `toInput`: \{
+        \};
+        `toValue`: \{
+        \};
+     \};
+     `isEmpty`: \{
+     \};
+     `lengthUnconstrained`: \{
+     \};
+     `nextHash`: \{
+     \};
+     `pop`: \{
+     \};
+     `popExn`: \{
+     \};
+     `popIf`: \{
+     \};
+     `popIfUnsafe`: \{
+     \};
+     `popOption`: \{
+     \};
+     `push`: \{
+     \};
+     `pushIf`: \{
+     \};
+     `startIterating`: \{
+     \};
+     `startIteratingFromLast`: \{
+     \};
+     `toArrayUnconstrained`: \{
+     \};
+  \};
   `provable`: \{
-     `check`: \{\};
-     `empty`: \{\};
-     `fromFields`: \{\};
-     `fromValue`: \{\};
-     `toAuxiliary`: \{\};
-     `toCanonical`: `null` \| \{\};
-     `toFields`: \{\};
-     `toInput`: \{\};
-     `toValue`: \{\};
-     `sizeInFields`: ;
-    \};
-  `create`: ;
- \} = `...`
+     `check`: \{
+     \};
+     `empty`: \{
+     \};
+     `fromFields`: \{
+     \};
+     `fromValue`: \{
+     \};
+     `sizeInFields`: \{
+     \};
+     `toAuxiliary`: \{
+     \};
+     `toCanonical?`:   \| `null`
+        \| \{
+      \};
+     `toFields`: \{
+     \};
+     `toInput`: \{
+     \};
+     `toValue`: \{
+     \};
+  \};
+\} = `...`
 
 ###### stack._emptyHash
 
@@ -972,41 +1387,71 @@ fromJSON: (x: {
 
   \| `null`
   \| \{
-  `check`: \{\};
-  `empty`: \{\};
-  `fromFields`: \{\};
-  `fromValue`: \{\};
-  `toAuxiliary`: \{\};
-  `toCanonical`: `null` \| \{\};
-  `toFields`: \{\};
-  `toInput`: \{\};
-  `toValue`: \{\};
-  `sizeInFields`: ;
- \}
+  `check`: \{
+  \};
+  `empty`: \{
+  \};
+  `fromFields`: \{
+  \};
+  `fromValue`: \{
+  \};
+  `sizeInFields`: \{
+  \};
+  `toAuxiliary`: \{
+  \};
+  `toCanonical?`:   \| `null`
+     \| \{
+   \};
+  `toFields`: \{
+  \};
+  `toInput`: \{
+  \};
+  `toValue`: \{
+  \};
+\}
 
 ###### stack._nextHash
 
-`null` \| \{\}
+  \| `null`
+  \| \{
+\}
 
 ###### stack._provable
 
   \| `null`
   \| \{
-  `check`: \{\};
-  `empty`: \{\};
-  `fromFields`: \{\};
-  `fromValue`: \{\};
-  `toAuxiliary`: \{\};
-  `toCanonical`: `null` \| \{\};
-  `toFields`: \{\};
-  `toInput`: \{\};
-  `toValue`: \{\};
-  `sizeInFields`: ;
- \}
+  `check`: \{
+  \};
+  `empty`: \{
+  \};
+  `fromFields`: \{
+  \};
+  `fromValue`: \{
+  \};
+  `sizeInFields`: \{
+  \};
+  `toAuxiliary`: \{
+  \};
+  `toCanonical?`:   \| `null`
+     \| \{
+   \};
+  `toFields`: \{
+  \};
+  `toInput`: \{
+  \};
+  `toValue`: \{
+  \};
+\}
+
+###### stack.create
+
+\{
+\}
 
 ###### stack.empty
 
-\{\}
+\{
+\}
 
 ###### stack.emptyHash
 
@@ -1014,83 +1459,145 @@ fromJSON: (x: {
 
 ###### stack.from
 
-\{\}
+\{
+\}
 
 ###### stack.fromReverse
 
-\{\}
+\{
+\}
 
 ###### stack.prototype
 
 \{
+  `clone`: \{
+  \};
   `Constructor`: \{
      `_emptyHash`: `null` \| `string`;
      `_innerProvable`:   \| `null`
         \| \{
-        `check`: \{\};
-        `empty`: \{\};
-        `fromFields`: \{\};
-        `fromValue`: \{\};
-        `toAuxiliary`: \{\};
-        `toCanonical`: `null` \| \{\};
-        `toFields`: \{\};
-        `toInput`: \{\};
-        `toValue`: \{\};
-        `sizeInFields`: ;
-       \};
-     `_nextHash`: `null` \| \{\};
+        `check`: \{
+        \};
+        `empty`: \{
+        \};
+        `fromFields`: \{
+        \};
+        `fromValue`: \{
+        \};
+        `sizeInFields`: \{
+        \};
+        `toAuxiliary`: \{
+        \};
+        `toCanonical?`:   \| `null`
+           \| \{
+         \};
+        `toFields`: \{
+        \};
+        `toInput`: \{
+        \};
+        `toValue`: \{
+        \};
+      \};
+     `_nextHash`:   \| `null`
+        \| \{
+      \};
      `_provable`:   \| `null`
         \| \{
-        `check`: \{\};
-        `empty`: \{\};
-        `fromFields`: \{\};
-        `fromValue`: \{\};
-        `toAuxiliary`: \{\};
-        `toCanonical`: `null` \| \{\};
-        `toFields`: \{\};
-        `toInput`: \{\};
-        `toValue`: \{\};
-        `sizeInFields`: ;
-       \};
+        `check`: \{
+        \};
+        `empty`: \{
+        \};
+        `fromFields`: \{
+        \};
+        `fromValue`: \{
+        \};
+        `sizeInFields`: \{
+        \};
+        `toAuxiliary`: \{
+        \};
+        `toCanonical?`:   \| `null`
+           \| \{
+         \};
+        `toFields`: \{
+        \};
+        `toInput`: \{
+        \};
+        `toValue`: \{
+        \};
+      \};
+     `create`: \{
+     \};
      `emptyHash`: `string`;
      `prototype`: \{ hash: string; data: \{ get: \{\}; set: \{\}; setTo: \{\}; updateAsProver: \{\}; \}; isEmpty: \{\}; push: \{\}; pushIf: \{\}; popExn: \{\}; pop: \{\}; popOption: \{\}; popIf: \{\}; popIfUnsafe: \{\}; clone: \{\}; forEach: \{\}; startIterating: \{\}; ... 5 more ...; readonly innerProvable: \{ ...; \}; \};
-     `create`: ;
-    \};
+  \};
   `data`: \{
-     `get`: ;
-     `set`: ;
-     `setTo`: ;
-     `updateAsProver`: ;
-    \};
+     `get`: \{
+     \};
+     `set`: \{
+     \};
+     `setTo`: \{
+     \};
+     `updateAsProver`: \{
+     \};
+  \};
+  `forEach`: \{
+  \};
   `hash`: `string`;
   `innerProvable`: \{
-     `check`: \{\};
-     `empty`: \{\};
-     `fromFields`: \{\};
-     `fromValue`: \{\};
-     `toAuxiliary`: \{\};
-     `toCanonical`: `null` \| \{\};
-     `toFields`: \{\};
-     `toInput`: \{\};
-     `toValue`: \{\};
-     `sizeInFields`: ;
-    \};
-  `clone`: ;
-  `forEach`: ;
-  `isEmpty`: ;
-  `lengthUnconstrained`: ;
-  `nextHash`: ;
-  `pop`: ;
-  `popExn`: ;
-  `popIf`: ;
-  `popIfUnsafe`: ;
-  `popOption`: ;
-  `push`: ;
-  `pushIf`: ;
-  `startIterating`: ;
-  `startIteratingFromLast`: ;
-  `toArrayUnconstrained`: ;
- \}
+     `check`: \{
+     \};
+     `empty`: \{
+     \};
+     `fromFields`: \{
+     \};
+     `fromValue`: \{
+     \};
+     `sizeInFields`: \{
+     \};
+     `toAuxiliary`: \{
+     \};
+     `toCanonical?`:   \| `null`
+        \| \{
+      \};
+     `toFields`: \{
+     \};
+     `toInput`: \{
+     \};
+     `toValue`: \{
+     \};
+  \};
+  `isEmpty`: \{
+  \};
+  `lengthUnconstrained`: \{
+  \};
+  `nextHash`: \{
+  \};
+  `pop`: \{
+  \};
+  `popExn`: \{
+  \};
+  `popIf`: \{
+  \};
+  `popIfUnsafe`: \{
+  \};
+  `popOption`: \{
+  \};
+  `push`: \{
+  \};
+  `pushIf`: \{
+  \};
+  `startIterating`: \{
+  \};
+  `startIteratingFromLast`: \{
+  \};
+  `toArrayUnconstrained`: \{
+  \};
+\}
+
+###### stack.prototype.clone
+
+\{
+\}
 
 ###### stack.prototype.Constructor
 
@@ -1098,35 +1605,60 @@ fromJSON: (x: {
   `_emptyHash`: `null` \| `string`;
   `_innerProvable`:   \| `null`
      \| \{
-     `check`: \{\};
-     `empty`: \{\};
-     `fromFields`: \{\};
-     `fromValue`: \{\};
-     `toAuxiliary`: \{\};
-     `toCanonical`: `null` \| \{\};
-     `toFields`: \{\};
-     `toInput`: \{\};
-     `toValue`: \{\};
-     `sizeInFields`: ;
-    \};
-  `_nextHash`: `null` \| \{\};
+     `check`: \{
+     \};
+     `empty`: \{
+     \};
+     `fromFields`: \{
+     \};
+     `fromValue`: \{
+     \};
+     `sizeInFields`: \{
+     \};
+     `toAuxiliary`: \{
+     \};
+     `toCanonical?`:   \| `null`
+        \| \{
+      \};
+     `toFields`: \{
+     \};
+     `toInput`: \{
+     \};
+     `toValue`: \{
+     \};
+   \};
+  `_nextHash`:   \| `null`
+     \| \{
+   \};
   `_provable`:   \| `null`
      \| \{
-     `check`: \{\};
-     `empty`: \{\};
-     `fromFields`: \{\};
-     `fromValue`: \{\};
-     `toAuxiliary`: \{\};
-     `toCanonical`: `null` \| \{\};
-     `toFields`: \{\};
-     `toInput`: \{\};
-     `toValue`: \{\};
-     `sizeInFields`: ;
-    \};
+     `check`: \{
+     \};
+     `empty`: \{
+     \};
+     `fromFields`: \{
+     \};
+     `fromValue`: \{
+     \};
+     `sizeInFields`: \{
+     \};
+     `toAuxiliary`: \{
+     \};
+     `toCanonical?`:   \| `null`
+        \| \{
+      \};
+     `toFields`: \{
+     \};
+     `toInput`: \{
+     \};
+     `toValue`: \{
+     \};
+   \};
+  `create`: \{
+  \};
   `emptyHash`: `string`;
   `prototype`: \{ hash: string; data: \{ get: \{\}; set: \{\}; setTo: \{\}; updateAsProver: \{\}; \}; isEmpty: \{\}; push: \{\}; pushIf: \{\}; popExn: \{\}; pop: \{\}; popOption: \{\}; popIf: \{\}; popIfUnsafe: \{\}; clone: \{\}; forEach: \{\}; startIterating: \{\}; ... 5 more ...; readonly innerProvable: \{ ...; \}; \};
-  `create`: ;
- \}
+\}
 
 ###### stack.prototype.Constructor._emptyHash
 
@@ -1136,37 +1668,66 @@ fromJSON: (x: {
 
   \| `null`
   \| \{
-  `check`: \{\};
-  `empty`: \{\};
-  `fromFields`: \{\};
-  `fromValue`: \{\};
-  `toAuxiliary`: \{\};
-  `toCanonical`: `null` \| \{\};
-  `toFields`: \{\};
-  `toInput`: \{\};
-  `toValue`: \{\};
-  `sizeInFields`: ;
- \}
+  `check`: \{
+  \};
+  `empty`: \{
+  \};
+  `fromFields`: \{
+  \};
+  `fromValue`: \{
+  \};
+  `sizeInFields`: \{
+  \};
+  `toAuxiliary`: \{
+  \};
+  `toCanonical?`:   \| `null`
+     \| \{
+   \};
+  `toFields`: \{
+  \};
+  `toInput`: \{
+  \};
+  `toValue`: \{
+  \};
+\}
 
 ###### stack.prototype.Constructor._nextHash
 
-`null` \| \{\}
+  \| `null`
+  \| \{
+\}
 
 ###### stack.prototype.Constructor._provable
 
   \| `null`
   \| \{
-  `check`: \{\};
-  `empty`: \{\};
-  `fromFields`: \{\};
-  `fromValue`: \{\};
-  `toAuxiliary`: \{\};
-  `toCanonical`: `null` \| \{\};
-  `toFields`: \{\};
-  `toInput`: \{\};
-  `toValue`: \{\};
-  `sizeInFields`: ;
- \}
+  `check`: \{
+  \};
+  `empty`: \{
+  \};
+  `fromFields`: \{
+  \};
+  `fromValue`: \{
+  \};
+  `sizeInFields`: \{
+  \};
+  `toAuxiliary`: \{
+  \};
+  `toCanonical?`:   \| `null`
+     \| \{
+   \};
+  `toFields`: \{
+  \};
+  `toInput`: \{
+  \};
+  `toValue`: \{
+  \};
+\}
+
+###### stack.prototype.Constructor.create
+
+\{
+\}
 
 ###### stack.prototype.Constructor.emptyHash
 
@@ -1176,24 +1737,43 @@ fromJSON: (x: {
 
 \{ hash: string; data: \{ get: \{\}; set: \{\}; setTo: \{\}; updateAsProver: \{\}; \}; isEmpty: \{\}; push: \{\}; pushIf: \{\}; popExn: \{\}; pop: \{\}; popOption: \{\}; popIf: \{\}; popIfUnsafe: \{\}; clone: \{\}; forEach: \{\}; startIterating: \{\}; ... 5 more ...; readonly innerProvable: \{ ...; \}; \}
 
-###### stack.prototype.Constructor.create
-
 ###### stack.prototype.data
 
 \{
-  `get`: ;
-  `set`: ;
-  `setTo`: ;
-  `updateAsProver`: ;
- \}
+  `get`: \{
+  \};
+  `set`: \{
+  \};
+  `setTo`: \{
+  \};
+  `updateAsProver`: \{
+  \};
+\}
 
 ###### stack.prototype.data.get
 
+\{
+\}
+
 ###### stack.prototype.data.set
+
+\{
+\}
 
 ###### stack.prototype.data.setTo
 
+\{
+\}
+
 ###### stack.prototype.data.updateAsProver
+
+\{
+\}
+
+###### stack.prototype.forEach
+
+\{
+\}
 
 ###### stack.prototype.hash
 
@@ -1202,26 +1782,38 @@ fromJSON: (x: {
 ###### stack.prototype.innerProvable
 
 \{
-  `check`: \{\};
-  `empty`: \{\};
-  `fromFields`: \{\};
-  `fromValue`: \{\};
-  `toAuxiliary`: \{\};
-  `toCanonical`: `null` \| \{\};
-  `toFields`: \{\};
-  `toInput`: \{\};
-  `toValue`: \{\};
-  `sizeInFields`: ;
- \}
+  `check`: \{
+  \};
+  `empty`: \{
+  \};
+  `fromFields`: \{
+  \};
+  `fromValue`: \{
+  \};
+  `sizeInFields`: \{
+  \};
+  `toAuxiliary`: \{
+  \};
+  `toCanonical?`:   \| `null`
+     \| \{
+   \};
+  `toFields`: \{
+  \};
+  `toInput`: \{
+  \};
+  `toValue`: \{
+  \};
+\}
 
 ###### stack.prototype.innerProvable.check
 
-\{\}
+\{
+\}
 
 Add assertions to the proof to check if `value` is a valid member of type `T`.
 This function does not return anything, instead it creates any number of assertions to prove that `value` is a valid member of the type `T`.
 
-For instance, calling check function on the type [Bool](../../../classes/Bool.mdx) asserts that the value of the element is either 1 or 0.
+For instance, calling check function on the type [Bool](../../../../classes/Bool.mdx) asserts that the value of the element is either 1 or 0.
 
 **Param**
 
@@ -1229,19 +1821,21 @@ the element of type `T` to put assertions on.
 
 ###### stack.prototype.innerProvable.empty
 
-\{\}
+\{
+\}
 
 ###### stack.prototype.innerProvable.fromFields
 
-\{\}
+\{
+\}
 
 A function that returns an element of type `T` from the given provable and "auxiliary" data.
 
-This function is the reverse operation of calling toFields and toAuxiliary methods on an element of type `T`.
+This function is the reverse operation of calling [toFields](#batch) and [toAuxiliary](#batch) methods on an element of type `T`.
 
 **Param**
 
-an array of [Field](../../../classes/Field.mdx) elements describing the provable data of the new `T` element.
+an array of [Field](../../../../classes/Field.mdx) elements describing the provable data of the new `T` element.
 
 **Param**
 
@@ -1249,13 +1843,20 @@ an array of any type describing the "auxiliary" data of the new `T` element, opt
 
 ###### stack.prototype.innerProvable.fromValue
 
-\{\}
+\{
+\}
 
 Convert provable type from a normal JS type.
 
+###### stack.prototype.innerProvable.sizeInFields
+
+\{
+\}
+
 ###### stack.prototype.innerProvable.toAuxiliary
 
-\{\}
+\{
+\}
 
 A function that takes `value` (optional), an element of type `T`, as argument and
 returns an array of any type that make up the "auxiliary" (non-provable) data of `value`.
@@ -1265,9 +1866,11 @@ returns an array of any type that make up the "auxiliary" (non-provable) data of
 the element of type `T` to generate the auxiliary data array from, optional.
 If not provided, a default value for auxiliary data is returned.
 
-###### stack.prototype.innerProvable.toCanonical
+###### stack.prototype.innerProvable.toCanonical?
 
-`null` \| \{\}
+  \| `null`
+  \| \{
+\}
 
 Optional method which transforms a provable type into its canonical representation.
 
@@ -1286,80 +1889,128 @@ The identity function will also be used when the `toCanonical()` is not present 
 
 ###### stack.prototype.innerProvable.toFields
 
-\{\}
+\{
+\}
 
 A function that takes `value`, an element of type `T`, as argument and returns
-an array of [Field](../../../classes/Field.mdx) elements that make up the provable data of `value`.
+an array of [Field](../../../../classes/Field.mdx) elements that make up the provable data of `value`.
 
 **Param**
 
-the element of type `T` to generate the [Field](../../../classes/Field.mdx) array from.
+the element of type `T` to generate the [Field](../../../../classes/Field.mdx) array from.
 
 ###### stack.prototype.innerProvable.toInput
 
-\{\}
+\{
+\}
 
 ###### stack.prototype.innerProvable.toValue
 
-\{\}
+\{
+\}
 
 Convert provable type to a normal JS type.
 
-###### stack.prototype.innerProvable.sizeInFields
-
-###### stack.prototype.clone
-
-###### stack.prototype.forEach
-
 ###### stack.prototype.isEmpty
+
+\{
+\}
 
 ###### stack.prototype.lengthUnconstrained
 
+\{
+\}
+
 ###### stack.prototype.nextHash
+
+\{
+\}
 
 ###### stack.prototype.pop
 
+\{
+\}
+
 ###### stack.prototype.popExn
+
+\{
+\}
 
 ###### stack.prototype.popIf
 
+\{
+\}
+
 ###### stack.prototype.popIfUnsafe
+
+\{
+\}
 
 ###### stack.prototype.popOption
 
+\{
+\}
+
 ###### stack.prototype.push
+
+\{
+\}
 
 ###### stack.prototype.pushIf
 
+\{
+\}
+
 ###### stack.prototype.startIterating
+
+\{
+\}
 
 ###### stack.prototype.startIteratingFromLast
 
+\{
+\}
+
 ###### stack.prototype.toArrayUnconstrained
+
+\{
+\}
 
 ###### stack.provable
 
 \{
-  `check`: \{\};
-  `empty`: \{\};
-  `fromFields`: \{\};
-  `fromValue`: \{\};
-  `toAuxiliary`: \{\};
-  `toCanonical`: `null` \| \{\};
-  `toFields`: \{\};
-  `toInput`: \{\};
-  `toValue`: \{\};
-  `sizeInFields`: ;
- \}
+  `check`: \{
+  \};
+  `empty`: \{
+  \};
+  `fromFields`: \{
+  \};
+  `fromValue`: \{
+  \};
+  `sizeInFields`: \{
+  \};
+  `toAuxiliary`: \{
+  \};
+  `toCanonical?`:   \| `null`
+     \| \{
+   \};
+  `toFields`: \{
+  \};
+  `toInput`: \{
+  \};
+  `toValue`: \{
+  \};
+\}
 
 ###### stack.provable.check
 
-\{\}
+\{
+\}
 
 Add assertions to the proof to check if `value` is a valid member of type `T`.
 This function does not return anything, instead it creates any number of assertions to prove that `value` is a valid member of the type `T`.
 
-For instance, calling check function on the type [Bool](../../../classes/Bool.mdx) asserts that the value of the element is either 1 or 0.
+For instance, calling check function on the type [Bool](../../../../classes/Bool.mdx) asserts that the value of the element is either 1 or 0.
 
 **Param**
 
@@ -1367,19 +2018,21 @@ the element of type `T` to put assertions on.
 
 ###### stack.provable.empty
 
-\{\}
+\{
+\}
 
 ###### stack.provable.fromFields
 
-\{\}
+\{
+\}
 
 A function that returns an element of type `T` from the given provable and "auxiliary" data.
 
-This function is the reverse operation of calling toFields and toAuxiliary methods on an element of type `T`.
+This function is the reverse operation of calling [toFields](#batch) and [toAuxiliary](#batch) methods on an element of type `T`.
 
 **Param**
 
-an array of [Field](../../../classes/Field.mdx) elements describing the provable data of the new `T` element.
+an array of [Field](../../../../classes/Field.mdx) elements describing the provable data of the new `T` element.
 
 **Param**
 
@@ -1387,13 +2040,20 @@ an array of any type describing the "auxiliary" data of the new `T` element, opt
 
 ###### stack.provable.fromValue
 
-\{\}
+\{
+\}
 
 Convert provable type from a normal JS type.
 
+###### stack.provable.sizeInFields
+
+\{
+\}
+
 ###### stack.provable.toAuxiliary
 
-\{\}
+\{
+\}
 
 A function that takes `value` (optional), an element of type `T`, as argument and
 returns an array of any type that make up the "auxiliary" (non-provable) data of `value`.
@@ -1403,9 +2063,11 @@ returns an array of any type that make up the "auxiliary" (non-provable) data of
 the element of type `T` to generate the auxiliary data array from, optional.
 If not provided, a default value for auxiliary data is returned.
 
-###### stack.provable.toCanonical
+###### stack.provable.toCanonical?
 
-`null` \| \{\}
+  \| `null`
+  \| \{
+\}
 
 Optional method which transforms a provable type into its canonical representation.
 
@@ -1424,28 +2086,27 @@ The identity function will also be used when the `toCanonical()` is not present 
 
 ###### stack.provable.toFields
 
-\{\}
+\{
+\}
 
 A function that takes `value`, an element of type `T`, as argument and returns
-an array of [Field](../../../classes/Field.mdx) elements that make up the provable data of `value`.
+an array of [Field](../../../../classes/Field.mdx) elements that make up the provable data of `value`.
 
 **Param**
 
-the element of type `T` to generate the [Field](../../../classes/Field.mdx) array from.
+the element of type `T` to generate the [Field](../../../../classes/Field.mdx) array from.
 
 ###### stack.provable.toInput
 
-\{\}
+\{
+\}
 
 ###### stack.provable.toValue
 
-\{\}
+\{
+\}
 
 Convert provable type to a normal JS type.
-
-###### stack.provable.sizeInFields
-
-###### stack.create
 
 ###### useOnchainStack
 
@@ -1454,26 +2115,38 @@ Convert provable type to a normal JS type.
 ###### witnesses
 
 \{
-  `check`: \{\};
-  `empty`: \{\};
-  `fromFields`: \{\};
-  `fromValue`: \{\};
-  `toAuxiliary`: \{\};
-  `toCanonical`: `null` \| \{\};
-  `toFields`: \{\};
-  `toInput`: \{\};
-  `toValue`: \{\};
-  `sizeInFields`: ;
- \} = `...`
+  `check`: \{
+  \};
+  `empty`: \{
+  \};
+  `fromFields`: \{
+  \};
+  `fromValue`: \{
+  \};
+  `sizeInFields`: \{
+  \};
+  `toAuxiliary`: \{
+  \};
+  `toCanonical?`:   \| `null`
+     \| \{
+   \};
+  `toFields`: \{
+  \};
+  `toInput`: \{
+  \};
+  `toValue`: \{
+  \};
+\} = `...`
 
 ###### witnesses.check
 
-\{\}
+\{
+\}
 
 Add assertions to the proof to check if `value` is a valid member of type `T`.
 This function does not return anything, instead it creates any number of assertions to prove that `value` is a valid member of the type `T`.
 
-For instance, calling check function on the type [Bool](../../../classes/Bool.mdx) asserts that the value of the element is either 1 or 0.
+For instance, calling check function on the type [Bool](../../../../classes/Bool.mdx) asserts that the value of the element is either 1 or 0.
 
 **Param**
 
@@ -1481,19 +2154,21 @@ the element of type `T` to put assertions on.
 
 ###### witnesses.empty
 
-\{\}
+\{
+\}
 
 ###### witnesses.fromFields
 
-\{\}
+\{
+\}
 
 A function that returns an element of type `T` from the given provable and "auxiliary" data.
 
-This function is the reverse operation of calling toFields and toAuxiliary methods on an element of type `T`.
+This function is the reverse operation of calling [toFields](#batch) and [toAuxiliary](#batch) methods on an element of type `T`.
 
 **Param**
 
-an array of [Field](../../../classes/Field.mdx) elements describing the provable data of the new `T` element.
+an array of [Field](../../../../classes/Field.mdx) elements describing the provable data of the new `T` element.
 
 **Param**
 
@@ -1501,13 +2176,20 @@ an array of any type describing the "auxiliary" data of the new `T` element, opt
 
 ###### witnesses.fromValue
 
-\{\}
+\{
+\}
 
 Convert provable type from a normal JS type.
 
+###### witnesses.sizeInFields
+
+\{
+\}
+
 ###### witnesses.toAuxiliary
 
-\{\}
+\{
+\}
 
 A function that takes `value` (optional), an element of type `T`, as argument and
 returns an array of any type that make up the "auxiliary" (non-provable) data of `value`.
@@ -1517,9 +2199,11 @@ returns an array of any type that make up the "auxiliary" (non-provable) data of
 the element of type `T` to generate the auxiliary data array from, optional.
 If not provided, a default value for auxiliary data is returned.
 
-###### witnesses.toCanonical
+###### witnesses.toCanonical?
 
-`null` \| \{\}
+  \| `null`
+  \| \{
+\}
 
 Optional method which transforms a provable type into its canonical representation.
 
@@ -1538,26 +2222,27 @@ The identity function will also be used when the `toCanonical()` is not present 
 
 ###### witnesses.toFields
 
-\{\}
+\{
+\}
 
 A function that takes `value`, an element of type `T`, as argument and returns
-an array of [Field](../../../classes/Field.mdx) elements that make up the provable data of `value`.
+an array of [Field](../../../../classes/Field.mdx) elements that make up the provable data of `value`.
 
 **Param**
 
-the element of type `T` to generate the [Field](../../../classes/Field.mdx) array from.
+the element of type `T` to generate the [Field](../../../../classes/Field.mdx) array from.
 
 ###### witnesses.toInput
 
-\{\}
+\{
+\}
 
 ###### witnesses.toValue
 
-\{\}
+\{
+\}
 
 Convert provable type to a normal JS type.
-
-###### witnesses.sizeInFields
 
 ###### Returns
 
@@ -1627,7 +2312,7 @@ fromValue: (value: {
   useOnchainStack: boolean | Bool;
   witnesses:   | ActionWitnesses
      | Unconstrained<ActionWitnesses>;
- }) => {
+}) => {
   isRecursive: Bool;
   onchainActionState: Field;
   onchainStack: Field;
@@ -1644,19 +2329,19 @@ fromValue: (value: {
 
 ###### isRecursive
 
-`boolean` \| [`Bool`](../../../classes/Bool.mdx) = `Bool`
+`boolean` \| [`Bool`](../../../../classes/Bool.mdx) = `Bool`
 
 ###### onchainActionState
 
-`string` \| `number` \| `bigint` \| [`Field`](../../../classes/Field.mdx) = `Field`
+`string` \| `number` \| `bigint` \| [`Field`](../../../../classes/Field.mdx) = `Field`
 
 ###### onchainStack
 
-`string` \| `number` \| `bigint` \| [`Field`](../../../classes/Field.mdx) = `Field`
+`string` \| `number` \| `bigint` \| [`Field`](../../../../classes/Field.mdx) = `Field`
 
 ###### processedActionState
 
-`string` \| `number` \| `bigint` \| [`Field`](../../../classes/Field.mdx) = `Field`
+`string` \| `number` \| `bigint` \| [`Field`](../../../../classes/Field.mdx) = `Field`
 
 ###### stack
 
@@ -1664,12 +2349,12 @@ fromValue: (value: {
 
 ###### useOnchainStack
 
-`boolean` \| [`Bool`](../../../classes/Bool.mdx) = `Bool`
+`boolean` \| [`Bool`](../../../../classes/Bool.mdx) = `Bool`
 
 ###### witnesses
 
   \| `ActionWitnesses`
-  \| [`Unconstrained`](../../../classes/Unconstrained.mdx)\<`ActionWitnesses`\> = `...`
+  \| [`Unconstrained`](../../../../classes/Unconstrained.mdx)\<`ActionWitnesses`\> = `...`
 
 ###### Returns
 
@@ -1738,9 +2423,9 @@ toInput: (x: {
   stack: MerkleList<MerkleList<Hashed<any>>>;
   useOnchainStack: Bool;
   witnesses: Unconstrained<ActionWitnesses>;
- }) => {
-  fields: Field[];
-  packed: [Field, number][];
+}) => {
+  fields?: Field[];
+  packed?: [Field, number][];
 };
 ```
 
@@ -1750,38 +2435,38 @@ toInput: (x: {
 
 ###### isRecursive
 
-[`Bool`](../../../classes/Bool.mdx) = `Bool`
+[`Bool`](../../../../classes/Bool.mdx) = `Bool`
 
 ###### onchainActionState
 
-[`Field`](../../../classes/Field.mdx) = `Field`
+[`Field`](../../../../classes/Field.mdx) = `Field`
 
 ###### onchainStack
 
-[`Field`](../../../classes/Field.mdx) = `Field`
+[`Field`](../../../../classes/Field.mdx) = `Field`
 
 ###### processedActionState
 
-[`Field`](../../../classes/Field.mdx) = `Field`
+[`Field`](../../../../classes/Field.mdx) = `Field`
 
 ###### stack
 
-[`MerkleList`](../../../classes/MerkleList.mdx)\<[`MerkleList`](../../../classes/MerkleList.mdx)\<[`Hashed`](../../../classes/Hashed.mdx)\<`any`\>\>\> = `...`
+[`MerkleList`](../../../../classes/MerkleList.mdx)\<[`MerkleList`](../../../../classes/MerkleList.mdx)\<[`Hashed`](../../../../classes/Hashed.mdx)\<`any`\>\>\> = `...`
 
 ###### useOnchainStack
 
-[`Bool`](../../../classes/Bool.mdx) = `Bool`
+[`Bool`](../../../../classes/Bool.mdx) = `Bool`
 
 ###### witnesses
 
-[`Unconstrained`](../../../classes/Unconstrained.mdx)\<`ActionWitnesses`\> = `...`
+[`Unconstrained`](../../../../classes/Unconstrained.mdx)\<`ActionWitnesses`\> = `...`
 
 ###### Returns
 
 ```ts
 {
-  fields: Field[];
-  packed: [Field, number][];
+  fields?: Field[];
+  packed?: [Field, number][];
 }
 ```
 
@@ -1808,7 +2493,7 @@ toJSON: (x: {
   stack: MerkleList<MerkleList<Hashed<any>>>;
   useOnchainStack: Bool;
   witnesses: Unconstrained<ActionWitnesses>;
- }) => {
+}) => {
   isRecursive: boolean;
   onchainActionState: string;
   onchainStack: string;
@@ -1817,131 +2502,236 @@ toJSON: (x: {
      _emptyHash: null | string;
      _innerProvable:   | null
         | {
-        check: {};
-        empty: {};
-        fromFields: {};
-        fromValue: {};
-        toAuxiliary: {};
-        toCanonical: null | {};
-        toFields: {};
-        toInput: {};
-        toValue: {};
-        sizeInFields: ;
-       };
-     _nextHash: null | {};
+        check: {
+        };
+        empty: {
+        };
+        fromFields: {
+        };
+        fromValue: {
+        };
+        sizeInFields: {
+        };
+        toAuxiliary: {
+        };
+        toCanonical?:   | null
+           | {
+         };
+        toFields: {
+        };
+        toInput: {
+        };
+        toValue: {
+        };
+      };
+     _nextHash:   | null
+        | {
+      };
      _provable:   | null
         | {
-        check: {};
-        empty: {};
-        fromFields: {};
-        fromValue: {};
-        toAuxiliary: {};
-        toCanonical: null | {};
-        toFields: {};
-        toInput: {};
-        toValue: {};
-        sizeInFields: ;
-       };
-     empty: {};
+        check: {
+        };
+        empty: {
+        };
+        fromFields: {
+        };
+        fromValue: {
+        };
+        sizeInFields: {
+        };
+        toAuxiliary: {
+        };
+        toCanonical?:   | null
+           | {
+         };
+        toFields: {
+        };
+        toInput: {
+        };
+        toValue: {
+        };
+      };
+     create: {
+     };
+     empty: {
+     };
      emptyHash: string;
-     from: {};
-     fromReverse: {};
+     from: {
+     };
+     fromReverse: {
+     };
      prototype: {
+        clone: {
+        };
         Constructor: {
            _emptyHash: null | string;
            _innerProvable:   | null
               | {
-              check: {};
-              empty: {};
-              fromFields: {};
-              fromValue: {};
-              toAuxiliary: {};
-              toCanonical: null | {};
-              toFields: {};
-              toInput: {};
-              toValue: {};
-              sizeInFields: ;
-             };
-           _nextHash: null | {};
+              check: {
+              };
+              empty: {
+              };
+              fromFields: {
+              };
+              fromValue: {
+              };
+              sizeInFields: {
+              };
+              toAuxiliary: {
+              };
+              toCanonical?:   | null
+                 | {
+               };
+              toFields: {
+              };
+              toInput: {
+              };
+              toValue: {
+              };
+            };
+           _nextHash:   | null
+              | {
+            };
            _provable:   | null
               | {
-              check: {};
-              empty: {};
-              fromFields: {};
-              fromValue: {};
-              toAuxiliary: {};
-              toCanonical: null | {};
-              toFields: {};
-              toInput: {};
-              toValue: {};
-              sizeInFields: ;
-             };
+              check: {
+              };
+              empty: {
+              };
+              fromFields: {
+              };
+              fromValue: {
+              };
+              sizeInFields: {
+              };
+              toAuxiliary: {
+              };
+              toCanonical?:   | null
+                 | {
+               };
+              toFields: {
+              };
+              toInput: {
+              };
+              toValue: {
+              };
+            };
+           create: {
+           };
            emptyHash: string;
            prototype: { hash: string; data: { get: {}; set: {}; setTo: {}; updateAsProver: {}; }; isEmpty: {}; push: {}; pushIf: {}; popExn: {}; pop: {}; popOption: {}; popIf: {}; popIfUnsafe: {}; clone: {}; forEach: {}; startIterating: {}; ... 5 more ...; readonly innerProvable: { ...; }; };
-           create: ;
-          };
+        };
         data: {
-           get: ;
-           set: ;
-           setTo: ;
-           updateAsProver: ;
-          };
+           get: {
+           };
+           set: {
+           };
+           setTo: {
+           };
+           updateAsProver: {
+           };
+        };
+        forEach: {
+        };
         hash: string;
         innerProvable: {
-           check: {};
-           empty: {};
-           fromFields: {};
-           fromValue: {};
-           toAuxiliary: {};
-           toCanonical: null | {};
-           toFields: {};
-           toInput: {};
-           toValue: {};
-           sizeInFields: ;
-          };
-        clone: ;
-        forEach: ;
-        isEmpty: ;
-        lengthUnconstrained: ;
-        nextHash: ;
-        pop: ;
-        popExn: ;
-        popIf: ;
-        popIfUnsafe: ;
-        popOption: ;
-        push: ;
-        pushIf: ;
-        startIterating: ;
-        startIteratingFromLast: ;
-        toArrayUnconstrained: ;
-       };
+           check: {
+           };
+           empty: {
+           };
+           fromFields: {
+           };
+           fromValue: {
+           };
+           sizeInFields: {
+           };
+           toAuxiliary: {
+           };
+           toCanonical?:   | null
+              | {
+            };
+           toFields: {
+           };
+           toInput: {
+           };
+           toValue: {
+           };
+        };
+        isEmpty: {
+        };
+        lengthUnconstrained: {
+        };
+        nextHash: {
+        };
+        pop: {
+        };
+        popExn: {
+        };
+        popIf: {
+        };
+        popIfUnsafe: {
+        };
+        popOption: {
+        };
+        push: {
+        };
+        pushIf: {
+        };
+        startIterating: {
+        };
+        startIteratingFromLast: {
+        };
+        toArrayUnconstrained: {
+        };
+     };
      provable: {
-        check: {};
-        empty: {};
-        fromFields: {};
-        fromValue: {};
-        toAuxiliary: {};
-        toCanonical: null | {};
-        toFields: {};
-        toInput: {};
-        toValue: {};
-        sizeInFields: ;
-       };
-     create: ;
-    };
+        check: {
+        };
+        empty: {
+        };
+        fromFields: {
+        };
+        fromValue: {
+        };
+        sizeInFields: {
+        };
+        toAuxiliary: {
+        };
+        toCanonical?:   | null
+           | {
+         };
+        toFields: {
+        };
+        toInput: {
+        };
+        toValue: {
+        };
+     };
+  };
   useOnchainStack: boolean;
   witnesses: {
-     check: {};
-     empty: {};
-     fromFields: {};
-     fromValue: {};
-     toAuxiliary: {};
-     toCanonical: null | {};
-     toFields: {};
-     toInput: {};
-     toValue: {};
-     sizeInFields: ;
-    };
+     check: {
+     };
+     empty: {
+     };
+     fromFields: {
+     };
+     fromValue: {
+     };
+     sizeInFields: {
+     };
+     toAuxiliary: {
+     };
+     toCanonical?:   | null
+        | {
+      };
+     toFields: {
+     };
+     toInput: {
+     };
+     toValue: {
+     };
+  };
 };
 ```
 
@@ -1951,31 +2741,31 @@ toJSON: (x: {
 
 ###### isRecursive
 
-[`Bool`](../../../classes/Bool.mdx) = `Bool`
+[`Bool`](../../../../classes/Bool.mdx) = `Bool`
 
 ###### onchainActionState
 
-[`Field`](../../../classes/Field.mdx) = `Field`
+[`Field`](../../../../classes/Field.mdx) = `Field`
 
 ###### onchainStack
 
-[`Field`](../../../classes/Field.mdx) = `Field`
+[`Field`](../../../../classes/Field.mdx) = `Field`
 
 ###### processedActionState
 
-[`Field`](../../../classes/Field.mdx) = `Field`
+[`Field`](../../../../classes/Field.mdx) = `Field`
 
 ###### stack
 
-[`MerkleList`](../../../classes/MerkleList.mdx)\<[`MerkleList`](../../../classes/MerkleList.mdx)\<[`Hashed`](../../../classes/Hashed.mdx)\<`any`\>\>\> = `...`
+[`MerkleList`](../../../../classes/MerkleList.mdx)\<[`MerkleList`](../../../../classes/MerkleList.mdx)\<[`Hashed`](../../../../classes/Hashed.mdx)\<`any`\>\>\> = `...`
 
 ###### useOnchainStack
 
-[`Bool`](../../../classes/Bool.mdx) = `Bool`
+[`Bool`](../../../../classes/Bool.mdx) = `Bool`
 
 ###### witnesses
 
-[`Unconstrained`](../../../classes/Unconstrained.mdx)\<`ActionWitnesses`\> = `...`
+[`Unconstrained`](../../../../classes/Unconstrained.mdx)\<`ActionWitnesses`\> = `...`
 
 ###### Returns
 
@@ -1989,131 +2779,236 @@ toJSON: (x: {
      _emptyHash: null | string;
      _innerProvable:   | null
         | {
-        check: {};
-        empty: {};
-        fromFields: {};
-        fromValue: {};
-        toAuxiliary: {};
-        toCanonical: null | {};
-        toFields: {};
-        toInput: {};
-        toValue: {};
-        sizeInFields: ;
-       };
-     _nextHash: null | {};
+        check: {
+        };
+        empty: {
+        };
+        fromFields: {
+        };
+        fromValue: {
+        };
+        sizeInFields: {
+        };
+        toAuxiliary: {
+        };
+        toCanonical?:   | null
+           | {
+         };
+        toFields: {
+        };
+        toInput: {
+        };
+        toValue: {
+        };
+      };
+     _nextHash:   | null
+        | {
+      };
      _provable:   | null
         | {
-        check: {};
-        empty: {};
-        fromFields: {};
-        fromValue: {};
-        toAuxiliary: {};
-        toCanonical: null | {};
-        toFields: {};
-        toInput: {};
-        toValue: {};
-        sizeInFields: ;
-       };
-     empty: {};
+        check: {
+        };
+        empty: {
+        };
+        fromFields: {
+        };
+        fromValue: {
+        };
+        sizeInFields: {
+        };
+        toAuxiliary: {
+        };
+        toCanonical?:   | null
+           | {
+         };
+        toFields: {
+        };
+        toInput: {
+        };
+        toValue: {
+        };
+      };
+     create: {
+     };
+     empty: {
+     };
      emptyHash: string;
-     from: {};
-     fromReverse: {};
+     from: {
+     };
+     fromReverse: {
+     };
      prototype: {
+        clone: {
+        };
         Constructor: {
            _emptyHash: null | string;
            _innerProvable:   | null
               | {
-              check: {};
-              empty: {};
-              fromFields: {};
-              fromValue: {};
-              toAuxiliary: {};
-              toCanonical: null | {};
-              toFields: {};
-              toInput: {};
-              toValue: {};
-              sizeInFields: ;
-             };
-           _nextHash: null | {};
+              check: {
+              };
+              empty: {
+              };
+              fromFields: {
+              };
+              fromValue: {
+              };
+              sizeInFields: {
+              };
+              toAuxiliary: {
+              };
+              toCanonical?:   | null
+                 | {
+               };
+              toFields: {
+              };
+              toInput: {
+              };
+              toValue: {
+              };
+            };
+           _nextHash:   | null
+              | {
+            };
            _provable:   | null
               | {
-              check: {};
-              empty: {};
-              fromFields: {};
-              fromValue: {};
-              toAuxiliary: {};
-              toCanonical: null | {};
-              toFields: {};
-              toInput: {};
-              toValue: {};
-              sizeInFields: ;
-             };
+              check: {
+              };
+              empty: {
+              };
+              fromFields: {
+              };
+              fromValue: {
+              };
+              sizeInFields: {
+              };
+              toAuxiliary: {
+              };
+              toCanonical?:   | null
+                 | {
+               };
+              toFields: {
+              };
+              toInput: {
+              };
+              toValue: {
+              };
+            };
+           create: {
+           };
            emptyHash: string;
            prototype: { hash: string; data: { get: {}; set: {}; setTo: {}; updateAsProver: {}; }; isEmpty: {}; push: {}; pushIf: {}; popExn: {}; pop: {}; popOption: {}; popIf: {}; popIfUnsafe: {}; clone: {}; forEach: {}; startIterating: {}; ... 5 more ...; readonly innerProvable: { ...; }; };
-           create: ;
-          };
+        };
         data: {
-           get: ;
-           set: ;
-           setTo: ;
-           updateAsProver: ;
-          };
+           get: {
+           };
+           set: {
+           };
+           setTo: {
+           };
+           updateAsProver: {
+           };
+        };
+        forEach: {
+        };
         hash: string;
         innerProvable: {
-           check: {};
-           empty: {};
-           fromFields: {};
-           fromValue: {};
-           toAuxiliary: {};
-           toCanonical: null | {};
-           toFields: {};
-           toInput: {};
-           toValue: {};
-           sizeInFields: ;
-          };
-        clone: ;
-        forEach: ;
-        isEmpty: ;
-        lengthUnconstrained: ;
-        nextHash: ;
-        pop: ;
-        popExn: ;
-        popIf: ;
-        popIfUnsafe: ;
-        popOption: ;
-        push: ;
-        pushIf: ;
-        startIterating: ;
-        startIteratingFromLast: ;
-        toArrayUnconstrained: ;
-       };
+           check: {
+           };
+           empty: {
+           };
+           fromFields: {
+           };
+           fromValue: {
+           };
+           sizeInFields: {
+           };
+           toAuxiliary: {
+           };
+           toCanonical?:   | null
+              | {
+            };
+           toFields: {
+           };
+           toInput: {
+           };
+           toValue: {
+           };
+        };
+        isEmpty: {
+        };
+        lengthUnconstrained: {
+        };
+        nextHash: {
+        };
+        pop: {
+        };
+        popExn: {
+        };
+        popIf: {
+        };
+        popIfUnsafe: {
+        };
+        popOption: {
+        };
+        push: {
+        };
+        pushIf: {
+        };
+        startIterating: {
+        };
+        startIteratingFromLast: {
+        };
+        toArrayUnconstrained: {
+        };
+     };
      provable: {
-        check: {};
-        empty: {};
-        fromFields: {};
-        fromValue: {};
-        toAuxiliary: {};
-        toCanonical: null | {};
-        toFields: {};
-        toInput: {};
-        toValue: {};
-        sizeInFields: ;
-       };
-     create: ;
-    };
+        check: {
+        };
+        empty: {
+        };
+        fromFields: {
+        };
+        fromValue: {
+        };
+        sizeInFields: {
+        };
+        toAuxiliary: {
+        };
+        toCanonical?:   | null
+           | {
+         };
+        toFields: {
+        };
+        toInput: {
+        };
+        toValue: {
+        };
+     };
+  };
   useOnchainStack: boolean;
   witnesses: {
-     check: {};
-     empty: {};
-     fromFields: {};
-     fromValue: {};
-     toAuxiliary: {};
-     toCanonical: null | {};
-     toFields: {};
-     toInput: {};
-     toValue: {};
-     sizeInFields: ;
-    };
+     check: {
+     };
+     empty: {
+     };
+     fromFields: {
+     };
+     fromValue: {
+     };
+     sizeInFields: {
+     };
+     toAuxiliary: {
+     };
+     toCanonical?:   | null
+        | {
+      };
+     toFields: {
+     };
+     toInput: {
+     };
+     toValue: {
+     };
+  };
 }
 ```
 
@@ -2148,117 +3043,211 @@ stack: {
   _emptyHash: null | string;
   _innerProvable:   | null
      | {
-     check: {};
-     empty: {};
-     fromFields: {};
-     fromValue: {};
-     toAuxiliary: {};
-     toCanonical: null | {};
-     toFields: {};
-     toInput: {};
-     toValue: {};
-     sizeInFields: ;
-    };
-  _nextHash: null | {};
+     check: {
+     };
+     empty: {
+     };
+     fromFields: {
+     };
+     fromValue: {
+     };
+     sizeInFields: {
+     };
+     toAuxiliary: {
+     };
+     toCanonical?:   | null
+        | {
+      };
+     toFields: {
+     };
+     toInput: {
+     };
+     toValue: {
+     };
+   };
+  _nextHash:   | null
+     | {
+   };
   _provable:   | null
      | {
-     check: {};
-     empty: {};
-     fromFields: {};
-     fromValue: {};
-     toAuxiliary: {};
-     toCanonical: null | {};
-     toFields: {};
-     toInput: {};
-     toValue: {};
-     sizeInFields: ;
-    };
-  empty: {};
+     check: {
+     };
+     empty: {
+     };
+     fromFields: {
+     };
+     fromValue: {
+     };
+     sizeInFields: {
+     };
+     toAuxiliary: {
+     };
+     toCanonical?:   | null
+        | {
+      };
+     toFields: {
+     };
+     toInput: {
+     };
+     toValue: {
+     };
+   };
+  create: {
+  };
+  empty: {
+  };
   emptyHash: string;
-  from: {};
-  fromReverse: {};
+  from: {
+  };
+  fromReverse: {
+  };
   prototype: {
+     clone: {
+     };
      Constructor: {
         _emptyHash: null | string;
         _innerProvable:   | null
            | {
-           check: {};
-           empty: {};
-           fromFields: {};
-           fromValue: {};
-           toAuxiliary: {};
-           toCanonical: null | {};
-           toFields: {};
-           toInput: {};
-           toValue: {};
-           sizeInFields: ;
-          };
-        _nextHash: null | {};
+           check: {
+           };
+           empty: {
+           };
+           fromFields: {
+           };
+           fromValue: {
+           };
+           sizeInFields: {
+           };
+           toAuxiliary: {
+           };
+           toCanonical?:   | null
+              | {
+            };
+           toFields: {
+           };
+           toInput: {
+           };
+           toValue: {
+           };
+         };
+        _nextHash:   | null
+           | {
+         };
         _provable:   | null
            | {
-           check: {};
-           empty: {};
-           fromFields: {};
-           fromValue: {};
-           toAuxiliary: {};
-           toCanonical: null | {};
-           toFields: {};
-           toInput: {};
-           toValue: {};
-           sizeInFields: ;
-          };
+           check: {
+           };
+           empty: {
+           };
+           fromFields: {
+           };
+           fromValue: {
+           };
+           sizeInFields: {
+           };
+           toAuxiliary: {
+           };
+           toCanonical?:   | null
+              | {
+            };
+           toFields: {
+           };
+           toInput: {
+           };
+           toValue: {
+           };
+         };
+        create: {
+        };
         emptyHash: string;
         prototype: { hash: string; data: { get: {}; set: {}; setTo: {}; updateAsProver: {}; }; isEmpty: {}; push: {}; pushIf: {}; popExn: {}; pop: {}; popOption: {}; popIf: {}; popIfUnsafe: {}; clone: {}; forEach: {}; startIterating: {}; ... 5 more ...; readonly innerProvable: { ...; }; };
-        create: ;
-       };
+     };
      data: {
-        get: ;
-        set: ;
-        setTo: ;
-        updateAsProver: ;
-       };
+        get: {
+        };
+        set: {
+        };
+        setTo: {
+        };
+        updateAsProver: {
+        };
+     };
+     forEach: {
+     };
      hash: string;
      innerProvable: {
-        check: {};
-        empty: {};
-        fromFields: {};
-        fromValue: {};
-        toAuxiliary: {};
-        toCanonical: null | {};
-        toFields: {};
-        toInput: {};
-        toValue: {};
-        sizeInFields: ;
-       };
-     clone: ;
-     forEach: ;
-     isEmpty: ;
-     lengthUnconstrained: ;
-     nextHash: ;
-     pop: ;
-     popExn: ;
-     popIf: ;
-     popIfUnsafe: ;
-     popOption: ;
-     push: ;
-     pushIf: ;
-     startIterating: ;
-     startIteratingFromLast: ;
-     toArrayUnconstrained: ;
-    };
+        check: {
+        };
+        empty: {
+        };
+        fromFields: {
+        };
+        fromValue: {
+        };
+        sizeInFields: {
+        };
+        toAuxiliary: {
+        };
+        toCanonical?:   | null
+           | {
+         };
+        toFields: {
+        };
+        toInput: {
+        };
+        toValue: {
+        };
+     };
+     isEmpty: {
+     };
+     lengthUnconstrained: {
+     };
+     nextHash: {
+     };
+     pop: {
+     };
+     popExn: {
+     };
+     popIf: {
+     };
+     popIfUnsafe: {
+     };
+     popOption: {
+     };
+     push: {
+     };
+     pushIf: {
+     };
+     startIterating: {
+     };
+     startIteratingFromLast: {
+     };
+     toArrayUnconstrained: {
+     };
+  };
   provable: {
-     check: {};
-     empty: {};
-     fromFields: {};
-     fromValue: {};
-     toAuxiliary: {};
-     toCanonical: null | {};
-     toFields: {};
-     toInput: {};
-     toValue: {};
-     sizeInFields: ;
-    };
-  create: ;
+     check: {
+     };
+     empty: {
+     };
+     fromFields: {
+     };
+     fromValue: {
+     };
+     sizeInFields: {
+     };
+     toAuxiliary: {
+     };
+     toCanonical?:   | null
+        | {
+      };
+     toFields: {
+     };
+     toInput: {
+     };
+     toValue: {
+     };
+  };
 };
 ```
 
@@ -2274,16 +3263,27 @@ _emptyHash: null | string;
 _innerProvable: 
   | null
   | {
-  check: {};
-  empty: {};
-  fromFields: {};
-  fromValue: {};
-  toAuxiliary: {};
-  toCanonical: null | {};
-  toFields: {};
-  toInput: {};
-  toValue: {};
-  sizeInFields: ;
+  check: {
+  };
+  empty: {
+  };
+  fromFields: {
+  };
+  fromValue: {
+  };
+  sizeInFields: {
+  };
+  toAuxiliary: {
+  };
+  toCanonical?:   | null
+     | {
+   };
+  toFields: {
+  };
+  toInput: {
+  };
+  toValue: {
+  };
 };
 ```
 
@@ -2291,23 +3291,39 @@ _innerProvable:
 
 `null`
 
-\{
-  `check`: \{\};
-  `empty`: \{\};
-  `fromFields`: \{\};
-  `fromValue`: \{\};
-  `toAuxiliary`: \{\};
-  `toCanonical`: `null` \| \{\};
-  `toFields`: \{\};
-  `toInput`: \{\};
-  `toValue`: \{\};
-  `sizeInFields`: ;
- \}
+```ts
+{
+  check: {
+  };
+  empty: {
+  };
+  fromFields: {
+  };
+  fromValue: {
+  };
+  sizeInFields: {
+  };
+  toAuxiliary: {
+  };
+  toCanonical?:   | null
+     | {
+   };
+  toFields: {
+  };
+  toInput: {
+  };
+  toValue: {
+  };
+}
+```
 
 ###### stack.\_nextHash
 
 ```ts
-_nextHash: null | {};
+_nextHash: 
+  | null
+  | {
+};
 ```
 
 ###### stack.\_provable
@@ -2316,16 +3332,27 @@ _nextHash: null | {};
 _provable: 
   | null
   | {
-  check: {};
-  empty: {};
-  fromFields: {};
-  fromValue: {};
-  toAuxiliary: {};
-  toCanonical: null | {};
-  toFields: {};
-  toInput: {};
-  toValue: {};
-  sizeInFields: ;
+  check: {
+  };
+  empty: {
+  };
+  fromFields: {
+  };
+  fromValue: {
+  };
+  sizeInFields: {
+  };
+  toAuxiliary: {
+  };
+  toCanonical?:   | null
+     | {
+   };
+  toFields: {
+  };
+  toInput: {
+  };
+  toValue: {
+  };
 };
 ```
 
@@ -2333,23 +3360,44 @@ _provable:
 
 `null`
 
-\{
-  `check`: \{\};
-  `empty`: \{\};
-  `fromFields`: \{\};
-  `fromValue`: \{\};
-  `toAuxiliary`: \{\};
-  `toCanonical`: `null` \| \{\};
-  `toFields`: \{\};
-  `toInput`: \{\};
-  `toValue`: \{\};
-  `sizeInFields`: ;
- \}
+```ts
+{
+  check: {
+  };
+  empty: {
+  };
+  fromFields: {
+  };
+  fromValue: {
+  };
+  sizeInFields: {
+  };
+  toAuxiliary: {
+  };
+  toCanonical?:   | null
+     | {
+   };
+  toFields: {
+  };
+  toInput: {
+  };
+  toValue: {
+  };
+}
+```
+
+###### stack.create
+
+```ts
+create: {
+};
+```
 
 ###### stack.empty
 
 ```ts
-empty: {};
+empty: {
+};
 ```
 
 ###### stack.emptyHash
@@ -2361,86 +3409,150 @@ emptyHash: string;
 ###### stack.from
 
 ```ts
-from: {};
+from: {
+};
 ```
 
 ###### stack.fromReverse
 
 ```ts
-fromReverse: {};
+fromReverse: {
+};
 ```
 
 ###### stack.prototype
 
 ```ts
 prototype: {
+  clone: {
+  };
   Constructor: {
      _emptyHash: null | string;
      _innerProvable:   | null
         | {
-        check: {};
-        empty: {};
-        fromFields: {};
-        fromValue: {};
-        toAuxiliary: {};
-        toCanonical: null | {};
-        toFields: {};
-        toInput: {};
-        toValue: {};
-        sizeInFields: ;
-       };
-     _nextHash: null | {};
+        check: {
+        };
+        empty: {
+        };
+        fromFields: {
+        };
+        fromValue: {
+        };
+        sizeInFields: {
+        };
+        toAuxiliary: {
+        };
+        toCanonical?:   | null
+           | {
+         };
+        toFields: {
+        };
+        toInput: {
+        };
+        toValue: {
+        };
+      };
+     _nextHash:   | null
+        | {
+      };
      _provable:   | null
         | {
-        check: {};
-        empty: {};
-        fromFields: {};
-        fromValue: {};
-        toAuxiliary: {};
-        toCanonical: null | {};
-        toFields: {};
-        toInput: {};
-        toValue: {};
-        sizeInFields: ;
-       };
+        check: {
+        };
+        empty: {
+        };
+        fromFields: {
+        };
+        fromValue: {
+        };
+        sizeInFields: {
+        };
+        toAuxiliary: {
+        };
+        toCanonical?:   | null
+           | {
+         };
+        toFields: {
+        };
+        toInput: {
+        };
+        toValue: {
+        };
+      };
+     create: {
+     };
      emptyHash: string;
      prototype: { hash: string; data: { get: {}; set: {}; setTo: {}; updateAsProver: {}; }; isEmpty: {}; push: {}; pushIf: {}; popExn: {}; pop: {}; popOption: {}; popIf: {}; popIfUnsafe: {}; clone: {}; forEach: {}; startIterating: {}; ... 5 more ...; readonly innerProvable: { ...; }; };
-     create: ;
-    };
+  };
   data: {
-     get: ;
-     set: ;
-     setTo: ;
-     updateAsProver: ;
-    };
+     get: {
+     };
+     set: {
+     };
+     setTo: {
+     };
+     updateAsProver: {
+     };
+  };
+  forEach: {
+  };
   hash: string;
   innerProvable: {
-     check: {};
-     empty: {};
-     fromFields: {};
-     fromValue: {};
-     toAuxiliary: {};
-     toCanonical: null | {};
-     toFields: {};
-     toInput: {};
-     toValue: {};
-     sizeInFields: ;
-    };
-  clone: ;
-  forEach: ;
-  isEmpty: ;
-  lengthUnconstrained: ;
-  nextHash: ;
-  pop: ;
-  popExn: ;
-  popIf: ;
-  popIfUnsafe: ;
-  popOption: ;
-  push: ;
-  pushIf: ;
-  startIterating: ;
-  startIteratingFromLast: ;
-  toArrayUnconstrained: ;
+     check: {
+     };
+     empty: {
+     };
+     fromFields: {
+     };
+     fromValue: {
+     };
+     sizeInFields: {
+     };
+     toAuxiliary: {
+     };
+     toCanonical?:   | null
+        | {
+      };
+     toFields: {
+     };
+     toInput: {
+     };
+     toValue: {
+     };
+  };
+  isEmpty: {
+  };
+  lengthUnconstrained: {
+  };
+  nextHash: {
+  };
+  pop: {
+  };
+  popExn: {
+  };
+  popIf: {
+  };
+  popIfUnsafe: {
+  };
+  popOption: {
+  };
+  push: {
+  };
+  pushIf: {
+  };
+  startIterating: {
+  };
+  startIteratingFromLast: {
+  };
+  toArrayUnconstrained: {
+  };
+};
+```
+
+###### stack.prototype.clone
+
+```ts
+clone: {
 };
 ```
 
@@ -2451,34 +3563,59 @@ Constructor: {
   _emptyHash: null | string;
   _innerProvable:   | null
      | {
-     check: {};
-     empty: {};
-     fromFields: {};
-     fromValue: {};
-     toAuxiliary: {};
-     toCanonical: null | {};
-     toFields: {};
-     toInput: {};
-     toValue: {};
-     sizeInFields: ;
-    };
-  _nextHash: null | {};
+     check: {
+     };
+     empty: {
+     };
+     fromFields: {
+     };
+     fromValue: {
+     };
+     sizeInFields: {
+     };
+     toAuxiliary: {
+     };
+     toCanonical?:   | null
+        | {
+      };
+     toFields: {
+     };
+     toInput: {
+     };
+     toValue: {
+     };
+   };
+  _nextHash:   | null
+     | {
+   };
   _provable:   | null
      | {
-     check: {};
-     empty: {};
-     fromFields: {};
-     fromValue: {};
-     toAuxiliary: {};
-     toCanonical: null | {};
-     toFields: {};
-     toInput: {};
-     toValue: {};
-     sizeInFields: ;
-    };
+     check: {
+     };
+     empty: {
+     };
+     fromFields: {
+     };
+     fromValue: {
+     };
+     sizeInFields: {
+     };
+     toAuxiliary: {
+     };
+     toCanonical?:   | null
+        | {
+      };
+     toFields: {
+     };
+     toInput: {
+     };
+     toValue: {
+     };
+   };
+  create: {
+  };
   emptyHash: string;
   prototype: { hash: string; data: { get: {}; set: {}; setTo: {}; updateAsProver: {}; }; isEmpty: {}; push: {}; pushIf: {}; popExn: {}; pop: {}; popOption: {}; popIf: {}; popIfUnsafe: {}; clone: {}; forEach: {}; startIterating: {}; ... 5 more ...; readonly innerProvable: { ...; }; };
-  create: ;
 };
 ```
 
@@ -2494,16 +3631,27 @@ _emptyHash: null | string;
 _innerProvable: 
   | null
   | {
-  check: {};
-  empty: {};
-  fromFields: {};
-  fromValue: {};
-  toAuxiliary: {};
-  toCanonical: null | {};
-  toFields: {};
-  toInput: {};
-  toValue: {};
-  sizeInFields: ;
+  check: {
+  };
+  empty: {
+  };
+  fromFields: {
+  };
+  fromValue: {
+  };
+  sizeInFields: {
+  };
+  toAuxiliary: {
+  };
+  toCanonical?:   | null
+     | {
+   };
+  toFields: {
+  };
+  toInput: {
+  };
+  toValue: {
+  };
 };
 ```
 
@@ -2511,23 +3659,39 @@ _innerProvable:
 
 `null`
 
-\{
-  `check`: \{\};
-  `empty`: \{\};
-  `fromFields`: \{\};
-  `fromValue`: \{\};
-  `toAuxiliary`: \{\};
-  `toCanonical`: `null` \| \{\};
-  `toFields`: \{\};
-  `toInput`: \{\};
-  `toValue`: \{\};
-  `sizeInFields`: ;
- \}
+```ts
+{
+  check: {
+  };
+  empty: {
+  };
+  fromFields: {
+  };
+  fromValue: {
+  };
+  sizeInFields: {
+  };
+  toAuxiliary: {
+  };
+  toCanonical?:   | null
+     | {
+   };
+  toFields: {
+  };
+  toInput: {
+  };
+  toValue: {
+  };
+}
+```
 
 ###### stack.prototype.Constructor.\_nextHash
 
 ```ts
-_nextHash: null | {};
+_nextHash: 
+  | null
+  | {
+};
 ```
 
 ###### stack.prototype.Constructor.\_provable
@@ -2536,16 +3700,27 @@ _nextHash: null | {};
 _provable: 
   | null
   | {
-  check: {};
-  empty: {};
-  fromFields: {};
-  fromValue: {};
-  toAuxiliary: {};
-  toCanonical: null | {};
-  toFields: {};
-  toInput: {};
-  toValue: {};
-  sizeInFields: ;
+  check: {
+  };
+  empty: {
+  };
+  fromFields: {
+  };
+  fromValue: {
+  };
+  sizeInFields: {
+  };
+  toAuxiliary: {
+  };
+  toCanonical?:   | null
+     | {
+   };
+  toFields: {
+  };
+  toInput: {
+  };
+  toValue: {
+  };
 };
 ```
 
@@ -2553,18 +3728,38 @@ _provable:
 
 `null`
 
-\{
-  `check`: \{\};
-  `empty`: \{\};
-  `fromFields`: \{\};
-  `fromValue`: \{\};
-  `toAuxiliary`: \{\};
-  `toCanonical`: `null` \| \{\};
-  `toFields`: \{\};
-  `toInput`: \{\};
-  `toValue`: \{\};
-  `sizeInFields`: ;
- \}
+```ts
+{
+  check: {
+  };
+  empty: {
+  };
+  fromFields: {
+  };
+  fromValue: {
+  };
+  sizeInFields: {
+  };
+  toAuxiliary: {
+  };
+  toCanonical?:   | null
+     | {
+   };
+  toFields: {
+  };
+  toInput: {
+  };
+  toValue: {
+  };
+}
+```
+
+###### stack.prototype.Constructor.create
+
+```ts
+create: {
+};
+```
 
 ###### stack.prototype.Constructor.emptyHash
 
@@ -2578,45 +3773,54 @@ emptyHash: string;
 prototype: { hash: string; data: { get: {}; set: {}; setTo: {}; updateAsProver: {}; }; isEmpty: {}; push: {}; pushIf: {}; popExn: {}; pop: {}; popOption: {}; popIf: {}; popIfUnsafe: {}; clone: {}; forEach: {}; startIterating: {}; ... 5 more ...; readonly innerProvable: { ...; }; };
 ```
 
-###### stack.prototype.Constructor.create
-
-```ts
-create;
-```
-
 ###### stack.prototype.data
 
 ```ts
 data: {
-  get: ;
-  set: ;
-  setTo: ;
-  updateAsProver: ;
+  get: {
+  };
+  set: {
+  };
+  setTo: {
+  };
+  updateAsProver: {
+  };
 };
 ```
 
 ###### stack.prototype.data.get
 
 ```ts
-get;
+get: {
+};
 ```
 
 ###### stack.prototype.data.set
 
 ```ts
-set;
+set: {
+};
 ```
 
 ###### stack.prototype.data.setTo
 
 ```ts
-setTo;
+setTo: {
+};
 ```
 
 ###### stack.prototype.data.updateAsProver
 
 ```ts
-updateAsProver;
+updateAsProver: {
+};
+```
+
+###### stack.prototype.forEach
+
+```ts
+forEach: {
+};
 ```
 
 ###### stack.prototype.hash
@@ -2629,29 +3833,41 @@ hash: string;
 
 ```ts
 innerProvable: {
-  check: {};
-  empty: {};
-  fromFields: {};
-  fromValue: {};
-  toAuxiliary: {};
-  toCanonical: null | {};
-  toFields: {};
-  toInput: {};
-  toValue: {};
-  sizeInFields: ;
+  check: {
+  };
+  empty: {
+  };
+  fromFields: {
+  };
+  fromValue: {
+  };
+  sizeInFields: {
+  };
+  toAuxiliary: {
+  };
+  toCanonical?:   | null
+     | {
+   };
+  toFields: {
+  };
+  toInput: {
+  };
+  toValue: {
+  };
 };
 ```
 
 ###### stack.prototype.innerProvable.check
 
 ```ts
-check: {};
+check: {
+};
 ```
 
 Add assertions to the proof to check if `value` is a valid member of type `T`.
 This function does not return anything, instead it creates any number of assertions to prove that `value` is a valid member of the type `T`.
 
-For instance, calling check function on the type [Bool](../../../classes/Bool.mdx) asserts that the value of the element is either 1 or 0.
+For instance, calling check function on the type [Bool](../../../../classes/Bool.mdx) asserts that the value of the element is either 1 or 0.
 
 ###### Param
 
@@ -2660,22 +3876,24 @@ the element of type `T` to put assertions on.
 ###### stack.prototype.innerProvable.empty
 
 ```ts
-empty: {};
+empty: {
+};
 ```
 
 ###### stack.prototype.innerProvable.fromFields
 
 ```ts
-fromFields: {};
+fromFields: {
+};
 ```
 
 A function that returns an element of type `T` from the given provable and "auxiliary" data.
 
-This function is the reverse operation of calling toFields and toAuxiliary methods on an element of type `T`.
+This function is the reverse operation of calling [toFields](#batch) and [toAuxiliary](#batch) methods on an element of type `T`.
 
 ###### Param
 
-an array of [Field](../../../classes/Field.mdx) elements describing the provable data of the new `T` element.
+an array of [Field](../../../../classes/Field.mdx) elements describing the provable data of the new `T` element.
 
 ###### Param
 
@@ -2688,15 +3906,24 @@ An element of type `T` generated from the given provable and "auxiliary" data.
 ###### stack.prototype.innerProvable.fromValue
 
 ```ts
-fromValue: {};
+fromValue: {
+};
 ```
 
 Convert provable type from a normal JS type.
 
+###### stack.prototype.innerProvable.sizeInFields
+
+```ts
+sizeInFields: {
+};
+```
+
 ###### stack.prototype.innerProvable.toAuxiliary
 
 ```ts
-toAuxiliary: {};
+toAuxiliary: {
+};
 ```
 
 A function that takes `value` (optional), an element of type `T`, as argument and
@@ -2714,7 +3941,10 @@ An array of any type describing how this `T` element is made up of "auxiliary" (
 ###### stack.prototype.innerProvable.toCanonical?
 
 ```ts
-optional toCanonical: null | {};
+optional toCanonical: 
+  | null
+  | {
+};
 ```
 
 Optional method which transforms a provable type into its canonical representation.
@@ -2735,157 +3965,167 @@ The identity function will also be used when the `toCanonical()` is not present 
 ###### stack.prototype.innerProvable.toFields
 
 ```ts
-toFields: {};
+toFields: {
+};
 ```
 
 A function that takes `value`, an element of type `T`, as argument and returns
-an array of [Field](../../../classes/Field.mdx) elements that make up the provable data of `value`.
+an array of [Field](../../../../classes/Field.mdx) elements that make up the provable data of `value`.
 
 ###### Param
 
-the element of type `T` to generate the [Field](../../../classes/Field.mdx) array from.
+the element of type `T` to generate the [Field](../../../../classes/Field.mdx) array from.
 
 ###### Returns
 
-A [Field](../../../classes/Field.mdx) array describing how this `T` element is made up of [Field](../../../classes/Field.mdx) elements.
+A [Field](../../../../classes/Field.mdx) array describing how this `T` element is made up of [Field](../../../../classes/Field.mdx) elements.
 
 ###### stack.prototype.innerProvable.toInput
 
 ```ts
-toInput: {};
+toInput: {
+};
 ```
 
 ###### stack.prototype.innerProvable.toValue
 
 ```ts
-toValue: {};
+toValue: {
+};
 ```
 
 Convert provable type to a normal JS type.
 
-###### stack.prototype.innerProvable.sizeInFields
-
-```ts
-sizeInFields;
-```
-
-###### stack.prototype.clone
-
-```ts
-clone;
-```
-
-###### stack.prototype.forEach
-
-```ts
-forEach;
-```
-
 ###### stack.prototype.isEmpty
 
 ```ts
-isEmpty;
+isEmpty: {
+};
 ```
 
 ###### stack.prototype.lengthUnconstrained
 
 ```ts
-lengthUnconstrained;
+lengthUnconstrained: {
+};
 ```
 
 ###### stack.prototype.nextHash
 
 ```ts
-nextHash;
+nextHash: {
+};
 ```
 
 ###### stack.prototype.pop
 
 ```ts
-pop;
+pop: {
+};
 ```
 
 ###### stack.prototype.popExn
 
 ```ts
-popExn;
+popExn: {
+};
 ```
 
 ###### stack.prototype.popIf
 
 ```ts
-popIf;
+popIf: {
+};
 ```
 
 ###### stack.prototype.popIfUnsafe
 
 ```ts
-popIfUnsafe;
+popIfUnsafe: {
+};
 ```
 
 ###### stack.prototype.popOption
 
 ```ts
-popOption;
+popOption: {
+};
 ```
 
 ###### stack.prototype.push
 
 ```ts
-push;
+push: {
+};
 ```
 
 ###### stack.prototype.pushIf
 
 ```ts
-pushIf;
+pushIf: {
+};
 ```
 
 ###### stack.prototype.startIterating
 
 ```ts
-startIterating;
+startIterating: {
+};
 ```
 
 ###### stack.prototype.startIteratingFromLast
 
 ```ts
-startIteratingFromLast;
+startIteratingFromLast: {
+};
 ```
 
 ###### stack.prototype.toArrayUnconstrained
 
 ```ts
-toArrayUnconstrained;
+toArrayUnconstrained: {
+};
 ```
 
 ###### stack.provable
 
 ```ts
 provable: {
-  check: {};
-  empty: {};
-  fromFields: {};
-  fromValue: {};
-  toAuxiliary: {};
-  toCanonical: null | {};
-  toFields: {};
-  toInput: {};
-  toValue: {};
-  sizeInFields: ;
+  check: {
+  };
+  empty: {
+  };
+  fromFields: {
+  };
+  fromValue: {
+  };
+  sizeInFields: {
+  };
+  toAuxiliary: {
+  };
+  toCanonical?:   | null
+     | {
+   };
+  toFields: {
+  };
+  toInput: {
+  };
+  toValue: {
+  };
 };
 ```
 
 ###### stack.provable.check
 
 ```ts
-check: {};
+check: {
+};
 ```
 
 Add assertions to the proof to check if `value` is a valid member of type `T`.
 This function does not return anything, instead it creates any number of assertions to prove that `value` is a valid member of the type `T`.
 
-For instance, calling check function on the type [Bool](../../../classes/Bool.mdx) asserts that the value of the element is either 1 or 0.
+For instance, calling check function on the type [Bool](../../../../classes/Bool.mdx) asserts that the value of the element is either 1 or 0.
 
 ###### Param
 
@@ -2894,22 +4134,24 @@ the element of type `T` to put assertions on.
 ###### stack.provable.empty
 
 ```ts
-empty: {};
+empty: {
+};
 ```
 
 ###### stack.provable.fromFields
 
 ```ts
-fromFields: {};
+fromFields: {
+};
 ```
 
 A function that returns an element of type `T` from the given provable and "auxiliary" data.
 
-This function is the reverse operation of calling toFields and toAuxiliary methods on an element of type `T`.
+This function is the reverse operation of calling [toFields](#batch) and [toAuxiliary](#batch) methods on an element of type `T`.
 
 ###### Param
 
-an array of [Field](../../../classes/Field.mdx) elements describing the provable data of the new `T` element.
+an array of [Field](../../../../classes/Field.mdx) elements describing the provable data of the new `T` element.
 
 ###### Param
 
@@ -2922,15 +4164,24 @@ An element of type `T` generated from the given provable and "auxiliary" data.
 ###### stack.provable.fromValue
 
 ```ts
-fromValue: {};
+fromValue: {
+};
 ```
 
 Convert provable type from a normal JS type.
 
+###### stack.provable.sizeInFields
+
+```ts
+sizeInFields: {
+};
+```
+
 ###### stack.provable.toAuxiliary
 
 ```ts
-toAuxiliary: {};
+toAuxiliary: {
+};
 ```
 
 A function that takes `value` (optional), an element of type `T`, as argument and
@@ -2948,7 +4199,10 @@ An array of any type describing how this `T` element is made up of "auxiliary" (
 ###### stack.provable.toCanonical?
 
 ```ts
-optional toCanonical: null | {};
+optional toCanonical: 
+  | null
+  | {
+};
 ```
 
 Optional method which transforms a provable type into its canonical representation.
@@ -2969,45 +4223,36 @@ The identity function will also be used when the `toCanonical()` is not present 
 ###### stack.provable.toFields
 
 ```ts
-toFields: {};
+toFields: {
+};
 ```
 
 A function that takes `value`, an element of type `T`, as argument and returns
-an array of [Field](../../../classes/Field.mdx) elements that make up the provable data of `value`.
+an array of [Field](../../../../classes/Field.mdx) elements that make up the provable data of `value`.
 
 ###### Param
 
-the element of type `T` to generate the [Field](../../../classes/Field.mdx) array from.
+the element of type `T` to generate the [Field](../../../../classes/Field.mdx) array from.
 
 ###### Returns
 
-A [Field](../../../classes/Field.mdx) array describing how this `T` element is made up of [Field](../../../classes/Field.mdx) elements.
+A [Field](../../../../classes/Field.mdx) array describing how this `T` element is made up of [Field](../../../../classes/Field.mdx) elements.
 
 ###### stack.provable.toInput
 
 ```ts
-toInput: {};
+toInput: {
+};
 ```
 
 ###### stack.provable.toValue
 
 ```ts
-toValue: {};
+toValue: {
+};
 ```
 
 Convert provable type to a normal JS type.
-
-###### stack.provable.sizeInFields
-
-```ts
-sizeInFields;
-```
-
-###### stack.create
-
-```ts
-create;
-```
 
 ###### useOnchainStack
 
@@ -3019,29 +4264,41 @@ useOnchainStack: boolean = Bool;
 
 ```ts
 witnesses: {
-  check: {};
-  empty: {};
-  fromFields: {};
-  fromValue: {};
-  toAuxiliary: {};
-  toCanonical: null | {};
-  toFields: {};
-  toInput: {};
-  toValue: {};
-  sizeInFields: ;
+  check: {
+  };
+  empty: {
+  };
+  fromFields: {
+  };
+  fromValue: {
+  };
+  sizeInFields: {
+  };
+  toAuxiliary: {
+  };
+  toCanonical?:   | null
+     | {
+   };
+  toFields: {
+  };
+  toInput: {
+  };
+  toValue: {
+  };
 };
 ```
 
 ###### witnesses.check
 
 ```ts
-check: {};
+check: {
+};
 ```
 
 Add assertions to the proof to check if `value` is a valid member of type `T`.
 This function does not return anything, instead it creates any number of assertions to prove that `value` is a valid member of the type `T`.
 
-For instance, calling check function on the type [Bool](../../../classes/Bool.mdx) asserts that the value of the element is either 1 or 0.
+For instance, calling check function on the type [Bool](../../../../classes/Bool.mdx) asserts that the value of the element is either 1 or 0.
 
 ###### Param
 
@@ -3050,22 +4307,24 @@ the element of type `T` to put assertions on.
 ###### witnesses.empty
 
 ```ts
-empty: {};
+empty: {
+};
 ```
 
 ###### witnesses.fromFields
 
 ```ts
-fromFields: {};
+fromFields: {
+};
 ```
 
 A function that returns an element of type `T` from the given provable and "auxiliary" data.
 
-This function is the reverse operation of calling toFields and toAuxiliary methods on an element of type `T`.
+This function is the reverse operation of calling [toFields](#batch) and [toAuxiliary](#batch) methods on an element of type `T`.
 
 ###### Param
 
-an array of [Field](../../../classes/Field.mdx) elements describing the provable data of the new `T` element.
+an array of [Field](../../../../classes/Field.mdx) elements describing the provable data of the new `T` element.
 
 ###### Param
 
@@ -3078,15 +4337,24 @@ An element of type `T` generated from the given provable and "auxiliary" data.
 ###### witnesses.fromValue
 
 ```ts
-fromValue: {};
+fromValue: {
+};
 ```
 
 Convert provable type from a normal JS type.
 
+###### witnesses.sizeInFields
+
+```ts
+sizeInFields: {
+};
+```
+
 ###### witnesses.toAuxiliary
 
 ```ts
-toAuxiliary: {};
+toAuxiliary: {
+};
 ```
 
 A function that takes `value` (optional), an element of type `T`, as argument and
@@ -3104,7 +4372,10 @@ An array of any type describing how this `T` element is made up of "auxiliary" (
 ###### witnesses.toCanonical?
 
 ```ts
-optional toCanonical: null | {};
+optional toCanonical: 
+  | null
+  | {
+};
 ```
 
 Optional method which transforms a provable type into its canonical representation.
@@ -3125,39 +4396,36 @@ The identity function will also be used when the `toCanonical()` is not present 
 ###### witnesses.toFields
 
 ```ts
-toFields: {};
+toFields: {
+};
 ```
 
 A function that takes `value`, an element of type `T`, as argument and returns
-an array of [Field](../../../classes/Field.mdx) elements that make up the provable data of `value`.
+an array of [Field](../../../../classes/Field.mdx) elements that make up the provable data of `value`.
 
 ###### Param
 
-the element of type `T` to generate the [Field](../../../classes/Field.mdx) array from.
+the element of type `T` to generate the [Field](../../../../classes/Field.mdx) array from.
 
 ###### Returns
 
-A [Field](../../../classes/Field.mdx) array describing how this `T` element is made up of [Field](../../../classes/Field.mdx) elements.
+A [Field](../../../../classes/Field.mdx) array describing how this `T` element is made up of [Field](../../../../classes/Field.mdx) elements.
 
 ###### witnesses.toInput
 
 ```ts
-toInput: {};
+toInput: {
+};
 ```
 
 ###### witnesses.toValue
 
 ```ts
-toValue: {};
+toValue: {
+};
 ```
 
 Convert provable type to a normal JS type.
-
-###### witnesses.sizeInFields
-
-```ts
-sizeInFields;
-```
 
 #### Inherited from
 
@@ -3173,7 +4441,7 @@ BatchReducer_.BatchReducer.Batch
 BatchProof: typeof Proof;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:70](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L70)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:70](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L70)
 
 #### Inherited from
 
@@ -3189,7 +4457,7 @@ BatchReducer_.BatchReducer.BatchProof
 batchSize: BatchSize;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:65](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L65)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:65](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L65)
 
 #### Inherited from
 
@@ -3205,7 +4473,7 @@ BatchReducer_.BatchReducer.batchSize
 maxActionsPerUpdate: number;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:73](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L73)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:73](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L73)
 
 #### Inherited from
 
@@ -3221,7 +4489,7 @@ BatchReducer_.BatchReducer.maxActionsPerUpdate
 maxUpdatesFinalProof: number;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:72](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L72)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:72](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L72)
 
 #### Inherited from
 
@@ -3237,7 +4505,7 @@ BatchReducer_.BatchReducer.maxUpdatesFinalProof
 program: ActionStackProgram;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:69](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L69)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:69](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L69)
 
 #### Inherited from
 
@@ -3252,14 +4520,14 @@ BatchReducer_.BatchReducer.program
 #### Get Signature
 
 ```ts
-get static initialActionStack(): Field
+get static initialActionStack(): Field;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:160](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L160)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:160](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L160)
 
 ##### Returns
 
-[`Field`](../../../classes/Field.mdx)
+[`Field`](../../../../classes/Field.mdx)
 
 #### Inherited from
 
@@ -3274,14 +4542,14 @@ BatchReducer_.BatchReducer.initialActionStack
 #### Get Signature
 
 ```ts
-get static initialActionState(): Field
+get static initialActionState(): Field;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:157](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L157)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:157](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L157)
 
 ##### Returns
 
-[`Field`](../../../classes/Field.mdx)
+[`Field`](../../../../classes/Field.mdx)
 
 #### Inherited from
 
@@ -3298,11 +4566,11 @@ compile(): Promise<{
   verificationKey: {
      data: string;
      hash: Field;
-    };
-}>
+  };
+}>;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:367](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L367)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:367](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L367)
 
 Compile the recursive action stack prover.
 
@@ -3311,9 +4579,9 @@ Compile the recursive action stack prover.
 `Promise`\<\{
   `verificationKey`: \{
      `data`: `string`;
-     `hash`: [`Field`](../../../classes/Field.mdx);
-    \};
- \}\>
+     `hash`: [`Field`](../../../../classes/Field.mdx);
+  \};
+\}\>
 
 #### Inherited from
 
@@ -3326,10 +4594,10 @@ BatchReducer_.BatchReducer.compile
 ### contract()
 
 ```ts
-contract(): BatchReducerContract
+contract(): BatchReducerContract;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:174](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L174)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:174](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L174)
 
 #### Returns
 
@@ -3346,10 +4614,10 @@ BatchReducer_.BatchReducer.contract
 ### contractClass()
 
 ```ts
-contractClass(): BatchReducerContractClass
+contractClass(): BatchReducerContractClass;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:167](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L167)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:167](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L167)
 
 #### Returns
 
@@ -3366,10 +4634,10 @@ BatchReducer_.BatchReducer.contractClass
 ### dispatch()
 
 ```ts
-dispatch(action: From<ActionType>): void
+dispatch(action: From<ActionType>): void;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:202](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L202)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:202](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L202)
 
 Submit an action.
 
@@ -3394,10 +4662,10 @@ BatchReducer_.BatchReducer.dispatch
 ### dispatchIf()
 
 ```ts
-dispatchIf(condition: Bool, action: From<ActionType>): void
+dispatchIf(condition: Bool, action: From<ActionType>): void;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:212](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L212)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:212](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L212)
 
 Conditionally submit an action.
 
@@ -3405,7 +4673,7 @@ Conditionally submit an action.
 
 ##### condition
 
-[`Bool`](../../../classes/Bool.mdx)
+[`Bool`](../../../../classes/Bool.mdx)
 
 ##### action
 
@@ -3429,10 +4697,10 @@ BatchReducer_.BatchReducer.dispatchIf
 prepareBatches(): Promise<{
   batch: ActionBatch<Action>;
   proof: ActionStackProof;
-}[]>
+}[]>;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:374](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L374)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:374](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L374)
 
 Create a proof which returns the next actions batch(es) to process and helps guarantee their correctness.
 
@@ -3441,7 +4709,7 @@ Create a proof which returns the next actions batch(es) to process and helps gua
 `Promise`\<\{
   `batch`: `ActionBatch`\<`Action`\>;
   `proof`: `ActionStackProof`;
- \}[]\>
+\}[]\>
 
 #### Inherited from
 
@@ -3457,10 +4725,10 @@ BatchReducer_.BatchReducer.prepareBatches
 processBatch(__namedParameters: {
   batch: ActionBatch<Action>;
   proof: Proof<Field, ActionStackState>;
- }, callback: (action: Action, isDummy: Bool, i: number) => void): void
+}, callback: (action: Action, isDummy: Bool, i: number) => void): void;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:242](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L242)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:242](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L242)
 
 Process a batch of actions which was created by `prepareBatches()`.
 
@@ -3493,11 +4761,11 @@ To process more actions per method call, increase the `batchSize`.
 
 ###### proof
 
-[`Proof`](../../../classes/Proof.mdx)\<[`Field`](../../../classes/Field.mdx), `ActionStackState`\>
+[`Proof`](../../../../classes/Proof.mdx)\<[`Field`](../../../../classes/Field.mdx), `ActionStackState`\>
 
 ##### callback
 
-(`action`: `Action`, `isDummy`: [`Bool`](../../../classes/Bool.mdx), `i`: `number`) => `void`
+(`action`: `Action`, `isDummy`: [`Bool`](../../../../classes/Bool.mdx), `i`: `number`) => `void`
 
 #### Returns
 
@@ -3514,10 +4782,10 @@ BatchReducer_.BatchReducer.processBatch
 ### setContractClass()
 
 ```ts
-setContractClass(contractClass: BatchReducerContractClass): void
+setContractClass(contractClass: BatchReducerContractClass): void;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:195](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L195)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:195](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L195)
 
 Set the smart contract class this reducer is connected with.
 
@@ -3545,10 +4813,10 @@ BatchReducer_.BatchReducer.setContractClass
 ### setContractInstance()
 
 ```ts
-setContractInstance(contract: BatchReducerContract): void
+setContractInstance(contract: BatchReducerContract): void;
 ```
 
-Defined in: [lib/mina/v1/actions/batch-reducer.ts:184](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/actions/batch-reducer.ts#L184)
+Defined in: [lib/mina/v1/actions/batch-reducer.ts:184](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/actions/batch-reducer.ts#L184)
 
 Set the smart contract instance this reducer is connected with.
 
