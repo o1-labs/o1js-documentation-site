@@ -49,5 +49,28 @@ keywords:
 
 EOF
 
+mv ./docs/api-reference/o1js/namespaces ./docs/api-reference/namespaces
+rm -rf ./docs/api-reference/o1js
+
+## For every file in ./docs/api-reference/namespaces there is a README.mdx file - do the same replacement as above
+for file in ./docs/api-reference/namespaces/**/README.mdx; do
+    if [[ -f "$file" ]]; then
+        # Extract the folder name (the ** part of the pattern)
+        folder_name=$(basename "$(dirname "$file")")
+        
+        # Add a title to the file using the folder name
+        cat << EOF > temp_header && cat "$file" >> temp_header && mv temp_header "$file"
+---
+title: "$folder_name"
+keywords:
+  - o1js
+  - API
+  - Reference
+---
+
+EOF
+    fi
+done
+
 ## Clean up
 rm -rf ../temp_o1js/o1js
