@@ -8,10 +8,10 @@ const Field: typeof Field & (...args: [
   | Field]) => Field;
 ```
 
-Defined in: [lib/provable/wrapped.ts:42](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/wrapped.ts#L42)
+Defined in: [lib/provable/wrapped.ts:42](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/wrapped.ts#L42)
 
-A [Field](Field.mdx) is an element of a prime order [finite field](https://en.wikipedia.org/wiki/Finite_field).
-Every other provable type is built using the [Field](Field.mdx) type.
+A Field is an element of a prime order [finite field](https://en.wikipedia.org/wiki/Finite_field).
+Every other provable type is built using the Field type.
 
 The field is the [pasta base field](https://electriccoin.co/blog/the-pasta-curves-for-halo-2-and-beyond/) of order 2^254 + 0x224698fc094cf91b992d30ed00000001 ([Field.ORDER](../classes/Field.mdx#order)).
 
@@ -43,8 +43,8 @@ A Field itself is also defined as a "field-like" element.
 
 ## Param
 
-the value to convert to a [Field](Field.mdx)
+the value to convert to a Field
 
 ## Returns
 
-A [Field](Field.mdx) with the value converted from the argument
+A Field with the value converted from the argument

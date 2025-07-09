@@ -1,14 +1,14 @@
-Defined in: [lib/proof-system/circuit.ts:87](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/circuit.ts#L87)
+Defined in: [lib/proof-system/circuit.ts:87](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/circuit.ts#L87)
 
 ## Constructors
 
-### new Keypair()
+### Constructor
 
 ```ts
-new Keypair(value: unknown): Keypair
+new Keypair(value: unknown): Keypair;
 ```
 
-Defined in: [lib/proof-system/circuit.ts:90](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/circuit.ts#L90)
+Defined in: [lib/proof-system/circuit.ts:90](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/circuit.ts#L90)
 
 #### Parameters
 
@@ -18,7 +18,7 @@ Defined in: [lib/proof-system/circuit.ts:90](https://github.com/o1-labs/o1js/blo
 
 #### Returns
 
-[`Keypair`](Keypair.mdx)
+`Keypair`
 
 ## Properties
 
@@ -28,19 +28,19 @@ Defined in: [lib/proof-system/circuit.ts:90](https://github.com/o1-labs/o1js/blo
 value: unknown;
 ```
 
-Defined in: [lib/proof-system/circuit.ts:88](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/circuit.ts#L88)
+Defined in: [lib/proof-system/circuit.ts:88](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/circuit.ts#L88)
 
 ## Methods
 
 ### constraintSystem()
 
 ```ts
-constraintSystem(): Gate[]
+constraintSystem(): Gate[];
 ```
 
-Defined in: [lib/proof-system/circuit.ts:107](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/circuit.ts#L107)
+Defined in: [lib/proof-system/circuit.ts:107](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/circuit.ts#L107)
 
-Returns a low-level JSON representation of the [Circuit](Circuit.mdx) from its [Keypair](Keypair.mdx):
+Returns a low-level JSON representation of the [Circuit](Circuit.mdx) from its Keypair:
 a list of gates, each of which represents a row in a table, with certain coefficients and wires to other (row, column) pairs
 
 #### Returns
@@ -59,10 +59,10 @@ const json = MyProvable.witnessFromKeypair(keypair);
 ### verificationKey()
 
 ```ts
-verificationKey(): VerificationKey
+verificationKey(): VerificationKey;
 ```
 
-Defined in: [lib/proof-system/circuit.ts:94](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/circuit.ts#L94)
+Defined in: [lib/proof-system/circuit.ts:94](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/circuit.ts#L94)
 
 #### Returns
 

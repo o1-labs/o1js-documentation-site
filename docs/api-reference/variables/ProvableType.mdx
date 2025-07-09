@@ -5,15 +5,21 @@ ProvableType: {
 };
 ```
 
-Defined in: [lib/provable/types/provable-intf.ts:132](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/types/provable-intf.ts#L132)
+Defined in: [lib/provable/types/provable-intf.ts:132](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/types/provable-intf.ts#L132)
 
 ## Type declaration
 
 ### get()
 
+```ts
+get<A>(type: A): ToProvable<A>;
+```
+
 #### Type Parameters
 
-• **A** *extends* `unknown`
+##### A
+
+`A` *extends* `unknown`
 
 #### Parameters
 
@@ -27,17 +33,23 @@ Defined in: [lib/provable/types/provable-intf.ts:132](https://github.com/o1-labs
 
 ### synthesize()
 
+```ts
+synthesize<T>(type: ProvableType<T>): T;
+```
+
 Create some value of type `T` from its provable type description.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
 ##### type
 
-[`ProvableType`](../type-aliases/ProvableType.mdx)\<`T`, `any`\>
+[`ProvableType`](../type-aliases/ProvableType.mdx)\<`T`\>
 
 #### Returns
 

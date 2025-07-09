@@ -9,7 +9,7 @@ FeatureFlags: {
      rot: undefined;
      runtimeTables: undefined;
      xor: undefined;
-    };
+  };
   allNone: {
      foreignFieldAdd: boolean;
      foreignFieldMul: boolean;
@@ -19,14 +19,14 @@ FeatureFlags: {
      rot: boolean;
      runtimeTables: boolean;
      xor: boolean;
-    };
+  };
   fromGates: (gates: Gate[], runtimeTables: boolean) => FeatureFlags;
   fromZkProgram: (program: AnalysableProgram, withRuntimeTables: boolean) => Promise<FeatureFlags>;
   fromZkProgramList: (programs: AnalysableProgram[], withRuntimeTables: boolean) => Promise<FeatureFlags>;
 };
 ```
 
-Defined in: [lib/proof-system/feature-flags.ts:17](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/feature-flags.ts#L17)
+Defined in: [lib/proof-system/feature-flags.ts:17](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/feature-flags.ts#L17)
 
 Feature flags indicate what custom gates are used in a proof of circuit.
 Side loading, for example, requires a set of feature flags in advance (at compile time) in order to verify and side load proofs.

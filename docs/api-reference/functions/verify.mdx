@@ -1,10 +1,10 @@
 ```ts
 function verify(proof: 
-  | ProofBase
-| JsonProof, verificationKey: string | VerificationKey): Promise<boolean>
+  | ProofBase<any, any>
+| JsonProof, verificationKey: string | VerificationKey): Promise<boolean>;
 ```
 
-Defined in: [lib/proof-system/zkprogram.ts:108](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/zkprogram.ts#L108)
+Defined in: [lib/proof-system/zkprogram.ts:110](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/zkprogram.ts#L110)
 
 Initializes Pickles bindings, serializes the input proof and verification key for use in OCaml, then calls into the Pickles verify function and returns the result.
 
@@ -14,7 +14,7 @@ Initializes Pickles bindings, serializes the input proof and verification key fo
 
 Either a `Proof` instance or a serialized JSON proof
 
-[`ProofBase`](../classes/ProofBase.mdx) | [`JsonProof`](../type-aliases/JsonProof.mdx)
+[`ProofBase`](../classes/ProofBase.mdx)\<`any`, `any`\> | [`JsonProof`](../type-aliases/JsonProof.mdx)
 
 ### verificationKey
 
@@ -27,3 +27,7 @@ Either a base64 serialized verification key or a `VerificationKey` instance whic
 `Promise`\<`boolean`\>
 
 A promise that resolves to a boolean indicating whether the proof is valid.
+
+## Note
+
+This function is meant to be called in JavaScript, not for use in a circuit.  The verification key data and hash are not confirmed to match.

@@ -1,21 +1,23 @@
 ```ts
-function Option<A>(type: A): ProvableInferPureFrom<A, Option<InferProvable<A>, InferValue<A>>, InferValue<A> | undefined> & (option: {
+function Option<A>(type: A): ProvableInferPureFrom<A, Option<InferProvable<A>, InferValue<A>>, undefined | InferValue<A>> & (option: {
   isSome: Bool;
   value: InferProvable<A>;
- }) => Option<InferProvable<A>, InferValue<A>> & {
+}) => Option<InferProvable<A>, InferValue<A>> & {
   from: Option<InferProvable<A>, InferValue<A>>;
   fromValue: Option<InferProvable<A>, InferValue<A>>;
   none: Option<InferProvable<A>, InferValue<A>>;
-}
+};
 ```
 
-Defined in: [lib/provable/option.ts:34](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/option.ts#L34)
+Defined in: [lib/provable/option.ts:34](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/option.ts#L34)
 
 Define an optional version of a provable type.
 
 ## Type Parameters
 
-• **A** *extends* [`ProvableType`](../type-aliases/ProvableType.mdx)
+### A
+
+`A` *extends* [`ProvableType`](../type-aliases/ProvableType.mdx)
 
 ## Parameters
 
@@ -25,14 +27,14 @@ Define an optional version of a provable type.
 
 ## Returns
 
-`ProvableInferPureFrom`\<`A`, [`Option`](../type-aliases/Option.mdx)\<[`InferProvable`](../type-aliases/InferProvable.mdx)\<`A`\>, `InferValue`\<`A`\>\>, `InferValue`\<`A`\> \| `undefined`\> & (`option`: \{
-  `isSome`: [`Bool`](../type-aliases/Bool.mdx);
+`ProvableInferPureFrom`\<`A`, [`Option`](../type-aliases/Option.mdx)\<[`InferProvable`](../type-aliases/InferProvable.mdx)\<`A`\>, `InferValue`\<`A`\>\>, `undefined` \| `InferValue`\<`A`\>\> & (`option`: \{
+  `isSome`: [`Bool`](../classes/Bool.mdx);
   `value`: [`InferProvable`](../type-aliases/InferProvable.mdx)\<`A`\>;
- \}) => [`Option`](../type-aliases/Option.mdx)\<[`InferProvable`](../type-aliases/InferProvable.mdx)\<`A`\>, `InferValue`\<`A`\>\> & \{
+\}) => [`Option`](../type-aliases/Option.mdx)\<[`InferProvable`](../type-aliases/InferProvable.mdx)\<`A`\>, `InferValue`\<`A`\>\> & \{
   `from`: [`Option`](../type-aliases/Option.mdx)\<[`InferProvable`](../type-aliases/InferProvable.mdx)\<`A`\>, `InferValue`\<`A`\>\>;
   `fromValue`: [`Option`](../type-aliases/Option.mdx)\<[`InferProvable`](../type-aliases/InferProvable.mdx)\<`A`\>, `InferValue`\<`A`\>\>;
   `none`: [`Option`](../type-aliases/Option.mdx)\<[`InferProvable`](../type-aliases/InferProvable.mdx)\<`A`\>, `InferValue`\<`A`\>\>;
- \}
+\}
 
 ## Example
 

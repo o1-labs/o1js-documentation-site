@@ -7,13 +7,15 @@ type MerkleListIteratorBase<T> = {
 };
 ```
 
-Defined in: [lib/provable/merkle-list.ts:375](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/merkle-list.ts#L375)
+Defined in: [lib/provable/merkle-list.ts:375](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/merkle-list.ts#L375)
 
 ## Type Parameters
 
-• **T**
+### T
 
-## Type declaration
+`T`
+
+## Properties
 
 ### currentHash
 
@@ -21,11 +23,15 @@ Defined in: [lib/provable/merkle-list.ts:375](https://github.com/o1-labs/o1js/bl
 currentHash: Field;
 ```
 
+Defined in: [lib/provable/merkle-list.ts:386](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/merkle-list.ts#L386)
+
 The merkle list hash of `[data[currentIndex], ..., data[length-1]]` (when hashing from right to left).
 
 For example:
 - If `currentIndex === 0`, then `currentHash === this.hash` is the hash of the entire array.
 - If `currentIndex === length`, then `currentHash === emptyHash` is the hash of an empty array.
+
+***
 
 ### currentIndex
 
@@ -33,7 +39,11 @@ For example:
 currentIndex: Unconstrained<number>;
 ```
 
+Defined in: [lib/provable/merkle-list.ts:390](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/merkle-list.ts#L390)
+
 The index of the element that will be returned by the next call to `next()`.
+
+***
 
 ### data
 
@@ -41,8 +51,14 @@ The index of the element that will be returned by the next call to `next()`.
 readonly data: Unconstrained<WithHash<T>[]>;
 ```
 
+Defined in: [lib/provable/merkle-list.ts:377](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/merkle-list.ts#L377)
+
+***
+
 ### hash
 
 ```ts
 readonly hash: Field;
 ```
+
+Defined in: [lib/provable/merkle-list.ts:376](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/merkle-list.ts#L376)

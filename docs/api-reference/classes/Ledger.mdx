@@ -1,28 +1,28 @@
-Defined in: [snarky.d.ts:499](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/snarky.d.ts#L499)
+Defined in: [bindings.d.ts:499](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/bindings.d.ts#L499)
 
 Represents the Mina ledger.
 
 ## Constructors
 
-### new Ledger()
+### Constructor
 
 ```ts
-new Ledger(): Ledger
+new Ledger(): Ledger;
 ```
 
 #### Returns
 
-[`Ledger`](Ledger.mdx)
+`Ledger`
 
 ## Methods
 
 ### addAccount()
 
 ```ts
-addAccount(publicKey: MlPublicKey, balance: string): void
+addAccount(publicKey: MlPublicKey, balance: string): void;
 ```
 
-Defined in: [snarky.d.ts:508](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/snarky.d.ts#L508)
+Defined in: [bindings.d.ts:508](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/bindings.d.ts#L508)
 
 Adds an account and its balance to the ledger.
 
@@ -48,10 +48,10 @@ Adds an account and its balance to the ledger.
 applyJsonTransaction(
    txJson: string, 
    accountCreationFee: string, 
-   networkState: string): void
+   networkState: string): void;
 ```
 
-Defined in: [snarky.d.ts:513](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/snarky.d.ts#L513)
+Defined in: [bindings.d.ts:513](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/bindings.d.ts#L513)
 
 Applies a JSON transaction to the ledger.
 
@@ -78,10 +78,10 @@ Applies a JSON transaction to the ledger.
 ### getAccount()
 
 ```ts
-getAccount(publicKey: MlPublicKey, tokenId: FieldConst): undefined | Account
+getAccount(publicKey: MlPublicKey, tokenId: FieldConst): undefined | Account;
 ```
 
-Defined in: [snarky.d.ts:522](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/snarky.d.ts#L522)
+Defined in: [bindings.d.ts:522](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/bindings.d.ts#L522)
 
 Returns an account.
 
@@ -104,13 +104,13 @@ Returns an account.
 ### create()
 
 ```ts
-static create(): Ledger
+static create(): Ledger;
 ```
 
-Defined in: [snarky.d.ts:503](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/snarky.d.ts#L503)
+Defined in: [bindings.d.ts:503](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/bindings.d.ts#L503)
 
 Creates a fresh ledger.
 
 #### Returns
 
-[`Ledger`](Ledger.mdx)
+`Ledger`

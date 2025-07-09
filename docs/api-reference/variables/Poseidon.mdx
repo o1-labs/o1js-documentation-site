@@ -3,7 +3,7 @@ const Poseidon: {
   Sponge: typeof Sponge;
   Unsafe: {
      hashToGroup: Group;
-    };
+  };
   hash: Field;
   hashPacked: Field;
   hashToGroup: Group;
@@ -13,7 +13,7 @@ const Poseidon: {
 };
 ```
 
-Defined in: [lib/provable/crypto/poseidon.ts:57](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/provable/crypto/poseidon.ts#L57)
+Defined in: [lib/provable/crypto/poseidon.ts:57](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/crypto/poseidon.ts#L57)
 
 ## Type declaration
 
@@ -32,6 +32,10 @@ Unsafe: {
 ```
 
 #### Unsafe.hashToGroup()
+
+```ts
+hashToGroup(input: Field[]): Group;
+```
 
 Low-level version of `Poseidon.hashToGroup()`.
 
@@ -52,6 +56,10 @@ which can be a vulnerability if consuming code treats the output as unique.
 
 ### hash()
 
+```ts
+hash(input: Field[]): Field;
+```
+
 #### Parameters
 
 ##### input
@@ -63,6 +71,10 @@ which can be a vulnerability if consuming code treats the output as unique.
 [`Field`](../classes/Field.mdx)
 
 ### hashPacked()
+
+```ts
+hashPacked<T>(type: WithProvable<Hashable<T>>, value: T): Field;
+```
 
 Hashes a provable type efficiently.
 
@@ -77,7 +89,9 @@ lower per-field element cost than hashing.
 
 #### Type Parameters
 
-• **T**
+##### T
+
+`T`
 
 #### Parameters
 
@@ -95,6 +109,10 @@ lower per-field element cost than hashing.
 
 ### hashToGroup()
 
+```ts
+hashToGroup(input: Field[]): Group;
+```
+
 Hashes a list of field elements to a point on the Pallas curve.
 
 The output point is deterministic and its discrete log is not efficiently computable.
@@ -110,6 +128,10 @@ The output point is deterministic and its discrete log is not efficiently comput
 [`Group`](../classes/Group.mdx)
 
 ### hashWithPrefix()
+
+```ts
+hashWithPrefix(prefix: string, input: Field[]): Field;
+```
 
 #### Parameters
 
@@ -127,11 +149,19 @@ The output point is deterministic and its discrete log is not efficiently comput
 
 ### initialState()
 
+```ts
+initialState(): [Field, Field, Field];
+```
+
 #### Returns
 
 \[[`Field`](../classes/Field.mdx), [`Field`](../classes/Field.mdx), [`Field`](../classes/Field.mdx)\]
 
 ### update()
+
+```ts
+update(state: [Field, Field, Field], input: Field[]): [Field, Field, Field];
+```
 
 #### Parameters
 

@@ -1,0 +1,45 @@
+```ts
+Recursive: <PublicInputType, PublicOutputType, PrivateInputs>(zkprogram: {
+  maxProofsVerified: () => Promise<0 | 1 | 2>;
+  name: string;
+  privateInputTypes: PrivateInputs;
+  publicInputType: PublicInputType;
+  publicOutputType: PublicOutputType;
+  rawMethods: { [Key in string | number | symbol]: (args: any) => Promise<{ publicOutput: InferProvable<PublicOutputType> }> };
+} & { [Key in string | number | symbol]: (args: any) => Promise<{ proof: Proof<InferProvable<PublicInputType>, InferProvable<PublicOutputType>> }> }) => { [Key in string | number | symbol]: RecursiveProver<InferProvable<PublicInputType>, PublicInputType, InferProvable<PublicOutputType>, PrivateInputs[Key]> & { if: ConditionalRecursiveProver<InferProvable<PublicInputType>, PublicInputType, InferProvable<PublicOutputType>, PrivateInputs[Key]> } } = Recursive_;
+```
+
+Defined in: [index.ts:165](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/index.ts#L165)
+
+## Type Parameters
+
+### PublicInputType
+
+`PublicInputType` *extends* [`Provable`](../../../../type-aliases/Provable.mdx)\<`any`\>
+
+### PublicOutputType
+
+`PublicOutputType` *extends* [`Provable`](../../../../type-aliases/Provable.mdx)\<`any`\>
+
+### PrivateInputs
+
+`PrivateInputs` *extends* \{
+[`key`: `string`]: `Tuple`\<[`ProvableType`](../../../../type-aliases/ProvableType.mdx)\>;
+\}
+
+## Parameters
+
+### zkprogram
+
+\{
+  `maxProofsVerified`: () => `Promise`\<`0` \| `1` \| `2`\>;
+  `name`: `string`;
+  `privateInputTypes`: `PrivateInputs`;
+  `publicInputType`: `PublicInputType`;
+  `publicOutputType`: `PublicOutputType`;
+  `rawMethods`: \{ \[Key in string \| number \| symbol\]: (args: any) =\> Promise\<\{ publicOutput: InferProvable\<PublicOutputType\> \}\> \};
+\} & \{ \[Key in string \| number \| symbol\]: (args: any) =\> Promise\<\{ proof: Proof\<InferProvable\<PublicInputType\>, InferProvable\<PublicOutputType\>\> \}\> \}
+
+## Returns
+
+\{ \[Key in string \| number \| symbol\]: RecursiveProver\<InferProvable\<PublicInputType\>, PublicInputType, InferProvable\<PublicOutputType\>, PrivateInputs\[Key\]\> & \{ if: ConditionalRecursiveProver\<InferProvable\<PublicInputType\>, PublicInputType, InferProvable\<PublicOutputType\>, PrivateInputs\[Key\]\> \} \}

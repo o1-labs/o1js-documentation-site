@@ -1,0 +1,116 @@
+Defined in: [snarky.d.ts:499](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/snarky.d.ts#L499)
+
+Represents the Mina ledger.
+
+## Constructors
+
+### new Ledger()
+
+```ts
+new Ledger(): Ledger
+```
+
+#### Returns
+
+[`Ledger`](Ledger.mdx)
+
+## Methods
+
+### addAccount()
+
+```ts
+addAccount(publicKey: MlPublicKey, balance: string): void
+```
+
+Defined in: [snarky.d.ts:508](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/snarky.d.ts#L508)
+
+Adds an account and its balance to the ledger.
+
+#### Parameters
+
+##### publicKey
+
+`MlPublicKey`
+
+##### balance
+
+`string`
+
+#### Returns
+
+`void`
+
+***
+
+### applyJsonTransaction()
+
+```ts
+applyJsonTransaction(
+   txJson: string, 
+   accountCreationFee: string, 
+   networkState: string): void
+```
+
+Defined in: [snarky.d.ts:513](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/snarky.d.ts#L513)
+
+Applies a JSON transaction to the ledger.
+
+#### Parameters
+
+##### txJson
+
+`string`
+
+##### accountCreationFee
+
+`string`
+
+##### networkState
+
+`string`
+
+#### Returns
+
+`void`
+
+***
+
+### getAccount()
+
+```ts
+getAccount(publicKey: MlPublicKey, tokenId: FieldConst): undefined | Account
+```
+
+Defined in: [snarky.d.ts:522](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/snarky.d.ts#L522)
+
+Returns an account.
+
+#### Parameters
+
+##### publicKey
+
+`MlPublicKey`
+
+##### tokenId
+
+`FieldConst`
+
+#### Returns
+
+`undefined` \| `Account`
+
+***
+
+### create()
+
+```ts
+static create(): Ledger
+```
+
+Defined in: [snarky.d.ts:503](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/snarky.d.ts#L503)
+
+Creates a fresh ledger.
+
+#### Returns
+
+[`Ledger`](Ledger.mdx)

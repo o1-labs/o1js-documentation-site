@@ -6,17 +6,25 @@ TupleN: {
 };
 ```
 
-Defined in: [lib/util/types.ts:25](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/util/types.ts#L25)
+Defined in: [lib/util/types.ts:25](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/util/types.ts#L25)
 
 ## Type declaration
 
 ### fromArray()
 
+```ts
+fromArray<T, N>(n: N, arr: T[]): TupleN<T, N>;
+```
+
 #### Type Parameters
 
-• **T**
+##### T
 
-• **N** *extends* `number`
+`T`
+
+##### N
+
+`N` *extends* `number`
 
 #### Parameters
 
@@ -34,11 +42,19 @@ Defined in: [lib/util/types.ts:25](https://github.com/o1-labs/o1js/blob/df1ff77a
 
 ### hasLength()
 
+```ts
+hasLength<T, N>(n: N, tuple: T[]): tuple is TupleN<T, N>;
+```
+
 #### Type Parameters
 
-• **T**
+##### T
 
-• **N** *extends* `number`
+`T`
+
+##### N
+
+`N` *extends* `number`
 
 #### Parameters
 
@@ -56,11 +72,19 @@ Defined in: [lib/util/types.ts:25](https://github.com/o1-labs/o1js/blob/df1ff77a
 
 ### map()
 
+```ts
+map<T, B>(tuple: T, f: (a: T[number]) => B): [...{ [i in string | number | symbol]: B }[]];
+```
+
 #### Type Parameters
 
-• **T** *extends* `Tuple`\<`any`\>
+##### T
 
-• **B**
+`T` *extends* `Tuple`\<`any`\>
+
+##### B
+
+`B`
 
 #### Parameters
 

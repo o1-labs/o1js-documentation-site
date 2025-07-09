@@ -1,13 +1,13 @@
 ```ts
 type Cache = {
   canWrite: boolean;
-  debug: boolean;
+  debug?: boolean;
   read: undefined | Uint8Array;
   write: void;
 };
 ```
 
-Defined in: [lib/proof-system/cache.ts:25](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/cache.ts#L25)
+Defined in: [lib/proof-system/cache.ts:25](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/cache.ts#L25)
 
 Interface for storing and retrieving values, for caching.
 `read()` and `write()` can just throw errors on failure.
@@ -23,7 +23,7 @@ Per smart contract or ZkProgram, several different keys are created:
 - a step prover key (`step-pk`) and verification key (`step-vk`) _for every method_.
 - a wrap prover key (`wrap-pk`) and verification key (`wrap-vk`) for the entire contract.
 
-## Type declaration
+## Properties
 
 ### canWrite
 
@@ -31,7 +31,11 @@ Per smart contract or ZkProgram, several different keys are created:
 canWrite: boolean;
 ```
 
+Defined in: [lib/proof-system/cache.ts:44](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/cache.ts#L44)
+
 Indicates whether the cache is writable.
+
+***
 
 ### debug?
 
@@ -39,12 +43,22 @@ Indicates whether the cache is writable.
 optional debug: boolean;
 ```
 
+Defined in: [lib/proof-system/cache.ts:52](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/cache.ts#L52)
+
 If `debug` is toggled, `read()` and `write()` errors are logged to the console.
 
 By default, cache errors are silent, because they don't necessarily represent an error condition,
 but could just be a cache miss, or file system permissions incompatible with writing data.
 
+## Methods
+
 ### read()
+
+```ts
+read(header: CacheHeader): undefined | Uint8Array;
+```
+
+Defined in: [lib/proof-system/cache.ts:31](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/cache.ts#L31)
 
 Read a value from the cache.
 
@@ -60,7 +74,15 @@ A small header to identify what is read from the cache.
 
 `undefined` \| `Uint8Array`
 
+***
+
 ### write()
+
+```ts
+write(header: CacheHeader, value: Uint8Array): void;
+```
+
+Defined in: [lib/proof-system/cache.ts:39](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/cache.ts#L39)
 
 Write a value to the cache.
 

@@ -2,21 +2,24 @@
 function ZkProgram<Config, _>(config: Config & {
   methods: { [I in string | number | symbol]: InferMethodType<Config>[I] };
   name: string;
-  overrideWrapDomain: 0 | 2 | 1;
- }): {
-  analyzeMethods: () => Promise<{ [I in keyof Config["methods"]]: MethodAnalysis }>;
+  numChunks?: number;
+  overrideWrapDomain?: 0 | 2 | 1;
+}): {
+  analyzeMethods: () => Promise<{ [I in string | number | symbol]: MethodAnalysis }>;
   auxiliaryOutputTypes: InferAuxiliaryOutputs<Config>;
   compile: (options?: {
-     cache: Cache;
-     forceRecompile: boolean;
-     proofsEnabled: boolean;
-     withRuntimeTables: boolean;
-    }) => Promise<{
+     cache?: Cache;
+     forceRecompile?: boolean;
+     lazyMode?: boolean;
+     numChunks?: number;
+     proofsEnabled?: boolean;
+     withRuntimeTables?: boolean;
+   }) => Promise<{
      verificationKey: {
         data: string;
         hash: Field;
-       };
-    }>;
+     };
+  }>;
   digest: () => Promise<string>;
   name: string;
   privateInputTypes: InferPrivateInput<Config>;
@@ -24,22 +27,27 @@ function ZkProgram<Config, _>(config: Config & {
   proofsEnabled: boolean;
   publicInputType: ProvableOrUndefined<Get<Config, "publicInput">>;
   publicOutputType: ProvableOrVoid<Get<Config, "publicOutput">>;
-  rawMethods: { [I in keyof Config["methods"]]: InferMethodType<Config>[I]["method"] };
+  rawMethods: { [I in string | number | symbol]: InferMethodType<Config>[I]["method"] };
   verify: (proof: Proof<InferProvableOrUndefined<Get<Config, "publicInput">>, InferProvableOrVoid<Get<Config, "publicOutput">>>) => Promise<boolean>;
+  analyzeSingleMethod: Promise<MethodAnalysis>;
   maxProofsVerified: Promise<0 | 1 | 2>;
   setProofsEnabled: void;
- } & { [I in keyof Config["methods"]]: Prover<InferProvableOrUndefined<Get<Config, "publicInput">>, ProvableOrUndefined<Get<Config, "publicInput">>, InferProvableOrVoid<Get<Config, "publicOutput">>, InferPrivateInput<Config>[I], InferProvableOrUndefined<InferAuxiliaryOutputs<Config>[I]>> }
+} & { [I in string | number | symbol]: Prover<InferProvableOrUndefined<Get<Config, "publicInput">>, ProvableOrUndefined<Get<Config, "publicInput">>, InferProvableOrVoid<Get<Config, "publicOutput">>, InferPrivateInput<Config>[I], InferProvableOrUndefined<InferAuxiliaryOutputs<Config>[I]>> };
 ```
 
-Defined in: [lib/proof-system/zkprogram.ts:224](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/proof-system/zkprogram.ts#L224)
+Defined in: [lib/proof-system/zkprogram.ts:226](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/zkprogram.ts#L226)
 
 Wraps config + provable code into a program capable of producing [Proof](../classes/Proof.mdx)s.
 
 ## Type Parameters
 
-• **Config** *extends* `ConfigBaseType`
+### Config
 
-• **_** *extends* `unknown` = `unknown`
+`Config` *extends* `ConfigBaseType`
+
+### _
+
+`_` *extends* `unknown` = `unknown`
 
 ## Parameters
 
@@ -48,39 +56,13 @@ Wraps config + provable code into a program capable of producing [Proof](../clas
 `Config` & \{
   `methods`: \{ \[I in string \| number \| symbol\]: InferMethodType\<Config\>\[I\] \};
   `name`: `string`;
-  `overrideWrapDomain`: `0` \| `2` \| `1`;
- \}
+  `numChunks?`: `number`;
+  `overrideWrapDomain?`: `0` \| `2` \| `1`;
+\}
 
 The configuration of the program, describing the type of the public input and public output, as well as defining the methods which can be executed provably.
 
 ## Returns
-
-\{
-  `analyzeMethods`: () => `Promise`\<`{ [I in keyof Config["methods"]]: MethodAnalysis }`\>;
-  `auxiliaryOutputTypes`: `InferAuxiliaryOutputs`\<`Config`\>;
-  `compile`: (`options`?: \{
-     `cache`: [`Cache`](../type-aliases/Cache.mdx);
-     `forceRecompile`: `boolean`;
-     `proofsEnabled`: `boolean`;
-     `withRuntimeTables`: `boolean`;
-    \}) => `Promise`\<\{
-     `verificationKey`: \{
-        `data`: `string`;
-        `hash`: [`Field`](../type-aliases/Field.mdx);
-       \};
-    \}\>;
-  `digest`: () => `Promise`\<`string`\>;
-  `name`: `string`;
-  `privateInputTypes`: `InferPrivateInput`\<`Config`\>;
-  `Proof`: *typeof* [`Proof`](../classes/Proof.mdx);
-  `proofsEnabled`: `boolean`;
-  `publicInputType`: `ProvableOrUndefined`\<`Get`\<`Config`, `"publicInput"`\>\>;
-  `publicOutputType`: `ProvableOrVoid`\<`Get`\<`Config`, `"publicOutput"`\>\>;
-  `rawMethods`: `{ [I in keyof Config["methods"]]: InferMethodType<Config>[I]["method"] }`;
-  `verify`: (`proof`: [`Proof`](../classes/Proof.mdx)\<`InferProvableOrUndefined`\<`Get`\<`Config`, `"publicInput"`\>\>, `InferProvableOrVoid`\<`Get`\<`Config`, `"publicOutput"`\>\>\>) => `Promise`\<`boolean`\>;
-  `maxProofsVerified`: `Promise`\<`0` \| `1` \| `2`\>;
-  `setProofsEnabled`: `void`;
- \} & `{ [I in keyof Config["methods"]]: Prover<InferProvableOrUndefined<Get<Config, "publicInput">>, ProvableOrUndefined<Get<Config, "publicInput">>, InferProvableOrVoid<Get<Config, "publicOutput">>, InferPrivateInput<Config>[I], InferProvableOrUndefined<InferAuxiliaryOutputs<Config>[I]>> }`
 
 an object that can be used to compile, prove, and verify the program.
 

@@ -7,7 +7,7 @@ const TokenId: {
 };
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:625](https://github.com/o1-labs/o1js/blob/df1ff77af12d7cbbed4a6167f02815fad4f0dceb/src/lib/mina/v1/account-update.ts#L625)
+Defined in: [lib/mina/v1/account-update.ts:628](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/account-update.ts#L628)
 
 ## Type declaration
 
@@ -18,6 +18,10 @@ default: Field;
 ```
 
 ### derive()
+
+```ts
+derive(tokenOwner: PublicKey, parentTokenId: Field): Field;
+```
 
 #### Parameters
 
@@ -35,6 +39,10 @@ default: Field;
 
 ### fromBase58()
 
+```ts
+fromBase58(base58: string): Field;
+```
+
 #### Parameters
 
 ##### base58
@@ -46,6 +54,10 @@ default: Field;
 [`Field`](../classes/Field.mdx)
 
 ### toBase58()
+
+```ts
+toBase58(t: Field): string;
+```
 
 #### Parameters
 
