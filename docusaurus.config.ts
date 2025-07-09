@@ -117,6 +117,24 @@ const config: Config = {
 
       //... other Algolia params
     },
+    footer: {
+      style: "light",
+      links: [
+        {
+          label: "Twitter",
+          href: "https://x.com/o1_labs",
+        },
+        {
+          label: "Discord",
+          href: "https://discord.gg/minaprotocol",
+        },
+        {
+          label: "GitHub",
+          href: "https://github.com/o1-labs/o1js",
+        },
+      ],
+      copyright: `Copyright © ${new Date().getFullYear()} o1Labs`,
+    },
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
