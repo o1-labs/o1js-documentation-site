@@ -7,6 +7,10 @@
   ],
   "redirects": [
     {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    },
+    {
       "source": "/",
       "destination": "/o1js/",
       "permanent": false
