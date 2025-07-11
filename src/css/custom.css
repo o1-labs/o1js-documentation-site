@@ -116,3 +116,44 @@
   color: white;
   font-family: "DM Sans", sans-serif;
 }
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  /* Container for footer links - assumes they're in a wrapper */
+  .footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center; /* Center the links horizontally */
+  }
+  
+  .footer__link-item {
+    padding: 4px 6px; /* Reduced padding for mobile */
+    margin-bottom: 0; /* Remove bottom margin since we're using gap */
+    flex: 0 0 auto; /* Don't grow or shrink, size based on content */
+  }
+
+  .menu {
+    width: 100%; /* Use full width on mobile */
+    margin: 12px 8px; /* Reduced margins for mobile */
+    padding: 0 8px; /* Add some internal padding */
+  }
+  
+  
+  /* Adjust menu item spacing for mobile */
+  .menu__list-item {
+    margin-bottom: 4px; /* Add slight spacing between items */
+  }
+  
+  /* Ensure menu links are touch-friendly */
+  .menu__link {
+    padding: 8px 4px; /* Add padding for better touch targets */
+    display: block; /* Ensure full width clickable area */
+  }
+  
+  /* Nested menu links */
+  .menu__list .menu__list .menu__link {
+    padding-left: 16px; /* Indent nested items */
+    font-size: 13px; /* Slightly smaller for nested items */
+  }
+}
