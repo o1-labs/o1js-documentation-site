@@ -30,14 +30,16 @@
 }
 
 .navbar {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 42.04%, #000 96.79%), linear-gradient(105deg, #1D33FF 0%, rgba(17, 31, 0, 0.47) 93.5%), url('/static/img/gradient.png') lightgray 50% 50% / cover no-repeat;
-  background-blend-mode: normal, overlay, normal;
+  background-image:url('/static/img/gradient.png');
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .navbar__logo {
   fill: white;
-  height: 70px;
-  width: 52px;
+  height: 80px;
+  width: 72px;
 }
 
 .menu {
@@ -83,9 +85,11 @@
 }
 
 .footer {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 42.04%, #000 96.79%), linear-gradient(255deg, #1D33FF 0%, rgba(17, 31, 0, 0.47) 93.5%), url('/static/img/gradient.png') lightgray 50% 50% / cover no-repeat;
-  background-blend-mode: normal, overlay, normal;
-  mix-blend-mode: difference;
+  background-image: url('/static/img/gradient.png');
+  background-position-x: -25%;
+  background-position-y: 50%;
+  background-size: cover;
+  background-repeat: repeat-x;
 }
 
 .footer__link-item {
