@@ -1,4 +1,4 @@
-import { expect, it } from "vitest";
+import { expect, it } from "../test-utils";
 
 import { fieldArray } from "./arrays";
 import { Field } from "o1js";

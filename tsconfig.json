@@ -4,7 +4,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "experimentalDecorators": true, // Not strictly needed for the docs site, but fixes type errors in snippets
+    "emitDecoratorMetadata": true, // Required for o1js SmartContract decorators
     "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
-  "exclude": [".docusaurus", "build", "node_modules"]
+  "exclude": [".docusaurus", "build", "node_modules"],
 }

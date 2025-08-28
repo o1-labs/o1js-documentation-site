@@ -1,0 +1,36 @@
+---
+title: Deployment Guide
+---
+
+# Deployment Guide
+
+Deploy your zkApps to Mina mainnet, devnet, or Zeko networks. Each network serves different purposes: mainnet for production applications, devnet for testing, and Zeko for high-performance applications.
+
+## Basic Deployment
+
+Here's how to deploy a zkApp to any network:
+
+```ts file=../snippets/zkapps/deployment/deployment.ts start=start_devnet_deployment end=end_devnet_deployment
+```
+
+## Network Configuration
+
+Configure your deployment target with the appropriate network:
+
+```ts file=../snippets/zkapps/deployment/deployment.ts start=start_network_configs end=end_network_configs
+```
+
+## Network Comparison
+
+| Network | Purpose | Tokens | Finality |
+|---------|---------|--------|----------|
+| Mainnet | Production | Real MINA | ~3-5 min |
+| Devnet | Testing | Test MINA | ~3-5 min |
+| Zeko | High Performance | Test tokens | ~30 sec |
+
+## API Reference
+
+For detailed deployment information, see:
+- [Mina Network configuration](/docs/api-reference/namespaces/Mina)
+- [Transaction handling](/docs/api-reference/functions/Mina/transaction)
+- [Account management](/docs/api-reference/functions/fetchAccount)

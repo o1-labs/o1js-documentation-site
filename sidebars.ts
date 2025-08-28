@@ -50,6 +50,22 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "zkApps",
+      collapsed: false,
+      items: [
+        "zkapps/intro",
+        "zkapps/smart-contracts",
+        "zkapps/permissions",
+        "zkapps/events",
+        "zkapps/actions-and-reducers",
+        "zkapps/account-updates",
+        "zkapps/provable-inputs",
+        "zkapps/zkprogram-proofs",
+        "zkapps/deployment",
+      ],
+    },
+    {
+      type: "category",
       label: "Advanced Concepts",
       items: [
         "advanced-concepts/serialization",

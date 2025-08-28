@@ -1,0 +1,32 @@
+---
+title: Provable Inputs
+---
+
+# Provable Inputs
+
+zkApp methods can accept various o1js types as parameters, enabling rich data handling while maintaining zero-knowledge properties. Understanding how to use provable inputs effectively is key to building sophisticated zkApps.
+
+## Basic Provable Types
+
+The fundamental o1js types can be used as method parameters:
+
+```ts file=../snippets/zkapps/provable-inputs/provable-inputs.ts start=start_basic_provable_inputs end=end_basic_provable_inputs
+```
+
+Core types include `Field`, `Bool`, `UInt32`/`UInt64`, `PublicKey`, and `Signature`.
+
+## Custom Struct Inputs
+
+Create complex data structures using `Struct`:
+
+```ts file=../snippets/zkapps/provable-inputs/provable-inputs.ts start=start_struct_inputs end=end_struct_inputs
+```
+
+Structs provide type safety, reusability, validation, and automatic serialization.
+
+## API Reference
+
+For detailed information about provable inputs, see:
+- [Field API reference](/docs/api-reference/classes/Field)
+- [Struct API reference](/docs/api-reference/functions/Struct)
+- [Provable types](/docs/api-reference/modules/provable)

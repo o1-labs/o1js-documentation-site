@@ -1,0 +1,30 @@
+---
+title: Permissions System
+---
+
+# Permissions System
+
+zkApps use a sophisticated permissions system to control who can perform various operations on the smart contract. This system provides fine-grained access control for different aspects of your zkApp's behavior.
+
+## Permission Types
+
+zkApps support several permission types:
+
+- **`Permissions.none()`**: No authorization required (use with caution)
+- **`Permissions.impossible()`**: Operation cannot be performed by anyone
+- **`Permissions.proof()`**: Requires a valid zero-knowledge proof
+- **`Permissions.signature()`**: Requires a cryptographic signature
+- **`Permissions.proofOrSignature()`**: Either proof or signature is acceptable
+
+## Basic Permission Setup
+
+Set permissions during contract initialization:
+
+```ts file=../snippets/zkapps/permissions/permissions.ts start=start_basic_permissions end=end_basic_permissions
+```
+
+## API Reference
+
+For detailed information about permissions, see:
+- [Permissions API reference](/docs/api-reference/namespaces/Permissions)
+- [AccountUpdate permissions](/docs/api-reference/interfaces/Permissions-1)
