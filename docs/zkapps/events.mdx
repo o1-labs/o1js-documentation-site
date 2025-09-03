@@ -22,6 +22,13 @@ Events are arrays of Fields and can be structured for different use cases:
 
 Events are useful for creating audit trails, enabling off-chain indexing, and providing data for user interfaces.
 
+## Fetching Events
+
+Use `fetchEvents` to retrieve previously emitted events from an archive node:
+
+```ts file=../snippets/zkapps/events/events.ts start=start_fetch_events end=end_fetch_events
+```
+
 ## API Reference
 
 For detailed information about events, see:

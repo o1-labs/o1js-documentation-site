@@ -50,8 +50,8 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "zkApps",
-      collapsed: false,
+      label: "ZkApps",
+      collapsed: true,
       items: [
         "zkapps/intro",
         "zkapps/smart-contracts",

@@ -19,7 +19,25 @@ Actions are an array of Fields under the hood, but o1js allows you to define a T
 
 The reducer is a special function that can process several actions in a row and set the new state in a single proof/transaction.  You need to write your own reducer function based on your business logic.  For instance, you may have a voting app where the number of processed voted always goes up, or you could have a marketplace where the price can go up or down.
 
-```ts file=../snippets/zkapps/actions-reducers/actions-reducers.ts start=start_reducer end=end_reducer
+```ts file=../snippets/zkapps/actions-reducers/actions-reducers.ts start=start_reducer_ex end=end_reducer_ex
+```
+
+## Fetching Actions
+
+Use `fetchActions` to retrieve previously emitted actions from an archive node.  The difference between Mina.fetchActions and reducer.fetchActions is that the former returns raw Field arrays, while the latter automatically converts the Fields into your defined action type.
+
+### Using Mina.fetchActions
+
+Fetch actions for any public key with optional filtering:
+
+```ts file=../snippets/zkapps/actions-reducers/actions-reducers.ts start=start_fetch_actions end=end_fetch_actions
+```
+
+### Using reducer.fetchActions
+
+Fetch actions for a specific contract with automatic type conversion:
+
+```ts file=../snippets/zkapps/actions-reducers/actions-reducers.ts start=start_reducer_fetch_actions end=end_reducer_fetch_actions
 ```
 
 ## Further Reading
