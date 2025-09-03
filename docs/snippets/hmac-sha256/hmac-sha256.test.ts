@@ -1,4 +1,4 @@
-import { describe, expect, it } from "../test-utils";
+import { describe, expect, it } from "vitest";
 import { Bytes } from "o1js";
 import { HMAC_SHA256 } from "./hmac-sha256";
 

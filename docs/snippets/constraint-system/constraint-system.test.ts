@@ -1,4 +1,4 @@
-import { describe, expect, it } from "../test-utils";
+import { describe, expect, it } from "vitest";
 import { constraintSystemExample, zkProgramExample } from "./constraint-system";
 import constants from "./constants.json" with { type: "json" };
 

@@ -1,5 +1,5 @@
 import { Field } from "o1js";
-import { describe, expect, it } from "../test-utils";
+import { describe, expect, it } from "vitest";
 
 import constants from "./constants.json" with { type: "json" };
 import { sum1, sum2, overflow, underflow } from "./field";
