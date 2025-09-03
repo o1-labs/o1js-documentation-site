@@ -39,6 +39,10 @@
     "unist-util-visit": "^5.0.0",
     "vitest": "^3.0.9"
   },
+  "optionalDependencies": {
+    "@rollup/rollup-darwin-arm64": "4.x",
+    "@rollup/rollup-linux-x64-gnu": "4.x"
+  },
   "browserslist": {
     "production": [
       ">0.5%",
