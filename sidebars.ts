@@ -71,6 +71,14 @@ const sidebars: SidebarsConfig = {
         "advanced-concepts/serialization",
         "advanced-concepts/recursion",
         "advanced-concepts/sideloaded-vks",
+        {
+          type: "category",
+          label: "ZkApps",
+          items: [
+            "advanced-concepts/ZkApps/upgradability",
+            "advanced-concepts/ZkApps/onChainPreconditions",
+          ],
+        },
       ],
     },
     {
@@ -84,6 +92,14 @@ const sidebars: SidebarsConfig = {
             "tutorials/hmac/hmac-basics",
             "tutorials/hmac/implementation",
             "tutorials/hmac/tests",
+          ],
+        },
+        {
+          type: "category",
+          label: "Frontend Integration",
+          items: [
+            "tutorials/frontent-integration-guides/angular",
+            "tutorials/frontent-integration-guides/next",
           ],
         },
       ],
