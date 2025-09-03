@@ -46,7 +46,7 @@ npm run dev
 This section will walk through the basics of configuring a Next.js app to work with o1js.  The two main points are:
 
 - Set the COOP and COEP headers so that o1js can communicate with the shared array buffer used by WASM
-  - This is strictly necessary for o1js to work in browers, whether or not you choose to use web workers
+  - This is strictly necessary for o1js to work in browsers, whether or not you choose to use web workers
 - Set up some web worker infrastructure so that long-running o1js computation does not block rendering your site
 
 ### Update headers in next config
@@ -317,7 +317,7 @@ That should do it for our ZkProgram!  Let's get back to the web application and 
 
 ## Wrap ZkProgram functionality in the web worker
 
-Back in our web worker, we will now want to expose the funcitonality of the todo list program to the Next.js application.
+Back in our web worker, we will now want to expose the functionality of the todo list program to the Next.js application.
 
 Since we already set the worker up properly, this part is very straightforward.  We simply need to import the zk program and write new methods for the worker that correspond to the features.
 

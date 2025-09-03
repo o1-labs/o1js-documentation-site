@@ -5,9 +5,9 @@ description: Learn about accessing and manipulating on-chain values in a zkApp, 
 
 # On-Chain Values
 
-In a zkApp, you can access the current [on-chain state](/zkapps/writing-a-zkapp/introduction-to-zkapps/how-to-write-a-zkapp#on-chain-state) and many other on-chain values of the account.
+In a zkApp, you can access the current on-chain state, and many other on-chain values of the account.
 
-The zkApp account's on-chain state can be updated by account updates included in a transaction (see [Tutorial 10: Account Updates](/zkapps/tutorials/account-updates)). On the Mina blockchain, each zkApp account provides eight fields of ~32 bytes each of arbitrary storage for the on-chain state.
+The zkApp account's on-chain state can be updated by [account updates](/docs/zkapps/account-updates.mdx) included in a transaction. On the Mina blockchain, each zkApp account provides eight fields of ~32 bytes each of arbitrary storage for the on-chain state.
 
 Two possible use cases:
 
@@ -165,7 +165,7 @@ this.account.timing.set(value: Timing);
 
 ### Accessing accounts other than the zkApp's account
 
-The API described in this section (get / set / assertEquals / ...) can be used to access the zkApp account itself, but also any other account. Account updates are a flexible and powerful data structure that can express all kinds of updates, events, and preconditions you use to develop smart contracts. See [Tutorial 10: Account Updates](/zkapps/tutorials/account-updates).
+The API described in this section (get / set / assertEquals / ...) can be used to access the zkApp account itself, but also any other account. Account updates are a flexible and powerful data structure that can express all kinds of updates, events, and preconditions you use to develop smart contracts.
 
 To create an account update to find the same `account` and `network` fields:
 
