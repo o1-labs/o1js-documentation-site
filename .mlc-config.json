@@ -1,8 +1,8 @@
 {
   "replacementPatterns": [
     {
-      "pattern": "^/o1js/img/",
-      "replacement": "file:///Users/coby/Projects/documentation-site/static/img/"
+      "pattern": "^/o1js/img/(?<path>.*)$",
+      "replacement": "{{BASEURL}}/static/img/$<path>"
     },
     {
       "pattern": "^/api-reference/",
