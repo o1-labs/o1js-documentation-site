@@ -14,7 +14,7 @@ Fundamentally, the ZkApp is a constraint system just like a `ZkProgram`.  When y
 
 ### Account Updates
 
-In order to interact on chain, ZkApps have to deal with several spectial types of data.  There are public keys of users.  There are fees and balances and tokens.  There are slots and epochs, and other smart contracts, etc...  The language that o1js uses to communicate about all these things is called "Accout Updates", and there is a specific article about them [here](/docs/zkapps/account-updates.mdx).
+In order to interact on chain, ZkApps have to deal with several special types of data.  There are public keys of users.  There are fees and balances and tokens.  There are slots and epochs, and other smart contracts, etc...  The language that o1js uses to communicate about all these things is called "Account Updates", and there is a specific article about them [here](/docs/zkapps/account-updates.mdx).
 
 :::info
 Smart Contracts interact with the Mina blockchain through AccountUpdates, but there is a limit to how many AccountUpdates can be included in a single transaction.  The more account updates are included, the more expensive the transaction is to prove.  In order to keep all transaction inclusion proofs small enough to fit into the slot time of ~180 seconds, the limit for account updates is ~7 per transaction.  The exact calculation is available [here](https://github.com/o1-labs/o1js/blob/2265adc885df4901acc2d51e889699d5576448a2/src/lib/mina/v1/transaction-validation.ts#L62).
@@ -32,7 +32,7 @@ When you `.get` state, you should always constrain the value you get back from t
 
 ### Methods
 
-ZkApp methods are decorated with `@method`, which tells o1js that this method ought to be part of the constraint system constructed for the ZkApp.  You can add other class methods to a `SmartContract` that aren't a part of the contraint system like `toString()`.  `@method`s must be fully provable like a `ZkProgram`.
+ZkApp methods are decorated with `@method`, which tells o1js that this method ought to be part of the constraint system constructed for the ZkApp.  You can add other class methods to a `SmartContract` that aren't a part of the constraint system like `toString()`.  `@method`s must be fully provable like a `ZkProgram`.
 
 
 ## Basic zkApp Structure
