@@ -13,9 +13,6 @@ async () => {
   // Development mode - fast execution, no proofs
   let Local = await Mina.LocalBlockchain({ proofsEnabled: false });
   Mina.setActiveInstance(Local);
-
-  // Access pre-funded test accounts
-  let [feePayer, user1, user2] = Local.testAccounts;
   // end_basic_setup
 
   // start_configuration_options
@@ -67,8 +64,13 @@ async () => {
   let contractAccount = Mina.TestPublicKey.random();
   let contract = new CounterContract(contractAccount);
 
-  // Compile contract (or analyze for faster development)
-  await CounterContract.analyzeMethods();
+  // If using proofs, compile the contract
+  // Else, skip this step to save time
+  if (Local.proofsEnabled) {
+    console.time("Compiling smart contract...");
+    await CounterContract.compile();
+    console.timeEnd("Compiling smart contract...");
+  }
 
   // Deploy contract
   let deployTx = await Mina.transaction(feePayer, async () => {
