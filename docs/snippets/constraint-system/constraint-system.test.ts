@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { constraintSystemExample, zkProgramExample } from "./constraint-system";
-import constants from "./constants.json";
+import constants from "./constants.json" with { type: "json" };
 
 describe("Constraint System", () => {
   it("generates a valid constraint system", async () => {

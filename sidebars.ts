@@ -50,11 +50,35 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "ZkApps",
+      collapsed: true,
+      items: [
+        "zkapps/intro",
+        "zkapps/smart-contracts",
+        "zkapps/permissions",
+        "zkapps/events",
+        "zkapps/actions-and-reducers",
+        "zkapps/account-updates",
+        "zkapps/provable-inputs",
+        "zkapps/zkprogram-proofs",
+        "zkapps/deployment",
+      ],
+    },
+    {
+      type: "category",
       label: "Advanced Concepts",
       items: [
         "advanced-concepts/serialization",
         "advanced-concepts/recursion",
         "advanced-concepts/sideloaded-vks",
+        {
+          type: "category",
+          label: "ZkApps",
+          items: [
+            "advanced-concepts/ZkApps/upgradability",
+            "advanced-concepts/ZkApps/onChainPreconditions",
+          ],
+        },
       ],
     },
     {
@@ -68,6 +92,14 @@ const sidebars: SidebarsConfig = {
             "tutorials/hmac/hmac-basics",
             "tutorials/hmac/implementation",
             "tutorials/hmac/tests",
+          ],
+        },
+        {
+          type: "category",
+          label: "Frontend Integration",
+          items: [
+            "tutorials/frontent-integration-guides/angular",
+            "tutorials/frontent-integration-guides/next",
           ],
         },
       ],

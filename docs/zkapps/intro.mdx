@@ -1,0 +1,29 @@
+---
+title: Introduction to zkApps
+---
+
+# Introduction to zkApps
+
+zkApps are smart contracts that run on the Mina blockchain, powered by zero-knowledge proofs. Unlike traditional smart contracts that execute on-chain, zkApps use an off-chain execution model where computation happens locally and only a proof of correct execution is submitted to the blockchain.
+
+## What makes zkApps unique?
+
+- **Off-chain execution**: Smart contract logic runs on the client, not on validators
+- **Zero-knowledge proofs**: Only cryptographic proofs are submitted to the blockchain  
+- **Privacy-preserving**: Sensitive data can remain private while still being verified
+- **Scalable**: Complex computations don't burden the network
+- **TypeScript-based**: Written in familiar TypeScript using o1js
+
+## Basic zkApp Structure
+
+Every zkApp is built using the `SmartContract` class from o1js:
+
+```ts file=../snippets/zkapps/intro/intro.ts start=start_basic_zkapp end=end_basic_zkapp
+```
+
+## Key Concepts
+
+- **State Management**: Store state on-chain using the `@state` decorator
+- **Methods**: Public methods marked with `@method` generate proofs when called
+- **Proofs**: Zero-knowledge proofs validate execution and are submitted to blockchain
+- **Permissions**: Control who can update state, emit events, and modify contracts
