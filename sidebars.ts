@@ -61,6 +61,7 @@ const sidebars: SidebarsConfig = {
         "zkapps/account-updates",
         "zkapps/provable-inputs",
         "zkapps/zkprogram-proofs",
+        "zkapps/local-development",
         "zkapps/deployment",
       ],
     },
