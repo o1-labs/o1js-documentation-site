@@ -24,7 +24,7 @@ class ComplexAction extends Struct({
 class DiscriminatedAction extends Struct({
   type: UInt32, // 1 = typeA, 2 = typeB
   payload: Field,
-  aSpedicificField: Field, // only for typeA
+  aSpecificField: Field, // only for typeA
   bSpecificField: Field, // only for typeB
 }) {}
 
