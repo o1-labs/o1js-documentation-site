@@ -8,8 +8,8 @@ import {
   AccountUpdate,
 } from "o1js";
 
-// start_basic_setup
 async () => {
+  // start_basic_setup
   // Development mode - fast execution, no proofs
   let Local = await Mina.LocalBlockchain({ proofsEnabled: false });
   Mina.setActiveInstance(Local);
