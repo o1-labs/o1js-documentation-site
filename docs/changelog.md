@@ -16,9 +16,83 @@ This project adheres to
     _Security_ in case of vulnerabilities.
  -->
 
-## [Unreleased](https://github.com/o1-labs/o1js/compare/ad17c4a1...HEAD)
+## [Unreleased](https://github.com/o1-labs/o1js/compare/3453d1e53...HEAD)
 
-## [2.7.0](https://github.com/o1-labs/o1js/compare/3eef10d...ad17c4a1) - 2025-07-23
+### Added
+
+- Add `KimchiProof.toJSON()` and `KimchiProof.fromJSON()`
+  https://github.com/o1-labs/o1js/pull/2594
+- Add `KimchiVerificationKey.toString()` and
+  `KimchiVerificationKey.fromString()` https://github.com/o1-labs/o1js/pull/2594
+
+### Internal
+
+- Change cache harness to only allow writes when `dump` mode is active.
+  https://github.com/o1-labs/o1js/pull/2599
+
+## [2.10.0](https://github.com/o1-labs/o1js/compare/114acff...3453d1e53) - 2025-09-27
+
+### Internal
+
+- Added a new internal framework for testing compilation, proving, and
+  verification time regression. https://github.com/o1-labs/o1js/pull/2451
+
+### Added
+
+- Internal o1js and protocol constants, hashes and prefixes are now exported via
+  the `Core´ namespace. https://github.com/o1-labs/o1js/pull/2421
+- Support for string type input to `Transaction.fromJSON`
+  https://github.com/o1-labs/o1js/pull/2436
+- Improved the runtime table API with a `RuntimeTable` class with better
+  readability https://github.com/o1-labs/o1js/pull/2402
+
+### Fixed
+
+- Fixed a verification key regression that was caused by incorrectly enabling a
+  proof system feature that wasn't needed.
+  https://github.com/o1-labs/o1js/pull/2449
+- Fixed an edge case where not all the artifacts needed for the cache were
+  stored properly, resulting in them being re-computed after loading the cache.
+  https://github.com/o1-labs/o1js/pull/2460
+
+### Deprecated
+
+- Deprecate the `Gates.addRuntimeTableConfig` and `Gadgets.inTable` functions in
+  favor of the `RuntimeTable` class API
+  https://github.com/o1-labs/o1js/pull/2402
+
+## [2.9.0](https://github.com/o1-labs/o1js/compare/70bca22...2265adc) - 2025-09-02
+
+### Added
+
+- Support for `ForeignField.Unsafe.fromField` as an alternative constructor
+  https://github.com/o1-labs/o1js/pull/2322
+
+### Fixed
+
+- Fixed a performance regression that occurred when proving circuits.
+  https://github.com/o1-labs/o1js/pull/2388
+
+## [2.8.0](https://github.com/o1-labs/o1js/compare/045b1ab...70bca22) - 2025-08-01
+
+### Deprecated
+
+- Deprecate the `Circuit` API in favor of the `ZkFunction` API.
+  https://github.com/o1-labs/o1js/pull/2245
+
+### Added
+
+- Added the `ZkFunction` API, exposed via the `Experimental` namespace
+  (`Experimental.ZkFunction`), which provides the same functionality as the
+  `Circuit` API with a more ergonomic and consistent structure, inspired by
+  `ZkProgram`. https://github.com/o1-labs/o1js/pull/2245
+
+### Fixed
+
+- Sourcemaps properly work with the .cjs distribution of `o1js` now.
+  https://github.com/o1-labs/o1js/pull/2285
+
+## [2.7.0](https://github.com/o1-labs/o1js/compare/6b6d8b9...045b1ab) - 2025-07-23
 
 ### Added
 
@@ -32,7 +106,18 @@ This project adheres to
     methods of a ZkProgram by executing them.
   - Now only a single method is analyzed at a time.
 
-## [2.6.0](https://github.com/o1-labs/o1js/compare/4e23a60...3eef10d) - 2025-05-30
+### Changed
+
+- `IndexedMerkleMap` has been promoted from the `Experimental` namespace and is
+  now part of the public API. https://github.com/o1-labs/o1js/pull/2114
+
+### Fixed
+
+- The `IndexedMerkleMap` root now includes the tree length in its
+  root(commitment), addressing a vulnerability where a malicious user could
+  insert a larger leaf and render the tree unreconstructable by others.
+
+## [2.6.0](https://github.com/o1-labs/o1js/compare/065a15f...6b6d8b9) - 2025-05-30
 
 ### Added
 
@@ -40,7 +125,7 @@ This project adheres to
   - work in progress, still requires memory optimizations to be fully functional
 - Dynamic array provable type. https://github.com/o1-labs/o1js/pull/1848
 
-## [2.5.0](https://github.com/o1-labs/o1js/compare/6ff7f8470a...4e23a60)
+## [2.5.0](https://github.com/o1-labs/o1js/compare/9628358...065a15f)
 
 ### Fixed
 
@@ -72,7 +157,7 @@ This project adheres to
 - Added verification key validity checks to `LocalBlockchain`.
   https://github.com/o1-labs/o1js/pull/2171
 
-## [2.4.0](https://github.com/o1-labs/o1js/compare/fb625f...6ff7f8470a) - 2025-04-01
+## [2.4.0](https://github.com/o1-labs/o1js/compare/c476f09...9628358) - 2025-04-01
 
 ### Added
 
@@ -99,7 +184,7 @@ This project adheres to
 - **Provable BigInt** exposed through the `createProvableBigInt()` class factory
   https://github.com/o1-labs/o1js/pull/2008
 
-## [2.3.0](https://github.com/o1-labs/o1js/compare/b857516...fb625f)
+## [2.3.0](https://github.com/o1-labs/o1js/compare/b857516...c476f09)
 
 ### Added
 

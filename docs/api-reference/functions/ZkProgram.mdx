@@ -35,7 +35,7 @@ function ZkProgram<Config, _>(config: Config & {
 } & { [I in string | number | symbol]: Prover<InferProvableOrUndefined<Get<Config, "publicInput">>, ProvableOrUndefined<Get<Config, "publicInput">>, InferProvableOrVoid<Get<Config, "publicOutput">>, InferPrivateInput<Config>[I], InferProvableOrUndefined<InferAuxiliaryOutputs<Config>[I]>> };
 ```
 
-Defined in: [lib/proof-system/zkprogram.ts:226](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/zkprogram.ts#L226)
+Defined in: [lib/proof-system/zkprogram.ts:227](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/zkprogram.ts#L227)
 
 Wraps config + provable code into a program capable of producing [Proof](../classes/Proof.mdx)s.
 

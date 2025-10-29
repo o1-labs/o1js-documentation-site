@@ -1,0 +1,86 @@
+```ts
+type Option<T, V> = {
+  isSome: Bool;
+  value: T;
+} & {
+  assertNone: void;
+  assertSome: T;
+  orElse: T;
+};
+```
+
+Defined in: [lib/provable/option.ts:34](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/option.ts#L34)
+
+## Type declaration
+
+### isSome
+
+```ts
+isSome: Bool;
+```
+
+### value
+
+```ts
+value: T;
+```
+
+## Type declaration
+
+### assertNone()
+
+```ts
+assertNone(message?: string): void;
+```
+
+#### Parameters
+
+##### message?
+
+`string`
+
+#### Returns
+
+`void`
+
+### assertSome()
+
+```ts
+assertSome(message?: string): T;
+```
+
+#### Parameters
+
+##### message?
+
+`string`
+
+#### Returns
+
+`T`
+
+### orElse()
+
+```ts
+orElse(defaultValue: T | V): T;
+```
+
+#### Parameters
+
+##### defaultValue
+
+`T` | `V`
+
+#### Returns
+
+`T`
+
+## Type Parameters
+
+### T
+
+`T`
+
+### V
+
+`V` = `any`

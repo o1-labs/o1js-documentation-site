@@ -1,4 +1,4 @@
-Defined in: [lib/mina/v1/token/forest-iterator.ts:54](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/token/forest-iterator.ts#L54)
+Defined in: [lib/mina/v1/token/forest-iterator.ts:54](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/token/forest-iterator.ts#L54)
 
 Data structure to represent a forest of account updates that is being iterated over,
 in the context of a token manager contract.
@@ -34,7 +34,7 @@ new TokenAccountUpdateIterator(
    selfToken: Field): TokenAccountUpdateIterator;
 ```
 
-Defined in: [lib/mina/v1/token/forest-iterator.ts:59](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/token/forest-iterator.ts#L59)
+Defined in: [lib/mina/v1/token/forest-iterator.ts:59](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/token/forest-iterator.ts#L59)
 
 #### Parameters
 
@@ -62,7 +62,7 @@ Defined in: [lib/mina/v1/token/forest-iterator.ts:59](https://github.com/o1-labs
 currentLayer: Layer;
 ```
 
-Defined in: [lib/mina/v1/token/forest-iterator.ts:55](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/token/forest-iterator.ts#L55)
+Defined in: [lib/mina/v1/token/forest-iterator.ts:55](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/token/forest-iterator.ts#L55)
 
 ***
 
@@ -72,7 +72,7 @@ Defined in: [lib/mina/v1/token/forest-iterator.ts:55](https://github.com/o1-labs
 selfToken: Field;
 ```
 
-Defined in: [lib/mina/v1/token/forest-iterator.ts:57](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/token/forest-iterator.ts#L57)
+Defined in: [lib/mina/v1/token/forest-iterator.ts:57](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/token/forest-iterator.ts#L57)
 
 ***
 
@@ -82,7 +82,7 @@ Defined in: [lib/mina/v1/token/forest-iterator.ts:57](https://github.com/o1-labs
 unfinishedParentLayers: MerkleList<Layer>;
 ```
 
-Defined in: [lib/mina/v1/token/forest-iterator.ts:56](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/token/forest-iterator.ts#L56)
+Defined in: [lib/mina/v1/token/forest-iterator.ts:56](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/token/forest-iterator.ts#L56)
 
 ## Methods
 
@@ -92,7 +92,7 @@ Defined in: [lib/mina/v1/token/forest-iterator.ts:56](https://github.com/o1-labs
 assertFinished(message?: string): void;
 ```
 
-Defined in: [lib/mina/v1/token/forest-iterator.ts:129](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/token/forest-iterator.ts#L129)
+Defined in: [lib/mina/v1/token/forest-iterator.ts:129](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/token/forest-iterator.ts#L129)
 
 #### Parameters
 
@@ -115,7 +115,7 @@ next(): {
 };
 ```
 
-Defined in: [lib/mina/v1/token/forest-iterator.ts:88](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/token/forest-iterator.ts#L88)
+Defined in: [lib/mina/v1/token/forest-iterator.ts:88](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/token/forest-iterator.ts#L88)
 
 Make a single step along a tree of account updates.
 
@@ -124,7 +124,7 @@ exactly once, when called repeatedly.
 
 The method makes a best effort to avoid visiting account updates that are not using the token,
 and in particular, to avoid returning dummy updates.
-However, neither can be ruled out. We're returning `{ update, usesThisToken: Bool }` and let the
+However, neither can be ruled out. We're returning { update, usesThisToken: Bool } and let the
 caller handle the irrelevant case where `usesThisToken` is false.
 
 #### Returns
@@ -156,7 +156,7 @@ usesThisToken: Bool;
 static create(forest: AccountUpdateForest, selfToken: Field): TokenAccountUpdateIterator;
 ```
 
-Defined in: [lib/mina/v1/token/forest-iterator.ts:69](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/mina/v1/token/forest-iterator.ts#L69)
+Defined in: [lib/mina/v1/token/forest-iterator.ts:69](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/token/forest-iterator.ts#L69)
 
 #### Parameters
 

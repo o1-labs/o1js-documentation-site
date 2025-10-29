@@ -36,6 +36,7 @@ much has changed.  We can make changes to old versions directly, if needed.
 
 Review versioning docs on [Docusuaurus' site](https://docusaurus.io/docs/versioning).
 
+// TODO: First npm i the latest version
 1. To cut the current version into a historical version, simply run:
 
 ```sh
