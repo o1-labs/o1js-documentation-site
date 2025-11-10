@@ -1,14 +1,11 @@
 import {
-  Bool,
-  Experimental,
   Field,
+  IndexedMerkleMap,
   Poseidon,
   PrivateKey,
-  PublicKey,
   SelfProof,
   Struct,
   UInt32,
-  verify,
   ZkProgram,
 } from "o1js";
 
@@ -194,7 +191,7 @@ const eligibility = async () => {
   // start_branch
   // Example, generate list of public keys that are allowed to use a system
   const approvedUsers = Array.from({ length: 5 }, () => PrivateKey.random());
-  class MyMerkleMap extends Experimental.IndexedMerkleMap(4) {}
+  class MyMerkleMap extends IndexedMerkleMap(4) {}
   const approvedUsersMap = new MyMerkleMap();
   for (let i = 0; i < approvedUsers.length; i++) {
     approvedUsersMap.set(

@@ -1,4 +1,9 @@
-Defined in: [lib/proof-system/circuit.ts:13](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/circuit.ts#L13)
+Defined in: [lib/proof-system/circuit.ts:17](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/circuit.ts#L17)
+
+## Deprecated
+
+The `Circuit` API is deprecated in favor of ZkFunction, which features the same
+functionality with a more ergonomic and consistent structure, inspired by [ZkProgram](../type-aliases/ZkProgram.mdx).
 
 ## Constructors
 
@@ -14,23 +19,23 @@ new Circuit(): Circuit;
 
 ## Properties
 
-### \_main
+### ~~\_main~~
 
 ```ts
 static _main: CircuitData<any, any>;
 ```
 
-Defined in: [lib/proof-system/circuit.ts:16](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/circuit.ts#L16)
+Defined in: [lib/proof-system/circuit.ts:20](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/circuit.ts#L20)
 
 ## Methods
 
-### generateKeypair()
+### ~~generateKeypair()~~
 
 ```ts
 static generateKeypair(lazyMode: boolean): Promise<Keypair>;
 ```
 
-Defined in: [lib/proof-system/circuit.ts:25](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/circuit.ts#L25)
+Defined in: [lib/proof-system/circuit.ts:29](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/circuit.ts#L29)
 
 Generates a proving key and a verification key for this circuit.
 
@@ -52,7 +57,7 @@ const keypair = await MyCircuit.generateKeypair();
 
 ***
 
-### prove()
+### ~~prove()~~
 
 ```ts
 static prove(
@@ -61,7 +66,7 @@ static prove(
 keypair: Keypair): Promise<Proof>;
 ```
 
-Defined in: [lib/proof-system/circuit.ts:45](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/circuit.ts#L45)
+Defined in: [lib/proof-system/circuit.ts:49](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/circuit.ts#L49)
 
 Proves a statement using the private input, public input, and the [Keypair](Keypair.mdx) of the circuit.
 
@@ -92,7 +97,7 @@ const proof = await MyCircuit.prove(privateInput, publicInput, keypair);
 
 ***
 
-### verify()
+### ~~verify()~~
 
 ```ts
 static verify(
@@ -101,7 +106,7 @@ static verify(
 proof: Proof): Promise<boolean>;
 ```
 
-Defined in: [lib/proof-system/circuit.ts:72](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/proof-system/circuit.ts#L72)
+Defined in: [lib/proof-system/circuit.ts:76](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/circuit.ts#L76)
 
 Verifies a proof using the public input, the proof, and the initial [Keypair](Keypair.mdx) of the circuit.
 

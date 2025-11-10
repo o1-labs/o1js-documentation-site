@@ -23,4 +23,4 @@ jobs:
         run: npm ci
 
       - name: Run cspell
-        run: npx cspell --no-progress --no-summary "docs/**/*.{md,mdx}" '!docs/api-reference/**/*' '!docs/changelog.md' || exit 1
+        run: npm run spellcheck

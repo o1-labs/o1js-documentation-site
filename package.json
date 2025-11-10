@@ -12,7 +12,9 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "test": "npx vitest run",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "spellcheck": "npx cspell --no-progress --no-summary 'docs/**/*.{md,mdx}' '!docs/api-reference/**/*' '!docs/changelog.md'",
+    "link-check": "output=$(find . \\( -name '*.md' -o -name '*.mdx' \\) -not -path './node_modules/*' -not -path './docs/api-reference/*' -not -path './docs/changelog.md' -not -path './versioned_docs/*' | xargs npx markdown-link-check --quiet --config .mlc-config.json); echo \"$output\""
   },
   "dependencies": {
     "@docusaurus/core": "3.7.0",
@@ -31,7 +33,7 @@
     "cspell": "^8.18.1",
     "dotenv": "^16.4.7",
     "markdown-link-check": "^3.13.7",
-    "o1js": "^2.7.0",
+    "o1js": "^2.10.0",
     "rehype-katex": "^7.0.1",
     "remark-code-snippets": "^1.1.0",
     "remark-math": "^6.0.0",

@@ -1,5 +1,5 @@
 import {
-  Experimental,
+  IndexedMerkleMap,
   Field,
   MerkleList,
   MerkleTree,
@@ -7,8 +7,6 @@ import {
 } from "o1js";
 
 // start_indexed_merkle_map
-const { IndexedMerkleMap } = Experimental;
-
 const height = 4; // 2 ^ 4 = 16 leaves
 class MyIndexedMerkleMap extends IndexedMerkleMap(height) {}
 

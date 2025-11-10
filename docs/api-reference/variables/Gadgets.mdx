@@ -85,7 +85,7 @@ const Gadgets: {
 };
 ```
 
-Defined in: [lib/provable/gadgets/gadgets.ts:42](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/gadgets/gadgets.ts#L42)
+Defined in: [lib/provable/gadgets/gadgets.ts:42](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/gadgets/gadgets.ts#L42)
 
 ## Type declaration
 
@@ -277,7 +277,7 @@ let digest = Gadgets.BLAKE2b.hash(preimage);
 get IV(): UInt64[];
 ```
 
-Defined in: [lib/provable/gadgets/blake2b.ts:77](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/gadgets/blake2b.ts#L77)
+Defined in: [lib/provable/gadgets/blake2b.ts:76](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/gadgets/blake2b.ts#L76)
 
 ###### Returns
 
@@ -1336,7 +1336,7 @@ padding: (data: FlexibleBytes) => UInt32[][];
 get initialState(): UInt32[];
 ```
 
-Defined in: [lib/provable/gadgets/sha256.ts:103](https://github.com/o1-labs/o1js/blob/fca908c243ee8e908efacaf73a882d48759e675a/src/lib/provable/gadgets/sha256.ts#L103)
+Defined in: [lib/provable/gadgets/sha256.ts:103](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/gadgets/sha256.ts#L103)
 
 ###### Returns
 
@@ -1461,7 +1461,7 @@ let [x, y] = Gadgets.compactMultiRangeCheck([xy, z]);
 
 Throws an error if `xy` exceeds 2*88 = 176 bits, or if z exceeds 88 bits.
 
-### inTable()
+### ~~inTable()~~
 
 ```ts
 inTable(
@@ -1499,6 +1499,11 @@ given, the remaining pairs are duplicates of the first one.
 #### Returns
 
 `void`
+
+#### Deprecated
+
+[inTable](#intable) is deprecated in favor of RuntimeTable class, 
+which provides a more ergonomic API.
 
 ### isDefinitelyInRangeN()
 
