@@ -12,6 +12,10 @@ So events are useful for off-chain indexing and user interfaces.  You can track 
 
 Actions are an array of Fields under the hood, but o1js allows you to define a TypeScript interface for better structure in your business logic.  A SmartContract may have only one type of action.  Unlike events, all actions must be exactly the same shape, because that shape is what will be used in the reducer constraint system.
 
+:::info
+The total number of field elements across all actions in a single transaction is limited to 1024.  There is no per-action field limit—individual actions can be as large as needed within the transaction cap.  See [MIP-0008](https://github.com/MinaProtocol/MIPs/blob/main/MIPS/mip-0008-increase-events-actions-limit.md) for details.
+:::
+
 ```ts file=../snippets/zkapps/actions-reducers/actions-reducers.ts start=start_basic_actions end=end_basic_actions
 ```
 
