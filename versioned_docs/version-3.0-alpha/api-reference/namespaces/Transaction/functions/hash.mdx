@@ -1,0 +1,19 @@
+```ts
+function hash(json: string | ZkappCommand): Promise<string>;
+```
+
+Defined in: [lib/mina/v1/transaction.ts:118](https://github.com/o1-labs/o1js/blob/f8f5fe4735ab2d63dee8db07178075855e11c71a/src/lib/mina/v1/transaction.ts#L118)
+
+Computes the hash of a transaction represented as a JSON object or JSON string.
+This hash serves as a unique identifier for the transaction and is essential for tracking
+and verifying transactions on the Mina blockchain.
+
+## Parameters
+
+### json
+
+`string` | `ZkappCommand`
+
+## Returns
+
+`Promise`\<`string`\>

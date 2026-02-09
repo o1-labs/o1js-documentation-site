@@ -71,6 +71,11 @@ const config: Config = {
               badge: false,
               banner: "none",
             },
+            "3.0-alpha": {
+              label: "3.0 Alpha",
+              banner: "unreleased",
+              badge: true,
+            },
           },
         },
         theme: {

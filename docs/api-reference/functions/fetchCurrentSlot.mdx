@@ -1,0 +1,56 @@
+```ts
+function fetchCurrentSlot(
+   graphqlEndpoint: string, 
+   slotType: "global" | "epoch", 
+headers?: HeadersInit): Promise<number>;
+```
+
+Defined in: [lib/mina/v1/fetch.ts:584](https://github.com/o1-labs/o1js/blob/f8f5fe4735ab2d63dee8db07178075855e11c71a/src/lib/mina/v1/fetch.ts#L584)
+
+Fetches the current slot number of the Mina network.
+
+By default, returns the global slot since genesis (the cumulative count of all slots
+since the network launched). This matches `fetchLastBlock().globalSlotSinceGenesis`.
+
+Alternatively, you can fetch the slot within the current epoch by passing `slotType: 'epoch'`.
+The epoch slot resets to 0 at each epoch boundary (approximately every 14 days) and
+ranges from 0 to ~7,139.
+
+## Parameters
+
+### graphqlEndpoint
+
+`string` = `networkConfig.minaEndpoint`
+
+GraphQL endpoint to fetch from
+
+### slotType
+
+Type of slot to fetch: 'global' (default) for slot since genesis, or 'epoch' for slot within current epoch
+
+`"global"` | `"epoch"`
+
+### headers?
+
+`HeadersInit`
+
+Optional headers to pass to the fetch request
+
+## Returns
+
+`Promise`\<`number`\>
+
+The slot number (either global or epoch-relative based on slotType)
+
+## Example
+
+```ts
+// Fetch global slot (default)
+const globalSlot = await fetchCurrentSlot('https://api.minascan.io/node/devnet/v1/graphql');
+
+// Fetch epoch-relative slot
+const epochSlot = await fetchCurrentSlot(
+  'https://api.minascan.io/node/devnet/v1/graphql',
+  'epoch'
+);
+```

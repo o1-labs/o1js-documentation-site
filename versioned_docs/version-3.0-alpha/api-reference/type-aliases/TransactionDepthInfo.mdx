@@ -1,0 +1,78 @@
+```ts
+type TransactionDepthInfo = {
+  currentBlockHeight: number;
+  depth: number;
+  finalityThreshold: number;
+  inclusionBlockHeight: number;
+  isFinalized: boolean;
+};
+```
+
+Defined in: [lib/mina/v1/graphql.ts:263](https://github.com/o1-labs/o1js/blob/f8f5fe4735ab2d63dee8db07178075855e11c71a/src/lib/mina/v1/graphql.ts#L263)
+
+Information about a transaction's depth (confirmation count) in the blockchain.
+Depth represents how many blocks have been built on top of the block containing the transaction.
+
+## See
+
+https://docs.minaprotocol.com/mina-protocol/lifecycle-of-a-payment
+
+## Properties
+
+### currentBlockHeight
+
+```ts
+currentBlockHeight: number;
+```
+
+Defined in: [lib/mina/v1/graphql.ts:269](https://github.com/o1-labs/o1js/blob/f8f5fe4735ab2d63dee8db07178075855e11c71a/src/lib/mina/v1/graphql.ts#L269)
+
+Current block height of the chain
+
+***
+
+### depth
+
+```ts
+depth: number;
+```
+
+Defined in: [lib/mina/v1/graphql.ts:265](https://github.com/o1-labs/o1js/blob/f8f5fe4735ab2d63dee8db07178075855e11c71a/src/lib/mina/v1/graphql.ts#L265)
+
+Number of blocks built on top of the block containing the transaction (0 = just included)
+
+***
+
+### finalityThreshold
+
+```ts
+finalityThreshold: number;
+```
+
+Defined in: [lib/mina/v1/graphql.ts:273](https://github.com/o1-labs/o1js/blob/f8f5fe4735ab2d63dee8db07178075855e11c71a/src/lib/mina/v1/graphql.ts#L273)
+
+The finality threshold used for this calculation
+
+***
+
+### inclusionBlockHeight
+
+```ts
+inclusionBlockHeight: number;
+```
+
+Defined in: [lib/mina/v1/graphql.ts:267](https://github.com/o1-labs/o1js/blob/f8f5fe4735ab2d63dee8db07178075855e11c71a/src/lib/mina/v1/graphql.ts#L267)
+
+Block height at which the transaction was included
+
+***
+
+### isFinalized
+
+```ts
+isFinalized: boolean;
+```
+
+Defined in: [lib/mina/v1/graphql.ts:271](https://github.com/o1-labs/o1js/blob/f8f5fe4735ab2d63dee8db07178075855e11c71a/src/lib/mina/v1/graphql.ts#L271)
+
+Whether the transaction has reached finality (depth >= finalityThreshold)

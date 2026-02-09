@@ -1,0 +1,72 @@
+```ts
+function fetchTimedAccountInfo(
+   accountInfo: {
+  publicKey: string | PublicKey;
+  tokenId?: string | Field;
+}, 
+   graphqlEndpoint: string, 
+   config: FetchConfig): Promise<
+  | {
+  account: Account;
+  blockHeight: UInt32;
+  error: undefined;
+  globalSlot: UInt32;
+  liquidBalance: UInt64;
+  lockedBalance: UInt64;
+  totalBalance: UInt64;
+}
+  | {
+  error: FetchError;
+}>;
+```
+
+Defined in: [lib/mina/v1/fetch.ts:273](https://github.com/o1-labs/o1js/blob/f8f5fe4735ab2d63dee8db07178075855e11c71a/src/lib/mina/v1/fetch.ts#L273)
+
+Fetches detailed balance information for a time-locked account.
+
+This function retrieves account data and calculates the liquid and locked
+balances based on the current global slot and the account's vesting schedule.
+
+## Parameters
+
+### accountInfo
+
+The account identifier containing publicKey and optional tokenId
+
+#### publicKey
+
+`string` \| [`PublicKey`](../classes/PublicKey.mdx)
+
+#### tokenId?
+
+`string` \| [`Field`](../classes/Field.mdx)
+
+### graphqlEndpoint
+
+`string` = `networkConfig.minaEndpoint`
+
+The GraphQL endpoint to fetch from (defaults to configured endpoint)
+
+### config
+
+`FetchConfig` = `{}`
+
+Optional fetch configuration with timeout and headers
+
+## Returns
+
+`Promise`\<
+  \| \{
+  `account`: `Account`;
+  `blockHeight`: [`UInt32`](../classes/UInt32.mdx);
+  `error`: `undefined`;
+  `globalSlot`: [`UInt32`](../classes/UInt32.mdx);
+  `liquidBalance`: [`UInt64`](../classes/UInt64.mdx);
+  `lockedBalance`: [`UInt64`](../classes/UInt64.mdx);
+  `totalBalance`: [`UInt64`](../classes/UInt64.mdx);
+\}
+  \| \{
+  `error`: `FetchError`;
+\}\>
+
+An object containing balance details and timing information, or an error
