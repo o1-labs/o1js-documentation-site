@@ -1,4 +1,4 @@
-import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
+import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -15,113 +15,114 @@ import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
 const sidebars: SidebarsConfig = {
   docs: [
     {
-      type: "category",
-      label: "Getting Started",
+      type: 'category',
+      label: 'Getting Started',
       collapsed: false,
       items: [
-        "getting-started/intro",
-        "getting-started/what-is-a-zk-constraint-system",
+        'getting-started/intro',
+        'getting-started/what-is-a-zk-constraint-system',
       ],
     },
     {
-      type: "category",
-      label: "Basic Types and Functions",
+      type: 'category',
+      label: 'Basic Types and Functions',
       collapsed: false,
       items: [
-        "basic-types/field",
-        "basic-types/int",
-        "basic-types/keypairs-and-signatures",
-        "basic-types/merkle-trees",
-        "basic-types/arrays",
-        "basic-types/structs",
-        "basic-types/hashing",
+        'basic-types/field',
+        'basic-types/int',
+        'basic-types/keypairs-and-signatures',
+        'basic-types/merkle-trees',
+        'basic-types/arrays',
+        'basic-types/structs',
+        'basic-types/hashing',
       ],
     },
     {
-      type: "category",
-      label: "Writing Constraint Systems",
+      type: 'category',
+      label: 'Writing Constraint Systems',
       collapsed: false,
       items: [
-        "writing-constraint-systems/witnesses",
-        "writing-constraint-systems/conditional-logic",
-        "writing-constraint-systems/analyzing-constraint-systems",
-        "writing-constraint-systems/zk-program",
+        'writing-constraint-systems/witnesses',
+        'writing-constraint-systems/conditional-logic',
+        'writing-constraint-systems/analyzing-constraint-systems',
+        'writing-constraint-systems/zk-program',
       ],
     },
     {
-      type: "category",
-      label: "ZkApps",
+      type: 'category',
+      label: 'ZkApps',
       collapsed: true,
       items: [
-        "zkapps/intro",
-        "zkapps/smart-contracts",
-        "zkapps/permissions",
-        "zkapps/events",
-        "zkapps/actions-and-reducers",
-        "zkapps/account-updates",
-        "zkapps/provable-inputs",
-        "zkapps/zkprogram-proofs",
-        "zkapps/local-development",
-        "zkapps/deployment",
+        'zkapps/intro',
+        'zkapps/upgrade-mesa',
+        'zkapps/smart-contracts',
+        'zkapps/permissions',
+        'zkapps/events',
+        'zkapps/actions-and-reducers',
+        'zkapps/account-updates',
+        'zkapps/provable-inputs',
+        'zkapps/zkprogram-proofs',
+        'zkapps/local-development',
+        'zkapps/deployment',
       ],
     },
     {
-      type: "category",
-      label: "Advanced Concepts",
+      type: 'category',
+      label: 'Advanced Concepts',
       items: [
-        "advanced-concepts/serialization",
-        "advanced-concepts/recursion",
-        "advanced-concepts/sideloaded-vks",
+        'advanced-concepts/serialization',
+        'advanced-concepts/recursion',
+        'advanced-concepts/sideloaded-vks',
         {
-          type: "category",
-          label: "ZkApps",
+          type: 'category',
+          label: 'ZkApps',
           items: [
-            "advanced-concepts/ZkApps/upgradability",
-            "advanced-concepts/ZkApps/onChainPreconditions",
+            'advanced-concepts/ZkApps/upgradability',
+            'advanced-concepts/ZkApps/onChainPreconditions',
           ],
         },
       ],
     },
     {
-      type: "category",
-      label: "Tutorials",
+      type: 'category',
+      label: 'Tutorials',
       items: [
         {
-          type: "category",
-          label: "HMAC",
+          type: 'category',
+          label: 'HMAC',
           items: [
-            "tutorials/hmac/hmac-basics",
-            "tutorials/hmac/implementation",
-            "tutorials/hmac/tests",
+            'tutorials/hmac/hmac-basics',
+            'tutorials/hmac/implementation',
+            'tutorials/hmac/tests',
           ],
         },
         {
-          type: "category",
-          label: "Frontend Integration",
+          type: 'category',
+          label: 'Frontend Integration',
           items: [
-            "tutorials/frontent-integration-guides/angular",
-            "tutorials/frontent-integration-guides/next",
+            'tutorials/frontent-integration-guides/angular',
+            'tutorials/frontent-integration-guides/next',
           ],
         },
       ],
     },
     {
-      type: "category",
-      label: "API Reference",
+      type: 'category',
+      label: 'API Reference',
       link: {
-        type: "doc",
-        id: "api-reference/Introduction", // Set default page for this category
+        type: 'doc',
+        id: 'api-reference/Introduction', // Set default page for this category
       },
       items: [
         {
-          type: "autogenerated",
-          dirName: "api-reference", // Generate sidebar slice from docs/api-reference
+          type: 'autogenerated',
+          dirName: 'api-reference', // Generate sidebar slice from docs/api-reference
         },
       ],
     },
     {
-      type: "doc",
-      id: "changelog",
+      type: 'doc',
+      id: 'changelog',
     },
   ],
 };
