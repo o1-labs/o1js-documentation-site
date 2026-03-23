@@ -1,0 +1,39 @@
+```ts
+type DepthOptions = {
+  blockLength?: number;
+  finalityThreshold?: number;
+};
+```
+
+Defined in: [lib/mina/v1/graphql.ts:279](https://github.com/o1-labs/o1js/blob/f8f5fe4735ab2d63dee8db07178075855e11c71a/src/lib/mina/v1/graphql.ts#L279)
+
+Options for querying transaction depth.
+
+## Properties
+
+### blockLength?
+
+```ts
+optional blockLength: number;
+```
+
+Defined in: [lib/mina/v1/graphql.ts:281](https://github.com/o1-labs/o1js/blob/f8f5fe4735ab2d63dee8db07178075855e11c71a/src/lib/mina/v1/graphql.ts#L281)
+
+Number of blocks to search for the transaction (default: 20)
+
+***
+
+### finalityThreshold?
+
+```ts
+optional finalityThreshold: number;
+```
+
+Defined in: [lib/mina/v1/graphql.ts:287](https://github.com/o1-labs/o1js/blob/f8f5fe4735ab2d63dee8db07178075855e11c71a/src/lib/mina/v1/graphql.ts#L287)
+
+Number of blocks required for finality (default: 15).
+Default of 15 blocks provides 99.9% confidence per Mina documentation.
+
+#### See
+
+https://docs.minaprotocol.com/mina-protocol/lifecycle-of-a-payment

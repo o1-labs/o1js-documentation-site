@@ -1,0 +1,49 @@
+```ts
+function fetchTransactionDepth(transactionHash: string, options?: DepthOptions): Promise<
+  | null
+| TransactionDepthInfo>;
+```
+
+Defined in: [lib/mina/v1/fetch.ts:687](https://github.com/o1-labs/o1js/blob/f8f5fe4735ab2d63dee8db07178075855e11c71a/src/lib/mina/v1/fetch.ts#L687)
+
+Fetches the depth (confirmation count) of a transaction in the blockchain.
+Depth represents how many blocks have been built on top of the block containing the transaction.
+
+## Parameters
+
+### transactionHash
+
+`string`
+
+The hash of the transaction to check
+
+### options?
+
+[`DepthOptions`](../type-aliases/DepthOptions.mdx)
+
+Optional configuration for the depth query
+
+## Returns
+
+`Promise`\<
+  \| `null`
+  \| [`TransactionDepthInfo`](../type-aliases/TransactionDepthInfo.mdx)\>
+
+TransactionDepthInfo if the transaction is found and successful, null otherwise
+
+## Example
+
+```ts
+// Check depth of a transaction
+const depthInfo = await fetchTransactionDepth('5JuKp...');
+if (depthInfo) {
+  console.log(`Depth: ${depthInfo.depth}, Finalized: ${depthInfo.isFinalized}`);
+}
+
+// Use custom finality threshold
+const depthInfo = await fetchTransactionDepth('5JuKp...', { finalityThreshold: 10 });
+```
+
+## See
+
+https://docs.minaprotocol.com/mina-protocol/lifecycle-of-a-payment
