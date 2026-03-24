@@ -1,0 +1,228 @@
+---
+title: Upgrading zkApps to MESA (o1js 3.0)
+---
+
+# Upgrading zkApps to MESA (o1js 3.0)
+
+The MESA hardfork introduces protocol-level changes that affect all deployed zkApps. After the hardfork, proofs generated with old verification keys will no longer verify. This guide explains why that happens, how the protocol helps you upgrade, and the exact steps to migrate your zkApp.
+
+## Why you need to upgrade
+
+When a hardfork changes protocol constants, the circuit constraints change too. This means:
+
+1. **Verification keys change.** Compiling the same contract with o1js 3.0 produces a different verification key than o1js 2.x.
+2. **Old proofs stop verifying.** The network rejects proofs generated against the old verification key because the underlying constraint system no longer matches.
+
+Until you update the verification key stored on-chain, your zkApp cannot process any new proof-authorized transactions.
+
+## How the protocol enables upgrades
+
+Every zkApp account stores a `setVerificationKey` permission that controls who can change the verification key. This permission has a special structure: `(Auth_required.t, txn_version)` - it pairs an authorization type (`none`, `signature`, `proof`, `impossible`) with a transaction version number.
+
+After a hardfork, the protocol version increases. When the `txn_version` stored on your account is older than the current protocol version, **fallback logic** activates:
+
+- `impossible` falls back to `signature`
+- `proof` falls back to `signature`
+- `signature` and `none` remain unchanged
+
+This means that regardless of how locked your verification key was before the hardfork, you can update it with a simple signed transaction during the upgrade window.
+
+The same fallback logic applies to the `access` permission. If your account had `access: proof`, it temporarily falls back to `signature` so the upgrade transaction can interact with the account.
+
+> **Note:** After the upgrade transaction sets a new verification key, the `txn_version` on the account is bumped to the current protocol version. This means the fallback window closes automatically - your original permission semantics are restored. If `setVerificationKey` was `impossible`, it becomes `impossible` again after the upgrade.
+
+## Upgrade steps
+
+### Prerequisites
+
+- The private key of the zkApp account (the key pair used to deploy the contract)
+- Your contract source code
+- o1js 3.0 (`npm install o1js@3`)
+
+### Step 1: Update o1js and compile
+
+Update o1js to version 3.0 and compile your contract. The compilation produces a new verification key compatible with the MESA protocol.
+
+```typescript
+import { MyContract } from './my-contract.js';
+
+// Compile with o1js 3.0 to get the MESA-compatible verification key
+const { verificationKey } = await MyContract.compile();
+```
+
+### Step 2: Send the upgrade transaction
+
+Create a transaction that sets the new verification key on your zkApp account. This transaction is authorized by a **signature** from the zkApp's private key - not a proof.
+
+```typescript
+import { AccountUpdate, Mina, PrivateKey, fetchAccount } from 'o1js';
+
+// Your zkApp's private key (the one used during deployment)
+const zkAppKey = PrivateKey.fromBase58('...');
+const zkAppAddress = zkAppKey.toPublicKey();
+
+// Fee payer
+const senderKey = PrivateKey.fromBase58('...');
+const sender = senderKey.toPublicKey();
+
+// Fetch latest account state
+await fetchAccount({ publicKey: zkAppAddress });
+await fetchAccount({ publicKey: sender });
+
+// Build the upgrade transaction
+const tx = await Mina.transaction({ sender, fee: 100_000_000 }, async () => {
+  const accountUpdate = AccountUpdate.createSigned(zkAppAddress);
+  accountUpdate.account.verificationKey.set(verificationKey);
+});
+
+// Sign with BOTH the fee payer key and the zkApp key
+const pendingTx = await tx.sign([senderKey, zkAppKey]).send();
+await pendingTx.wait();
+```
+
+The critical parts:
+
+- **`AccountUpdate.createSigned(zkAppAddress)`** creates an account update that requires a signature from the zkApp account. This is what triggers the fallback logic for permissions like `impossible` and `proof`.
+- **Sign with the zkApp key.** The transaction must be signed with the zkApp's private key (`zkAppKey`), not just the fee payer key.
+
+### Step 3: Verify the upgrade
+
+After the transaction is included in a block, send a proof-authorized transaction to confirm your contract works with the new verification key.
+
+```typescript
+const zkApp = new MyContract(zkAppAddress);
+
+await fetchAccount({ publicKey: zkAppAddress });
+await fetchAccount({ publicKey: sender });
+
+const tx = await Mina.transaction({ sender, fee: 100_000_000 }, async () => {
+  await zkApp.myMethod(/* args */);
+});
+const provenTx = await tx.prove();
+const pendingTx = await provenTx.sign([senderKey]).send();
+await pendingTx.wait();
+```
+
+That's it. Your zkApp is now running on the MESA protocol with restored permission semantics.
+
+## Permission scenarios
+
+The upgrade process works the same way regardless of your original permission configuration. Here's how each scenario is handled:
+
+### Default permissions
+
+No special considerations. The default `setVerificationKey` permission is `signature`, so the upgrade transaction works directly without needing the fallback logic.
+
+### `setVerificationKey: impossibleDuringCurrentVersion`
+
+Before the hardfork, the verification key could not be changed by anyone. After the hardfork, the fallback converts `impossible` to `signature`, allowing the upgrade. Once the upgrade transaction is processed and the `txn_version` is bumped, the permission reverts to `impossible` for the new protocol version.
+
+### `setVerificationKey: proofDuringCurrentVersion`
+
+Before the hardfork, the verification key could only be changed via a proof (e.g., through a contract method like `updateVk`). After the hardfork, old proofs no longer verify, so the fallback converts `proof` to `signature`. After the upgrade, the permission reverts to `proof` - you'll need valid proofs to change the VK again.
+
+### `access: proof`
+
+If your account required proof authorization for any interaction (`access: proof`), the fallback also converts this to `signature` during the upgrade window. This ensures the signature-based VK upgrade transaction can access the account. After the `txn_version` bumps, `access: proof` is restored.
+
+### `setPermissions: impossible`
+
+This is **not** a blocker for the upgrade. The upgrade transaction only sets the verification key - it does not need to modify permissions. The `txn_version` bump happens automatically as part of the VK update, so there's no separate step needed to update permissions.
+
+### `access: impossible`
+
+If `access` was set to `impossible`, the account was intentionally made permanently inaccessible. The protocol does **not** provide a fallback for this case - the account remains locked. This is by design: `access: impossible` signals that the developer never wants any interaction with the account again.
+
+## Full upgrade script example
+
+Here is a complete, copy-pasteable script that upgrades a zkApp:
+
+```typescript
+import { AccountUpdate, Field, Mina, PrivateKey, fetchAccount } from 'o1js';
+import { MyContract } from './my-contract.js';
+
+// -- Configuration --
+
+const GRAPHQL_ENDPOINT = 'https://api.minascan.io/node/mainnet/v1/graphql';
+const ZKAPP_KEY = '...'; // zkApp private key (base58)
+const SENDER_KEY = '...'; // fee payer private key (base58)
+const TX_FEE = 100_000_000; // 0.1 MINA
+
+// -- Setup --
+
+const network = Mina.Network(GRAPHQL_ENDPOINT);
+Mina.setActiveInstance(network);
+
+const zkAppKey = PrivateKey.fromBase58(ZKAPP_KEY);
+const zkAppAddress = zkAppKey.toPublicKey();
+const senderKey = PrivateKey.fromBase58(SENDER_KEY);
+const sender = senderKey.toPublicKey();
+
+console.log(`zkApp address: ${zkAppAddress.toBase58()}`);
+console.log(`Fee payer:     ${sender.toBase58()}`);
+
+// -- Step 1: Compile to get the new verification key --
+
+console.log('\nCompiling contract...');
+const { verificationKey: newVK } = await MyContract.compile();
+console.log(`New verification key hash: ${newVK.hash.toString()}`);
+
+// -- Step 2: Upgrade the verification key --
+
+console.log('\nUpgrading verification key...');
+await fetchAccount({ publicKey: zkAppAddress });
+await fetchAccount({ publicKey: sender });
+
+const upgradeTx = await Mina.transaction({ sender, fee: TX_FEE }, async () => {
+  const accountUpdate = AccountUpdate.createSigned(zkAppAddress);
+  accountUpdate.account.verificationKey.set(newVK);
+});
+const pendingUpgrade = await upgradeTx.sign([senderKey, zkAppKey]).send();
+console.log(`Upgrade TX hash: ${pendingUpgrade.hash}`);
+await pendingUpgrade.wait();
+console.log('Verification key upgraded successfully.');
+
+// -- Step 3: Verify with a proof-authorized transaction --
+
+console.log('\nVerifying upgrade with a proof transaction...');
+const zkApp = new MyContract(zkAppAddress);
+
+await fetchAccount({ publicKey: zkAppAddress });
+await fetchAccount({ publicKey: sender });
+
+const testTx = await Mina.transaction({ sender, fee: TX_FEE }, async () => {
+  await zkApp.myMethod(/* your args here */);
+});
+const provenTx = await testTx.prove();
+const pendingTest = await provenTx.sign([senderKey]).send();
+console.log(`Test TX hash: ${pendingTest.hash}`);
+await pendingTest.wait();
+
+console.log('\nUpgrade complete! Your zkApp is running on MESA.');
+```
+
+## FAQ
+
+### Do I need to redeploy my contract?
+
+No. You only need to update the verification key. Your on-chain state and account balance are all preserved.
+
+### What if I lost my zkApp private key?
+
+You need the zkApp's private key to sign the upgrade transaction. If you've lost it, you cannot upgrade the contract. This is why it's critical to securely back up your zkApp key pair.
+
+### Does my on-chain state change during the upgrade?
+
+No. The upgrade transaction only modifies the verification key field. All `@state` fields remain exactly as they were.
+
+### Can I change my contract logic during the upgrade?
+
+Yes. If you modify your contract code before compiling, the new verification key will reflect the updated logic. The upgrade transaction sets whatever verification key you provide - it doesn't have to match the original contract.
+
+### What happens if I don't upgrade?
+
+Your zkApp will be unable to process any proof-authorized transactions. The on-chain state becomes frozen because no valid proofs can be generated against the old verification key. The account and its funds remain safe, but the contract is effectively paused until you upgrade.
+
+### Is the upgrade window limited?
+
+The fallback logic activates whenever the account's `txn_version` is older than the current protocol version. This remains true until you perform the upgrade, so there is no deadline. However, upgrading promptly is recommended so your zkApp remains functional.
