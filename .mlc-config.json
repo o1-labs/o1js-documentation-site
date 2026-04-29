@@ -1,4 +1,5 @@
 {
+  "aliveStatusCodes": [200, 206, 429],
   "replacementPatterns": [
     {
       "pattern": "^/o1js/img/(?<path>.*)$",
