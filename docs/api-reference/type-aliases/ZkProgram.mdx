@@ -46,7 +46,7 @@ The configuration of the program, describing the type of the public input and
 ## Param
 
 Optional number of chunks to split each method's circuit into. Use a
-  value greater than 1 (1 < numChunks <= 4) if a method exceeds the single-circuit row limit
+  value greater than 1 (`1 < numChunks <= 4`) if a method exceeds the single-circuit row limit
   of 2^16; default is 1. Up to 8 chunks are supported if the degree of the constraints of the 
   underlying circuit is low enough (e.g. generic gates) so the wrap domain can still be 2.
 

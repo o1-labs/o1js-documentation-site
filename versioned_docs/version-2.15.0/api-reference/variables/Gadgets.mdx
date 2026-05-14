@@ -782,7 +782,7 @@ Proves that x is equal to y.
 assertLessThan(x: Field3, f: bigint | Field3): void;
 ```
 
-Prove that x < f for any constant f < 2^264, or for another `Field3` f.
+Prove that `x < f` for any constant `f < 2^264`, or for another `Field3` f.
 
 If f is a finite field modulus, this means that the given field element is fully reduced modulo f.
 This is a stronger statement than [ForeignField.assertAlmostReduced](../interfaces/ForeignField.mdx#assertalmostreduced)
@@ -827,7 +827,7 @@ Gadgets.ForeignField.assertLessThan(x, f);
 assertLessThanOrEqual(x: Field3, f: bigint | Field3): void;
 ```
 
-Prove that x <= f for any constant f < 2^264, or for another `Field3` f.
+Prove that `x <= f` for any constant `f < 2^264`, or for another `Field3` f.
 
 See [ForeignField.assertLessThan](../interfaces/ForeignField.mdx#assertlessthan) for details and usage examples.
 
@@ -1875,7 +1875,7 @@ Checks that three [Field](Field.mdx) elements are in the range [0, 2^12) (using 
 Internally, this gadget relies on the 12-bit [range check table](https://github.com/o1-labs/proof-systems/blob/master/kimchi/src/circuits/lookup/tables/mod.rs).
 All three inputs are checked to be included in that table.
 
-It's possible to use this as a range check for bit lengths n < 12, by passing in _two values_.
+It's possible to use this as a range check for bit lengths `n < 12`, by passing in _two values_.
 - the value to be checked, `x`, to prove that x in [0, 2^12)
 - x scaled by 2^(12 - n), to prove that either x in [0, 2^n) or `x * 2^(12 - n)` overflows the field size (which is excluded by the first check)
 
