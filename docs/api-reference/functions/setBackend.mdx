@@ -1,0 +1,33 @@
+```ts
+function setBackend(backend: Backend): void;
+```
+
+Defined in: [lib/backend.ts:34](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/backend.ts#L34)
+
+Set the backend to use for cryptographic operations such as proving.
+
+Must be called **before** `initializeBindings()`. The default backend is `'wasm'`.
+
+_Note:_ In browser environments, only the 'wasm' backend is available.
+Attempting to set the backend to 'native' in such environments will result in a no-op with a console warning.
+
+## Parameters
+
+### backend
+
+`Backend`
+
+## Returns
+
+`void`
+
+## Example
+
+```ts
+import { setBackend, initializeBindings } from 'o1js';
+
+setBackend('native');
+
+// must be called after setBackend, most of the o1js functions do this internally
+await initializeBindings();
+```

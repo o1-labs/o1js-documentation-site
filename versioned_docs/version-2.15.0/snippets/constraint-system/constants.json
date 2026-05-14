@@ -1,0 +1,23 @@
+{
+  "csSummary": {
+    "ForeignFieldAdd": 3,
+    "Generic": 3,
+    "Poseidon": 11,
+    "RangeCheck0": 8,
+    "RangeCheck1": 4,
+    "Total rows": 36,
+    "Zero": 7
+  },
+  "zkpSummary": {
+    "ForeignFieldAdd": 3,
+    "Generic": 3,
+    "Poseidon": 11,
+    "RangeCheck0": 8,
+    "RangeCheck1": 4,
+    "Total rows": 36,
+    "Zero": 7
+  },
+  "scSummary": {
+    
+  }
+}

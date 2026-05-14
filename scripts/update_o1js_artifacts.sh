@@ -18,7 +18,7 @@ cd ..
 rm -rf temp_o1js
 mkdir -p temp_o1js
 cd temp_o1js
-git clone git@github.com:o1-labs/o1js.git
+git clone https://github.com/o1-labs/o1js.git
 cd o1js
 
 ## Generate the reference documentation in o1js

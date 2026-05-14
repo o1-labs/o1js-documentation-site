@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -n -E '\\(^|[^`<]\\)<[a-zA-Z=]' /Users/trivo/Development/o1js-documentation-site/versioned_docs/version-2.15.0/api-reference/variables/Gadgets.mdx)",
+      "Bash(grep -v '```')",
+      "Bash(npm run *)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(ALGOLIA_APP_ID=dummy ALGOLIA_API_KEY=dummy ALGOLIA_INDEX_NAME=dummy npm run build)"
+    ]
+  }
+}
