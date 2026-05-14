@@ -1,0 +1,127 @@
+---
+title: Native Prover
+sidebar_label: Native Prover
+---
+
+Starting with o1js `2.15.0`, you can run the prover natively instead of through WebAssembly.
+The native backend is distributed as an optional companion package, `@o1js/native`, and is
+activated through a single call. Your circuit code stays exactly the same - no rewrites, no
+new APIs.
+
+## Why a Native Backend?
+
+Until now, every o1js prover ran inside a WebAssembly runtime. WASM is great for portability
+across browsers and Node, but it imposes two real costs that show up as soon as your circuits
+get serious:
+
+- **Throughput.** Proving is CPU-bound, and WASM cannot fully use the host's vector and
+  parallelism features.
+- **Memory.** WASM is capped at a 4 GB linear address space. Large circuits, recursion-heavy
+  pipelines, and chunked polynomials can all run into this ceiling.
+
+The native backend solves both by linking against a Rust prover compiled directly for your
+machine.
+
+### Performance
+
+The native prover is roughly **2–2.5x faster** at proof generation than the WASM backend on
+equivalent hardware. The exact speedup depends on circuit size and how much time you spend in
+the prover versus in JavaScript witness generation.
+
+### Memory
+
+Because the native backend runs outside of the WASM sandbox, it is not subject to the 4 GB
+limit. This unlocks two things in practice:
+
+- Larger circuits and deeper recursion stacks fit in memory without manual workarounds.
+- The prover can use **circuit chunking** - splitting large polynomials into smaller segments -
+  which raises the per-circuit row limit from `2^16` to `2^18`.
+
+### Drop-in Compatibility
+
+There is no separate API. Existing `ZkProgram`, `SmartContract`, and `Provable` code runs
+unchanged. Switching backends is a one-line change at process startup.
+
+## Installation
+
+Install o1js together with the native package. They are versioned in lockstep, so make sure
+the versions match.
+
+```sh
+npm install o1js@2.15.0
+npm install @o1js/native@2.15.0
+```
+
+### Supported Platforms
+
+The native package ships prebuilt binaries for:
+
+- macOS - Apple Silicon and Intel
+- Linux - `x64` and `arm64`
+
+Browsers and unsupported platforms continue to use the WASM backend.
+
+## Usage
+
+Set the backend once, before you compile any program or contract:
+
+```ts
+import { setBackend } from 'o1js';
+
+setBackend('native');
+```
+
+After that, everything else stays the same:
+
+```ts
+import { setBackend, ZkProgram, Field } from 'o1js';
+
+setBackend('native');
+
+let MyProgram = ZkProgram({
+  name: 'my-program',
+  publicInput: Field,
+  methods: {
+    run: {
+      privateInputs: [Field],
+      async method(pub: Field, priv: Field) {
+        pub.assertEquals(priv.square());
+      },
+    },
+  },
+});
+
+await MyProgram.compile();
+let { proof } = await MyProgram.run(Field(9), Field(3));
+```
+
+If you want to fall back to WASM - for example, in a shared codebase that also runs in the
+browser - guard the call:
+
+```ts
+if (typeof window === 'undefined') {
+  let { setBackend } = await import('o1js');
+  setBackend('native');
+}
+```
+
+## When to Use It
+
+The native backend is the right default for any non-browser workload:
+
+- Local development and tests where proving time dominates the feedback loop.
+- CI and proving services that run on Linux or macOS.
+- Recursion-heavy pipelines and applications that approach the WASM memory ceiling.
+
+Stick with the WASM backend for browser proving and for environments where you cannot install
+native binaries.
+
+## Reporting Issues
+
+If something misbehaves under the native backend, open an issue at
+[o1-labs/o1js](https://github.com/o1-labs/o1js/issues) with:
+
+- your `o1js` and `@o1js/native` versions,
+- your OS and architecture,
+- a minimal reproduction, and
+- the full error output.
