@@ -70,6 +70,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Advanced Concepts',
       items: [
+        'advanced-concepts/native-prover',
         'advanced-concepts/serialization',
         'advanced-concepts/recursion',
         'advanced-concepts/sideloaded-vks',

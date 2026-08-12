@@ -1,0 +1,82 @@
+# o1js Documentation
+
+> Documentation for o1js, the TypeScript SDK for building zero-knowledge (zk) applications. Covers provable types, constraint systems, ZkProgram, smart contracts (zkApps) on Mina Protocol, recursive proofs, and deployment. Includes tutorials, API reference, and code examples.
+
+Last updated: 2026-03-24
+
+## Search
+
+To find specific topics across the documentation, use the search endpoint:
+
+* [Search](https://docs.o1labs.org/o1js/search?q=%s): Replace `%s` with your query, e.g. `?q=compile`, `?q=merkle+tree`, `?q=recursion`
+
+## Documentation Versions
+
+The "Current" docs track the latest o1js release. To confirm which version that is, check the top of the [Changelog](https://docs.o1labs.org/o1js/changelog).
+
+Archived versions are available at versioned URLs:
+
+* [Current (latest)](https://docs.o1labs.org/o1js/getting-started/intro): Default — all links in this file point here
+* [v2.5.0](https://docs.o1labs.org/o1js/2.5.0/getting-started/intro): Archived docs for o1js 2.5.0
+* [v2.4.0](https://docs.o1labs.org/o1js/2.4.0/getting-started/intro): Archived docs for o1js 2.4.0
+
+To access any page for a specific version, insert the version number after `/o1js/` in the URL, e.g. `/o1js/2.5.0/basic-types/field`.
+
+## Getting Started
+
+* [Welcome](https://docs.o1labs.org/o1js/getting-started/intro): Overview of o1js — what it is, installation, and writing your first provable program
+* [What is a ZK Constraint System?](https://docs.o1labs.org/o1js/getting-started/what-is-a-zk-constraint-system): How constraint systems work as arrays of gates, and how ZK programming differs from traditional programming
+
+## Basic Types and Functions
+
+* [Field](https://docs.o1labs.org/o1js/basic-types/field): The fundamental data type — field elements with modular arithmetic over a ~256-bit prime
+* [Integers](https://docs.o1labs.org/o1js/basic-types/int): UInt8, UInt32, UInt64, and Int64 with built-in overflow and underflow checks
+* [Keypairs and Signatures](https://docs.o1labs.org/o1js/basic-types/keypairs-and-signatures): Native Schnorr signatures, ECDSA for Ethereum interop, and foreign curve cryptography
+* [Merkle Trees](https://docs.o1labs.org/o1js/basic-types/merkle-trees): IndexedMerkleMap, MerkleTree, and MerkleList for efficient data inclusion proofs
+* [Arrays](https://docs.o1labs.org/o1js/basic-types/arrays): Fixed-size provable arrays using the Provable.Array helper
+* [Structs](https://docs.o1labs.org/o1js/basic-types/structs): Creating complex provable types from configurations of Field-based properties
+* [Hashing](https://docs.o1labs.org/o1js/basic-types/hashing): Poseidon (circuit-efficient), SHA-256, Keccak, and other hash functions for different use cases
+
+## Writing Constraint Systems
+
+* [Witnesses](https://docs.o1labs.org/o1js/writing-constraint-systems/witnesses): Prover-supplied values at runtime — blank spaces filled during proof generation
+* [Conditional Logic](https://docs.o1labs.org/o1js/writing-constraint-systems/conditional-logic): How circuits handle control flow — all branches are always evaluated, use Provable.if() instead of if/else
+* [Analyzing Constraints](https://docs.o1labs.org/o1js/writing-constraint-systems/analyzing-constraint-systems): Tools and techniques to inspect and minimize constraint counts for circuit optimization
+* [ZkProgram](https://docs.o1labs.org/o1js/writing-constraint-systems/zk-program): Full proof flow — defining provable programs with methods, generating proofs, and verifying them
+
+## ZkApps (Smart Contracts on Mina)
+
+* [Introduction to zkApps](https://docs.o1labs.org/o1js/zkapps/intro): Smart contracts using off-chain execution with on-chain zk proof verification
+* [SmartContract Basics](https://docs.o1labs.org/o1js/zkapps/smart-contracts): SmartContract class, on-chain state with @state decorator, transaction methods with @method decorator
+* [Permissions](https://docs.o1labs.org/o1js/zkapps/permissions): 13 permission types controlling zkApp operations — editState, send, receive, setDelegate, and more
+* [Events](https://docs.o1labs.org/o1js/zkapps/events): Emitting field arrays from methods, stored on archive nodes for off-chain consumption
+* [Actions and Reducers](https://docs.o1labs.org/o1js/zkapps/actions-and-reducers): Dispatching actions with on-chain action state hash for batch state updates via reducers
+* [Account Updates](https://docs.o1labs.org/o1js/zkapps/account-updates): The fundamental building blocks of zkApp transactions — how state changes are represented
+* [Method Input Types](https://docs.o1labs.org/o1js/zkapps/provable-inputs): Using o1js provable types as zkApp method parameters while maintaining zero-knowledge properties
+* [ZkProgram Proofs as Inputs](https://docs.o1labs.org/o1js/zkapps/zkprogram-proofs): Passing ZkProgram proofs into smart contract methods for proof composition patterns
+* [Local Development](https://docs.o1labs.org/o1js/zkapps/local-development): LocalBlockchain for testing with pre-funded accounts and instant transaction finality
+* [Deployment](https://docs.o1labs.org/o1js/zkapps/deployment): Deploying zkApps to Mina Devnet, Mainnet, and Zeko with key generation and fee configuration
+
+## Advanced Concepts
+
+* [Serialization](https://docs.o1labs.org/o1js/advanced-concepts/serialization): Serializing proofs and verification keys to and from base64 for storage and transport
+* [Recursive ZK Proofs](https://docs.o1labs.org/o1js/advanced-concepts/recursion): Proof composition — proofs that verify other proofs for incrementally verifiable computation
+* [Sideloaded Verification Keys](https://docs.o1labs.org/o1js/advanced-concepts/sideloaded-vks): Verifying arbitrary proofs at runtime by providing verification keys dynamically
+* [On-Chain Preconditions](https://docs.o1labs.org/o1js/advanced-concepts/ZkApps/onChainPreconditions): Constraining on-chain values like account state, network timestamp, and balance in methods
+* [Upgrading ZkApps](https://docs.o1labs.org/o1js/advanced-concepts/ZkApps/upgradability): Updating verification keys on deployed contracts to upgrade zkApp logic
+
+## Tutorials
+
+* [HMAC-SHA256 Basics](https://docs.o1labs.org/o1js/tutorials/hmac/hmac-basics): Understanding the HMAC-SHA256 algorithm and its cryptographic role
+* [HMAC-SHA256 Implementation](https://docs.o1labs.org/o1js/tutorials/hmac/implementation): Building a complete HMAC-SHA256 zk circuit in o1js step by step
+* [HMAC-SHA256 Tests](https://docs.o1labs.org/o1js/tutorials/hmac/tests): Validating the implementation against RFC 4231 test vectors
+* [Next.js Integration](https://docs.o1labs.org/o1js/tutorials/frontent-integration-guides/next): Setting up a Next.js 15 project with o1js for frontend zkApp development
+* [Angular Integration](https://docs.o1labs.org/o1js/tutorials/frontent-integration-guides/angular): Integrating Angular with Auro Wallet for zkApp development on Devnet
+
+## API Reference
+
+* [API Reference](https://docs.o1labs.org/o1js/api-reference/Introduction): Complete auto-generated TypeScript API documentation — classes, functions, types, namespaces, and variables for all o1js exports
+
+## Changelog
+
+* [Changelog](https://docs.o1labs.org/o1js/changelog): All notable changes, new features, deprecations, and bugfixes across o1js versions
