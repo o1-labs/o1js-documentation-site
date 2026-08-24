@@ -6,6 +6,10 @@ title: Events
 
 Events are Field arrays that are emitted by zkApp methods and stored on an archive node. They provide an off-chain log of contract activity that can be used for indexing, user interfaces, and tracking app state changes.
 
+:::info
+The total number of field elements across all events in a single transaction is limited to 1024.  There is no per-event field limit—individual events can be as large as needed within the transaction cap.  See [MIP-0008](https://github.com/MinaProtocol/MIPs/blob/main/MIPS/mip-0008-increase-events-actions-limit.md) for details.
+:::
+
 ## Basic Events
 
 Define and emit events from your zkApp methods:

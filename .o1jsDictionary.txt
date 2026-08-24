@@ -56,3 +56,4 @@ auro
 minaprotocol
 Repr
 todolist
+pasteable

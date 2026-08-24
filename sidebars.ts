@@ -54,6 +54,7 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: [
         'zkapps/intro',
+        'zkapps/upgrade-mesa',
         'zkapps/smart-contracts',
         'zkapps/permissions',
         'zkapps/events',
