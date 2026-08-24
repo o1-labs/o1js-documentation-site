@@ -112,7 +112,7 @@ const multiHash = async () => {
           match = match.or(
             // SHA3_256 VK
             verificationKey.hash.equals(
-              "10594931916390393299319985652348439891528773201960631586652037259274667432468"
+              "6128672951740020596683063099934377059125653037483822509450142048297231326505"
             )
           );
           match.assertEquals(true, "Invalid verification key");
