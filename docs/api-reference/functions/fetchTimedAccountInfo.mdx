@@ -4,8 +4,8 @@ function fetchTimedAccountInfo(
   publicKey: string | PublicKey;
   tokenId?: string | Field;
 }, 
-   graphqlEndpoint?: string, 
-   config?: FetchConfig): Promise<
+   graphqlEndpoint: string, 
+   config: FetchConfig): Promise<
   | {
   account: Account;
   blockHeight: UInt32;
@@ -20,7 +20,7 @@ function fetchTimedAccountInfo(
 }>;
 ```
 
-Defined in: [lib/mina/v1/fetch.ts:273](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/fetch.ts#L273)
+Defined in: [lib/mina/v1/fetch.ts:273](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/fetch.ts#L273)
 
 Fetches detailed balance information for a time-locked account.
 
@@ -41,13 +41,13 @@ The account identifier containing publicKey and optional tokenId
 
 `string` \| [`Field`](../classes/Field.mdx)
 
-### graphqlEndpoint?
+### graphqlEndpoint
 
 `string` = `networkConfig.minaEndpoint`
 
 The GraphQL endpoint to fetch from (defaults to configured endpoint)
 
-### config?
+### config
 
 `FetchConfig` = `{}`
 

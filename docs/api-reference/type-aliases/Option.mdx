@@ -9,11 +9,9 @@ type Option<T, V> = {
 };
 ```
 
-Defined in: [lib/provable/option.ts:34](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/option.ts#L34)
+Defined in: [lib/provable/option.ts:34](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/option.ts#L34)
 
-Define an optional version of a provable type.
-
-## Type Declaration
+## Type declaration
 
 ### isSome
 
@@ -27,7 +25,7 @@ isSome: Bool;
 value: T;
 ```
 
-## Type Declaration
+## Type declaration
 
 ### assertNone()
 
@@ -71,7 +69,7 @@ orElse(defaultValue: T | V): T;
 
 ##### defaultValue
 
-`T` \| `V`
+`T` | `V`
 
 #### Returns
 
@@ -86,17 +84,3 @@ orElse(defaultValue: T | V): T;
 ### V
 
 `V` = `any`
-
-## Example
-
-```ts
-class OptionUInt64 extends Option(UInt64) {}
-
-// create an optional UInt64
-let some = OptionUInt64.from(5n);
-let none = OptionUInt64.none();
-
-// get back a UInt64
-let five: UInt64 = some.assertSome('must have a value');
-let zero: UInt64 = none.orElse(0n); // specify a default value
-```

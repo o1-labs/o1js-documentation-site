@@ -1,4 +1,4 @@
-Defined in: [lib/mina/v1/account-update.ts:1279](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1279)
+Defined in: [lib/mina/v1/account-update.ts:1285](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1285)
 
 Class which represents a forest (list of trees) of account updates,
 in a compressed way which allows iterating and selectively witnessing the account updates.
@@ -32,7 +32,7 @@ new AccountUpdateForest(__namedParameters: MerkleListBase<{
 }>): AccountUpdateForest;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:85](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L85)
+Defined in: [lib/provable/merkle-list.ts:85](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L85)
 
 #### Parameters
 
@@ -64,7 +64,7 @@ data: Unconstrained<WithHash<{
 }>[]>;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:83](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L83)
+Defined in: [lib/provable/merkle-list.ts:83](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L83)
 
 #### Inherited from
 
@@ -78,7 +78,7 @@ Defined in: [lib/provable/merkle-list.ts:83](https://github.com/o1-labs/o1js/blo
 hash: Field;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:82](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L82)
+Defined in: [lib/provable/merkle-list.ts:82](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L82)
 
 #### Inherited from
 
@@ -89,10 +89,10 @@ Defined in: [lib/provable/merkle-list.ts:82](https://github.com/o1-labs/o1js/blo
 ### \_emptyHash
 
 ```ts
-static _emptyHash: Field | undefined;
+static _emptyHash: undefined | Field;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:348](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L348)
+Defined in: [lib/provable/merkle-list.ts:348](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L348)
 
 #### Inherited from
 
@@ -104,11 +104,11 @@ Defined in: [lib/provable/merkle-list.ts:348](https://github.com/o1-labs/o1js/bl
 
 ```ts
 static _innerProvable: 
-  | ProvableHashable<any>
-  | undefined;
+  | undefined
+| ProvableHashable<any>;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:351](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L351)
+Defined in: [lib/provable/merkle-list.ts:351](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L351)
 
 #### Inherited from
 
@@ -120,11 +120,11 @@ Defined in: [lib/provable/merkle-list.ts:351](https://github.com/o1-labs/o1js/bl
 
 ```ts
 static _nextHash: 
-  | ((hash: Field, t: any) => Field)
-  | undefined;
+  | undefined
+  | (hash: Field, t: any) => Field;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:347](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L347)
+Defined in: [lib/provable/merkle-list.ts:347](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L347)
 
 #### Inherited from
 
@@ -136,11 +136,11 @@ Defined in: [lib/provable/merkle-list.ts:347](https://github.com/o1-labs/o1js/bl
 
 ```ts
 static _provable: 
-  | ProvableHashable<MerkleList<any>>
-  | undefined;
+  | undefined
+| ProvableHashable<MerkleList<any>>;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:350](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L350)
+Defined in: [lib/provable/merkle-list.ts:350](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L350)
 
 #### Inherited from
 
@@ -164,7 +164,7 @@ static provable: {
 };
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1280](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1280)
+Defined in: [lib/mina/v1/account-update.ts:1286](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1286)
 
 #### check()
 
@@ -182,11 +182,10 @@ check(value:
 
 ###### value
 
-  \| `AccountUpdateForest`
-  \| [`MerkleList`](MerkleList.mdx)\<\{
-  `accountUpdate`: [`Hashed`](Hashed.mdx)\<[`AccountUpdate`](AccountUpdate.mdx)\>;
-  `children`: [`MerkleListBase`](../type-aliases/MerkleListBase.mdx)\<`AccountUpdateTreeBase`\>;
-  `id`: `number`;
+`AccountUpdateForest` | [`MerkleList`](MerkleList.mdx)\<\{
+`accountUpdate`: [`Hashed`](Hashed.mdx)\<[`AccountUpdate`](AccountUpdate.mdx)\>;
+`children`: [`MerkleListBase`](../type-aliases/MerkleListBase.mdx)\<`AccountUpdateTreeBase`\>;
+`id`: `number`;
 \}\>
 
 ##### Returns
@@ -265,11 +264,10 @@ toAuxiliary(value?:
 
 ###### value?
 
-  \| `AccountUpdateForest`
-  \| [`MerkleList`](MerkleList.mdx)\<\{
-  `accountUpdate`: [`Hashed`](Hashed.mdx)\<[`AccountUpdate`](AccountUpdate.mdx)\>;
-  `children`: [`MerkleListBase`](../type-aliases/MerkleListBase.mdx)\<`AccountUpdateTreeBase`\>;
-  `id`: `number`;
+`AccountUpdateForest` | [`MerkleList`](MerkleList.mdx)\<\{
+`accountUpdate`: [`Hashed`](Hashed.mdx)\<[`AccountUpdate`](AccountUpdate.mdx)\>;
+`children`: [`MerkleListBase`](../type-aliases/MerkleListBase.mdx)\<`AccountUpdateTreeBase`\>;
+`id`: `number`;
 \}\>
 
 ##### Returns
@@ -292,11 +290,10 @@ toFields(value:
 
 ###### value
 
-  \| `AccountUpdateForest`
-  \| [`MerkleList`](MerkleList.mdx)\<\{
-  `accountUpdate`: [`Hashed`](Hashed.mdx)\<[`AccountUpdate`](AccountUpdate.mdx)\>;
-  `children`: [`MerkleListBase`](../type-aliases/MerkleListBase.mdx)\<`AccountUpdateTreeBase`\>;
-  `id`: `number`;
+`AccountUpdateForest` | [`MerkleList`](MerkleList.mdx)\<\{
+`accountUpdate`: [`Hashed`](Hashed.mdx)\<[`AccountUpdate`](AccountUpdate.mdx)\>;
+`children`: [`MerkleListBase`](../type-aliases/MerkleListBase.mdx)\<`AccountUpdateTreeBase`\>;
+`id`: `number`;
 \}\>
 
 ##### Returns
@@ -319,11 +316,10 @@ toInput(value:
 
 ###### value
 
-  \| `AccountUpdateForest`
-  \| [`MerkleList`](MerkleList.mdx)\<\{
-  `accountUpdate`: [`Hashed`](Hashed.mdx)\<[`AccountUpdate`](AccountUpdate.mdx)\>;
-  `children`: [`MerkleListBase`](../type-aliases/MerkleListBase.mdx)\<`AccountUpdateTreeBase`\>;
-  `id`: `number`;
+`AccountUpdateForest` | [`MerkleList`](MerkleList.mdx)\<\{
+`accountUpdate`: [`Hashed`](Hashed.mdx)\<[`AccountUpdate`](AccountUpdate.mdx)\>;
+`children`: [`MerkleListBase`](../type-aliases/MerkleListBase.mdx)\<`AccountUpdateTreeBase`\>;
+`id`: `number`;
 \}\>
 
 ##### Returns
@@ -346,11 +342,10 @@ toValue(value:
 
 ###### value
 
-  \| `AccountUpdateForest`
-  \| [`MerkleList`](MerkleList.mdx)\<\{
-  `accountUpdate`: [`Hashed`](Hashed.mdx)\<[`AccountUpdate`](AccountUpdate.mdx)\>;
-  `children`: [`MerkleListBase`](../type-aliases/MerkleListBase.mdx)\<`AccountUpdateTreeBase`\>;
-  `id`: `number`;
+`AccountUpdateForest` | [`MerkleList`](MerkleList.mdx)\<\{
+`accountUpdate`: [`Hashed`](Hashed.mdx)\<[`AccountUpdate`](AccountUpdate.mdx)\>;
+`children`: [`MerkleListBase`](../type-aliases/MerkleListBase.mdx)\<`AccountUpdateTreeBase`\>;
+`id`: `number`;
 \}\>
 
 ##### Returns
@@ -373,7 +368,7 @@ MerkleList.create(AccountUpdateTreeBase, merkleListHash).provable
 get Constructor(): typeof MerkleList;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:353](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L353)
+Defined in: [lib/provable/merkle-list.ts:353](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L353)
 
 ##### Returns
 
@@ -393,7 +388,7 @@ Defined in: [lib/provable/merkle-list.ts:353](https://github.com/o1-labs/o1js/bl
 get innerProvable(): ProvableHashable<T>;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:367](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L367)
+Defined in: [lib/provable/merkle-list.ts:367](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L367)
 
 ##### Returns
 
@@ -413,7 +408,7 @@ Defined in: [lib/provable/merkle-list.ts:367](https://github.com/o1-labs/o1js/bl
 get static emptyHash(): Field;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:362](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L362)
+Defined in: [lib/provable/merkle-list.ts:362](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L362)
 
 ##### Returns
 
@@ -435,7 +430,7 @@ clone(): MerkleList<{
 }>;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:236](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L236)
+Defined in: [lib/provable/merkle-list.ts:236](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L236)
 
 #### Returns
 
@@ -461,7 +456,7 @@ forEach(length: number, callback: (element: {
 }, isDummy: Bool, i: number) => void): void;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:250](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L250)
+Defined in: [lib/provable/merkle-list.ts:250](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L250)
 
 Iterate through the list in a fixed number of steps any apply a given callback on each element.
 
@@ -501,7 +496,7 @@ to handle the `isDummy` flag separately.
 isEmpty(): Bool;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:90](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L90)
+Defined in: [lib/provable/merkle-list.ts:90](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L90)
 
 #### Returns
 
@@ -519,7 +514,7 @@ Defined in: [lib/provable/merkle-list.ts:90](https://github.com/o1-labs/o1js/blo
 lengthUnconstrained(): Unconstrained<number>;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:273](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L273)
+Defined in: [lib/provable/merkle-list.ts:273](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L273)
 
 #### Returns
 
@@ -541,7 +536,7 @@ nextHash(hash: Field, value: {
 }): Field;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:357](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L357)
+Defined in: [lib/provable/merkle-list.ts:357](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L357)
 
 #### Parameters
 
@@ -583,7 +578,7 @@ pop(): {
 };
 ```
 
-Defined in: [lib/provable/merkle-list.ts:152](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L152)
+Defined in: [lib/provable/merkle-list.ts:152](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L152)
 
 Remove the last element from the list and return it.
 
@@ -633,7 +628,7 @@ popExn(): {
 };
 ```
 
-Defined in: [lib/provable/merkle-list.ts:137](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L137)
+Defined in: [lib/provable/merkle-list.ts:137](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L137)
 
 Remove the last element from the list and return it.
 
@@ -683,7 +678,7 @@ popIf(condition: Bool): {
 };
 ```
 
-Defined in: [lib/provable/merkle-list.ts:192](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L192)
+Defined in: [lib/provable/merkle-list.ts:192](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L192)
 
 Return the last element, but only remove it if `condition` is true.
 
@@ -739,7 +734,7 @@ popIfUnsafe(shouldPop: Bool): {
 };
 ```
 
-Defined in: [lib/provable/merkle-list.ts:216](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L216)
+Defined in: [lib/provable/merkle-list.ts:216](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L216)
 
 Low-level, minimal version of `pop()` which lets the _caller_ decide whether there is an element to pop.
 
@@ -800,7 +795,7 @@ popOption(): Option<{
 }>;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:172](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L172)
+Defined in: [lib/provable/merkle-list.ts:172](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L172)
 
 Remove the last element from the list and return it as an option:
 Some(element) if the list is non-empty, None if the list is empty.
@@ -827,7 +822,7 @@ Some(element) if the list is non-empty, None if the list is empty.
 push(update: AccountUpdate | AccountUpdateTreeBase): void;
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1282](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1282)
+Defined in: [lib/mina/v1/account-update.ts:1288](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1288)
 
 Push a new element to the list.
 
@@ -835,7 +830,7 @@ Push a new element to the list.
 
 ##### update
 
-[`AccountUpdate`](AccountUpdate.mdx) \| `AccountUpdateTreeBase`
+[`AccountUpdate`](AccountUpdate.mdx) | `AccountUpdateTreeBase`
 
 #### Returns
 
@@ -853,7 +848,7 @@ Push a new element to the list.
 pushIf(condition: Bool, update: AccountUpdate | AccountUpdateTreeBase): void;
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1285](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1285)
+Defined in: [lib/mina/v1/account-update.ts:1291](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1291)
 
 Push a new element to the list, if the `condition` is true.
 
@@ -865,7 +860,7 @@ Push a new element to the list, if the `condition` is true.
 
 ##### update
 
-[`AccountUpdate`](AccountUpdate.mdx) \| `AccountUpdateTreeBase`
+[`AccountUpdate`](AccountUpdate.mdx) | `AccountUpdateTreeBase`
 
 #### Returns
 
@@ -887,7 +882,7 @@ startIterating(): MerkleListIterator<{
 }>;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:259](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L259)
+Defined in: [lib/provable/merkle-list.ts:259](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L259)
 
 #### Returns
 
@@ -913,7 +908,7 @@ startIteratingFromLast(): MerkleListIterator<{
 }>;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:264](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L264)
+Defined in: [lib/provable/merkle-list.ts:264](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L264)
 
 #### Returns
 
@@ -939,7 +934,7 @@ toArrayUnconstrained(): Unconstrained<{
 }[]>;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:269](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L269)
+Defined in: [lib/provable/merkle-list.ts:269](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L269)
 
 #### Returns
 
@@ -958,18 +953,18 @@ Defined in: [lib/provable/merkle-list.ts:269](https://github.com/o1-labs/o1js/bl
 ### toFlatArray()
 
 ```ts
-toFlatArray(mutate?: boolean, depth?: number): AccountUpdate[];
+toFlatArray(mutate: boolean, depth: number): AccountUpdate[];
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1297](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1297)
+Defined in: [lib/mina/v1/account-update.ts:1303](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1303)
 
 #### Parameters
 
-##### mutate?
+##### mutate
 
 `boolean` = `true`
 
-##### depth?
+##### depth
 
 `number` = `0`
 
@@ -985,7 +980,7 @@ Defined in: [lib/mina/v1/account-update.ts:1297](https://github.com/o1-labs/o1js
 static assertConstant(forest: AccountUpdateForestBase): void;
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1322](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1322)
+Defined in: [lib/mina/v1/account-update.ts:1328](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1328)
 
 #### Parameters
 
@@ -1004,8 +999,8 @@ Defined in: [lib/mina/v1/account-update.ts:1322](https://github.com/o1-labs/o1js
 ```ts
 static create<T>(
    type: WithProvable<ProvableHashable<T>>, 
-   nextHash?: (hash: Field, value: T) => Field, 
-   emptyHash_?: Field): typeof MerkleList & {
+   nextHash: (hash: Field, value: T) => Field, 
+   emptyHash_: Field): typeof MerkleList & {
   empty: () => MerkleList<T>;
   from: (array: T[]) => MerkleList<T>;
   fromReverse: (array: T[]) => MerkleList<T>;
@@ -1013,7 +1008,7 @@ static create<T>(
 };
 ```
 
-Defined in: [lib/provable/merkle-list.ts:289](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L289)
+Defined in: [lib/provable/merkle-list.ts:289](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L289)
 
 Create a Merkle list type
 
@@ -1031,11 +1026,11 @@ Optionally, you can tell `create()` how to do the hash that pushes a new list el
 
 [`WithProvable`](../type-aliases/WithProvable.mdx)\<[`ProvableHashable`](../type-aliases/ProvableHashable.mdx)\<`T`\>\>
 
-##### nextHash?
+##### nextHash
 
 (`hash`: [`Field`](Field.mdx), `value`: `T`) => [`Field`](Field.mdx)
 
-##### emptyHash\_?
+##### emptyHash\_
 
 [`Field`](Field.mdx) = `emptyHash`
 
@@ -1068,7 +1063,7 @@ class MyList extends MerkleList.create(Field, (hash, x) =>
 static empty(): AccountUpdateForest;
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1335](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1335)
+Defined in: [lib/mina/v1/account-update.ts:1341](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1341)
 
 #### Returns
 
@@ -1088,7 +1083,7 @@ MerkleList.create(AccountUpdateTreeBase, merkleListHash).empty
 static from(array: AccountUpdateTreeBase[]): AccountUpdateForest;
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1338](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1338)
+Defined in: [lib/mina/v1/account-update.ts:1344](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1344)
 
 #### Parameters
 
@@ -1114,7 +1109,7 @@ MerkleList.create(AccountUpdateTreeBase, merkleListHash).from
 static fromFlatArray(updates: AccountUpdate[]): AccountUpdateForest;
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1292](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1292)
+Defined in: [lib/mina/v1/account-update.ts:1298](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1298)
 
 #### Parameters
 
@@ -1134,7 +1129,7 @@ Defined in: [lib/mina/v1/account-update.ts:1292](https://github.com/o1-labs/o1js
 static fromReverse(array: AccountUpdateTreeBase[]): AccountUpdateForest;
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1341](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1341)
+Defined in: [lib/mina/v1/account-update.ts:1347](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1347)
 
 #### Parameters
 
@@ -1159,11 +1154,11 @@ MerkleList.create(AccountUpdateTreeBase, merkleListHash).fromReverse
 ```ts
 static toFlatArray(
    forest: AccountUpdateForestBase, 
-   mutate?: boolean, 
-   depth?: number): AccountUpdate[];
+   mutate: boolean, 
+   depth: number): AccountUpdate[];
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1301](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1301)
+Defined in: [lib/mina/v1/account-update.ts:1307](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1307)
 
 #### Parameters
 
@@ -1171,11 +1166,11 @@ Defined in: [lib/mina/v1/account-update.ts:1301](https://github.com/o1-labs/o1js
 
 `AccountUpdateForestBase`
 
-##### mutate?
+##### mutate
 
 `boolean` = `true`
 
-##### depth?
+##### depth
 
 `number` = `0`
 

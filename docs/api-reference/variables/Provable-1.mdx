@@ -7,7 +7,7 @@ Provable: {
    <T>  (x: T, y: T): void;
   };
   assertEqualIf: <A, T>(enabled: Bool, type: A, x: T, y: T) => void;
-  constraintSystem: (f: (() => Promise<void>) | (() => void)) => Promise<ConstraintSystemSummary>;
+  constraintSystem: (f: () => Promise<void> | () => void) => Promise<ConstraintSystemSummary>;
   equal: <T>(type: FlexibleProvableType<T>, x: T, y: T) => Bool;
   if: {
    <T>  (condition: Bool, type: FlexibleProvableType<T>, x: T, y: T): T;
@@ -15,6 +15,7 @@ Provable: {
   };
   inCheckedComputation: () => boolean;
   inProver: () => boolean;
+  isConstant: <T>(type: ProvableType<T>, x: T) => boolean;
   log: (...args: any) => void;
   switch: <T, A>(mask: Bool[], type: A, values: T[], __namedParameters: {
      allowNonExclusive?: boolean;
@@ -29,11 +30,11 @@ Provable: {
 };
 ```
 
-Defined in: [lib/provable/provable.ts:46](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/provable.ts#L46)
+Defined in: [lib/provable/provable.ts:46](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/provable.ts#L46)
 
-## Type Declaration
+## Type declaration
 
-### Array
+### Array()
 
 ```ts
 Array: <A>(elementType: A, length: number) => InferredProvable<ToProvable<A>[]> = provableArray;
@@ -67,7 +68,7 @@ Creates a Provable for a generic array.
 const ProvableArray = Provable.Array(Field, 5);
 ```
 
-### asProver
+### asProver()
 
 ```ts
 asProver: (f: () => void) => void;
@@ -93,7 +94,7 @@ Provable.asProver(() => {
 });
 ```
 
-### assertEqual
+### assertEqual()
 
 ```ts
 assertEqual: {
@@ -172,7 +173,7 @@ const b: MyStruct = { a: Field(1), b: Bool(true) };
 Provable.assertEqual(MyStruct, a, b);
 ```
 
-### assertEqualIf
+### assertEqualIf()
 
 ```ts
 assertEqualIf: <A, T>(enabled: Bool, type: A, x: T, y: T) => void;
@@ -214,10 +215,10 @@ If the condition is false, the assertion is skipped.
 
 `void`
 
-### constraintSystem
+### constraintSystem()
 
 ```ts
-constraintSystem: (f: (() => Promise<void>) | (() => void)) => Promise<ConstraintSystemSummary>;
+constraintSystem: (f: () => Promise<void> | () => void) => Promise<ConstraintSystemSummary>;
 ```
 
 Returns information about the constraints created by the callback function.
@@ -226,7 +227,7 @@ Returns information about the constraints created by the callback function.
 
 ##### f
 
-(() => `Promise`\<`void`\>) \| (() => `void`)
+() => `Promise`\<`void`\> | () => `void`
 
 #### Returns
 
@@ -239,7 +240,7 @@ const result = await Provable.constraintSystem(circuit);
 console.log(result);
 ```
 
-### equal
+### equal()
 
 ```ts
 equal: <T>(type: FlexibleProvableType<T>, x: T, y: T) => Bool;
@@ -280,7 +281,7 @@ const b: MyStruct = { a: Field(1), b: Bool(true) };
 const isEqual = Provable.equal(MyStruct, a, b);
 ```
 
-### if
+### if()
 
 ```ts
 if: {
@@ -374,7 +375,7 @@ const condition = Bool(true);
 const result = Provable.if(condition, Field(1), Field(2)); // returns Field(1)
 ```
 
-### inCheckedComputation
+### inCheckedComputation()
 
 ```ts
 inCheckedComputation: () => boolean;
@@ -394,7 +395,7 @@ if (Provable.inCheckedComputation()) {
 }
 ```
 
-### inProver
+### inProver()
 
 ```ts
 inProver: () => boolean;
@@ -414,7 +415,43 @@ if (Provable.inProver()) {
 }
 ```
 
-### log
+### isConstant()
+
+```ts
+isConstant: <T>(type: ProvableType<T>, x: T) => boolean;
+```
+
+Check whether a value is constant.
+See FieldVar for more information about constants and variables.
+
+#### Type Parameters
+
+##### T
+
+`T`
+
+#### Parameters
+
+##### type
+
+[`ProvableType`](../type-aliases/ProvableType.mdx)\<`T`\>
+
+##### x
+
+`T`
+
+#### Returns
+
+`boolean`
+
+#### Example
+
+```ts
+let x = Field(42);
+Provable.isConstant(Field, x); // true
+```
+
+### log()
 
 ```ts
 log: (...args: any) => void;
@@ -439,7 +476,7 @@ const element = Field(42);
 Provable.log(element);
 ```
 
-### switch
+### switch()
 
 ```ts
 switch: <T, A>(mask: Bool[], type: A, values: T[], __namedParameters: {
@@ -475,7 +512,7 @@ The result is that value which corresponds to the true element of the mask.
 
 `T`[]
 
-##### \_\_namedParameters?
+##### \_\_namedParameters
 
 ###### allowNonExclusive?
 
@@ -492,7 +529,7 @@ let x = Provable.switch([Bool(false), Bool(true)], Field, [Field(1), Field(2)]);
 x.assertEquals(2);
 ```
 
-### witness
+### witness()
 
 ```ts
 witness: <A, T>(type: A, compute: () => T) => InferProvable<ToProvable<A>>;
@@ -600,7 +637,7 @@ function decompose(value: UInt64) {
 }
 ```
 
-### witnessAsync
+### witnessAsync()
 
 ```ts
 witnessAsync: <A, T>(type: A, compute: () => Promise<T>) => Promise<T>;
@@ -634,7 +671,7 @@ See [Provable.witness](#witness) for more information.
 
 `Promise`\<`T`\>
 
-### witnessFields
+### witnessFields()
 
 ```ts
 witnessFields: <N, C>(size: N, compute: C) => TupleN<Field, N>;
@@ -671,7 +708,7 @@ in low-level provable code.
 ### runAndCheck()
 
 ```ts
-runAndCheck(f: (() => Promise<void>) | (() => void)): Promise<void>;
+runAndCheck(f: () => Promise<void> | () => void): Promise<void>;
 ```
 
 Runs provable code quickly, without creating a proof, but still checking whether constraints are satisfied.
@@ -680,7 +717,7 @@ Runs provable code quickly, without creating a proof, but still checking whether
 
 ##### f
 
-(() => `Promise`\<`void`\>) \| (() => `void`)
+() => `Promise`\<`void`\> | () => `void`
 
 #### Returns
 
@@ -697,7 +734,7 @@ await Provable.runAndCheck(() => {
 ### runUnchecked()
 
 ```ts
-runUnchecked(f: (() => Promise<void>) | (() => void)): Promise<void>;
+runUnchecked(f: () => Promise<void> | () => void): Promise<void>;
 ```
 
 Runs provable code quickly, without creating a proof, and not checking whether constraints are satisfied.
@@ -706,7 +743,7 @@ Runs provable code quickly, without creating a proof, and not checking whether c
 
 ##### f
 
-(() => `Promise`\<`void`\>) \| (() => `void`)
+() => `Promise`\<`void`\> | () => `void`
 
 #### Returns
 

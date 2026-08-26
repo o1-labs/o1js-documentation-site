@@ -1,13 +1,13 @@
 ```ts
 function sendZkapp(
    json: string, 
-   graphqlEndpoint?: string, 
-   __namedParameters?: FetchConfig): Promise<
+   graphqlEndpoint: string, 
+   __namedParameters: FetchConfig): Promise<
   | [undefined, FetchError]
 | [FetchResponse<SendZkAppResponse>, undefined]>;
 ```
 
-Defined in: [lib/mina/v1/fetch.ts:802](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/fetch.ts#L802)
+Defined in: [lib/mina/v1/fetch.ts:802](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/fetch.ts#L802)
 
 Sends a zkApp command (transaction) to the specified GraphQL endpoint.
 
@@ -17,11 +17,11 @@ Sends a zkApp command (transaction) to the specified GraphQL endpoint.
 
 `string`
 
-### graphqlEndpoint?
+### graphqlEndpoint
 
 `string` = `networkConfig.minaEndpoint`
 
-### \_\_namedParameters?
+### \_\_namedParameters
 
 `FetchConfig` = `{}`
 

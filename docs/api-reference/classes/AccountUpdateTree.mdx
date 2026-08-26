@@ -1,4 +1,4 @@
-Defined in: [lib/mina/v1/account-update.ts:1359](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1359)
+Defined in: [lib/mina/v1/account-update.ts:1365](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1365)
 
 Class which represents a tree of account updates,
 in a compressed way which allows iterating and selectively witnessing the account updates.
@@ -32,7 +32,7 @@ new AccountUpdateTree(value: {
 }): AccountUpdateTree;
 ```
 
-Defined in: [lib/provable/types/struct.ts:265](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/types/struct.ts#L265)
+Defined in: [lib/provable/types/struct.ts:265](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/types/struct.ts#L265)
 
 #### Parameters
 
@@ -72,7 +72,7 @@ StructNoJson({
 accountUpdate: Hashed<AccountUpdate> = HashedAccountUpdate;
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1361](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1361)
+Defined in: [lib/mina/v1/account-update.ts:1367](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1367)
 
 #### Inherited from
 
@@ -92,7 +92,7 @@ StructNoJson({
 children: AccountUpdateForest = AccountUpdateForest;
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1362](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1362)
+Defined in: [lib/mina/v1/account-update.ts:1368](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1368)
 
 #### Inherited from
 
@@ -112,7 +112,7 @@ StructNoJson({
 id: number = RandomId;
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1360](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1360)
+Defined in: [lib/mina/v1/account-update.ts:1366](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1366)
 
 #### Inherited from
 
@@ -132,7 +132,7 @@ StructNoJson({
 static _isStruct: true;
 ```
 
-Defined in: [lib/provable/types/struct.ts:265](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/types/struct.ts#L265)
+Defined in: [lib/provable/types/struct.ts:265](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/types/struct.ts#L265)
 
 #### Inherited from
 
@@ -146,7 +146,7 @@ StructNoJson({
 
 ***
 
-### check
+### check()
 
 ```ts
 static check: (value: {
@@ -156,7 +156,7 @@ static check: (value: {
 }) => void;
 ```
 
-Defined in: [lib/provable/types/provable-intf.ts:76](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/types/provable-intf.ts#L76)
+Defined in: [lib/provable/types/provable-intf.ts:76](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/types/provable-intf.ts#L76)
 
 Add assertions to the proof to check if `value` is a valid member of type `T`.
 This function does not return anything, instead it creates any number of assertions to prove that `value` is a valid member of the type `T`.
@@ -197,7 +197,7 @@ StructNoJson({
 
 ***
 
-### fromValue
+### fromValue()
 
 ```ts
 static fromValue: (x: any) => {
@@ -207,7 +207,7 @@ static fromValue: (x: any) => {
 };
 ```
 
-Defined in: [lib/provable/types/provable-intf.ts:86](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/types/provable-intf.ts#L86)
+Defined in: [lib/provable/types/provable-intf.ts:86](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/types/provable-intf.ts#L86)
 
 Convert provable type from a normal JS type.
 
@@ -257,7 +257,7 @@ StructNoJson({
 
 ***
 
-### toAuxiliary
+### toAuxiliary()
 
 ```ts
 static toAuxiliary: (value?: {
@@ -267,7 +267,7 @@ static toAuxiliary: (value?: {
 }) => any[];
 ```
 
-Defined in: [lib/provable/types/provable-intf.ts:47](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/types/provable-intf.ts#L47)
+Defined in: [lib/provable/types/provable-intf.ts:47](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/types/provable-intf.ts#L47)
 
 A function that takes `value` (optional), an element of type `T`, as argument and
 returns an array of any type that make up the "auxiliary" (non-provable) data of `value`.
@@ -309,10 +309,10 @@ StructNoJson({
 
 ***
 
-### toCanonical?
+### toCanonical()?
 
 ```ts
-static optional toCanonical?: (x: {
+static optional toCanonical: (x: {
   accountUpdate: Hashed<AccountUpdate>;
   children: AccountUpdateForest;
   id: number;
@@ -323,7 +323,7 @@ static optional toCanonical?: (x: {
 };
 ```
 
-Defined in: [lib/provable/types/provable-intf.ts:104](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/types/provable-intf.ts#L104)
+Defined in: [lib/provable/types/provable-intf.ts:104](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/types/provable-intf.ts#L104)
 
 Optional method which transforms a provable type into its canonical representation.
 
@@ -396,7 +396,7 @@ StructNoJson({
 
 ***
 
-### toFields
+### toFields()
 
 ```ts
 static toFields: (value: {
@@ -406,7 +406,7 @@ static toFields: (value: {
 }) => Field[];
 ```
 
-Defined in: [lib/provable/types/provable-intf.ts:36](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/types/provable-intf.ts#L36)
+Defined in: [lib/provable/types/provable-intf.ts:36](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/types/provable-intf.ts#L36)
 
 A function that takes `value`, an element of type `T`, as argument and returns
 an array of [Field](Field.mdx) elements that make up the provable data of `value`.
@@ -447,7 +447,7 @@ StructNoJson({
 
 ***
 
-### toInput
+### toInput()
 
 ```ts
 static toInput: (x: {
@@ -460,7 +460,7 @@ static toInput: (x: {
 };
 ```
 
-Defined in: [lib/provable/types/struct.ts:268](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/types/struct.ts#L268)
+Defined in: [lib/provable/types/struct.ts:268](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/types/struct.ts#L268)
 
 #### Parameters
 
@@ -490,13 +490,13 @@ Defined in: [lib/provable/types/struct.ts:268](https://github.com/o1-labs/o1js/b
 ##### fields?
 
 ```ts
-optional fields?: Field[];
+optional fields: Field[];
 ```
 
 ##### packed?
 
 ```ts
-optional packed?: [Field, number][];
+optional packed: [Field, number][];
 ```
 
 #### Inherited from
@@ -511,7 +511,7 @@ StructNoJson({
 
 ***
 
-### toValue
+### toValue()
 
 ```ts
 static toValue: (x: {
@@ -521,7 +521,7 @@ static toValue: (x: {
 }) => any;
 ```
 
-Defined in: [lib/provable/types/provable-intf.ts:81](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/types/provable-intf.ts#L81)
+Defined in: [lib/provable/types/provable-intf.ts:81](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/types/provable-intf.ts#L81)
 
 Convert provable type to a normal JS type.
 
@@ -563,7 +563,7 @@ StructNoJson({
 approve(update: AccountUpdate | AccountUpdateTree, hash?: Field): void;
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1381](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1381)
+Defined in: [lib/mina/v1/account-update.ts:1387](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1387)
 
 Add an [AccountUpdate](AccountUpdate.mdx) or AccountUpdateTree to the children of this tree's root.
 
@@ -573,7 +573,7 @@ See [AccountUpdate.approve](AccountUpdate.mdx#approve).
 
 ##### update
 
-[`AccountUpdate`](AccountUpdate.mdx) \| `AccountUpdateTree`
+[`AccountUpdate`](AccountUpdate.mdx) | `AccountUpdateTree`
 
 ##### hash?
 
@@ -591,7 +591,7 @@ See [AccountUpdate.approve](AccountUpdate.mdx#approve).
 static empty(): AccountUpdateTree;
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1394](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1394)
+Defined in: [lib/mina/v1/account-update.ts:1400](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1400)
 
 #### Returns
 
@@ -615,7 +615,7 @@ StructNoJson({
 static from(update: AccountUpdate | AccountUpdateTree, hash?: Field): AccountUpdateTree;
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1367](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1367)
+Defined in: [lib/mina/v1/account-update.ts:1373](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1373)
 
 Create a tree of account updates which only consists of a root.
 
@@ -623,7 +623,7 @@ Create a tree of account updates which only consists of a root.
 
 ##### update
 
-[`AccountUpdate`](AccountUpdate.mdx) \| `AccountUpdateTree`
+[`AccountUpdate`](AccountUpdate.mdx) | `AccountUpdateTree`
 
 ##### hash?
 
@@ -641,7 +641,7 @@ Create a tree of account updates which only consists of a root.
 static fromFields(fields: Field[], aux: any): AccountUpdateTree;
 ```
 
-Defined in: [lib/mina/v1/account-update.ts:1391](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/account-update.ts#L1391)
+Defined in: [lib/mina/v1/account-update.ts:1397](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/account-update.ts#L1397)
 
 #### Parameters
 
@@ -675,7 +675,7 @@ StructNoJson({
 static sizeInFields(): number;
 ```
 
-Defined in: [lib/provable/types/provable-intf.ts:66](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/types/provable-intf.ts#L66)
+Defined in: [lib/provable/types/provable-intf.ts:66](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/types/provable-intf.ts#L66)
 
 Return the size of the `T` type in terms of [Field](Field.mdx) type, as [Field](Field.mdx) is the primitive type.
 

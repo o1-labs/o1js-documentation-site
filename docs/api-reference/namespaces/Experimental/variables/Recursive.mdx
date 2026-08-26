@@ -9,7 +9,7 @@ Recursive: <PublicInputType, PublicOutputType, PrivateInputs>(zkprogram: {
 } & { [Key in string | number | symbol]: (args: any) => Promise<{ proof: Proof<InferProvable<PublicInputType>, InferProvable<PublicOutputType>> }> }) => { [Key in string | number | symbol]: RecursiveProver<InferProvable<PublicInputType>, PublicInputType, InferProvable<PublicOutputType>, PrivateInputs[Key]> & { if: ConditionalRecursiveProver<InferProvable<PublicInputType>, PublicInputType, InferProvable<PublicOutputType>, PrivateInputs[Key]> } } = Recursive_;
 ```
 
-Defined in: [index.ts:187](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/index.ts#L187)
+Defined in: [index.ts:187](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/index.ts#L187)
 
 ## Type Parameters
 
@@ -24,7 +24,7 @@ Defined in: [index.ts:187](https://github.com/o1-labs/o1js/blob/6d089a824781b83f
 ### PrivateInputs
 
 `PrivateInputs` *extends* \{
-\[`key`: `string`\]: `Tuple`\<[`ProvableType`](../../../../type-aliases/ProvableType.mdx)\>;
+[`key`: `string`]: `Tuple`\<[`ProvableType`](../../../../type-aliases/ProvableType.mdx)\>;
 \}
 
 ## Parameters

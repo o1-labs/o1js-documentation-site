@@ -26,7 +26,7 @@ FeatureFlags: {
 };
 ```
 
-Defined in: [lib/proof-system/feature-flags.ts:17](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/feature-flags.ts#L17)
+Defined in: [lib/proof-system/feature-flags.ts:17](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/feature-flags.ts#L17)
 
 Feature flags indicate what custom gates are used in a proof of circuit.
 Side loading, for example, requires a set of feature flags in advance (at compile time) in order to verify and side load proofs.
@@ -34,7 +34,7 @@ If the side loaded proofs and verification keys do not match the specified featu
 Flags specified as `undefined` are considered as `maybe` by Pickles. This means, proofs can be sided loaded that can, but don't have to, use a specific custom gate.
 _Note:_ `Maybe` feature flags incur a proving overhead.
 
-## Type Declaration
+## Type declaration
 
 ### allMaybe
 
@@ -166,7 +166,7 @@ runtimeTables: boolean = false;
 xor: boolean = false;
 ```
 
-### fromGates
+### fromGates()
 
 ```ts
 fromGates: (gates: Gate[], runtimeTables: boolean) => FeatureFlags = featureFlagsFromGates;
@@ -180,7 +180,7 @@ Given a list of gates, returns the feature flag configuration that the gates use
 
 `Gate`[]
 
-##### runtimeTables?
+##### runtimeTables
 
 `boolean` = `false`
 
@@ -188,7 +188,7 @@ Given a list of gates, returns the feature flag configuration that the gates use
 
 [`FeatureFlags`](../type-aliases/FeatureFlags.mdx)
 
-### fromZkProgram
+### fromZkProgram()
 
 ```ts
 fromZkProgram: (program: AnalysableProgram, withRuntimeTables: boolean) => Promise<FeatureFlags>;
@@ -204,7 +204,7 @@ Optionally, it accepts a flag indicating whether runtime tables are used in the 
 
 `AnalysableProgram`
 
-##### withRuntimeTables?
+##### withRuntimeTables
 
 `boolean` = `false`
 
@@ -212,7 +212,7 @@ Optionally, it accepts a flag indicating whether runtime tables are used in the 
 
 `Promise`\<[`FeatureFlags`](../type-aliases/FeatureFlags.mdx)\>
 
-### fromZkProgramList
+### fromZkProgramList()
 
 ```ts
 fromZkProgramList: (programs: AnalysableProgram[], withRuntimeTables: boolean) => Promise<FeatureFlags>;
@@ -227,7 +227,7 @@ This function considers all methods of all specified ZkPrograms and finds a conf
 
 `AnalysableProgram`[]
 
-##### withRuntimeTables?
+##### withRuntimeTables
 
 `boolean` = `false`
 

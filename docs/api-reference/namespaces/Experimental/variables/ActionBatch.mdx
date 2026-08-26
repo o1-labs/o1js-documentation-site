@@ -49,8 +49,9 @@ ActionBatch: <A>(actionType: A) => (value: {
      onchainStack: string;
      processedActionState: string;
      stack: {
-        _emptyHash: string | null;
-        _innerProvable:   | {
+        _emptyHash: null | string;
+        _innerProvable:   | null
+           | {
            check: {
            };
            empty: {
@@ -63,21 +64,21 @@ ActionBatch: <A>(actionType: A) => (value: {
            };
            toAuxiliary: {
            };
-           toCanonical?:   | {
-            }
-              | null;
+           toCanonical?:   | null
+              | {
+            };
            toFields: {
            };
            toInput: {
            };
            toValue: {
            };
-         }
-           | null;
-        _nextHash:   | {
-         }
-           | null;
-        _provable:   | {
+         };
+        _nextHash:   | null
+           | {
+         };
+        _provable:   | null
+           | {
            check: {
            };
            empty: {
@@ -90,17 +91,16 @@ ActionBatch: <A>(actionType: A) => (value: {
            };
            toAuxiliary: {
            };
-           toCanonical?:   | {
-            }
-              | null;
+           toCanonical?:   | null
+              | {
+            };
            toFields: {
            };
            toInput: {
            };
            toValue: {
            };
-         }
-           | null;
+         };
         create: {
         };
         empty: {
@@ -114,8 +114,9 @@ ActionBatch: <A>(actionType: A) => (value: {
            clone: {
            };
            Constructor: {
-              _emptyHash: string | null;
-              _innerProvable:   | {
+              _emptyHash: null | string;
+              _innerProvable:   | null
+                 | {
                  check: {
                  };
                  empty: {
@@ -135,12 +136,12 @@ ActionBatch: <A>(actionType: A) => (value: {
                  };
                  toValue: {
                  };
-               }
-                 | null;
-              _nextHash:   | {
-               }
-                 | null;
-              _provable:   | {
+               };
+              _nextHash:   | null
+                 | {
+               };
+              _provable:   | null
+                 | {
                  check: {
                  };
                  empty: {
@@ -160,8 +161,7 @@ ActionBatch: <A>(actionType: A) => (value: {
                  };
                  toValue: {
                  };
-               }
-                 | null;
+               };
               create: {
               };
               emptyHash: string;
@@ -193,9 +193,9 @@ ActionBatch: <A>(actionType: A) => (value: {
               };
               toAuxiliary: {
               };
-              toCanonical?:   | {
-               }
-                 | null;
+              toCanonical?:   | null
+                 | {
+               };
               toFields: {
               };
               toInput: {
@@ -243,9 +243,9 @@ ActionBatch: <A>(actionType: A) => (value: {
            };
            toAuxiliary: {
            };
-           toCanonical?:   | {
-            }
-              | null;
+           toCanonical?:   | null
+              | {
+            };
            toFields: {
            };
            toInput: {
@@ -268,9 +268,9 @@ ActionBatch: <A>(actionType: A) => (value: {
         };
         toAuxiliary: {
         };
-        toCanonical?:   | {
-         }
-           | null;
+        toCanonical?:   | null
+           | {
+         };
         toFields: {
         };
         toInput: {
@@ -331,8 +331,9 @@ ActionBatch: <A>(actionType: A) => (value: {
      onchainStack: string;
      processedActionState: string;
      stack: {
-        _emptyHash: string | null;
-        _innerProvable:   | {
+        _emptyHash: null | string;
+        _innerProvable:   | null
+           | {
            check: {
            };
            empty: {
@@ -345,21 +346,21 @@ ActionBatch: <A>(actionType: A) => (value: {
            };
            toAuxiliary: {
            };
-           toCanonical?:   | {
-            }
-              | null;
+           toCanonical?:   | null
+              | {
+            };
            toFields: {
            };
            toInput: {
            };
            toValue: {
            };
-         }
-           | null;
-        _nextHash:   | {
-         }
-           | null;
-        _provable:   | {
+         };
+        _nextHash:   | null
+           | {
+         };
+        _provable:   | null
+           | {
            check: {
            };
            empty: {
@@ -372,17 +373,16 @@ ActionBatch: <A>(actionType: A) => (value: {
            };
            toAuxiliary: {
            };
-           toCanonical?:   | {
-            }
-              | null;
+           toCanonical?:   | null
+              | {
+            };
            toFields: {
            };
            toInput: {
            };
            toValue: {
            };
-         }
-           | null;
+         };
         create: {
         };
         empty: {
@@ -396,8 +396,9 @@ ActionBatch: <A>(actionType: A) => (value: {
            clone: {
            };
            Constructor: {
-              _emptyHash: string | null;
-              _innerProvable:   | {
+              _emptyHash: null | string;
+              _innerProvable:   | null
+                 | {
                  check: {
                  };
                  empty: {
@@ -417,12 +418,12 @@ ActionBatch: <A>(actionType: A) => (value: {
                  };
                  toValue: {
                  };
-               }
-                 | null;
-              _nextHash:   | {
-               }
-                 | null;
-              _provable:   | {
+               };
+              _nextHash:   | null
+                 | {
+               };
+              _provable:   | null
+                 | {
                  check: {
                  };
                  empty: {
@@ -442,8 +443,7 @@ ActionBatch: <A>(actionType: A) => (value: {
                  };
                  toValue: {
                  };
-               }
-                 | null;
+               };
               create: {
               };
               emptyHash: string;
@@ -475,9 +475,9 @@ ActionBatch: <A>(actionType: A) => (value: {
               };
               toAuxiliary: {
               };
-              toCanonical?:   | {
-               }
-                 | null;
+              toCanonical?:   | null
+                 | {
+               };
               toFields: {
               };
               toInput: {
@@ -525,9 +525,9 @@ ActionBatch: <A>(actionType: A) => (value: {
            };
            toAuxiliary: {
            };
-           toCanonical?:   | {
-            }
-              | null;
+           toCanonical?:   | null
+              | {
+            };
            toFields: {
            };
            toInput: {
@@ -550,9 +550,9 @@ ActionBatch: <A>(actionType: A) => (value: {
         };
         toAuxiliary: {
         };
-        toCanonical?:   | {
-         }
-           | null;
+        toCanonical?:   | null
+           | {
+         };
         toFields: {
         };
         toInput: {
@@ -564,7 +564,7 @@ ActionBatch: <A>(actionType: A) => (value: {
 } = BatchReducer_.ActionBatch;
 ```
 
-Defined in: [index.ts:244](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/index.ts#L244)
+Defined in: [index.ts:244](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/index.ts#L244)
 
 Provable type that represents a batch of actions.
 
@@ -632,8 +632,9 @@ Provable type that represents a batch of actions.
      `onchainStack`: `string`;
      `processedActionState`: `string`;
      `stack`: \{
-        `_emptyHash`: `string` \| `null`;
-        `_innerProvable`:   \| \{
+        `_emptyHash`: `null` \| `string`;
+        `_innerProvable`:   \| `null`
+           \| \{
            `check`: \{
            \};
            `empty`: \{
@@ -646,21 +647,21 @@ Provable type that represents a batch of actions.
            \};
            `toAuxiliary`: \{
            \};
-           `toCanonical?`:   \| \{
-            \}
-              \| `null`;
+           `toCanonical?`:   \| `null`
+              \| \{
+            \};
            `toFields`: \{
            \};
            `toInput`: \{
            \};
            `toValue`: \{
            \};
-         \}
-           \| `null`;
-        `_nextHash`:   \| \{
-         \}
-           \| `null`;
-        `_provable`:   \| \{
+         \};
+        `_nextHash`:   \| `null`
+           \| \{
+         \};
+        `_provable`:   \| `null`
+           \| \{
            `check`: \{
            \};
            `empty`: \{
@@ -673,17 +674,16 @@ Provable type that represents a batch of actions.
            \};
            `toAuxiliary`: \{
            \};
-           `toCanonical?`:   \| \{
-            \}
-              \| `null`;
+           `toCanonical?`:   \| `null`
+              \| \{
+            \};
            `toFields`: \{
            \};
            `toInput`: \{
            \};
            `toValue`: \{
            \};
-         \}
-           \| `null`;
+         \};
         `create`: \{
         \};
         `empty`: \{
@@ -697,8 +697,9 @@ Provable type that represents a batch of actions.
            `clone`: \{
            \};
            `Constructor`: \{
-              `_emptyHash`: `string` \| `null`;
-              `_innerProvable`:   \| \{
+              `_emptyHash`: `null` \| `string`;
+              `_innerProvable`:   \| `null`
+                 \| \{
                  `check`: \{
                  \};
                  `empty`: \{
@@ -718,12 +719,12 @@ Provable type that represents a batch of actions.
                  \};
                  `toValue`: \{
                  \};
-               \}
-                 \| `null`;
-              `_nextHash`:   \| \{
-               \}
-                 \| `null`;
-              `_provable`:   \| \{
+               \};
+              `_nextHash`:   \| `null`
+                 \| \{
+               \};
+              `_provable`:   \| `null`
+                 \| \{
                  `check`: \{
                  \};
                  `empty`: \{
@@ -743,8 +744,7 @@ Provable type that represents a batch of actions.
                  \};
                  `toValue`: \{
                  \};
-               \}
-                 \| `null`;
+               \};
               `create`: \{
               \};
               `emptyHash`: `string`;
@@ -776,9 +776,9 @@ Provable type that represents a batch of actions.
               \};
               `toAuxiliary`: \{
               \};
-              `toCanonical?`:   \| \{
-               \}
-                 \| `null`;
+              `toCanonical?`:   \| `null`
+                 \| \{
+               \};
               `toFields`: \{
               \};
               `toInput`: \{
@@ -826,9 +826,9 @@ Provable type that represents a batch of actions.
            \};
            `toAuxiliary`: \{
            \};
-           `toCanonical?`:   \| \{
-            \}
-              \| `null`;
+           `toCanonical?`:   \| `null`
+              \| \{
+            \};
            `toFields`: \{
            \};
            `toInput`: \{
@@ -851,9 +851,9 @@ Provable type that represents a batch of actions.
         \};
         `toAuxiliary`: \{
         \};
-        `toCanonical?`:   \| \{
-         \}
-           \| `null`;
+        `toCanonical?`:   \| `null`
+           \| \{
+         \};
         `toFields`: \{
         \};
         `toInput`: \{
@@ -914,8 +914,9 @@ Provable type that represents a batch of actions.
      `onchainStack`: `string`;
      `processedActionState`: `string`;
      `stack`: \{
-        `_emptyHash`: `string` \| `null`;
-        `_innerProvable`:   \| \{
+        `_emptyHash`: `null` \| `string`;
+        `_innerProvable`:   \| `null`
+           \| \{
            `check`: \{
            \};
            `empty`: \{
@@ -928,21 +929,21 @@ Provable type that represents a batch of actions.
            \};
            `toAuxiliary`: \{
            \};
-           `toCanonical?`:   \| \{
-            \}
-              \| `null`;
+           `toCanonical?`:   \| `null`
+              \| \{
+            \};
            `toFields`: \{
            \};
            `toInput`: \{
            \};
            `toValue`: \{
            \};
-         \}
-           \| `null`;
-        `_nextHash`:   \| \{
-         \}
-           \| `null`;
-        `_provable`:   \| \{
+         \};
+        `_nextHash`:   \| `null`
+           \| \{
+         \};
+        `_provable`:   \| `null`
+           \| \{
            `check`: \{
            \};
            `empty`: \{
@@ -955,17 +956,16 @@ Provable type that represents a batch of actions.
            \};
            `toAuxiliary`: \{
            \};
-           `toCanonical?`:   \| \{
-            \}
-              \| `null`;
+           `toCanonical?`:   \| `null`
+              \| \{
+            \};
            `toFields`: \{
            \};
            `toInput`: \{
            \};
            `toValue`: \{
            \};
-         \}
-           \| `null`;
+         \};
         `create`: \{
         \};
         `empty`: \{
@@ -979,8 +979,9 @@ Provable type that represents a batch of actions.
            `clone`: \{
            \};
            `Constructor`: \{
-              `_emptyHash`: `string` \| `null`;
-              `_innerProvable`:   \| \{
+              `_emptyHash`: `null` \| `string`;
+              `_innerProvable`:   \| `null`
+                 \| \{
                  `check`: \{
                  \};
                  `empty`: \{
@@ -1000,12 +1001,12 @@ Provable type that represents a batch of actions.
                  \};
                  `toValue`: \{
                  \};
-               \}
-                 \| `null`;
-              `_nextHash`:   \| \{
-               \}
-                 \| `null`;
-              `_provable`:   \| \{
+               \};
+              `_nextHash`:   \| `null`
+                 \| \{
+               \};
+              `_provable`:   \| `null`
+                 \| \{
                  `check`: \{
                  \};
                  `empty`: \{
@@ -1025,8 +1026,7 @@ Provable type that represents a batch of actions.
                  \};
                  `toValue`: \{
                  \};
-               \}
-                 \| `null`;
+               \};
               `create`: \{
               \};
               `emptyHash`: `string`;
@@ -1058,9 +1058,9 @@ Provable type that represents a batch of actions.
               \};
               `toAuxiliary`: \{
               \};
-              `toCanonical?`:   \| \{
-               \}
-                 \| `null`;
+              `toCanonical?`:   \| `null`
+                 \| \{
+               \};
               `toFields`: \{
               \};
               `toInput`: \{
@@ -1108,9 +1108,9 @@ Provable type that represents a batch of actions.
            \};
            `toAuxiliary`: \{
            \};
-           `toCanonical?`:   \| \{
-            \}
-              \| `null`;
+           `toCanonical?`:   \| `null`
+              \| \{
+            \};
            `toFields`: \{
            \};
            `toInput`: \{
@@ -1133,9 +1133,9 @@ Provable type that represents a batch of actions.
         \};
         `toAuxiliary`: \{
         \};
-        `toCanonical?`:   \| \{
-         \}
-           \| `null`;
+        `toCanonical?`:   \| `null`
+           \| \{
+         \};
         `toFields`: \{
         \};
         `toInput`: \{

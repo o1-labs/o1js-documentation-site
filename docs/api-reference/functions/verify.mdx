@@ -4,7 +4,7 @@ function verify(proof:
 | JsonProof, verificationKey: string | VerificationKey): Promise<boolean>;
 ```
 
-Defined in: [lib/proof-system/zkprogram.ts:111](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/zkprogram.ts#L111)
+Defined in: [lib/proof-system/zkprogram.ts:111](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/zkprogram.ts#L111)
 
 Initializes Pickles bindings, serializes the input proof and verification key for use in OCaml, then calls into the Pickles verify function and returns the result.
 
@@ -12,16 +12,15 @@ Initializes Pickles bindings, serializes the input proof and verification key fo
 
 ### proof
 
-  \| [`ProofBase`](../interfaces/ProofBase.mdx)\<`any`, `any`\>
-  \| [`JsonProof`](../type-aliases/JsonProof.mdx)
-
 Either a `Proof` instance or a serialized JSON proof
+
+[`ProofBase`](../classes/ProofBase.mdx)\<`any`, `any`\> | [`JsonProof`](../type-aliases/JsonProof.mdx)
 
 ### verificationKey
 
-`string` \| [`VerificationKey`](../classes/VerificationKey.mdx)
-
 Either a base64 serialized verification key or a `VerificationKey` instance which will be base64 serialized for use in the bindings.
+
+`string` | [`VerificationKey`](../classes/VerificationKey.mdx)
 
 ## Returns
 

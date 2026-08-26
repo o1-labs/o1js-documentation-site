@@ -8,23 +8,23 @@ type PendingTransaction = Pick<TransactionCommon, "transaction" | "toJSON" | "to
      | RejectedTransaction
     | IncludedTransaction>;
   setFee: TransactionPromise<boolean, false>;
-  setFeePerSnarkCost: TransactionPromise<boolean, false>;
+  setFeePerAccountUpdate: TransactionPromise<boolean, false>;
   wait: Promise<IncludedTransaction>;
 };
 ```
 
-Defined in: [lib/mina/v1/transaction.ts:207](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/transaction.ts#L207)
+Defined in: [lib/mina/v1/transaction.ts:207](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/transaction.ts#L207)
 
 Represents a transaction that has been submitted to the blockchain but has not yet reached a final state.
 The PendingTransaction type extends certain functionalities from the base [Transaction](Transaction.mdx) type,
 adding methods to monitor the transaction's progress towards being finalized (either included in a block or rejected).
 
-## Type Declaration
+## Type declaration
 
 ### data?
 
 ```ts
-optional data?: SendZkAppResponse;
+optional data: SendZkAppResponse;
 ```
 
 Optional. Contains response data from a ZkApp transaction submission.
@@ -146,17 +146,17 @@ setFee is the same as [(newFee)](Transaction.mdx) but for a PendingTransaction.
 
 [`TransactionPromise`](TransactionPromise.mdx)\<`boolean`, `false`\>
 
-### setFeePerSnarkCost()
+### setFeePerAccountUpdate()
 
 ```ts
-setFeePerSnarkCost(newFeePerSnarkCost: number): TransactionPromise<boolean, false>;
+setFeePerAccountUpdate(newFeePerAccountUpdate: number): TransactionPromise<boolean, false>;
 ```
 
-setFeePerSnarkCost is the same as [(newFeePerSnarkCost)](Transaction.mdx) but for a PendingTransaction.
+setFeePerAccountUpdate is the same as [(newFeePerAccountUpdate)](Transaction.mdx) but for a PendingTransaction.
 
 #### Parameters
 
-##### newFeePerSnarkCost
+##### newFeePerAccountUpdate
 
 `number`
 

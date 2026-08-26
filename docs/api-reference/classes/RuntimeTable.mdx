@@ -1,4 +1,4 @@
-Defined in: [lib/provable/gadgets/runtime-table.ts:96](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/gadgets/runtime-table.ts#L96)
+Defined in: [lib/provable/gadgets/runtime-table.ts:96](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/gadgets/runtime-table.ts#L96)
 
 # RuntimeTable
 
@@ -89,7 +89,7 @@ using that function directly, as it will be deprecated in the future.
 new RuntimeTable(id: number, indices: bigint[]): RuntimeTable;
 ```
 
-Defined in: [lib/provable/gadgets/runtime-table.ts:113](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/gadgets/runtime-table.ts#L113)
+Defined in: [lib/provable/gadgets/runtime-table.ts:113](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/gadgets/runtime-table.ts#L113)
 
 #### Parameters
 
@@ -113,7 +113,7 @@ Defined in: [lib/provable/gadgets/runtime-table.ts:113](https://github.com/o1-la
 readonly id: number;
 ```
 
-Defined in: [lib/provable/gadgets/runtime-table.ts:102](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/gadgets/runtime-table.ts#L102)
+Defined in: [lib/provable/gadgets/runtime-table.ts:102](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/gadgets/runtime-table.ts#L102)
 
 Unique identifier for the runtime table. 
 Must be different than 0 and 1, as those values are reserved
@@ -127,7 +127,7 @@ for the XOR and range-check tables, respectively.
 readonly indices: Set<bigint>;
 ```
 
-Defined in: [lib/provable/gadgets/runtime-table.ts:107](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/gadgets/runtime-table.ts#L107)
+Defined in: [lib/provable/gadgets/runtime-table.ts:107](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/gadgets/runtime-table.ts#L107)
 
 Indices that define the structure of the runtime table.
 They can be consecutive or not, but they must be unique.
@@ -140,7 +140,7 @@ They can be consecutive or not, but they must be unique.
 pairs: [Field, Field][] = [];
 ```
 
-Defined in: [lib/provable/gadgets/runtime-table.ts:111](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/gadgets/runtime-table.ts#L111)
+Defined in: [lib/provable/gadgets/runtime-table.ts:111](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/gadgets/runtime-table.ts#L111)
 
 Pending pairs to be checked on the runtime table.
 
@@ -152,7 +152,7 @@ Pending pairs to be checked on the runtime table.
 check(): void;
 ```
 
-Defined in: [lib/provable/gadgets/runtime-table.ts:193](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/gadgets/runtime-table.ts#L193)
+Defined in: [lib/provable/gadgets/runtime-table.ts:193](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/gadgets/runtime-table.ts#L193)
 
 Finalizes any pending checks by creating a Lookup when necessary.
 This function must be called after all `lookup()` calls of the table
@@ -170,7 +170,7 @@ to ensure that all pending checks are looked up in the circuit.
 insert(pairs: [bigint | Field, Field][]): void;
 ```
 
-Defined in: [lib/provable/gadgets/runtime-table.ts:139](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/gadgets/runtime-table.ts#L139)
+Defined in: [lib/provable/gadgets/runtime-table.ts:139](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/gadgets/runtime-table.ts#L139)
 
 Inserts key-value pairs into the runtime table.
 Under the hood, this method uses the `Gates.lookup` function to perform
@@ -201,7 +201,7 @@ Each index can be a `bigint` or a `Field`.
 lookup(idx: bigint | Field, value: Field): void;
 ```
 
-Defined in: [lib/provable/gadgets/runtime-table.ts:177](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/gadgets/runtime-table.ts#L177)
+Defined in: [lib/provable/gadgets/runtime-table.ts:177](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/gadgets/runtime-table.ts#L177)
 
 In-circuit checks if a key-value pair exists in the runtime table. Note
 that the same index can be queried several times as long as the value 
@@ -214,9 +214,9 @@ into a single lookup gate for efficiency.
 
 ##### idx
 
-`bigint` \| [`Field`](Field.mdx)
-
 The index of the key to check.
+
+`bigint` | [`Field`](Field.mdx)
 
 ##### value
 

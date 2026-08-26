@@ -44,11 +44,11 @@ const Hash: {
 };
 ```
 
-Defined in: [lib/provable/crypto/hash.ts:11](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/crypto/hash.ts#L11)
+Defined in: [lib/provable/crypto/hash.ts:11](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/crypto/hash.ts#L11)
 
 A collection of hash functions which can be used in provable code.
 
-## Type Declaration
+## Type declaration
 
 ### BLAKE2B
 
@@ -74,7 +74,7 @@ hash(bytes: Bytes): Bytes;
 
 `Bytes`
 
-### hash
+### hash()
 
 ```ts
 hash: (input: Field[]) => Field = Poseidon.hash;
@@ -408,7 +408,7 @@ SHA2: {
 
 The SHA2 hash function with an output length of 224 | 256 | 384 | 512 bits.
 
-#### SHA2.hash
+#### SHA2.hash()
 
 ```ts
 hash: <T>(length: T, data: FlexibleBytes) => Bytes = Gadgets.SHA2.hash;
@@ -464,7 +464,7 @@ SHA2_256: {
 
 The SHA2 hash function with an output length of 256 bits.
 
-#### SHA2\_256.hash
+#### SHA2\_256.hash()
 
 ```ts
 hash: (data: FlexibleBytes) => Bytes = Gadgets.SHA256.hash;

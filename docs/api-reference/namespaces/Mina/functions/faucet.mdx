@@ -1,11 +1,11 @@
 ```ts
 function faucet(
    pub: PublicKey, 
-   network?: string, 
+   network: string, 
 headers?: HeadersInit): Promise<void>;
 ```
 
-Defined in: [lib/mina/v1/mina.ts:568](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/mina.ts#L568)
+Defined in: [lib/mina/v1/mina.ts:568](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/mina.ts#L568)
 
 Requests the [testnet faucet](https://faucet.minaprotocol.com/api/v1/faucet) to fund a public key.
 
@@ -20,7 +20,7 @@ The first call compiles the ZK circuit (~30-60s), subsequent calls reuse the cac
 
 The public key to fund.
 
-### network?
+### network
 
 `string` = `'devnet'`
 

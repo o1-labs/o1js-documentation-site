@@ -1,4 +1,4 @@
-Defined in: [bindings.d.ts:505](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/bindings.d.ts#L505)
+Defined in: [bindings.d.ts:505](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/bindings.d.ts#L505)
 
 Represents the Mina ledger.
 
@@ -22,7 +22,7 @@ new Ledger(): Ledger;
 addAccount(publicKey: MlPublicKey, balance: string): void;
 ```
 
-Defined in: [bindings.d.ts:514](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/bindings.d.ts#L514)
+Defined in: [bindings.d.ts:519](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/bindings.d.ts#L519)
 
 Adds an account and its balance to the ledger.
 
@@ -51,7 +51,7 @@ applyJsonTransaction(
    networkState: string): void;
 ```
 
-Defined in: [bindings.d.ts:519](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/bindings.d.ts#L519)
+Defined in: [bindings.d.ts:524](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/bindings.d.ts#L524)
 
 Applies a JSON transaction to the ledger.
 
@@ -78,10 +78,10 @@ Applies a JSON transaction to the ledger.
 ### getAccount()
 
 ```ts
-getAccount(publicKey: MlPublicKey, tokenId: FieldConst): Account | undefined;
+getAccount(publicKey: MlPublicKey, tokenId: FieldConst): undefined | Account;
 ```
 
-Defined in: [bindings.d.ts:528](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/bindings.d.ts#L528)
+Defined in: [bindings.d.ts:533](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/bindings.d.ts#L533)
 
 Returns an account.
 
@@ -97,7 +97,7 @@ Returns an account.
 
 #### Returns
 
-`Account` \| `undefined`
+`undefined` \| `Account`
 
 ***
 
@@ -107,10 +107,36 @@ Returns an account.
 static create(): Ledger;
 ```
 
-Defined in: [bindings.d.ts:509](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/bindings.d.ts#L509)
+Defined in: [bindings.d.ts:509](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/bindings.d.ts#L509)
 
 Creates a fresh ledger.
 
 #### Returns
 
 `Ledger`
+
+***
+
+### migrateAccount()
+
+```ts
+static migrateAccount(hardforkSlot: number, account: string): Account;
+```
+
+Defined in: [bindings.d.ts:514](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/bindings.d.ts#L514)
+
+Migrates a berkeley account to a mesa account.
+
+#### Parameters
+
+##### hardforkSlot
+
+`number`
+
+##### account
+
+`string`
+
+#### Returns
+
+`Account`
