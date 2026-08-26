@@ -3,7 +3,11 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
 import dotenv from "dotenv";
+import fs from "fs";
 dotenv.config();
+
+// label the current docs with the o1js version they track (kept up to date by the release scripts)
+const o1jsVersion = fs.readFileSync("./.o1js_version", "utf8").trim();
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -67,7 +71,7 @@ const config: Config = {
           rehypePlugins: [require("rehype-katex")],
           versions: {
             current: {
-              label: "Current",
+              label: o1jsVersion,
               badge: false,
               banner: "none",
             },

@@ -1,11 +1,11 @@
 ```ts
 function fetchCurrentSlot(
-   graphqlEndpoint?: string, 
-   slotType?: "global" | "epoch", 
+   graphqlEndpoint: string, 
+   slotType: "global" | "epoch", 
 headers?: HeadersInit): Promise<number>;
 ```
 
-Defined in: [lib/mina/v1/fetch.ts:584](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/fetch.ts#L584)
+Defined in: [lib/mina/v1/fetch.ts:584](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/fetch.ts#L584)
 
 Fetches the current slot number of the Mina network.
 
@@ -18,17 +18,17 @@ ranges from 0 to ~7,139.
 
 ## Parameters
 
-### graphqlEndpoint?
+### graphqlEndpoint
 
 `string` = `networkConfig.minaEndpoint`
 
 GraphQL endpoint to fetch from
 
-### slotType?
-
-`"global"` \| `"epoch"`
+### slotType
 
 Type of slot to fetch: 'global' (default) for slot since genesis, or 'epoch' for slot within current epoch
+
+`"global"` | `"epoch"`
 
 ### headers?
 

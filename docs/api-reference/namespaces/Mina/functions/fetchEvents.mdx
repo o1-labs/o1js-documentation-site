@@ -2,7 +2,7 @@
 function fetchEvents(
    publicKey: PublicKey, 
    tokenId: Field, 
-   filterOptions?: EventActionFilterOptions, 
+   filterOptions: EventActionFilterOptions, 
    headers?: HeadersInit): Promise<{
   blockHash: string;
   blockHeight: UInt32;
@@ -20,7 +20,7 @@ function fetchEvents(
 }[]>;
 ```
 
-Defined in: [lib/mina/v1/mina-instance.ts:181](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/mina-instance.ts#L181)
+Defined in: [lib/mina/v1/mina-instance.ts:178](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/mina-instance.ts#L178)
 
 ## Parameters
 
@@ -32,7 +32,7 @@ Defined in: [lib/mina/v1/mina-instance.ts:181](https://github.com/o1-labs/o1js/b
 
 [`Field`](../../../../classes/Field.mdx)
 
-### filterOptions?
+### filterOptions
 
 `EventActionFilterOptions` = `{}`
 

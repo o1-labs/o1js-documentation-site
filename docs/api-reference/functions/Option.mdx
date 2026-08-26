@@ -1,5 +1,5 @@
 ```ts
-function Option<A>(type: A): ProvableInferPureFrom<A, Option<InferProvable<A>, InferValue<A>>, InferValue<A> | undefined> & (option: {
+function Option<A>(type: A): ProvableInferPureFrom<A, Option<InferProvable<A>, InferValue<A>>, undefined | InferValue<A>> & (option: {
   isSome: Bool;
   value: InferProvable<A>;
 }) => Option<InferProvable<A>, InferValue<A>> & {
@@ -9,7 +9,7 @@ function Option<A>(type: A): ProvableInferPureFrom<A, Option<InferProvable<A>, I
 };
 ```
 
-Defined in: [lib/provable/option.ts:34](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/option.ts#L34)
+Defined in: [lib/provable/option.ts:34](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/option.ts#L34)
 
 Define an optional version of a provable type.
 
@@ -27,7 +27,7 @@ Define an optional version of a provable type.
 
 ## Returns
 
-`ProvableInferPureFrom`\<`A`, [`Option`](../type-aliases/Option.mdx)\<[`InferProvable`](../type-aliases/InferProvable.mdx)\<`A`\>, `InferValue`\<`A`\>\>, `InferValue`\<`A`\> \| `undefined`\> & (`option`: \{
+`ProvableInferPureFrom`\<`A`, [`Option`](../type-aliases/Option.mdx)\<[`InferProvable`](../type-aliases/InferProvable.mdx)\<`A`\>, `InferValue`\<`A`\>\>, `undefined` \| `InferValue`\<`A`\>\> & (`option`: \{
   `isSome`: [`Bool`](../classes/Bool.mdx);
   `value`: [`InferProvable`](../type-aliases/InferProvable.mdx)\<`A`\>;
 \}) => [`Option`](../type-aliases/Option.mdx)\<[`InferProvable`](../type-aliases/InferProvable.mdx)\<`A`\>, `InferValue`\<`A`\>\> & \{

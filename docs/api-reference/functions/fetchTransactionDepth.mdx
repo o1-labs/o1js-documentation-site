@@ -1,10 +1,10 @@
 ```ts
 function fetchTransactionDepth(transactionHash: string, options?: DepthOptions): Promise<
-  | TransactionDepthInfo
-| null>;
+  | null
+| TransactionDepthInfo>;
 ```
 
-Defined in: [lib/mina/v1/fetch.ts:687](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/fetch.ts#L687)
+Defined in: [lib/mina/v1/fetch.ts:687](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/fetch.ts#L687)
 
 Fetches the depth (confirmation count) of a transaction in the blockchain.
 Depth represents how many blocks have been built on top of the block containing the transaction.
@@ -26,8 +26,8 @@ Optional configuration for the depth query
 ## Returns
 
 `Promise`\<
-  \| [`TransactionDepthInfo`](../type-aliases/TransactionDepthInfo.mdx)
-  \| `null`\>
+  \| `null`
+  \| [`TransactionDepthInfo`](../type-aliases/TransactionDepthInfo.mdx)\>
 
 TransactionDepthInfo if the transaction is found and successful, null otherwise
 

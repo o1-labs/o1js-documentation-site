@@ -3,12 +3,12 @@ type Cache = {
   cacheDirectory?: string;
   canWrite: boolean;
   debug?: boolean;
-  read: Uint8Array | undefined;
+  read: undefined | Uint8Array;
   write: void;
 };
 ```
 
-Defined in: [lib/proof-system/cache.ts:25](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/cache.ts#L25)
+Defined in: [lib/proof-system/cache.ts:25](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/cache.ts#L25)
 
 Interface for storing and retrieving values, for caching.
 `read()` and `write()` can just throw errors on failure.
@@ -29,10 +29,10 @@ Per smart contract or ZkProgram, several different keys are created:
 ### cacheDirectory?
 
 ```ts
-optional cacheDirectory?: string;
+optional cacheDirectory: string;
 ```
 
-Defined in: [lib/proof-system/cache.ts:56](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/cache.ts#L56)
+Defined in: [lib/proof-system/cache.ts:56](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/cache.ts#L56)
 
 The directory where cache files are stored. Only applicable for file system caches.
 
@@ -44,7 +44,7 @@ The directory where cache files are stored. Only applicable for file system cach
 canWrite: boolean;
 ```
 
-Defined in: [lib/proof-system/cache.ts:44](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/cache.ts#L44)
+Defined in: [lib/proof-system/cache.ts:44](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/cache.ts#L44)
 
 Indicates whether the cache is writable.
 
@@ -53,10 +53,10 @@ Indicates whether the cache is writable.
 ### debug?
 
 ```ts
-optional debug?: boolean;
+optional debug: boolean;
 ```
 
-Defined in: [lib/proof-system/cache.ts:52](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/cache.ts#L52)
+Defined in: [lib/proof-system/cache.ts:52](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/cache.ts#L52)
 
 If `debug` is toggled, `read()` and `write()` errors are logged to the console.
 
@@ -68,10 +68,10 @@ but could just be a cache miss, or file system permissions incompatible with wri
 ### read()
 
 ```ts
-read(header: CacheHeader): Uint8Array | undefined;
+read(header: CacheHeader): undefined | Uint8Array;
 ```
 
-Defined in: [lib/proof-system/cache.ts:31](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/cache.ts#L31)
+Defined in: [lib/proof-system/cache.ts:31](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/cache.ts#L31)
 
 Read a value from the cache.
 
@@ -85,7 +85,7 @@ A small header to identify what is read from the cache.
 
 #### Returns
 
-`Uint8Array` \| `undefined`
+`undefined` \| `Uint8Array`
 
 ***
 
@@ -95,7 +95,7 @@ A small header to identify what is read from the cache.
 write(header: CacheHeader, value: Uint8Array): void;
 ```
 
-Defined in: [lib/proof-system/cache.ts:39](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/cache.ts#L39)
+Defined in: [lib/proof-system/cache.ts:39](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/cache.ts#L39)
 
 Write a value to the cache.
 

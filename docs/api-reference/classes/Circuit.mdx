@@ -1,4 +1,4 @@
-Defined in: [lib/proof-system/circuit.ts:17](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/circuit.ts#L17)
+Defined in: [lib/proof-system/circuit.ts:17](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/circuit.ts#L17)
 
 ## Deprecated
 
@@ -25,23 +25,23 @@ new Circuit(): Circuit;
 static _main: CircuitData<any, any>;
 ```
 
-Defined in: [lib/proof-system/circuit.ts:20](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/circuit.ts#L20)
+Defined in: [lib/proof-system/circuit.ts:20](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/circuit.ts#L20)
 
 ## Methods
 
 ### ~~generateKeypair()~~
 
 ```ts
-static generateKeypair(lazyMode?: boolean): Promise<Keypair>;
+static generateKeypair(lazyMode: boolean): Promise<Keypair>;
 ```
 
-Defined in: [lib/proof-system/circuit.ts:29](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/circuit.ts#L29)
+Defined in: [lib/proof-system/circuit.ts:29](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/circuit.ts#L29)
 
 Generates a proving key and a verification key for this circuit.
 
 #### Parameters
 
-##### lazyMode?
+##### lazyMode
 
 `boolean` = `false`
 
@@ -66,7 +66,7 @@ static prove(
 keypair: Keypair): Promise<Proof>;
 ```
 
-Defined in: [lib/proof-system/circuit.ts:49](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/circuit.ts#L49)
+Defined in: [lib/proof-system/circuit.ts:49](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/circuit.ts#L49)
 
 Proves a statement using the private input, public input, and the [Keypair](Keypair.mdx) of the circuit.
 
@@ -106,7 +106,7 @@ static verify(
 proof: Proof): Promise<boolean>;
 ```
 
-Defined in: [lib/proof-system/circuit.ts:76](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/circuit.ts#L76)
+Defined in: [lib/proof-system/circuit.ts:76](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/circuit.ts#L76)
 
 Verifies a proof using the public input, the proof, and the initial [Keypair](Keypair.mdx) of the circuit.
 

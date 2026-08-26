@@ -1,8 +1,8 @@
 ```ts
-function merkleListHash<T>(provable: ProvableHashable<T>, prefix?: string): (hash: Field, value: T) => Field;
+function merkleListHash<T>(provable: ProvableHashable<T>, prefix: string): (hash: Field, value: T) => Field;
 ```
 
-Defined in: [lib/provable/merkle-list.ts:711](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/merkle-list.ts#L711)
+Defined in: [lib/provable/merkle-list.ts:711](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/merkle-list.ts#L711)
 
 ## Type Parameters
 
@@ -16,10 +16,26 @@ Defined in: [lib/provable/merkle-list.ts:711](https://github.com/o1-labs/o1js/bl
 
 [`ProvableHashable`](../type-aliases/ProvableHashable.mdx)\<`T`\>
 
-### prefix?
+### prefix
 
 `string` = `''`
 
 ## Returns
 
-(`hash`: [`Field`](../classes/Field.mdx), `value`: `T`) => [`Field`](../classes/Field.mdx)
+```ts
+(hash: Field, value: T): Field;
+```
+
+### Parameters
+
+#### hash
+
+[`Field`](../classes/Field.mdx)
+
+#### value
+
+`T`
+
+### Returns
+
+[`Field`](../classes/Field.mdx)

@@ -3,21 +3,21 @@ type IncludedTransaction = Pick<PendingTransaction, "transaction" | "toJSON" | "
   inclusionBlockHeight?: number;
   status: "included";
   getDepth: Promise<TransactionDepthInfo>;
-  safeGetDepth: Promise<TransactionDepthInfo | null>;
+  safeGetDepth: Promise<null | TransactionDepthInfo>;
   waitForFinality: Promise<TransactionDepthInfo>;
 };
 ```
 
-Defined in: [lib/mina/v1/transaction.ts:311](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/transaction.ts#L311)
+Defined in: [lib/mina/v1/transaction.ts:311](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/transaction.ts#L311)
 
 Represents a transaction that has been successfully included in a block.
 
-## Type Declaration
+## Type declaration
 
 ### inclusionBlockHeight?
 
 ```ts
-optional inclusionBlockHeight?: number;
+optional inclusionBlockHeight: number;
 ```
 
 The block height at which this transaction was included.
@@ -84,7 +84,7 @@ https://docs.minaprotocol.com/mina-protocol/lifecycle-of-a-payment
 ### safeGetDepth()
 
 ```ts
-safeGetDepth(options?: DepthOptions): Promise<TransactionDepthInfo | null>;
+safeGetDepth(options?: DepthOptions): Promise<null | TransactionDepthInfo>;
 ```
 
 Safe variant of IncludedTransaction.getDepth that returns null instead of throwing.
@@ -99,7 +99,7 @@ Optional configuration for the depth query
 
 #### Returns
 
-`Promise`\<[`TransactionDepthInfo`](TransactionDepthInfo.mdx) \| `null`\>
+`Promise`\<`null` \| [`TransactionDepthInfo`](TransactionDepthInfo.mdx)\>
 
 TransactionDepthInfo if found, null otherwise
 

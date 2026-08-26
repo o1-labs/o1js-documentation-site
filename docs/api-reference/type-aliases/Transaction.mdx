@@ -5,7 +5,7 @@ type Transaction<Proven, Signed> = TransactionCommon & {
     | RejectedTransaction>;
   send: PendingTransactionPromise;
   setFee: TransactionPromise<Proven, false>;
-  setFeePerSnarkCost: TransactionPromise<Proven, false>;
+  setFeePerAccountUpdate: TransactionPromise<Proven, false>;
 } & Proven extends false ? {
   prove: Promise<Transaction<true, Signed>>;
 } : {
@@ -18,13 +18,13 @@ type Transaction<Proven, Signed> = TransactionCommon & {
 };
 ```
 
-Defined in: [lib/mina/v1/transaction.ts:91](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/transaction.ts#L91)
+Defined in: [lib/mina/v1/transaction.ts:91](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/transaction.ts#L91)
 
 Defines the structure and operations associated with a transaction.
 This type encompasses methods for serializing the transaction, signing it, generating proofs,
 and submitting it to the network.
 
-## Type Declaration
+## Type declaration
 
 ### safeSend()
 
@@ -96,17 +96,17 @@ await tx.sign([feePayerKey]));
 await tx.send();
 ```
 
-### setFeePerSnarkCost()
+### setFeePerAccountUpdate()
 
 ```ts
-setFeePerSnarkCost(newFeePerSnarkCost: number): TransactionPromise<Proven, false>;
+setFeePerAccountUpdate(newFeePerAccountUpdate: number): TransactionPromise<Proven, false>;
 ```
 
-setFeePerSnarkCost behaves identically to Transaction.setFee but the fee is given per estimated cost of snarking the transition as given by getTotalTimeRequired. This is useful because it should reflect what snark workers would charge in times of network contention.
+setFeePerAccountUpdate behaves identically to Transaction.setFee but the fee is given per estimated cost of snarking the transition as given by getSegmentsAndEvents. This is useful because it should reflect what snark workers would charge in times of network contention.
 
 #### Parameters
 
-##### newFeePerSnarkCost
+##### newFeePerAccountUpdate
 
 `number`
 

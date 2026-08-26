@@ -4,8 +4,8 @@ function fetchAccount(
   publicKey: string | PublicKey;
   tokenId?: string | Field;
 }, 
-   graphqlEndpoint?: string, 
-   config?: FetchConfig): Promise<
+   graphqlEndpoint: string, 
+   config: FetchConfig): Promise<
   | {
   account: Account;
   error: undefined;
@@ -16,7 +16,7 @@ function fetchAccount(
 }>;
 ```
 
-Defined in: [lib/mina/v1/fetch.ts:202](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/mina/v1/fetch.ts#L202)
+Defined in: [lib/mina/v1/fetch.ts:202](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/mina/v1/fetch.ts#L202)
 
 Gets account information on the specified publicKey by performing a GraphQL query
 to the specified endpoint. This will call the 'GetAccountInfo' query which fetches
@@ -43,13 +43,13 @@ The specified publicKey to get account information on
 
 The specified tokenId to get account information on
 
-### graphqlEndpoint?
+### graphqlEndpoint
 
 `string` = `networkConfig.minaEndpoint`
 
 The graphql endpoint to fetch from
 
-### config?
+### config
 
 `FetchConfig` = `{}`
 

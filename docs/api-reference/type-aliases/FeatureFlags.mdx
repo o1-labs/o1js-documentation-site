@@ -11,13 +11,7 @@ type FeatureFlags = {
 };
 ```
 
-Defined in: [lib/proof-system/feature-flags.ts:17](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/feature-flags.ts#L17)
-
-Feature flags indicate what custom gates are used in a proof of circuit.
-Side loading, for example, requires a set of feature flags in advance (at compile time) in order to verify and side load proofs.
-If the side loaded proofs and verification keys do not match the specified feature flag configurations, the verification will fail.
-Flags specified as `undefined` are considered as `maybe` by Pickles. This means, proofs can be sided loaded that can, but don't have to, use a specific custom gate.
-_Note:_ `Maybe` feature flags incur a proving overhead.
+Defined in: [lib/proof-system/feature-flags.ts:17](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/feature-flags.ts#L17)
 
 ## Properties
 
@@ -27,7 +21,7 @@ _Note:_ `Maybe` feature flags incur a proving overhead.
 foreignFieldAdd: boolean | undefined;
 ```
 
-Defined in: [lib/proof-system/feature-flags.ts:20](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/feature-flags.ts#L20)
+Defined in: [lib/proof-system/feature-flags.ts:20](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/feature-flags.ts#L20)
 
 ***
 
@@ -37,7 +31,7 @@ Defined in: [lib/proof-system/feature-flags.ts:20](https://github.com/o1-labs/o1
 foreignFieldMul: boolean | undefined;
 ```
 
-Defined in: [lib/proof-system/feature-flags.ts:21](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/feature-flags.ts#L21)
+Defined in: [lib/proof-system/feature-flags.ts:21](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/feature-flags.ts#L21)
 
 ***
 
@@ -47,7 +41,7 @@ Defined in: [lib/proof-system/feature-flags.ts:21](https://github.com/o1-labs/o1
 lookup: boolean | undefined;
 ```
 
-Defined in: [lib/proof-system/feature-flags.ts:24](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/feature-flags.ts#L24)
+Defined in: [lib/proof-system/feature-flags.ts:24](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/feature-flags.ts#L24)
 
 ***
 
@@ -57,7 +51,7 @@ Defined in: [lib/proof-system/feature-flags.ts:24](https://github.com/o1-labs/o1
 rangeCheck0: boolean | undefined;
 ```
 
-Defined in: [lib/proof-system/feature-flags.ts:18](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/feature-flags.ts#L18)
+Defined in: [lib/proof-system/feature-flags.ts:18](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/feature-flags.ts#L18)
 
 ***
 
@@ -67,7 +61,7 @@ Defined in: [lib/proof-system/feature-flags.ts:18](https://github.com/o1-labs/o1
 rangeCheck1: boolean | undefined;
 ```
 
-Defined in: [lib/proof-system/feature-flags.ts:19](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/feature-flags.ts#L19)
+Defined in: [lib/proof-system/feature-flags.ts:19](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/feature-flags.ts#L19)
 
 ***
 
@@ -77,7 +71,7 @@ Defined in: [lib/proof-system/feature-flags.ts:19](https://github.com/o1-labs/o1
 rot: boolean | undefined;
 ```
 
-Defined in: [lib/proof-system/feature-flags.ts:23](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/feature-flags.ts#L23)
+Defined in: [lib/proof-system/feature-flags.ts:23](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/feature-flags.ts#L23)
 
 ***
 
@@ -87,7 +81,7 @@ Defined in: [lib/proof-system/feature-flags.ts:23](https://github.com/o1-labs/o1
 runtimeTables: boolean | undefined;
 ```
 
-Defined in: [lib/proof-system/feature-flags.ts:25](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/feature-flags.ts#L25)
+Defined in: [lib/proof-system/feature-flags.ts:25](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/feature-flags.ts#L25)
 
 ***
 
@@ -97,4 +91,4 @@ Defined in: [lib/proof-system/feature-flags.ts:25](https://github.com/o1-labs/o1
 xor: boolean | undefined;
 ```
 
-Defined in: [lib/proof-system/feature-flags.ts:22](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/proof-system/feature-flags.ts#L22)
+Defined in: [lib/proof-system/feature-flags.ts:22](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/proof-system/feature-flags.ts#L22)

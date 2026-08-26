@@ -40,13 +40,19 @@ const Gadgets: {
         maxBits: number;
      }) => Field[];
      add: Field3;
+     assertAlmostReduced: void;
      assertEquals: void;
      assertLessThan: void;
      assertLessThanOrEqual: void;
+     assertMul: void;
+     div: Field3;
      equals: Bool;
+     inv: Field3;
+     mul: Field3;
      neg: Field3;
      sub: Field3;
      sum: Field3;
+     Sum: Sum;
      toCanonical: Field3;
   };
   SHA2: {
@@ -85,11 +91,11 @@ const Gadgets: {
 };
 ```
 
-Defined in: [lib/provable/gadgets/gadgets.ts:42](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/gadgets/gadgets.ts#L42)
+Defined in: [lib/provable/gadgets/gadgets.ts:42](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/gadgets/gadgets.ts#L42)
 
-## Type Declaration
+## Type declaration
 
-### addMod32
+### addMod32()
 
 ```ts
 addMod32: (x: Field, y: Field) => Field;
@@ -126,7 +132,7 @@ let b = Field(1n << 32n);
 Gadgets.addMod32(a, b).assertEquals(Field(8n));
 ```
 
-### addMod64
+### addMod64()
 
 ```ts
 addMod64: (x: Field, y: Field) => Field;
@@ -163,7 +169,7 @@ let b = Field(1n << 64n);
 Gadgets.addMod64(a, b).assertEquals(Field(8n));
 ```
 
-### arrayGet
+### arrayGet()
 
 ```ts
 arrayGet: (array: Field[], index: Field) => Field;
@@ -204,7 +210,7 @@ Note: This saves 0.5*n constraints compared to equals() + switch() even if equal
 
 [`Field`](../classes/Field.mdx)
 
-### arrayGetGeneric
+### arrayGetGeneric()
 
 ```ts
 arrayGetGeneric: <T>(type: ProvableType<T>, array: T[], index: Field) => T;
@@ -277,7 +283,7 @@ let digest = Gadgets.BLAKE2b.hash(preimage);
 get IV(): UInt64[];
 ```
 
-Defined in: [lib/provable/gadgets/blake2b.ts:76](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/gadgets/blake2b.ts#L76)
+Defined in: [lib/provable/gadgets/blake2b.ts:76](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/gadgets/blake2b.ts#L76)
 
 ###### Returns
 
@@ -286,7 +292,7 @@ Defined in: [lib/provable/gadgets/blake2b.ts:76](https://github.com/o1-labs/o1js
 #### BLAKE2B.hash()
 
 ```ts
-hash(data: FlexibleBytes, digestLength?: number): Bytes;
+hash(data: FlexibleBytes, digestLength: number): Bytes;
 ```
 
 ##### Parameters
@@ -295,7 +301,7 @@ hash(data: FlexibleBytes, digestLength?: number): Bytes;
 
 [`FlexibleBytes`](../type-aliases/FlexibleBytes.mdx)
 
-###### digestLength?
+###### digestLength
 
 `number` = `64`
 
@@ -347,7 +353,7 @@ l3: bigint;
 lMask: bigint;
 ```
 
-### divMod32
+### divMod32()
 
 ```ts
 divMod32: (n: Field, nBits: number) => {
@@ -368,7 +374,7 @@ Asserts that both `remainder` and `quotient` are in the range [0, 2^32) using [G
 
 [`Field`](../classes/Field.mdx)
 
-##### nBits?
+##### nBits
 
 `number` = `64`
 
@@ -403,7 +409,7 @@ let { remainder, quotient } = Gadgets.divMod32(n);
 n.assertEquals(quotient.mul(1n << 32n).add(remainder));
 ```
 
-### divMod64
+### divMod64()
 
 ```ts
 divMod64: (n: Field, nBits: number) => {
@@ -424,7 +430,7 @@ Asserts that both `remainder` and `quotient` are in the range [0, 2^64) using [G
 
 [`Field`](../classes/Field.mdx)
 
-##### nBits?
+##### nBits
 
 `number` = `128`
 
@@ -503,7 +509,7 @@ fromValue(x: bigint | Field3): Field3;
 
 ###### x
 
-`bigint` \| `Field3`
+`bigint` | `Field3`
 
 ##### Returns
 
@@ -525,7 +531,7 @@ toValue(x: Field3): bigint;
 
 `bigint`
 
-#### Field3.split
+#### Field3.split()
 
 ```ts
 split: (x: bigint) => bigint3;
@@ -555,7 +561,7 @@ Turn a bigint into a 3-tuple of Fields
 
 ###### x
 
-`bigint` \| `Field3`
+`bigint` | `Field3`
 
 ##### Returns
 
@@ -630,13 +636,19 @@ ForeignField: {
      maxBits: number;
   }) => Field[];
   add: Field3;
+  assertAlmostReduced: void;
   assertEquals: void;
   assertLessThan: void;
   assertLessThanOrEqual: void;
+  assertMul: void;
+  div: Field3;
   equals: Bool;
+  inv: Field3;
+  mul: Field3;
   neg: Field3;
   sub: Field3;
   sum: Field3;
+  Sum: Sum;
   toCanonical: Field3;
 };
 ```
@@ -654,7 +666,7 @@ Each limb holds 88 bits of the total, in little-endian order.
 All `ForeignField` gadgets expect that their input limbs are constrained to the range [0, 2^88).
 Range checks on outputs are added by the gadget itself.
 
-#### ForeignField.sliceField3
+#### ForeignField.sliceField3()
 
 ```ts
 sliceField3: (__namedParameters: Field3, __namedParameters: {
@@ -754,6 +766,65 @@ Provable.log(z); // ['2', '0', '0'] = limb representation of 2 = 9 + 10 mod 17
 and does not prove that the result is reduced modulo f.
 It only guarantees that the result is in the correct residue class.
 
+#### ForeignField.assertAlmostReduced()
+
+```ts
+assertAlmostReduced(
+   xs: Field3[], 
+   f: bigint, 
+   __namedParameters: {
+  skipMrc?: boolean;
+}): void;
+```
+
+Prove that each of the given [Field3](#field3) elements is "almost" reduced modulo f,
+i.e., satisfies the assumptions required by [Gadgets.ForeignField.mul](#foreignfield) and other gadgets:
+- each limb is in the range [0, 2^88)
+- the most significant limb is less or equal than the modulus, `x[2] <= f[2]`
+
+**Note**: This method is most efficient when the number of input elements is a multiple of 3.
+
+##### Parameters
+
+###### xs
+
+`Field3`[]
+
+###### f
+
+`bigint`
+
+###### \_\_namedParameters
+
+###### skipMrc?
+
+`boolean` = `false`
+
+##### Returns
+
+`void`
+
+##### Throws
+
+if any of the assumptions is violated.
+
+##### Example
+
+```ts
+let x = Provable.witness(Field3, () => 4n);
+let y = Provable.witness(Field3, () => 5n);
+let z = Provable.witness(Field3, () => 10n);
+
+ForeignField.assertAlmostReduced([x, y, z], f);
+
+// now we can use x, y, z as inputs to foreign field multiplication
+let xy = ForeignField.mul(x, y, f);
+let xyz = ForeignField.mul(xy, z, f);
+
+// since xy is an input to another multiplication, we need to prove that it is almost reduced again!
+ForeignField.assertAlmostReduced([xy], f); // TODO: would be more efficient to batch this with 2 other elements
+```
+
 #### ForeignField.assertEquals()
 
 ```ts
@@ -782,14 +853,14 @@ Proves that x is equal to y.
 assertLessThan(x: Field3, f: bigint | Field3): void;
 ```
 
-Prove that `x < f` for any constant `f < 2^264`, or for another `Field3` f.
+Prove that x < f for any constant f < 2^264, or for another `Field3` f.
 
 If f is a finite field modulus, this means that the given field element is fully reduced modulo f.
-This is a stronger statement than [ForeignField.assertAlmostReduced](../interfaces/ForeignField.mdx#assertalmostreduced)
+This is a stronger statement than [ForeignField.assertAlmostReduced](../classes/ForeignField.mdx#assertalmostreduced-2)
 and also uses more constraints; it should not be needed in most use cases.
 
 **Note**: This assumes that the limbs of x are in the range [0, 2^88), in contrast to
-[ForeignField.assertAlmostReduced](../interfaces/ForeignField.mdx#assertalmostreduced) which adds that check itself.
+[ForeignField.assertAlmostReduced](../classes/ForeignField.mdx#assertalmostreduced-2) which adds that check itself.
 
 ##### Parameters
 
@@ -799,7 +870,7 @@ and also uses more constraints; it should not be needed in most use cases.
 
 ###### f
 
-`bigint` \| `Field3`
+`bigint` | `Field3`
 
 ##### Returns
 
@@ -829,7 +900,7 @@ assertLessThanOrEqual(x: Field3, f: bigint | Field3): void;
 
 Prove that `x <= f` for any constant `f < 2^264`, or for another `Field3` f.
 
-See [ForeignField.assertLessThan](../interfaces/ForeignField.mdx#assertlessthan) for details and usage examples.
+See [ForeignField.assertLessThan](../classes/ForeignField.mdx#assertlessthan) for details and usage examples.
 
 ##### Parameters
 
@@ -839,11 +910,123 @@ See [ForeignField.assertLessThan](../interfaces/ForeignField.mdx#assertlessthan)
 
 ###### f
 
-`bigint` \| `Field3`
+`bigint` | `Field3`
 
 ##### Returns
 
 `void`
+
+#### ForeignField.assertMul()
+
+```ts
+assertMul(
+   x: Field3 | Sum, 
+   y: Field3 | Sum, 
+   z: Field3 | Sum, 
+   f: bigint, 
+   message?: string): void;
+```
+
+Optimized multiplication of sums in a foreign field, for example: `(x - y)*z = a + b + c mod f`
+
+Note: This is much more efficient than using [Gadgets.ForeignField.add](#foreignfield) and [Gadgets.ForeignField.sub](#foreignfield) separately to
+compute the multiplication inputs and outputs, and then using [Gadgets.ForeignField.mul](#foreignfield) to constrain the result.
+
+The sums passed into this method are "lazy sums" created with [Gadgets.ForeignField.Sum](#foreignfield).
+You can also pass in plain [Field3](#field3) elements.
+
+**Assumptions**: The assumptions on the _summands_ are analogous to the assumptions described in [Gadgets.ForeignField.mul](#foreignfield):
+- each summand's limbs are in the range [0, 2^88)
+- summands that are part of a multiplication input satisfy `x[2] <= f[2]`
+
+##### Parameters
+
+###### x
+
+`Field3` | `Sum`
+
+###### y
+
+`Field3` | `Sum`
+
+###### z
+
+`Field3` | `Sum`
+
+###### f
+
+`bigint`
+
+###### message?
+
+`string`
+
+##### Returns
+
+`void`
+
+##### Throws
+
+if the modulus is so large that the second assumption no longer suffices for validity of the multiplication.
+For small sums and moduli < 2^256, this will not fail.
+
+##### Throws
+
+if the provided multiplication result is not correct modulo f.
+
+##### Example
+
+```ts
+// range-check x, y, z, a, b, c
+ForeignField.assertAlmostReduced([x, y, z], f);
+Gadgets.multiRangeCheck(a);
+Gadgets.multiRangeCheck(b);
+Gadgets.multiRangeCheck(c);
+
+// create lazy input sums
+let xMinusY = ForeignField.Sum(x).sub(y);
+let aPlusBPlusC = ForeignField.Sum(a).add(b).add(c);
+
+// assert that (x - y)*z = a + b + c mod f
+ForeignField.assertMul(xMinusY, z, aPlusBPlusC, f);
+```
+
+#### ForeignField.div()
+
+```ts
+div(
+   x: Field3, 
+   y: Field3, 
+   f: bigint): Field3;
+```
+
+Foreign field division: `x * y^(-1) mod f`
+
+See [Gadgets.ForeignField.mul](#foreignfield) for assumptions on inputs and usage examples.
+
+This gadget adds an extra bound check on the result, so it can be used directly in another foreign field multiplication.
+
+##### Parameters
+
+###### x
+
+`Field3`
+
+###### y
+
+`Field3`
+
+###### f
+
+`bigint`
+
+##### Returns
+
+`Field3`
+
+##### Throws
+
+Different than [Gadgets.ForeignField.mul](#foreignfield), this fails on unreduced input `x`, because it checks that `x === (x/y)*y` and the right side will be reduced.
 
 #### ForeignField.equals()
 
@@ -878,6 +1061,92 @@ Assumes that `x` is almost reduced modulo `f`, so we know that `x` might be `c` 
 
 [`Bool`](../classes/Bool.mdx)
 
+#### ForeignField.inv()
+
+```ts
+inv(x: Field3, f: bigint): Field3;
+```
+
+Foreign field inverse: `x^(-1) mod f`
+
+See [Gadgets.ForeignField.mul](#foreignfield) for assumptions on inputs and usage examples.
+
+This gadget adds an extra bound check on the result, so it can be used directly in another foreign field multiplication.
+
+##### Parameters
+
+###### x
+
+`Field3`
+
+###### f
+
+`bigint`
+
+##### Returns
+
+`Field3`
+
+#### ForeignField.mul()
+
+```ts
+mul(
+   x: Field3, 
+   y: Field3, 
+   f: bigint): Field3;
+```
+
+Foreign field multiplication: `x * y mod f`
+
+The modulus `f` does not need to be prime, but has to be smaller than 2^259.
+
+**Assumptions**: In addition to the assumption that input limbs are in the range [0, 2^88), as in all foreign field gadgets,
+this assumes an additional bound on the inputs: `x * y < 2^264 * p`, where p is the native modulus.
+We usually assert this bound by proving that `x[2] < f[2] + 1`, where `x[2]` is the most significant limb of x.
+To do this, we use an 88-bit range check on `2^88 - x[2] - (f[2] + 1)`, and same for y.
+The implication is that x and y are _almost_ reduced modulo f.
+
+All of the above assumptions are checked by [Gadgets.ForeignField.assertAlmostReduced](#foreignfield).
+
+**Warning**: This gadget does not add the extra bound check on the result.
+So, to use the result in another foreign field multiplication, you have to add the bound check on it yourself, again.
+
+##### Parameters
+
+###### x
+
+`Field3`
+
+###### y
+
+`Field3`
+
+###### f
+
+`bigint`
+
+##### Returns
+
+`Field3`
+
+##### Example
+
+```ts
+// example modulus: secp256k1 prime
+let f = (1n << 256n) - (1n << 32n) - 0b1111010001n;
+
+let x = Provable.witness(Field3, () => f - 1n);
+let y = Provable.witness(Field3, () => f - 2n);
+
+// range check x, y and prove additional bounds x[2] <= f[2]
+ForeignField.assertAlmostReduced([x, y], f);
+
+// compute x * y mod f
+let z = ForeignField.mul(x, y, f);
+
+Provable.log(z); // ['2', '0', '0'] = limb representation of 2 = (-1)*(-2) mod f
+```
+
 #### ForeignField.neg()
 
 ```ts
@@ -886,7 +1155,7 @@ neg(x: Field3, f: bigint): Field3;
 
 Foreign field negation: `-x mod f = f - x`
 
-See [ForeignField.add](../interfaces/ForeignField.mdx#add) for assumptions and usage examples.
+See [ForeignField.add](../classes/ForeignField.mdx#add) for assumptions and usage examples.
 
 ##### Parameters
 
@@ -997,6 +1266,24 @@ let sum = ForeignField.sum([x, y, z], [1n, -1n], 17n);
 Provable.log(sum); // ['16', '0', '0'] = limb representation of 16 = 4 + 5 - 10 mod 17
 ```
 
+#### ForeignField.Sum()
+
+```ts
+Sum(x: Field3): Sum;
+```
+
+Lazy sum of [Field3](#field3) elements, which can be used as input to [Gadgets.ForeignField.assertMul](#foreignfield).
+
+##### Parameters
+
+###### x
+
+`Field3`
+
+##### Returns
+
+`Sum`
+
 #### ForeignField.toCanonical()
 
 ```ts
@@ -1058,7 +1345,7 @@ let preimage = Bytes.fromString("hello world");
 let digest = Gadgets.SHA2.hash(512, preimage);
 ```
 
-#### SHA2.compression
+#### SHA2.compression()
 
 ```ts
 compression: <T>(length: Length, H: T[], W: T[]) => T[];
@@ -1098,7 +1385,7 @@ The message schedule (64-element array of T).
 
 The updated intermediate hash values after compression.
 
-#### SHA2.messageSchedule
+#### SHA2.messageSchedule()
 
 ```ts
 messageSchedule: <T>(length: Length, M: T[]) => T[];
@@ -1133,7 +1420,7 @@ The 512-bit message block (16-element array of UInt32)
 
 The message schedule (64-element array of UInt32 or 80-element array of UInt64).
 
-#### SHA2.padding
+#### SHA2.padding()
 
 ```ts
 padding: <T>(length: Length, data: FlexibleBytes) => T[][];
@@ -1262,7 +1549,7 @@ let digest = Gadgets.SHA256.hash(preimage);
 
 [SHA256](#sha256) is deprecated in favor of [SHA2](#sha2), which supports more variants of the hash function.
 
-#### SHA256.compression
+#### SHA256.compression()
 
 ```ts
 compression: (H: UInt32[], W: UInt32[]) => UInt32[] = sha256Compression;
@@ -1290,7 +1577,7 @@ The message schedule (64-element array of UInt32).
 
 The updated intermediate hash values after compression.
 
-#### SHA256.createMessageSchedule
+#### SHA256.createMessageSchedule()
 
 ```ts
 createMessageSchedule: (M: UInt32[]) => UInt32[];
@@ -1312,7 +1599,7 @@ The 512-bit message block (16-element array of UInt32).
 
 The message schedule (64-element array of UInt32).
 
-#### SHA256.padding
+#### SHA256.padding()
 
 ```ts
 padding: (data: FlexibleBytes) => UInt32[][];
@@ -1336,7 +1623,7 @@ padding: (data: FlexibleBytes) => UInt32[][];
 get initialState(): UInt32[];
 ```
 
-Defined in: [lib/provable/gadgets/sha256.ts:103](https://github.com/o1-labs/o1js/blob/6d089a824781b83f5d4faa1ceebcb9612ae72411/src/lib/provable/gadgets/sha256.ts#L103)
+Defined in: [lib/provable/gadgets/sha256.ts:103](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/lib/provable/gadgets/sha256.ts#L103)
 
 ###### Returns
 
@@ -1682,7 +1969,7 @@ Throws an error if one of the input values exceeds 88 bits.
 not(
    a: Field, 
    length: number, 
-   checked?: boolean): Field;
+   checked: boolean): Field;
 ```
 
 Bitwise NOT gate on [Field](Field.mdx) elements. Similar to the [bitwise
@@ -1723,7 +2010,7 @@ The value to apply NOT to. The operation will fail if the value is larger than 2
 
 The number of bits to be considered for the NOT operation.
 
-##### checked?
+##### checked
 
 `boolean` = `false`
 
@@ -1875,7 +2162,7 @@ Checks that three [Field](Field.mdx) elements are in the range [0, 2^12) (using 
 Internally, this gadget relies on the 12-bit [range check table](https://github.com/o1-labs/proof-systems/blob/master/kimchi/src/circuits/lookup/tables/mod.rs).
 All three inputs are checked to be included in that table.
 
-It's possible to use this as a range check for bit lengths `n < 12`, by passing in _two values_.
+It's possible to use this as a range check for bit lengths n < 12, by passing in _two values_.
 - the value to be checked, `x`, to prove that x in [0, 2^12)
 - x scaled by 2^(12 - n), to prove that either x in [0, 2^n) or `x * 2^(12 - n)` overflows the field size (which is excluded by the first check)
 
@@ -2096,7 +2383,7 @@ rightShift64(xLarge, 32); // throws an error since input exceeds 64 bits
 rotate32(
    field: Field, 
    bits: number, 
-   direction?: "left" | "right"): Field;
+   direction: "left" | "right"): Field;
 ```
 
 A (left and right) rotation operates similarly to the shift operation (`<<` for left and `>>` for right) in JavaScript,
@@ -2128,11 +2415,11 @@ for example, using [Gadgets.rangeCheck32](#rangecheck32).
 
 amount of bits to rotate this [Field](Field.mdx) element with.
 
-##### direction?
-
-`"left"` \| `"right"`
+##### direction
 
 left or right rotation direction.
+
+`"left"` | `"right"`
 
 #### Returns
 
@@ -2161,7 +2448,7 @@ Gadgets.rotate32(xLarge, 32, "left"); // throws an error since input exceeds 32 
 rotate64(
    field: Field, 
    bits: number, 
-   direction?: "left" | "right"): Field;
+   direction: "left" | "right"): Field;
 ```
 
 A (left and right) rotation operates similarly to the shift operation (`<<` for left and `>>` for right) in JavaScript,
@@ -2195,11 +2482,11 @@ You can find more details about the implementation in the [Mina book](https://o1
 
 amount of bits to rotate this [Field](Field.mdx) element with.
 
-##### direction?
-
-`"left"` \| `"right"`
+##### direction
 
 left or right rotation direction.
+
+`"left"` | `"right"`
 
 #### Returns
 
