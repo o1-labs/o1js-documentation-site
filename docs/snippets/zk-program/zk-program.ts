@@ -47,8 +47,10 @@ async function simpleZkProgram() {
   const proof1 = await SimpleZkProgram.add(Field(10), Field(20));
   const proof2 = await SimpleZkProgram.hash(Field(10), Field(20), Field(30));
 
-  SimpleZkProgram.verify(proof1.proof);
-  SimpleZkProgram.verify(proof2.proof);
+  // verify() resolves to false for an invalid proof and does not throw
+  const isValid1 = await SimpleZkProgram.verify(proof1.proof);
+  const isValid2 = await SimpleZkProgram.verify(proof2.proof);
+  if (!isValid1 || !isValid2) throw Error("Proof verification failed");
   // end_simple
 
   return { SimpleZkProgram, proof1, proof2 };
@@ -125,7 +127,8 @@ async function complexZkProgram() {
 
   const voteProof = await VoteProgram.vote(election, candidates[4].publicKey);
 
-  VoteProgram.verify(voteProof.proof);
+  const isValid = await VoteProgram.verify(voteProof.proof);
+  if (!isValid) throw Error("Proof verification failed");
   // end_complex
 
   return { VoteProgram, election, voteProof };

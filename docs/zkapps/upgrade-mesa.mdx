@@ -150,7 +150,8 @@ const TX_FEE = 100_000_000; // 0.1 MINA
 
 // -- Setup --
 
-const network = Mina.Network(GRAPHQL_ENDPOINT);
+// Without networkId, o1js signs for devnet and mainnet rejects the transaction
+const network = Mina.Network({ networkId: 'mainnet', mina: GRAPHQL_ENDPOINT });
 Mina.setActiveInstance(network);
 
 const zkAppKey = PrivateKey.fromBase58(ZKAPP_KEY);

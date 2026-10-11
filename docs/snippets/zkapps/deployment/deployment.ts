@@ -60,7 +60,7 @@ export const NetworkConfig = {
     mina: "https://api.minascan.io/node/devnet/v1/graphql",
     archive: "https://api.minascan.io/archive/devnet/v1/graphql",
     name: "devnet",
-    networkId: "testnet",
+    networkId: "devnet",
   },
 
   // Zeko configuration
@@ -70,7 +70,7 @@ export const NetworkConfig = {
     name: "zeko testnet",
     networkId: "testnet",
   },
-};
+} as const;
 // end_network_configs
 
 // start_devnet_deployment
@@ -82,6 +82,7 @@ export async function deployToDevnet(
   console.log("Configuring Mina instance for devnet...");
 
   const Network = Mina.Network({
+    networkId: NetworkConfig.devnet.networkId,
     mina: NetworkConfig.devnet.mina,
     archive: NetworkConfig.devnet.archive,
   });
@@ -102,7 +103,9 @@ export async function deployToDevnet(
       deployerAccount.balance.toBigInt().toString()
     );
 
-    if (deployerAccount.balance.lessThan(UInt64.from(1_000_000_000))) {
+    if (
+      deployerAccount.balance.lessThan(UInt64.from(1_000_000_000)).toBoolean()
+    ) {
       console.log(
         "Low balance detected, Please visit https://faucet.minaprotocol.com to fund your account..."
       );
@@ -129,7 +132,7 @@ export async function deployToDevnet(
     },
     async () => {
       AccountUpdate.fundNewAccount(deployerPublicKey);
-      contract.deploy({ verificationKey });
+      await contract.deploy({ verificationKey });
     }
   );
 
