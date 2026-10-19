@@ -9,7 +9,7 @@ Recursive: <PublicInputType, PublicOutputType, PrivateInputs>(zkprogram: {
 } & { [Key in string | number | symbol]: (args: any) => Promise<{ proof: Proof<InferProvable<PublicInputType>, InferProvable<PublicOutputType>> }> }) => { [Key in string | number | symbol]: RecursiveProver<InferProvable<PublicInputType>, PublicInputType, InferProvable<PublicOutputType>, PrivateInputs[Key]> & { if: ConditionalRecursiveProver<InferProvable<PublicInputType>, PublicInputType, InferProvable<PublicOutputType>, PrivateInputs[Key]> } } = Recursive_;
 ```
 
-Defined in: [index.ts:187](https://github.com/o1-labs/o1js/blob/cc18a919fe40be152afb1b603c57d74a9b2225b0/src/index.ts#L187)
+Defined in: [index.ts:188](https://github.com/o1-labs/o1js/blob/24829345d5296b9d101c122c72fa3fcb2b7227d6/src/index.ts#L188)
 
 ## Type Parameters
 

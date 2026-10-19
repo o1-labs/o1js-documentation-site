@@ -1,0 +1,66 @@
+```ts
+const OptionalAccountUpdate: Provable<Option<AccountUpdate, AccountUpdate>, undefined | AccountUpdate> & (option: {
+  isSome: Bool;
+  value: AccountUpdate;
+}) => Option<AccountUpdate, AccountUpdate> & {
+  from: Option<AccountUpdate, AccountUpdate>;
+  fromValue: Option<AccountUpdate, AccountUpdate>;
+  none: Option<AccountUpdate, AccountUpdate>;
+};
+```
+
+Defined in: [lib/mina/v1/account-update.ts:1233](https://github.com/o1-labs/o1js/blob/24829345d5296b9d101c122c72fa3fcb2b7227d6/src/lib/mina/v1/account-update.ts#L1233)
+
+## Type declaration
+
+### from()
+
+```ts
+from(value?: AccountUpdate | AccountUpdate): Option<AccountUpdate, AccountUpdate>;
+```
+
+#### Parameters
+
+##### value?
+
+`AccountUpdate` | [`AccountUpdate`](../classes/AccountUpdate.mdx)
+
+#### Returns
+
+[`Option`](../type-aliases/Option.mdx)\<[`AccountUpdate`](../classes/AccountUpdate.mdx), `AccountUpdate`\>
+
+### fromValue()
+
+```ts
+fromValue(value: 
+  | undefined
+  | AccountUpdate
+  | AccountUpdate
+  | {
+  isSome: boolean | Bool;
+  value: AccountUpdate | AccountUpdate;
+}): Option<AccountUpdate, AccountUpdate>;
+```
+
+#### Parameters
+
+##### value
+
+`undefined` | `AccountUpdate` | [`AccountUpdate`](../classes/AccountUpdate.mdx) | \{
+`isSome`: `boolean` \| [`Bool`](../classes/Bool.mdx);
+`value`: `AccountUpdate` \| [`AccountUpdate`](../classes/AccountUpdate.mdx);
+\}
+
+#### Returns
+
+[`Option`](../type-aliases/Option.mdx)\<[`AccountUpdate`](../classes/AccountUpdate.mdx), `AccountUpdate`\>
+
+### none()
+
+```ts
+none(): Option<AccountUpdate, AccountUpdate>;
+```
+
+#### Returns
+
+[`Option`](../type-aliases/Option.mdx)\<[`AccountUpdate`](../classes/AccountUpdate.mdx), `AccountUpdate`\>

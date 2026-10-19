@@ -4,10 +4,14 @@ slug: /
 
 # Welcome
 
-:::info[o1js 3.0.0 — Mesa release]
-o1js 3.0.0 targets the **Mesa** hard fork of the Mina protocol. All verification keys change,
+:::info[o1js 3.1.0 — Mesa release]
+o1js 3.x targets the **Mesa** hard fork of the Mina protocol. All verification keys change,
 so deployed zkApps must be upgraded — see the
 [MESA upgrade guide](/docs/zkapps/upgrade-mesa.mdx) to migrate.
+
+o1js 3.1.0 fixes two account-update vulnerabilities and changes verification keys again:
+contracts compiled with 3.0.0 must be recompiled and redeployed, or have their verification
+key updated as described in the guide. See the [changelog](/docs/changelog.md) for details.
 :::
 
 o1js is a TypeScript SDK for writing zero knowledge proofs.  o1Labs is committed to building
